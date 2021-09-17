@@ -2,3 +2,9 @@
   text-decoration: line-through;
   color: #888;
 }
+
+.trashcan {
+  font-size: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}

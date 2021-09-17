@@ -21,11 +21,19 @@ button.addEventListener('click', function() {
 
   // Create <li> element and add to DOM
   const item = document.createElement('li');
-  item.innerText = text;
   list.appendChild(item);
 
+  const itemLabel = document.createElement('span');
+  itemLabel.innerText = text;
+  item.appendChild(itemLabel);
+
+  const trashcan = document.createElement('span');
+  trashcan.innerHTML = '&#x1F5D1;';
+  trashcan.setAttribute('class', 'trashcan');
+  item.appendChild(trashcan);
+
   // Toggle "completed" class when an item is clicked
-  item.addEventListener('click', function() {
+  itemLabel.addEventListener('click', function() {
     if (item.getAttribute('class') == 'completed') {
       item.setAttribute('class', '');
       completedCount--;
@@ -36,6 +44,10 @@ button.addEventListener('click', function() {
     }
 
     label.innerText = `${completedCount} completed`;
+  });
+
+  trashcan.addEventListener('click', function() {
+    item.remove();
   });
 
   // Reset input
