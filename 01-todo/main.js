@@ -24,11 +24,17 @@ button.addEventListener('click', function() {
   item.innerText = text;
   list.appendChild(item);
 
-  // Add "completed" class when an item is clicked
+  // Toggle "completed" class when an item is clicked
   item.addEventListener('click', function() {
-    item.setAttribute('class', 'completed');
+    if (item.getAttribute('class') == 'completed') {
+      item.setAttribute('class', '');
+      completedCount--;
+    }
+    else {
+      item.setAttribute('class', 'completed');
+      completedCount++;
+    }
 
-    completedCount++;
     label.innerText = `${completedCount} completed`;
   });
 
