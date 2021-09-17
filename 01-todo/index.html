@@ -5,10 +5,28 @@
 </head>
 <body>
   <h1>My ToDo</h1>
+  <input type="text">
+  <button>OK</button>
   <ul>
-    <li class="completed">Learn HTML/CSS</li>
-    <li>Learn Javascript</li>
-    <li>Learn git</li>
   </ul>
+  <script>
+    // Use DOM API to access the elements in the HTML
+    const input = document.querySelector('input');
+    const button = document.querySelector('button');
+    const list = document.querySelector('ul');
+
+    button.addEventListener('click', function() {
+      // Get text from input
+      const text = input.value;
+
+      // Create <li> element and add to DOM
+      const item = document.createElement('li');
+      item.innerText = text;
+      list.appendChild(item);
+
+      // Reset input
+      input.value = '';
+    });
+  </script>
 </body>
 </html>
