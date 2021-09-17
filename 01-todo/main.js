@@ -2,6 +2,9 @@
 const input = document.querySelector('input');
 const button = document.querySelector('button');
 const list = document.querySelector('ul');
+const label = document.querySelector('p');
+
+let completedCount = 0;
 
 button.addEventListener('click', function() {
   // Get text from input
@@ -24,6 +27,9 @@ button.addEventListener('click', function() {
   // Add "completed" class when an item is clicked
   item.addEventListener('click', function() {
     item.setAttribute('class', 'completed');
+
+    completedCount++;
+    label.innerText = `${completedCount} completed`;
   });
 
   // Reset input
