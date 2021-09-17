@@ -21,6 +21,11 @@ button.addEventListener('click', function() {
   item.innerText = text;
   list.appendChild(item);
 
+  // Add "completed" class when an item is clicked
+  item.addEventListener('click', function() {
+    item.setAttribute('class', 'completed');
+  });
+
   // Reset input
   input.value = '';
 });
