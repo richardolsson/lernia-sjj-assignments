@@ -2,7 +2,7 @@
 const input = document.querySelector('input');
 const button = document.querySelector('button');
 const list = document.querySelector('ul');
-const label = document.querySelector('p');
+const counter = document.querySelector('.counter');
 
 let completedCount = 0;
 
@@ -12,11 +12,12 @@ button.addEventListener('click', function() {
 
   // Validate input to make sure that it's not empty
   if (text.length == 0) {
-    document.querySelector('small').innerText = 'Input must not be empty';
+    document.querySelector('.error').innerText = 'Input must not be empty';
+    document.querySelector('.error').classList.add('visible');
     return;
   }
   else {
-    document.querySelector('small').innerText = '';
+    document.querySelector('.error').classList.remove('visible');
   }
 
   // Create <li> element and add to DOM
@@ -25,6 +26,7 @@ button.addEventListener('click', function() {
 
   const itemLabel = document.createElement('span');
   itemLabel.innerText = text;
+  itemLabel.setAttribute('class', 'label');
   item.appendChild(itemLabel);
 
   const trashcan = document.createElement('span');
@@ -43,7 +45,7 @@ button.addEventListener('click', function() {
       completedCount++;
     }
 
-    label.innerText = `${completedCount} completed`;
+    counter.innerText = `${completedCount} completed`;
   });
 
   trashcan.addEventListener('click', function() {
