@@ -1,0 +1,32 @@
+@import 'style.css';
+
+.container {
+  display: grid;
+
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 100px auto auto;
+
+  gap: 10px;
+}
+
+.header {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.left {
+  grid-column: 1 / 2;
+}
+
+.main {
+  grid-column: 2 / 3;
+}
+
+.right {
+  grid-column: 3 / 4;
+}
+
+.footer {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
