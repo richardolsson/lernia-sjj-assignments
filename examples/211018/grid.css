@@ -22,6 +22,21 @@
   grid-column: 4 / 10;
 }
 
+.main figure {
+  float: left;
+  margin: 5px 10px 10px 0;
+}
+
+figure img {
+  display: block;
+}
+
+figure span {
+  display: block;
+  font-style: italic;
+  text-align: center;
+}
+
 .right {
   grid-column: 10 / 13;
 }
@@ -29,4 +44,19 @@
 .footer {
   grid-column-start: 1;
   grid-column-end: 13;
+}
+
+.footer ul {
+  display: flex;
+  padding: 0;
+  justify-content: space-between;
+}
+
+.footer li {
+  margin: 0 10px;
+  list-style-type: none;
+  flex-basis: 0;
+  flex-shrink: 1;
+  flex-grow: 1;
+  text-align: center;
 }
