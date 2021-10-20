@@ -35,34 +35,29 @@ a {
   }
 }
 
-.header {
-  @include card;
-
-  font-size: 1.5rem;
-
+@mixin responsive-box($span-size) {
   @include wide-screen {
-    grid-column: span 12;
+    grid-column: span $span-size;
     margin: 0;
   }
+}
+
+.header {
+  @include card;
+  @include responsive-box(12);
+
+  font-size: 1.5rem;
 }
 
 .left {
   @include card;
-
-  @include wide-screen {
-    grid-column: span 3;
-    margin: 0;
-  }
+  @include responsive-box(3);
 }
 
 .main {
   @include card;
+  @include responsive-box(6);
   font-size: 1.3rem;
-
-  @include wide-screen {
-    grid-column: span 6;
-    margin: 0;
-  }
 }
 
 .main figure {
@@ -82,15 +77,12 @@ figure span {
 
 .right {
   @include card;
-
-  @include wide-screen {
-    grid-column: span 3;
-    margin: 0;
-  }
+  @include responsive-box(3);
 }
 
 .footer {
   @include card;
+  @include responsive-box(12);
 
   ul {
     padding: 0;
@@ -112,10 +104,5 @@ figure span {
     padding: 0.5rem;
     text-align: center;
     font-size: 1.5rem;
-  }
-
-  @include wide-screen {
-    grid-column: span 12;
-    margin: 0;
   }
 }
