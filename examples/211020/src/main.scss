@@ -58,21 +58,21 @@ a {
   @include card;
   @include responsive-box(6);
   font-size: 1.3rem;
-}
 
-.main figure {
-  float: left;
-  margin: 5px 10px 10px 0;
-}
+  figure {
+    float: left;
+    margin: 5px 10px 10px 0;
+  }
 
-figure img {
-  display: block;
-}
+  figure img {
+    display: block;
+  }
 
-figure span {
-  display: block;
-  font-style: italic;
-  text-align: center;
+  figure span {
+    display: block;
+    font-style: italic;
+    text-align: center;
+  }
 }
 
 .right {
