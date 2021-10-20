@@ -1,3 +1,5 @@
+@import 'mixins';
+
 $wide-screen-breakpoint: 810px;
 
 html {
@@ -19,26 +21,6 @@ a {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 0.8rem;
-  }
-}
-
-@mixin card {
-  background-color: white;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
-  padding: 0.5em;
-  margin: 1em 0;
-}
-
-@mixin wide-screen {
-  @media screen and (min-width: $wide-screen-breakpoint) {
-    @content;
-  }
-}
-
-@mixin responsive-box($span-size) {
-  @include wide-screen {
-    grid-column: span $span-size;
-    margin: 0;
   }
 }
 
