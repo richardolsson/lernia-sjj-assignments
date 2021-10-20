@@ -1,0 +1,59 @@
+body {
+  background-color: #fcc;
+}
+
+a {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
+
+.header {
+  background-color: white;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+  padding: 0.5em;
+  margin: 1em 0;
+}
+
+.left {
+  background-color: white;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+  padding: 0.5em;
+  margin: 1em 0;
+}
+
+.main {
+  background-color: white;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+  padding: 0.5em;
+  margin: 1em 0;
+}
+
+.main figure {
+  float: left;
+  margin: 5px 10px 10px 0;
+}
+
+figure img {
+  display: block;
+}
+
+figure span {
+  display: block;
+  font-style: italic;
+  text-align: center;
+}
+
+.right {
+  background-color: white;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+  padding: 0.5em;
+  margin: 1em 0;
+}
+
+.footer {
+  background-color: white;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+  padding: 0.5em;
+  margin: 1em 0;
+}
