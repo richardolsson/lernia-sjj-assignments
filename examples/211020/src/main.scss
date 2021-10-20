@@ -1,3 +1,5 @@
+$wide-screen-breakpoint: 810px;
+
 html {
   font-size: 16px;
 }
@@ -12,7 +14,7 @@ a {
   text-decoration: underline;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: $wide-screen-breakpoint) {
   .container {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -29,7 +31,7 @@ a {
   font-size: 1.5rem;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: $wide-screen-breakpoint) {
   .header {
     grid-column: span 12;
     margin: 0;
@@ -43,7 +45,7 @@ a {
   margin: 1em 0;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: $wide-screen-breakpoint) {
   .left {
     grid-column: span 3;
     margin: 0;
@@ -58,7 +60,7 @@ a {
   font-size: 1.3rem;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: $wide-screen-breakpoint) {
   .main {
     grid-column: span 6;
     margin: 0;
@@ -87,7 +89,7 @@ figure span {
   margin: 1em 0;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: $wide-screen-breakpoint) {
   .right {
     grid-column: span 3;
     margin: 0;
@@ -101,7 +103,7 @@ figure span {
   margin: 1em 0;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: $wide-screen-breakpoint) {
   .footer {
     grid-column: span 12;
     margin: 0;
