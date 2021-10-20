@@ -101,6 +101,24 @@ figure span {
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
   padding: 0.5em;
   margin: 1em 0;
+
+  ul {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  a {
+    display: block;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+  }
 }
 
 @media screen and (min-width: $wide-screen-breakpoint) {
@@ -108,22 +126,4 @@ figure span {
     grid-column: span 12;
     margin: 0;
   }
-}
-
-.footer ul {
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.footer li {
-  list-style-type: none;
-}
-
-.footer a {
-  display: block;
-  padding: 0.5rem;
-  text-align: center;
-  font-size: 1.5rem;
 }
