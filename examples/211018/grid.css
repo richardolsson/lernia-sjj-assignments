@@ -18,8 +18,26 @@
   grid-column: 1 / 4;
 }
 
+@media screen and (max-width: 500px) {
+  .left {
+    grid-column: span 12;
+  }
+}
+
 .main {
   grid-column: 4 / 10;
+}
+
+@media screen and (max-width: 800px) {
+  .main {
+    grid-column: 4 / 13;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .main {
+    grid-column: span 12;
+  }
 }
 
 .main figure {
@@ -41,6 +59,12 @@ figure span {
   grid-column: 10 / 13;
 }
 
+@media screen and (max-width: 800px) {
+  .right {
+    grid-column: span 12;
+  }
+}
+
 .footer {
   grid-column-start: 1;
   grid-column-end: 13;
@@ -59,4 +83,10 @@ figure span {
   flex-shrink: 1;
   flex-grow: 1;
   text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+  .footer ul {
+    display: block;
+  }
 }
