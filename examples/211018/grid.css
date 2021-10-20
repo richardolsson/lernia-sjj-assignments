@@ -20,7 +20,6 @@ html {
   display: grid;
 
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 100px auto auto;
 
   gap: 10px;
 }
@@ -106,8 +105,13 @@ figure span {
   font-size: 1.5rem;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
   .footer ul {
     display: block;
+  }
+
+  .footer a {
+    display: block;
+    padding: 0.5rem;
   }
 }
