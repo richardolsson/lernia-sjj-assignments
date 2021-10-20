@@ -97,6 +97,10 @@ figure span {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @include wide-screen {
+      flex-direction: row;
+    }
   }
 
   li {
