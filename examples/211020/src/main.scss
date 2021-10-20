@@ -22,11 +22,15 @@ a {
   }
 }
 
-.header {
+@mixin card {
   background-color: white;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
   padding: 0.5em;
   margin: 1em 0;
+}
+
+.header {
+  @include card;
 
   font-size: 1.5rem;
 
@@ -37,10 +41,7 @@ a {
 }
 
 .left {
-  background-color: white;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
-  padding: 0.5em;
-  margin: 1em 0;
+  @include card;
 
   @media screen and (min-width: $wide-screen-breakpoint) {
     grid-column: span 3;
@@ -49,10 +50,7 @@ a {
 }
 
 .main {
-  background-color: white;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
-  padding: 0.5em;
-  margin: 1em 0;
+  @include card;
   font-size: 1.3rem;
 
   @media screen and (min-width: $wide-screen-breakpoint) {
@@ -77,10 +75,7 @@ figure span {
 }
 
 .right {
-  background-color: white;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
-  padding: 0.5em;
-  margin: 1em 0;
+  @include card;
 
   @media screen and (min-width: $wide-screen-breakpoint) {
     grid-column: span 3;
@@ -89,10 +84,7 @@ figure span {
 }
 
 .footer {
-  background-color: white;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
-  padding: 0.5em;
-  margin: 1em 0;
+  @include card;
 
   ul {
     padding: 0;
