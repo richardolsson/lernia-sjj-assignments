@@ -1,5 +1,21 @@
 @import 'style.css';
 
+html {
+  font-size: 12px;
+}
+
+@media screen and (max-width: 800px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 16px;
+  }
+}
+
 .container {
   display: grid;
 
@@ -12,6 +28,7 @@
 .header {
   grid-column-start: 1;
   grid-column-end: 13;
+  font-size: 30px;
 }
 
 .left {
@@ -26,6 +43,7 @@
 
 .main {
   grid-column: 4 / 10;
+  font-size: 1.6em;
 }
 
 @media screen and (max-width: 800px) {
@@ -68,12 +86,14 @@ figure span {
 .footer {
   grid-column-start: 1;
   grid-column-end: 13;
+  font-size: 1.5rem;
 }
 
 .footer ul {
   display: flex;
   padding: 0;
   justify-content: space-between;
+  font-size: 1.2rem;
 }
 
 .footer li {
@@ -83,6 +103,7 @@ figure span {
   flex-shrink: 1;
   flex-grow: 1;
   text-align: center;
+  font-size: 1.5rem;
 }
 
 @media screen and (max-width: 500px) {
