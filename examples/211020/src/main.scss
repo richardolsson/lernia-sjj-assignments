@@ -14,8 +14,8 @@ a {
   text-decoration: underline;
 }
 
-@media screen and (min-width: $wide-screen-breakpoint) {
-  .container {
+.container {
+  @media screen and (min-width: $wide-screen-breakpoint) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 0.8rem;
@@ -29,10 +29,8 @@ a {
   margin: 1em 0;
 
   font-size: 1.5rem;
-}
 
-@media screen and (min-width: $wide-screen-breakpoint) {
-  .header {
+  @media screen and (min-width: $wide-screen-breakpoint) {
     grid-column: span 12;
     margin: 0;
   }
@@ -43,10 +41,8 @@ a {
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
   padding: 0.5em;
   margin: 1em 0;
-}
 
-@media screen and (min-width: $wide-screen-breakpoint) {
-  .left {
+  @media screen and (min-width: $wide-screen-breakpoint) {
     grid-column: span 3;
     margin: 0;
   }
@@ -58,10 +54,8 @@ a {
   padding: 0.5em;
   margin: 1em 0;
   font-size: 1.3rem;
-}
 
-@media screen and (min-width: $wide-screen-breakpoint) {
-  .main {
+  @media screen and (min-width: $wide-screen-breakpoint) {
     grid-column: span 6;
     margin: 0;
   }
@@ -87,10 +81,8 @@ figure span {
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
   padding: 0.5em;
   margin: 1em 0;
-}
 
-@media screen and (min-width: $wide-screen-breakpoint) {
-  .right {
+  @media screen and (min-width: $wide-screen-breakpoint) {
     grid-column: span 3;
     margin: 0;
   }
@@ -119,10 +111,8 @@ figure span {
     text-align: center;
     font-size: 1.5rem;
   }
-}
 
-@media screen and (min-width: $wide-screen-breakpoint) {
-  .footer {
+  @media screen and (min-width: $wide-screen-breakpoint) {
     grid-column: span 12;
     margin: 0;
   }
