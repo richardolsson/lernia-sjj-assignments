@@ -1,4 +1,20 @@
-function ex1(input) {
+/**
+ * STRUCTURE
+ *
+ * Series 1: Plain values, arithmetic and string ops
+ * Series 2: Basic arrays and loops
+ * Series 3: Basic objects and different types of access
+ * Series 4: Complex structures (arrays + objects)
+ * Series 5: Array/Object methods
+ * Series 6: Functions, function references etc
+ * Series 7: Putting it all together
+*/
+
+/* --------------------------------------------------------------
+ * 1: Plain values, arithmetic and string ops
+*/
+
+function ex1a(input) {
   if (input === 42) {
     return true;
   }
@@ -7,7 +23,7 @@ function ex1(input) {
 }
 
 
-function ex2(input) {
+function ex1b(input) {
   if (input === '42') {
     return true;
   }
@@ -16,8 +32,14 @@ function ex2(input) {
 }
 
 
-function ex3(input) {
-  if (input.value == 42) {
+
+/* --------------------------------------------------------------
+ * 2: Basic arrays and loops
+*/
+
+
+function ex2a(input) {
+  if (input[0] == 42) {
     return true;
   }
 
@@ -25,23 +47,16 @@ function ex3(input) {
 }
 
 
-function ex4(input) {
-  return ex3(input);
-}
-
-
-function ex5(input) {
+function ex2b(input) {
   if (input.length == 2) {
-    if (input[0] === 42 && input[1] !== 42) {
-      return true;
-    }
+    return (input[0] === 42 && input[1] !== 42);
   }
 
   return false;
 }
 
 
-function ex6(input) {
+function ex2c(input) {
   let sum = 0;
 
   for (let i = 0; i < input.length; i++) {
@@ -57,12 +72,89 @@ function ex6(input) {
 }
 
 
-function ex7(input) {
+
+/* --------------------------------------------------------------
+ * 3: Basic objects and different types of access
+*/
+
+
+function ex3a(input) {
+  if (input.value == 42) {
+    return true;
+  }
+
+  return false;
+}
+
+
+
+/* --------------------------------------------------------------
+ * 4: Complex structures
+*/
+
+
+/* --------------------------------------------------------------
+ * 5: Array/Object methods
+*/
+
+function ex5a(input) {
+  if (input.length < 2) {
+    return false;
+  }
+
+  return input.includes('42');
+}
+
+
+function ex5b(input) {
+  if (input.length < 2) {
+    return false;
+  }
+
+  const bools = input.map(x => ex1a(x));
+
+  return bools.every(b => b === true);
+}
+
+
+
+/* --------------------------------------------------------------
+ * 6: Functions, function references etc
+*/
+
+
+function ex6a(input) {
+  return ex3a(input);
+}
+
+
+function ex6b(input) {
   return ex6(input) && input.length == 4;
 }
 
 
-function ex8(input) {
+function ex6c(input) {
+  const returnValue = input();
+
+  return returnValue;
+}
+
+
+function ex6d(input) {
+  const retWhenTrue = input(true);
+  const retWhenFalse = input(false);
+
+  return (retWhenTrue === 10) && (retWhenFalse === -10);
+}
+
+
+
+/* --------------------------------------------------------------
+ * 7: Putting it all together
+*/
+
+
+function ex7a(input) {
   const knownNames = [
     'Chip', 'Dale', 'Jack', 'Gadget', 'Zipper',
   ];
@@ -86,36 +178,13 @@ function ex8(input) {
 }
 
 
-function ex9(input) {
-  if (input.length < 2) {
-    return false;
-  }
-
-  const bools = input.map(x => ex1(x));
-
-  return bools.every(b => b === true);
-}
-
-
-function ex10(input) {
-  const returnValue = input();
-
-  return returnValue;
-}
-
-
-function ex11(input) {
-  const retWhenTrue = input(true);
-  const retWhenFalse = input(false);
-
-  return (retWhenTrue === 10) && (retWhenFalse === -10);
-}
-
-
 const excercises = {
-  ex1, ex2, ex3, ex4, ex5,
-  ex6, ex7, ex8, ex9, ex10,
-  ex11,
+  ex1a, ex1b,
+  ex2a, ex2b, ex2c,
+  ex3a,
+  ex5a, ex5b,
+  ex6a, ex6b, ex6c, ex6d,
+  ex7a,
 }
 
 if (typeof module == 'object') {
