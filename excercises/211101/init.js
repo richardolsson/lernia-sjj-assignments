@@ -1,5 +1,28 @@
+const HEADLINES = [
+ 'Series 1: Plain values, arithmetic and string ops',
+ 'Series 2: Basic arrays and loops',
+ 'Series 3: Basic objects and property access',
+ 'Series 4: Complex structures',
+ 'Series 5: Array/Object methods',
+ 'Series 6: Functions and function references',
+ 'Series 7: Exceptions',
+ 'Series 8: Putting it all together',
+];
+
 function init(ctr, excercises) {
+  let idx = 0;
+  let prevPrefix = null;
+
   excercises.forEach(func => {
+    const prefix = func.name.slice(0, 3);
+    if (prefix != prevPrefix) {
+      prevPrefix = prefix;
+
+      const seriesHeader = document.createElement('h1');
+      seriesHeader.textContent = HEADLINES[idx++];
+      ctr.append(seriesHeader);
+    }
+
     const exDiv = document.createElement('div');
     exDiv.className = 'excercise';
     ctr.append(exDiv);
