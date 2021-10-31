@@ -9,9 +9,32 @@ const HEADLINES = [
  'Series 8: Putting it all together',
 ];
 
+function loadCompleted() {
+  try {
+    const data = localStorage.getItem('completedExcercises');
+    let completedExcercises = JSON.parse(data);
+
+    return completedExcercises || {};
+  }
+  catch (err) {
+    return {};
+  }
+}
+
+function saveCompleted(exName, solution) {
+  const completedExcercises = loadCompleted();
+
+  localStorage.setItem('completedExcercises', JSON.stringify({
+    ...completedExcercises,
+    [exName]: solution,
+  }));
+}
+
 function init(ctr, excercises) {
   let idx = 0;
   let prevPrefix = null;
+
+  const completed = loadCompleted();
 
   excercises.forEach(func => {
     const prefix = func.name.slice(0, 3);
@@ -27,6 +50,10 @@ function init(ctr, excercises) {
     exDiv.className = 'excercise';
     ctr.append(exDiv);
 
+    if (Object.keys(completed).includes(func.name)) {
+      exDiv.classList.add('success');
+    }
+
     const header = document.createElement('h2');
     header.textContent = `Excercise: ${func.name}`;
     exDiv.append(header);
@@ -39,7 +66,7 @@ function init(ctr, excercises) {
     // Using _ prefix to avoid collison with code written by user
     const _input = document.createElement('textarea');
     _input.className = 'input';
-    _input.textContent = 'input = ';
+    _input.textContent = completed[func.name] || 'input = ';
     exDiv.append(_input);
 
     const output = document.createElement('div');
@@ -59,9 +86,11 @@ function init(ctr, excercises) {
         const inputValue = eval(_input.value);
         const result = func(inputValue);
 
-        if (result) {
+        if (result === true) {
           output.textContent = 'SUCCESS!';
           exDiv.classList.add('success');
+
+          saveCompleted(func.name, _input.value);
         }
         else {
           output.textContent = 'Failure, try again';
