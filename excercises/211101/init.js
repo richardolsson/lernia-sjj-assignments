@@ -28,9 +28,43 @@ function saveCompleted(exName, solution) {
     ...completedExcercises,
     [exName]: solution,
   }));
+
+  refreshResetButton();
 }
 
-function init(ctr, excercises) {
+function refreshResetButton() {
+  const completed = loadCompleted();
+
+  const oldResetButton = document.querySelector('#resetButton');
+  if (oldResetButton) {
+    oldResetButton.remove();
+  }
+
+  if (Object.keys(completed).length > 0) {
+    const resetButton = document.createElement('button');
+    resetButton.id = 'resetButton';
+    resetButton.innerText = 'Clear all saved solutions';
+    resetButton.addEventListener('click', () => {
+      localStorage.setItem('completedExcercises', null);
+
+      refreshResetButton();
+    });
+
+    document.querySelector('#intro').append(resetButton);
+  }
+}
+
+function init() {
+  refreshResetButton();
+  window.addEventListener('storage', () => {
+    console.log('hello');
+    refreshResetButton();
+  });
+
+  initExcercises(document.querySelector('#excercises'), Object.values(excercises));
+}
+
+function initExcercises(ctr, excercises) {
   let idx = 0;
   let prevPrefix = null;
 
