@@ -418,6 +418,29 @@ function ex8b(input) {
 }
 
 
+function ex8c(input) {
+  const values = [
+    true, false, true, true, true, false, true,
+  ];
+
+  try {
+    values.forEach((val, idx) => {
+      const isEven = (idx % 2) === 0;
+      const expected = (idx === 3 || isEven)? val : !val;
+
+      if (input !== expected) {
+        throw new Error('Invalid value');
+      }
+    });
+
+    return true;
+  }
+  catch (err) {
+    return false;
+  }
+}
+
+
 const excercises = {
   ex1a, ex1b, ex1c, ex1d, ex1e, ex1f, ex1g, ex1h,
   ex2a, ex2b, ex2c,
@@ -426,7 +449,7 @@ const excercises = {
   ex5a, ex5b, ex5c, ex5d,
   ex6a, ex6b, ex6c, ex6d, ex6e, ex6f, ex6g,
   ex7a, ex7b, ex7c, ex7d,
-  ex8a, ex8b,
+  ex8a, ex8b, ex8c,
 }
 
 if (typeof module == 'object') {
