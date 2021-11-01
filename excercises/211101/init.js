@@ -46,8 +46,7 @@ function refreshResetButton() {
     resetButton.innerText = 'Clear all saved solutions';
     resetButton.addEventListener('click', () => {
       localStorage.setItem('completedExcercises', null);
-
-      refreshResetButton();
+      location.reload();
     });
 
     document.querySelector('#intro').append(resetButton);

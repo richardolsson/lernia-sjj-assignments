@@ -53,3 +53,12 @@ body {
   grid-column: main-start / io-end;
   padding: 1em;
 }
+
+#resetButton {
+  display: block;
+  background-color: red;
+  color: white;
+  padding: 1em;
+  border-width: 0;
+  cursor: pointer;
+}
