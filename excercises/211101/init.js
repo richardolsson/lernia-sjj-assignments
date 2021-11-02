@@ -55,11 +55,6 @@ function refreshResetButton() {
 
 function init() {
   refreshResetButton();
-  window.addEventListener('storage', () => {
-    console.log('hello');
-    refreshResetButton();
-  });
-
   initExcercises(document.querySelector('#excercises'), Object.values(excercises));
 }
 
