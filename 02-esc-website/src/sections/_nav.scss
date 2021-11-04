@@ -14,14 +14,7 @@
   }
 
   a {
-    color: $c-white;
-    text-decoration: none;
+    @include menu-link;
     font-weight: bold;
-
-    transition: color 0.2s;
-
-    &:hover {
-      color: $c-lightblue;
-    }
   }
 }
