@@ -11,7 +11,11 @@
 }
 
 .story-intro {
-  margin: 5rem 0 4rem;
+  margin: 5rem auto 4rem;
+
+  @include desktop {
+    max-width: 40rem;
+  }
 }
 
 .story-cta {
