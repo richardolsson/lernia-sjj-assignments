@@ -1,0 +1,32 @@
+.hero-image {
+  background-image: url('images/hero.png');
+  background-size: cover;
+  height: 40vh;
+}
+
+.hero-cta {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  a {
+    margin: 0.5rem 0;
+  }
+
+  .hero-cta-onsite {
+    background-color: $c-lightblue;
+    padding: 1rem 2rem;
+    border-radius: 0.3rem;
+    color: black;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .hero-cta-online {
+    font-weight: bold;
+    color: $c-blue;
+    padding: 1rem 2rem;
+  }
+}
