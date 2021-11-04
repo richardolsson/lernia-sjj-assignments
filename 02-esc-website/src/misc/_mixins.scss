@@ -29,3 +29,7 @@
     background-color: darken($bg-color, 5);
   }
 }
+
+@mixin section {
+  padding: 1rem;
+}

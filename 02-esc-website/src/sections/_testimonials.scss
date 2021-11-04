@@ -1,0 +1,28 @@
+.testimonials {
+  @include section;
+  margin: 2rem 0 4rem;
+}
+
+.testimonials-item {
+  display: none;
+  grid-template-columns: 96px 1fr;
+  gap: 0.5rem;
+
+  &:first-child {
+    display: grid;
+  }
+
+  img {
+    border-radius: 50%;
+  }
+
+  blockquote {
+    font-style: italic;
+    font-size: 1.5rem;
+  }
+
+  cite {
+    grid-column: 2 / 3;
+    font-style: normal;
+  }
+}
