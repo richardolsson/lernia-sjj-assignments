@@ -1,0 +1,14 @@
+{
+  "name": "02-esc-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "sass --watch --no-source-map src/main.scss main.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.43.4"
+  }
+}
