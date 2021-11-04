@@ -3,10 +3,20 @@
   margin: 2rem 0 4rem;
 }
 
+.testimonials-list {
+  max-width: 1064px;
+  margin: 0 auto;
+
+  @include desktop {
+    display: flex;
+  }
+}
+
 .testimonials-item {
   display: none;
   grid-template-columns: 96px 1fr;
   gap: 0.5rem;
+  margin-right: 2rem;
 
   &:first-child {
     display: grid;
@@ -24,5 +34,9 @@
   cite {
     grid-column: 2 / 3;
     font-style: normal;
+  }
+
+  @include desktop {
+    display: grid;
   }
 }
