@@ -1,0 +1,22 @@
+.usp-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+
+  h2 {
+    margin: 1rem;
+    font-size: 1.8rem;
+  }
+
+  p {
+    margin: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .usp-cta {
+    @include button($c-red);
+
+    align-self: flex-start;
+    margin: 1rem;
+  }
+}
