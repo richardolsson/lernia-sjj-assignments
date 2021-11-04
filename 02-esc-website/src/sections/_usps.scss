@@ -17,12 +17,13 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin: 1rem;
 
     a {
       @include button($c-red);
 
       align-self: flex-start;
-      margin: 1rem;
+      margin: 0;
     }
   }
 
@@ -41,16 +42,19 @@
     }
 
     h2 {
+      margin: 1rem 0;
       grid-column: content-start / content-end;
       grid-row: 2 / 3;
     }
 
     p {
+      margin: 1rem 0;
       grid-column: content-start / content-end;
       grid-row: 3 / 4;
     }
 
     .usp-cta {
+      margin: 1rem 0;
       grid-column: content-start / content-end;
       grid-row: 4 / 5;
     }

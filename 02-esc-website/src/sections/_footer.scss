@@ -1,16 +1,19 @@
 .footer {
-  @include section;
-  padding-top: 3rem;
   background-color: $c-darkblue;
   color: $c-white;
+  padding: 5rem 0;
+
+  .footer-content {
+    margin: 0 1rem;
+
+    & > div {
+      margin: 0 0 2rem;
+    }
+  }
 
   h2 {
     font-size: 1rem;
     margin-bottom: 0.3rem;
-  }
-
-  & > div {
-    margin: 0 0 2rem;
   }
 
   ul {
@@ -20,5 +23,29 @@
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  @include desktop {
+    margin-top: 10rem;
+
+    .footer-content {
+      display: grid;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 5rem 0;
+      grid-template-columns: repeat(12, 1fr);
+
+      .footer-summary {
+        grid-column: 2 / 6;
+      }
+
+      .footer-sitemap {
+        grid-column: 8 / 10;
+      }
+
+      .footer-social {
+        grid-column: 10 / 12;
+      }
+    }
   }
 }
