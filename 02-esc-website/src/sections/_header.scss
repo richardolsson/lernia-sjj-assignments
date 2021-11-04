@@ -1,0 +1,17 @@
+.header {
+  background-color: $c-darkblue;
+  color: $c-white;
+  padding: 1rem;
+
+  .logo {
+    padding: 0.2rem 0 0 130px;
+    width: 100px;
+    height: 80px;
+    line-height: 1em;
+    font-size: 1.6rem;
+
+    background-image: url('images/logo.png');
+    background-size: 120px;
+    background-repeat: no-repeat;
+  }
+}
