@@ -1,0 +1,22 @@
+.story {
+  @include section;
+  display: flex;
+  flex-direction: column;
+
+  background-color: $c-darkblue;
+  color: $c-white;
+  text-align: center;
+  font-size: 1.7rem;
+  padding-bottom: 5rem;
+}
+
+.story-intro {
+  margin: 5rem 0 4rem;
+}
+
+.story-cta {
+  @include button($c-darkblue);
+  align-self: center;
+  border: 2px solid $c-lightblue;
+  color: $c-lightblue;
+}
