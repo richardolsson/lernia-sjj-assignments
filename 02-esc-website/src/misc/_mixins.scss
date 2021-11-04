@@ -1,5 +1,31 @@
+@use 'sass:math';
+
 @mixin desktop {
   @media screen and (min-width: $bp-desktop) {
     @content;
+  }
+}
+
+@function brightness($color) {
+  @return math.div(((red($color) * .299) + (green($color) * .587) + (blue($color) * .114)), 255) * 100%;
+}
+
+@mixin button($bg-color) {
+  margin: 0.5rem;
+  background-color: $bg-color;
+  padding: 1rem 2rem;
+  border-radius: 0.3rem;
+  color: black;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background-color 0.2s;
+
+  @if brightness($bg-color) < 50 {
+    color: white;
+  }
+
+  &:hover {
+    background-color: darken($bg-color, 5);
   }
 }
