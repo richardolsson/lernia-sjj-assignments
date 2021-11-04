@@ -12,6 +12,11 @@
 .challenges-list {
   display: flex;
   width: 300%;
+
+  @include desktop {
+    width: auto;
+    justify-content: center;
+  }
 }
 
 .challenges-item {
@@ -38,6 +43,10 @@
   .challenge-meta {
     display: flex;
     margin-top: 0.5rem;
+
+    @include desktop {
+      justify-content: space-between;
+    }
   }
 
   .challenge-rating {
@@ -67,6 +76,10 @@
     @include button($c-red);
     margin: 1rem;
     align-self: flex-end;
+  }
+
+  @include desktop {
+    max-width: 363px;
   }
 }
 
