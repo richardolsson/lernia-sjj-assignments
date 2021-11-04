@@ -1,0 +1,76 @@
+.challenges {
+  overflow: hidden;
+
+  h2 {
+    font-size: 1.7rem;
+    font-weight: normal;
+    text-align: center;
+    margin: 0 0 1rem;
+  }
+}
+
+.challenges-list {
+  display: flex;
+  width: 300%;
+}
+
+.challenges-item {
+  display: flex;
+  flex-direction: column;
+
+  border-radius: $border-radius;
+  background-color: white;
+  box-shadow: 0 0 1rem rgba($c-beige, 0.5);
+  margin: 1rem;
+  overflow: hidden;
+  max-width: 85vw;
+
+  & > *:not(img) {
+    margin: 0 1rem;
+  }
+
+  .challenge-title {
+    font-size: 1.8rem;
+    font-weight: normal;
+    margin-top: 1rem;
+  }
+
+  .challenge-meta {
+    display: flex;
+    margin-top: 0.5rem;
+  }
+
+  .challenge-rating {
+    display: flex;
+    margin: 0 1rem 0 0;
+
+    .challenge-rating-star {
+      width: 1rem;
+      height: 1rem;
+      margin: 0 0.4rem 0 0;
+      background-image: url("images/star-on.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      &.off {
+        background-image: url("images/star-off.png");
+      }
+    }
+  }
+
+  .challenge-description {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .challenge-cta {
+    @include button($c-red);
+    margin: 1rem;
+    align-self: flex-end;
+  }
+}
+
+.challenges-cta {
+  @include challenge-ctas;
+  margin: 2rem 0;
+}

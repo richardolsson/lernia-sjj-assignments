@@ -9,37 +9,12 @@
 }
 
 .hero-cta {
-  padding: 1rem 0;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-
-  a {
-    margin: 0.5rem 0;
-  }
-
-  .hero-cta-onsite {
-    @include button($c-lightblue);
-  }
-
-  .hero-cta-online {
-    font-weight: bold;
-    color: $c-blue;
-    padding: 1rem 2rem;
-  }
+  @include challenge-ctas;
 
   @include desktop {
-    flex-direction: row;
-    justify-content: center;
-    padding: 0;
-
     a {
       position: relative;
       top: -2.5rem;
-    }
-
-    .hero-cta-online {
-      @include button($c-red);
     }
   }
 }
