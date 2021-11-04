@@ -1,3 +1,27 @@
 .main-nav {
   display: none;
+
+  @include desktop {
+    display: block;
+    background-color: $c-darkblue;
+
+    .main-menu {
+      display: flex;
+      justify-content: space-around;
+      padding: 1rem 10rem;
+      font-size: 1.2rem;
+    }
+  }
+
+  a {
+    color: $c-white;
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: color 0.2s;
+
+    &:hover {
+      color: $c-lightblue;
+    }
+  }
 }
