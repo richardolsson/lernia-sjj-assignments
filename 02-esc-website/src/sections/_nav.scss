@@ -1,4 +1,6 @@
 .main-nav {
+  $animation-duration: 0.3s;
+
   .main-menu {
     display: none;
   }
@@ -30,6 +32,8 @@
 
       background-color: rgba(255, 255, 255, 0.5);
 
+      animation: main-nav_open $animation-duration;
+
       .main-nav-toggle {
         top: 2rem;
         right: 2rem;
@@ -43,10 +47,13 @@
         left: 1rem;
         right: 1rem;
         bottom: 1rem;
+        box-shadow: 0 0 1rem rgba(0,0,0, 0.5);
 
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        animation: main-menu_open $animation-duration;
 
         a {
           display: block;
@@ -76,5 +83,29 @@
   a {
     @include menu-link;
     font-weight: bold;
+  }
+}
+
+@keyframes main-nav_open {
+  0% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes main-menu_open {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.0);
   }
 }
