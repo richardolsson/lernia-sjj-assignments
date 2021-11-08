@@ -45,11 +45,35 @@ img {
   top: 1rem;
   right: 1rem;
   z-index: 2;
-  width: 2rem;
-  height: 2rem;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-image: url("images/menu-open.png");
+  transition: transform 0.5s, top 0.5s, right 0.5s;
+  display: block;
+  width: 2.5rem;
+  height: 0.3rem;
+  border-radius: 0.15rem;
+  background-color: white;
+}
+.main-nav .main-nav-toggle::before {
+  content: "";
+  position: absolute;
+  top: 0.7rem;
+  display: block;
+  width: 2.5rem;
+  height: 0.3rem;
+  border-radius: 0.15rem;
+  background-color: white;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+.main-nav .main-nav-toggle::after {
+  content: "";
+  position: absolute;
+  top: 1.4rem;
+  display: block;
+  width: 2.5rem;
+  height: 0.3rem;
+  border-radius: 0.15rem;
+  background-color: white;
+  transition: transform 0.5s, top 0.5s;
 }
 .main-nav .main-menu {
   z-index: 1;
@@ -63,11 +87,19 @@ img {
     right: 0;
     bottom: 0;
     background-color: rgba(255, 255, 255, 0.5);
+    animation: main-nav_open 0.3s;
   }
   .main-nav.open .main-nav-toggle {
-    top: 2rem;
+    top: 3rem;
     right: 2rem;
-    background-image: url("images/menu-close.png");
+    transform: rotate(225deg);
+  }
+  .main-nav.open .main-nav-toggle::before {
+    opacity: 0;
+  }
+  .main-nav.open .main-nav-toggle::after {
+    transform: rotate(90deg);
+    top: 0;
   }
   .main-nav.open .main-menu {
     display: flex;
@@ -76,9 +108,11 @@ img {
     left: 1rem;
     right: 1rem;
     bottom: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    animation: main-menu_open 0.3s;
   }
   .main-nav.open .main-menu a {
     display: block;
@@ -111,6 +145,28 @@ img {
   color: #8acfe5;
 }
 
+@keyframes main-nav_open {
+  0% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+}
+@keyframes main-menu_open {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 .hero-image {
   background-image: url("images/hero.png");
   background-size: cover;

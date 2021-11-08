@@ -1,6 +1,14 @@
 .main-nav {
   $animation-duration: 0.3s;
 
+  @mixin burger-line {
+    display: block;
+    width: 2.5rem;
+    height: 0.3rem;
+    border-radius: 0.15rem;
+    background-color: white;
+  }
+
   .main-menu {
     display: none;
   }
@@ -10,11 +18,31 @@
     top: 1rem;
     right: 1rem;
     z-index: 2;
-    width: 2rem;
-    height: 2rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url('images/menu-open.png');
+
+    $trans-duration: 0.5s;
+
+    transition: transform $trans-duration, top $trans-duration, right $trans-duration;
+
+    @include burger-line;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0.7rem;
+      @include burger-line;
+
+      opacity: 1;
+      transition: opacity $trans-duration;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 1.4rem;
+      @include burger-line;
+
+      transition: transform $trans-duration, top $trans-duration;
+    }
   }
 
   .main-menu {
@@ -35,9 +63,19 @@
       animation: main-nav_open $animation-duration;
 
       .main-nav-toggle {
-        top: 2rem;
+        top: 3rem;
         right: 2rem;
-        background-image: url('images/menu-close.png');
+
+        transform: rotate(225deg);
+
+        &::before {
+          opacity: 0;
+        }
+
+        &::after {
+          transform: rotate(90deg);
+          top: 0;
+        }
       }
 
       .main-menu {
