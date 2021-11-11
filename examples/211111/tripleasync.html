@@ -2,19 +2,93 @@
 <html>
   <head>
     <script>
-      function exampleCallback() {
+      function example1Callback() {
+        console.log('1B');
+        setTimeout(() => {
+          console.log('1A');
+
+          setTimeout(() => {
+            console.log('Waited!');
+
+            setTimeout(() => {
+              console.log('Another second');
+            }, 1000);
+
+          }, 2000);
+
+        }, 5000);
+        console.log('1C');
       }
 
-      function examplePromise() {
+      /*
+      function example2Promise() {
+        console.log('2A');
+        const promise = fetch('word.txt');
+        console.log('2B');
+
+        function callback() {
+          console.log('2C');
+        }
+
+        console.log('2D');
+        promise.then(callback);
+        console.log('2E');
+      }
+      */
+
+      /*
+      function example2Promise() {
+        console.log('2A');
+        fetch('word.txt').then((response) => {
+          console.log('2B');
+
+          const promise = response.text();
+          promise.then((str) => {
+            console.log('2C', str);
+          });
+
+          console.log('2D');
+        });
+        console.log('2E');
+      }
+      */
+
+      /*
+      function example2Promise() {
+        console.log('2A');
+        fetch('word.txt')
+          .then((response) => response.text())
+          .then((str) => console.log(str));
+        console.log('2B');
+      }
+      */
+
+      function example2Promise() {
+        function callback1(response) {
+          return response.text();
+        }
+
+        function callback2(str) {
+          console.log(str);
+        }
+
+        fetch('word.txt')
+          .then(callback1)
+          .then(callback2);
       }
 
-      function exampleAsyncAwait() {
+      async function example3AsyncAwait() {
+        console.log('3A');
+        const response = await fetch('word.txt');
+        console.log('3B');
+        const str = await response.text();
+        console.log('3C', str);
       }
     </script>
   </head>
   <body>
-    <button onclick="exampleCallback()">Run callback example</button>
-    <button onclick="examplePromise()">Run Promise example</button>
-    <button onclick="exampleAsyncAwait()">Run async/await example</button>
+    <button onclick="example1Callback()">Run callback example</button>
+    <button onclick="example2Promise()">Run Promise example</button>
+    <button onclick="example3AsyncAwait()">Run async/await example</button>
   </body>
 </html>
