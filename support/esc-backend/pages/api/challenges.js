@@ -6,6 +6,12 @@ const TITLES_FIRST = [
   "Game",
   "Shell",
   "Network",
+  "Project: X",
+  "Intelligence",
+  "Linux",
+  "Code",
+  "Binary dreams",
+  "Revolution",
 ];
 
 const TITLES_SECOND = [
@@ -15,7 +21,10 @@ const TITLES_SECOND = [
   "demystified",
   "for hackers",
   "from satellite to satellite",
+  "on Windows",
+  "in the machine",
   "online",
+  "in binary",
   "1994",
   "2000",
   "3000",
