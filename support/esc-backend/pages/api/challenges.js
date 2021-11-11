@@ -87,6 +87,7 @@ function createRandomChallenges(count) {
 
   const state = initState(seedStr, [
     "title",
+    "desc",
     "type",
     "participants",
     "type",
@@ -124,7 +125,7 @@ function createRandomChallenges(count) {
       type: getNext(NUMBERS, "type") > 3 ? "onsite" : "online",
       title:
         getNext(TITLES_FIRST, "title") + " " + getNext(TITLES_SECOND, "title"),
-      description: "",
+      description: getNext(DESCRIPTIONS, "desc"),
       minParticipants: minParticipants,
       maxParticipants: minParticipants + getNext(NUMBERS, "participants"),
       rating: getNext(NUMBERS, "rating") / 2,
