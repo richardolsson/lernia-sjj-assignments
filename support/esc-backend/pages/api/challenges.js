@@ -1,3 +1,5 @@
+import Cors from "cors";
+
 const TITLES_FIRST = [
   "Challenge",
   "Room",
@@ -137,8 +139,28 @@ function createRandomChallenges(count) {
   return challenges;
 }
 
-export default function handler(req, res) {
+function initMiddleware(middleware) {
+  return (req, res) =>
+    new Promise((resolve, reject) => {
+      middleware(req, res, (result) => {
+        if (result instanceof Error) {
+          return reject(result);
+        }
+        return resolve(result);
+      });
+    });
+}
+
+const cors = initMiddleware(
+  Cors({
+    methods: ["GET", "POST", "OPTIONS"],
+  })
+);
+
+export default async function handler(req, res) {
+  await cors(req, res);
+
   const challenges = createRandomChallenges(30);
-  res.setHeader('content-type', 'application/json');
+  res.setHeader("content-type", "application/json");
   res.status(200).send(JSON.stringify({ challenges }, null, 2));
 }
