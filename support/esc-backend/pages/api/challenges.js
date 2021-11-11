@@ -139,5 +139,6 @@ function createRandomChallenges(count) {
 
 export default function handler(req, res) {
   const challenges = createRandomChallenges(30);
-  res.status(200).json({ challenges });
+  res.setHeader('content-type', 'application/json');
+  res.status(200).send(JSON.stringify({ challenges }, null, 2));
 }
