@@ -85,7 +85,11 @@ function initState(seed, prefixes) {
 }
 
 function createRandomChallenges(count) {
-  const seedStr = "20211111";
+  const d = new Date();
+  const seedStr =
+    d.getFullYear().toString() +
+    (d.getMonth() + 1).toString().padStart(2, "0") +
+    d.getDate().toString().padStart(2, "0");
 
   const state = initState(seedStr, [
     "title",
