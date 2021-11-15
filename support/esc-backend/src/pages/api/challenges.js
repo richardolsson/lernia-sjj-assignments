@@ -1,4 +1,4 @@
-import Cors from "cors";
+import { initCorsMiddleware } from "../../utils/cors";
 
 const TITLES_FIRST = [
   "Challenge",
@@ -143,23 +143,7 @@ function createRandomChallenges(count) {
   return challenges;
 }
 
-function initMiddleware(middleware) {
-  return (req, res) =>
-    new Promise((resolve, reject) => {
-      middleware(req, res, (result) => {
-        if (result instanceof Error) {
-          return reject(result);
-        }
-        return resolve(result);
-      });
-    });
-}
-
-const cors = initMiddleware(
-  Cors({
-    methods: ["GET", "POST", "OPTIONS"],
-  })
-);
+const cors = initCorsMiddleware(["GET", "OPTIONS"]);
 
 export default async function handler(req, res) {
   await cors(req, res);
