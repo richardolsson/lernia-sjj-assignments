@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="main.js"></script>
+    <script>
+      async function loadData() {
+        const url = 'https://lernia-sjj-assignments.vercel.app/api/challenges';
+        const response = await fetch(url);
+        const data = await response.json();
+        const challenges = data.challenges;
+
+        const ul = document.querySelector('ul');
+
+        renderChallenges(challenges, ul);
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="loadData()">Load data</button>
+    <ul>
+    </ul>
+  </body>
+</html>
+
