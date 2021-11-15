@@ -1,3 +1,26 @@
+class ChallengeGrid {
+  constructor(retriever, container) {
+    this.retriever = retriever;
+    this.container = container;
+  }
+
+  async run() {
+    this.challenges = await this.retriever.load();
+
+    this.render();
+  }
+
+  render() {
+    this.container.innerHTML = '';
+
+    this.challenges.forEach((challengeData) => {
+      const challengeInstance = new Challenge(challengeData);
+      const li = challengeInstance.render();
+      this.container.append(li);
+    });
+  }
+}
+
 class DataRetriever {
   constructor() {
     this.challenges = null;
