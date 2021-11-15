@@ -1,10 +1,17 @@
 class DataRetriever {
-  async load() {
-    const url = 'https://lernia-sjj-assignments.vercel.app/api/challenges';
-    const response = await fetch(url);
-    const data = await response.json();
+  constructor() {
+    this.challenges = null;
+  }
 
-    return data.challenges;
+  async load() {
+    if (!this.challenges) {
+      const url = 'https://lernia-sjj-assignments.vercel.app/api/challenges';
+      const response = await fetch(url);
+      const data = await response.json();
+      this.challenges = data.challenges;
+    }
+
+    return this.challenges;
   }
 }
 

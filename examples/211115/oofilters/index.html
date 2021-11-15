@@ -5,11 +5,14 @@
     <script src="oo.js"></script>
     <script src="main.js"></script>
     <script>
+      const retriever = new DataRetriever();
+
       async function loadData() {
-        const retriever = new DataRetriever();
+        const ul = document.querySelector('ul');
+        ul.innerHTML = '';
+
         const challenges = await retriever.load();
 
-        const ul = document.querySelector('ul');
         renderChallenges(challenges, ul);
       }
     </script>
