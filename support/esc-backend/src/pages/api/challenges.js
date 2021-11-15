@@ -59,10 +59,6 @@ const LABELS = [
 
 const NUMBERS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-function getNext(collection, curIndex, delta = 1) {
-  return [collection[curIndex], (curIndex + delta) % collection.length];
-}
-
 function initState(seed, prefixes) {
   const state = {};
   const seedNumbers = seed
