@@ -1,3 +1,10 @@
-import { myFunc } from "./module.js";
+import { doFirst } from "./first-module";
+import { doSecond } from "./second-module";
 
-alert(myFunc(25));
+window.esc = {};
+window.esc.initAll = function() {
+  document.querySelector("button").addEventListener("click", () => {
+    doFirst();
+    doSecond();
+  });
+}
