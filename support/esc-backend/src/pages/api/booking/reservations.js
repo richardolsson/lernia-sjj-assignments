@@ -13,7 +13,7 @@ function assertValidField(body, fieldName, type = "string") {
 
 function bodyIsValid(body) {
   try {
-    if (Object.keys(body).length != 4) {
+    if (Object.keys(body).length != 5) {
       return false;
     }
 
