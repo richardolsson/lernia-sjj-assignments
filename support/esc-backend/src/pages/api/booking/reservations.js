@@ -35,19 +35,34 @@ export default async function handler(req, res) {
   if (req.method == "POST") {
     try {
       if (bodyIsValid(req.body)) {
-        res.status(200).json({
-          status: "ok",
-          booking: req.body,
-        });
+        res
+          .status(200)
+          .setHeader("access-control-allow-origin", "*")
+          .setHeader("access-control-allow-methods", "POST,OPTIONS")
+          .setHeader("access-control-allow-headers", "content-type")
+          .json({
+            status: "ok",
+            booking: req.body,
+          });
       } else {
-        res.status(400).json({
-          error:
-            "Body must contain fields 'name', 'email', 'date' and 'time', all should be strings.",
-        });
+        res
+          .status(400)
+          .setHeader("access-control-allow-origin", "*")
+          .setHeader("access-control-allow-methods", "POST,OPTIONS")
+          .setHeader("access-control-allow-headers", "content-type")
+          .json({
+            error:
+              "Body must contain fields 'name', 'email', 'date' and 'time', all should be strings.",
+          });
       }
     } catch (err) {
       console.log(err);
-      return res.status(400).json({ error: "Body must be JSON" });
+      return res
+        .status(400)
+        .setHeader("access-control-allow-origin", "*")
+        .setHeader("access-control-allow-methods", "POST,OPTIONS")
+        .setHeader("access-control-allow-headers", "content-type")
+        .json({ error: "Body must be JSON" });
     }
   } else if (req.method != "OPTIONS") {
     res.status(405).json({ error: "Must use POST" });
