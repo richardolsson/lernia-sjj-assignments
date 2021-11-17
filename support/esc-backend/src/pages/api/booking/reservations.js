@@ -49,7 +49,7 @@ export default async function handler(req, res) {
       console.log(err);
       return res.status(400).json({ error: "Body must be JSON" });
     }
-  } else {
+  } else if (req.method != "OPTIONS") {
     res.status(405).json({ error: "Must use POST" });
   }
 }
