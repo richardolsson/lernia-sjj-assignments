@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cypress": "^9.0.0",
+    "jest": "^27.3.1",
     "webpack": "^5.64.1",
     "webpack-cli": "^4.9.1"
   }
