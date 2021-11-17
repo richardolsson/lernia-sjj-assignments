@@ -22,15 +22,24 @@ export class Challenge {
 }
 
 export class ChallengeGrid {
-  constructor(retriever, container) {
+  constructor(retriever, container, filter) {
     this.retriever = retriever;
     this.container = container;
+    this.filter = filter;
   }
 
   async run() {
-    this.challenges = await this.retriever.load();
+    const allChallenges = await this.retriever.load();
 
+    // Render first time
+    this.challenges = this.filter.apply(allChallenges);
     this.render();
+
+    // Render when filter changes
+    this.filter.addEventListener("change", () => {
+      this.challenges = this.filter.apply(allChallenges);
+      this.render();
+    });
   }
 
   render() {
