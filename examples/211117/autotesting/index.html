@@ -2,17 +2,14 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="oo.js"></script>
-    <script src="main.js"></script>
+    <script src="bundle.js"></script>
   </head>
   <body>
-    <button onclick="grid.run()">Load data</button>
+    <button onclick="esc.grid.run()">Load data</button>
     <ul>
     </ul>
     <script>
-      const container = document.querySelector('ul');
-      const retriever = new TimeCachedDataRetriever();
-      const grid = new ChallengeGrid(retriever, container);
+      esc.init();
     </script>
   </body>
 </html>
