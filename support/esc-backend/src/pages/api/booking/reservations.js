@@ -2,11 +2,11 @@ import { initCorsMiddleware } from "../../../utils/cors";
 
 const cors = initCorsMiddleware(["POST", "OPTIONS"]);
 
-function assertValidField(body, fieldName) {
+function assertValidField(body, fieldName, type = "string") {
   if (!body[fieldName]) {
     throw new Error("Missing field ");
   }
-  if (typeof body[fieldName] !== "string") {
+  if (typeof body[fieldName] !== type) {
     throw new Error("Invalid type");
   }
 }
@@ -21,6 +21,7 @@ function bodyIsValid(body) {
     assertValidField(body, "email");
     assertValidField(body, "date");
     assertValidField(body, "time");
+    assertValidField(body, "participants", "number");
 
     return true;
   } catch (err) {
@@ -52,11 +53,10 @@ export default async function handler(req, res) {
           .setHeader("access-control-allow-headers", "content-type")
           .json({
             error:
-              "Body must contain fields 'name', 'email', 'date' and 'time', all should be strings.",
+              "Body must contain fields 'name' (string), 'email' (string), 'date' (string), 'time' (string) and 'participants' (integer)",
           });
       }
     } catch (err) {
-      console.log(err);
       return res
         .status(400)
         .setHeader("access-control-allow-origin", "*")
