@@ -2,9 +2,11 @@ import React from "react";
 
 export default function ChallengeGrid(props) {
   const items = props.challenges.map((challenge, key) => {
-    return React.createElement("li", { key },
-      React.createElement("span", null, challenge.title),
-      React.createElement("span", { className: "rating" }, challenge.rating)
+    return (
+      <li key={ key }>
+        <span>{ challenge.title }</span>
+        <span className="rating">{ challenge.rating }</span>
+      </li>
     );
   });
 

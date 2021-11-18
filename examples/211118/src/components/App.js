@@ -21,10 +21,12 @@ export default function App() {
 
   const filteredChallenges = challenges.filter(challenge => challenge.rating >= minRating);
 
-  return React.createElement("div", null,
-    React.createElement("h1", null, "Hello"),
-    React.createElement("button", { onClick }, "Load"),
-    React.createElement(MinRatingFilter, { value: minRating, onChange: onFilterChange }),
-    React.createElement(ChallengeGrid, { challenges: filteredChallenges }),
+  return (
+    <div>
+      <h1>Hello</h1>
+      <button onClick={ onClick }>Load</button>
+      <MinRatingFilter value={ minRating } onChange={ onFilterChange }/>
+      <ChallengeGrid challenges={ filteredChallenges }/>
+    </div>
   );
 }
