@@ -1,15 +1,13 @@
-import { TimeCachedDataRetriever } from "./retrievers";
-import { ChallengeGrid } from "./grid";
-import { MinimumRatingFilter } from "./filters";
+import React from "react";
+import ReactDOM from "react-dom";
+
+import App from "./components/App";
+
 
 window.esc = {
   init: () => {
     const container = document.querySelector("ul");
-    const retriever = new TimeCachedDataRetriever();
-    const filter = new MinimumRatingFilter();
 
-    filter.render(document.querySelector(".filters"));
-
-    window.esc.grid = new ChallengeGrid(retriever, container, filter);
+    ReactDOM.render(React.createElement(App), document.querySelector('.container'));
   },
 };
