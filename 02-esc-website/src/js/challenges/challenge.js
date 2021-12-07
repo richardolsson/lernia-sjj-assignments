@@ -1,5 +1,7 @@
-export default class Challenge {
+export default class Challenge extends EventTarget {
   constructor(data) {
+    super();
+
     this.type = data.type;
     this.title = data.title;
     this.description = data.description;
@@ -51,6 +53,9 @@ export default class Challenge {
     const cta = document.createElement('a');
     cta.className = 'challenge-cta';
     cta.innerText = 'Book this room';
+    cta.addEventListener('click', () => {
+      this.dispatchEvent(new Event('booking'));
+    });
     card.append(cta);
 
     this.card = card;

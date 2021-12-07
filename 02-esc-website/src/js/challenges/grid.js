@@ -2,10 +2,13 @@ import RatingFilter from "../filters/rating.js";
 import LabelFilter from "../filters/label.js";
 import TypeFilter from "../filters/type.js";
 import TextFilter from "../filters/text.js";
+import Booking from "../booking.js";
 
 export class ChallengeGrid {
-  constructor(challenges) {
+  constructor(api, challenges) {
+    this.api = api;
     this.challenges = challenges;
+    this.booking = null;
   }
 
   render() {
@@ -14,6 +17,10 @@ export class ChallengeGrid {
 
     this.challenges.forEach(challenge => {
       const card = challenge.render();
+      challenge.addEventListener('booking', () => {
+        this.booking = new Booking(this.api, challenge);
+        this.booking.show();
+      });
       list.append(card);
     });
 
@@ -22,7 +29,8 @@ export class ChallengeGrid {
 }
 
 export class TopRatedChallengeGrid {
-  constructor(challenges) {
+  constructor(api, challenges) {
+    this.api = api;
     this.challenges = challenges;
   }
 
@@ -31,14 +39,15 @@ export class TopRatedChallengeGrid {
       .sort((c0, c1) => c1.rating - c0.rating)
       .slice(0, 3);
 
-    const grid = new ChallengeGrid(top3Challenges);
+    const grid = new ChallengeGrid(this.api, top3Challenges);
     return grid.render();
   }
 }
 
 
 export class FilteredChallengeGrid {
-  constructor(challenges) {
+  constructor(api, challenges) {
+    this.api = api;
     this.challenges = challenges;
   }
 
@@ -89,7 +98,7 @@ export class FilteredChallengeGrid {
     filterBox.append(labelFilter.render());
     filterBox.append(textFilter.render());
 
-    const grid = new ChallengeGrid(this.challenges);
+    const grid = new ChallengeGrid(this.api, this.challenges);
     ctr.append(grid.render());
 
     return ctr;
