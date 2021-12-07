@@ -1,6 +1,7 @@
 import RatingFilter from "../filters/rating.js";
 import LabelFilter from "../filters/label.js";
 import TypeFilter from "../filters/type.js";
+import TextFilter from "../filters/text.js";
 
 export class ChallengeGrid {
   constructor(challenges) {
@@ -44,7 +45,10 @@ export class FilteredChallengeGrid {
   render() {
     const handleFilterChange = () => {
       this.challenges.forEach(challenge => {
-        if (typeFilter.matches(challenge) && ratingFilter.matches(challenge) && labelFilter.matches(challenge)) {
+        if (typeFilter.matches(challenge)
+          && ratingFilter.matches(challenge)
+          && labelFilter.matches(challenge)
+          && textFilter.matches(challenge)) {
           challenge.show();
         }
         else {
@@ -70,6 +74,9 @@ export class FilteredChallengeGrid {
     const labelFilter = new LabelFilter(labels);
     labelFilter.addEventListener('change', handleFilterChange);
 
+    const textFilter = new TextFilter();
+    textFilter.addEventListener('change', handleFilterChange);
+
     const ctr = document.createElement('div');
     ctr.className = 'all-challenges';
 
@@ -80,6 +87,7 @@ export class FilteredChallengeGrid {
     filterBox.append(typeFilter.render());
     filterBox.append(ratingFilter.render());
     filterBox.append(labelFilter.render());
+    filterBox.append(textFilter.render());
 
     const grid = new ChallengeGrid(this.challenges);
     ctr.append(grid.render());
