@@ -2,6 +2,9 @@ export default class RatingWidget extends EventTarget {
   constructor(rating) {
     super();
 
+    this.min = -Infinity;
+    this.max = Infinity;
+
     this.rating = rating;
     this.stars = [];
   }
@@ -14,7 +17,7 @@ export default class RatingWidget extends EventTarget {
       star.className = 'challenge-rating-star';
 
       star.addEventListener('click', () => {
-        this.rating = i + 1;
+        this.rating = Math.max(this.min, Math.min(this.max, i + 1));
         this.update();
         this.dispatchEvent(new Event('change'));
       });

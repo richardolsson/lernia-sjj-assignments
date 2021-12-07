@@ -14,12 +14,14 @@ export default class RatingFilter extends EventTarget {
     const minWidget = new RatingWidget(this.config.min);
     minWidget.addEventListener('change', () => {
       this.config.min = minWidget.rating;
+      maxWidget.min = minWidget.rating;
       this.dispatchEvent(new Event('change'));
     });
 
     const maxWidget = new RatingWidget(this.config.max);
     maxWidget.addEventListener('change', () => {
       this.config.max = maxWidget.rating;
+      minWidget.max = maxWidget.rating;
       this.dispatchEvent(new Event('change'));
     });
 
