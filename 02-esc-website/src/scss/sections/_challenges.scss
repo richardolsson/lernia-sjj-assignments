@@ -16,6 +16,7 @@
   @include desktop {
     width: auto;
     justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
@@ -29,9 +30,14 @@
   margin: 1rem;
   overflow: hidden;
   max-width: 85vw;
+  min-width: 30%;
 
   & > *:not(img) {
     margin: 0 1rem;
+  }
+
+  &.filtered {
+    opacity: 0.1;
   }
 
   .challenge-title {
@@ -49,24 +55,6 @@
     }
   }
 
-  .challenge-rating {
-    display: flex;
-    margin: 0 1rem 0 0;
-
-    .challenge-rating-star {
-      width: 1rem;
-      height: 1rem;
-      margin: 0 0.4rem 0 0;
-      background-image: url("images/star-on.png");
-      background-size: contain;
-      background-repeat: no-repeat;
-
-      &.off {
-        background-image: url("images/star-off.png");
-      }
-    }
-  }
-
   .challenge-description {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -80,6 +68,24 @@
 
   @include desktop {
     max-width: 363px;
+  }
+}
+
+.challenge-rating {
+  display: flex;
+  margin: 0 1rem 0 0;
+
+  .challenge-rating-star {
+    width: 1rem;
+    height: 1rem;
+    margin: 0 0.4rem 0 0;
+    background-image: url("images/star-on.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &.off {
+      background-image: url("images/star-off.png");
+    }
   }
 }
 

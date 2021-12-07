@@ -3,12 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
+  "jest": {
+    "transform": {}
+  },
   "scripts": {
-    "watch": "sass --watch --no-source-map src/main.scss main.css"
+    "watch:js": "webpack --watch",
+    "watch:scss": "sass --watch --no-source-map src/scss/main.scss main.css",
+    "watch:test": "NODE_OPTIONS=--experimental-vm-modules jest --watch"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "sass": "^1.43.4"
+    "jest": "^27.4.3",
+    "sass": "^1.43.4",
+    "webpack-cli": "^4.9.1"
   }
 }

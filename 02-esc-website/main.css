@@ -12,6 +12,24 @@ img {
   max-width: 100%;
 }
 
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.modal-container .modal {
+  background-color: white;
+  height: 60%;
+  width: 60%;
+  position: absolute;
+  left: 20%;
+  top: 20%;
+  box-shadow: 0 0 5rem rgba(0, 0, 0, 0.2);
+}
+
 .header {
   background-color: #011827;
   color: white;
@@ -293,6 +311,7 @@ img {
   .challenges-list {
     width: auto;
     justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
@@ -305,9 +324,13 @@ img {
   margin: 1rem;
   overflow: hidden;
   max-width: 85vw;
+  min-width: 30%;
 }
 .challenges-item > *:not(img) {
   margin: 0 1rem;
+}
+.challenges-item.filtered {
+  opacity: 0.1;
 }
 .challenges-item .challenge-title {
   font-size: 1.8rem;
@@ -322,21 +345,6 @@ img {
   .challenges-item .challenge-meta {
     justify-content: space-between;
   }
-}
-.challenges-item .challenge-rating {
-  display: flex;
-  margin: 0 1rem 0 0;
-}
-.challenges-item .challenge-rating .challenge-rating-star {
-  width: 1rem;
-  height: 1rem;
-  margin: 0 0.4rem 0 0;
-  background-image: url("images/star-on.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.challenges-item .challenge-rating .challenge-rating-star.off {
-  background-image: url("images/star-off.png");
 }
 .challenges-item .challenge-description {
   margin-top: 1rem;
@@ -364,6 +372,22 @@ img {
   .challenges-item {
     max-width: 363px;
   }
+}
+
+.challenge-rating {
+  display: flex;
+  margin: 0 1rem 0 0;
+}
+.challenge-rating .challenge-rating-star {
+  width: 1rem;
+  height: 1rem;
+  margin: 0 0.4rem 0 0;
+  background-image: url("images/star-on.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.challenge-rating .challenge-rating-star.off {
+  background-image: url("images/star-off.png");
 }
 
 .challenges-cta {
