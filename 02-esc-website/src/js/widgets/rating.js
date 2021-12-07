@@ -17,7 +17,12 @@ export default class RatingWidget extends EventTarget {
       star.className = 'challenge-rating-star';
 
       star.addEventListener('click', () => {
-        this.rating = Math.max(this.min, Math.min(this.max, i + 1));
+        let value = i + 1;
+        if (value == 1 && this.rating == 1) {
+          value = 0;
+        }
+
+        this.rating = Math.max(this.min, Math.min(this.max, value));
         this.update();
         this.dispatchEvent(new Event('change'));
       });
