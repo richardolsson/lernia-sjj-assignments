@@ -1,5 +1,5 @@
-const { default: EscAPI } = require("./api");
-const { TopRatedChallengeGrid } = require("./challenges/grid");
+import EscAPI from "../api";
+import { TopRatedChallengeGrid } from '../challenges/grid';
 
 (async () => {
   const api = new EscAPI();
