@@ -16,6 +16,7 @@
   @include desktop {
     width: auto;
     justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
@@ -29,9 +30,14 @@
   margin: 1rem;
   overflow: hidden;
   max-width: 85vw;
+  min-width: 30%;
 
   & > *:not(img) {
     margin: 0 1rem;
+  }
+
+  &.filtered {
+    opacity: 0.1;
   }
 
   .challenge-title {

@@ -30,3 +30,20 @@ export class TopRatedChallengeGrid {
     return grid.render();
   }
 }
+
+
+export class FilteredChallengeGrid {
+  constructor(challenges) {
+    this.challenges = challenges;
+  }
+
+  render() {
+    const ctr = document.createElement('div');
+    ctr.className = 'all-challenges';
+
+    const grid = new ChallengeGrid(this.challenges);
+    ctr.append(grid.render());
+
+    return ctr;
+  }
+}

@@ -293,6 +293,7 @@ img {
   .challenges-list {
     width: auto;
     justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
@@ -305,6 +306,7 @@ img {
   margin: 1rem;
   overflow: hidden;
   max-width: 85vw;
+  min-width: 30%;
 }
 .challenges-item > *:not(img) {
   margin: 0 1rem;
