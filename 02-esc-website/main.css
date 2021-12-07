@@ -328,21 +328,6 @@ img {
     justify-content: space-between;
   }
 }
-.challenges-item .challenge-rating {
-  display: flex;
-  margin: 0 1rem 0 0;
-}
-.challenges-item .challenge-rating .challenge-rating-star {
-  width: 1rem;
-  height: 1rem;
-  margin: 0 0.4rem 0 0;
-  background-image: url("images/star-on.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.challenges-item .challenge-rating .challenge-rating-star.off {
-  background-image: url("images/star-off.png");
-}
 .challenges-item .challenge-description {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -369,6 +354,22 @@ img {
   .challenges-item {
     max-width: 363px;
   }
+}
+
+.challenge-rating {
+  display: flex;
+  margin: 0 1rem 0 0;
+}
+.challenge-rating .challenge-rating-star {
+  width: 1rem;
+  height: 1rem;
+  margin: 0 0.4rem 0 0;
+  background-image: url("images/star-on.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.challenge-rating .challenge-rating-star.off {
+  background-image: url("images/star-off.png");
 }
 
 .challenges-cta {

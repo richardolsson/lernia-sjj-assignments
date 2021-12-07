@@ -1,3 +1,4 @@
+import RatingFilter from "../filters/rating.js";
 import TypeFilter from "../filters/type.js";
 
 export class ChallengeGrid {
@@ -40,17 +41,22 @@ export class FilteredChallengeGrid {
   }
 
   render() {
-    const typeFilter = new TypeFilter();
-    typeFilter.addEventListener('change', () => {
+    const handleFilterChange = () => {
       this.challenges.forEach(challenge => {
-        if (typeFilter.matches(challenge)) {
+        if (typeFilter.matches(challenge) && ratingFilter.matches(challenge)) {
           challenge.show();
         }
         else {
           challenge.hide();
         }
       });
-    });
+    }
+
+    const typeFilter = new TypeFilter();
+    typeFilter.addEventListener('change', handleFilterChange);
+
+    const ratingFilter = new RatingFilter();
+    ratingFilter.addEventListener('change', handleFilterChange);
 
     const ctr = document.createElement('div');
     ctr.className = 'all-challenges';
@@ -60,10 +66,12 @@ export class FilteredChallengeGrid {
     ctr.append(filterBox);
 
     filterBox.append(typeFilter.render());
+    filterBox.append(ratingFilter.render());
 
     const grid = new ChallengeGrid(this.challenges);
     ctr.append(grid.render());
 
     return ctr;
   }
+
 }
