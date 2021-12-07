@@ -16,6 +16,8 @@ export default class Booking {
     this.content = document.createElement('div');
     modal.append(this.content);
 
+    this.container = ctr;
+
     this.renderStep1();
   }
 
@@ -90,5 +92,12 @@ export default class Booking {
 
   renderStep3() {
     this.content.innerHTML = 'Thank you!';
+
+    const button = document.createElement('button');
+    button.innerText = 'Back to challenges';
+    button.addEventListener('click', () => {
+      this.container.remove();
+    });
+    this.content.append(button);
   }
 }
