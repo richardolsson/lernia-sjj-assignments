@@ -12,4 +12,22 @@ export default class EscAPI {
     const data = await res.json();
     return data.slots;
   }
+
+  async submitBooking(name, email, date, time, participants) {
+    await fetch('https://lernia-sjj-assignments.vercel.app/api/booking/reservations', {
+      method: 'POST',
+      cors: true,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        date,
+        time,
+        participants,
+      }),
+    });
+    return true;
+  }
 }
