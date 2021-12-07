@@ -1,5 +1,5 @@
-import EscAPI from '../api';
-import { FilteredChallengeGrid } from '../challenges/grid';
+import EscAPI from '../api.js';
+import { FilteredChallengeGrid } from '../challenges/grid.js';
 
 (async () => {
   const api = new EscAPI();

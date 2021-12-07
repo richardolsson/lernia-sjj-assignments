@@ -1,4 +1,4 @@
-import Challenge from "./challenges/challenge";
+import Challenge from "./challenges/challenge.js";
 
 export default class EscAPI {
   async loadChallenges() {
