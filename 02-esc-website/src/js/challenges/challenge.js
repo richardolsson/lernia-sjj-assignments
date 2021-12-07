@@ -53,6 +53,16 @@ export default class Challenge {
     cta.innerText = 'Book this room';
     card.append(cta);
 
+    this.card = card;
+
     return card;
+  }
+
+  show() {
+    this.card.classList.toggle('filtered', false);
+  }
+
+  hide() {
+    this.card.classList.toggle('filtered', true);
   }
 }

@@ -311,6 +311,9 @@ img {
 .challenges-item > *:not(img) {
   margin: 0 1rem;
 }
+.challenges-item.filtered {
+  opacity: 0.1;
+}
 .challenges-item .challenge-title {
   font-size: 1.8rem;
   font-weight: normal;
