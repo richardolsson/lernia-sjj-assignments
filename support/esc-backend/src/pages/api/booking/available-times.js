@@ -55,6 +55,12 @@ export default async function handler(req, res) {
       .json({ error: "Invalid date. Use ?date=2021-05-01 format" });
   }
 
+  if (req.query.challenge && isNaN(parseInt(req.query.challenge))) {
+    return res
+      .status(400)
+      .json({ error: "Invalid challenge ID. Use integer passed with ?challenge=<ID>" });
+  }
+
   const now = new Date();
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   const nextYear = new Date(

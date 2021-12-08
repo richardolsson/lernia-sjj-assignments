@@ -102,6 +102,7 @@ function createRandomChallenges(count) {
     const minParticipants = (getNext(NUMBERS, "participants") % 2) + 1;
 
     challenges.push({
+      id: i + 1,
       type: getNext(NUMBERS, "type") > 3 ? "onsite" : "online",
       title:
         getNext(TITLES_FIRST, "title") + " " + getNext(TITLES_SECOND, "title"),

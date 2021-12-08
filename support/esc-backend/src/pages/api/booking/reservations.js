@@ -13,7 +13,8 @@ function assertValidField(body, fieldName, type = "string") {
 
 function bodyIsValid(body) {
   try {
-    if (Object.keys(body).length != 5) {
+    const numKeys = Object.keys(body).length;
+    if (numKeys < 5 || numKeys > 6) {
       return false;
     }
 
@@ -22,6 +23,10 @@ function bodyIsValid(body) {
     assertValidField(body, "date");
     assertValidField(body, "time");
     assertValidField(body, "participants", "number");
+
+    if (body.challenge) {
+      assertValidField(body, "challenge", "number");
+    }
 
     return true;
   } catch (err) {
@@ -53,7 +58,7 @@ export default async function handler(req, res) {
           .setHeader("access-control-allow-headers", "content-type")
           .json({
             error:
-              "Body must contain fields 'name' (string), 'email' (string), 'date' (string), 'time' (string) and 'participants' (integer)",
+              "Body should contain fields 'challenge' (integer), 'name' (string), 'email' (string), 'date' (string), 'time' (string) and 'participants' (integer)",
           });
       }
     } catch (err) {
