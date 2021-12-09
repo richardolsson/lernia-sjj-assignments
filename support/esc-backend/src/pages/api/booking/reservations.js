@@ -14,7 +14,7 @@ function assertValidField(body, fieldName, type = "string") {
 function bodyIsValid(body) {
   try {
     const numKeys = Object.keys(body).length;
-    if (numKeys < 5 || numKeys > 6) {
+    if (numKeys < 5 || numKeys > 7) {
       return false;
     }
 
@@ -23,6 +23,10 @@ function bodyIsValid(body) {
     assertValidField(body, "date");
     assertValidField(body, "time");
     assertValidField(body, "participants", "number");
+
+    if (body.phone) {
+      assertValidField(body, "phone");
+    }
 
     if (body.challenge) {
       assertValidField(body, "challenge", "number");
