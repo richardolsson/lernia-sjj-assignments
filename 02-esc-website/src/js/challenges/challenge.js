@@ -2,6 +2,7 @@ export default class Challenge extends EventTarget {
   constructor(data) {
     super();
 
+    this.id = data.id;
     this.type = data.type;
     this.title = data.title;
     this.description = data.description;

@@ -34,7 +34,7 @@ export default class Booking {
     button.innerText = 'Find available times';
     button.addEventListener('click', async () => {
       const date = input.value;
-      const slots = await this.api.loadAvailableTimes(date);
+      const slots = await this.api.loadAvailableTimes(this.challenge, date);
       this.renderStep2(date, slots);
     });
     this.content.append(button);
@@ -78,6 +78,7 @@ export default class Booking {
     button.innerText = 'Submit';
     button.addEventListener('click', async () => {
       await this.api.submitBooking(
+        this.challenge,
         nameInput.value,
         emailInput.value,
         date,
