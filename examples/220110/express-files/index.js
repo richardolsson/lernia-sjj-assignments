@@ -9,6 +9,14 @@ app.get('/', async (request, response) => {
   response.send(fileBuf);
 });
 
+app.get('/:name', async (request, response) => {
+  const name = request.params.name;
+  const fileBuf = await fs.readFile('./files/index.html');
+  const content = fileBuf.toString().replace('world', name);
+  response.type('html');
+  response.send(content);
+});
+
 app.get('/*', async (request, response) => {
   try {
     const fileName = request.path;
