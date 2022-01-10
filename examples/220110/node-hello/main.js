@@ -1,1 +1,3 @@
-import './src/hello.js';
+import sayHello from './src/hello.js';
+
+sayHello('Richard');
