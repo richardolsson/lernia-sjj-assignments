@@ -1,0 +1,21 @@
+{
+  "name": "http-example",
+  "version": "1.0.0",
+  "description": "An example of how to use HTTP in Node",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zetkin/lernia-sjj-assignments.git"
+  },
+  "author": "Richard Olsson <richard@zetkin.org>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zetkin/lernia-sjj-assignments/issues"
+  },
+  "homepage": "https://github.com/zetkin/lernia-sjj-assignments#readme"
+}
