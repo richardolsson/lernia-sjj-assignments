@@ -1,0 +1,20 @@
+{
+  "name": "handlebars-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon .",
+    "start": "node ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "handlebars": "^4.7.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
