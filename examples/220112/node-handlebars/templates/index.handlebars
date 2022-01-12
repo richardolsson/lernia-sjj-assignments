@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>This is the page</title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <nav>
+          <ul>
+            {{#each menu}}
+            <li class="menu-item {{#if this.active}}active{{else}}inactive{{/if}}">
+              <a href="{{this.link}}">{{ this.label }}</a>
+            </li>
+            {{/each}}
+          </ul>
+        </nav>
+      </header>
+      <div class="main">Hello</div>
+      <footer>This is footer</footer>
+    </div>
+  </body>
+</html>
