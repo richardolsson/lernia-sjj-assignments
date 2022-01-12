@@ -1,0 +1,28 @@
+{
+  "name": "express-files",
+  "version": "1.0.0",
+  "description": "Express based web server for serving static files as an example.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon .",
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/richardolsson/lernia-sjj-assignments.git"
+  },
+  "author": "Richard Olsson <richard@zetkin.org>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richardolsson/lernia-sjj-assignments/issues"
+  },
+  "homepage": "https://github.com/richardolsson/lernia-sjj-assignments#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
