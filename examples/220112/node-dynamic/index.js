@@ -4,9 +4,9 @@ import fs from "fs/promises";
 const app = express();
 
 app.get('/', async (request, response) => {
-  const name = request.query.name || 'world';
+  const first_name = request.query.first_name || 'world';
   const fileBuf = await fs.readFile('./files/index.html');
-  const content = fileBuf.toString().replace('name', name);
+  const content = fileBuf.toString().replace('$%&first_name', first_name);
   response.type('html');
   response.send(content);
 });
