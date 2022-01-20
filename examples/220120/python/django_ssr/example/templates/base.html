@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}My title{%endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <nav>
+          <ul>
+            <li class="menu-item active">
+              <a href="/"> Home page </a>
+            </li>
+            <li class="menu-item inactive">
+              <a href="/about"> About us </a>
+            </li>
+            <li class="menu-item inactive">
+              <a href="/contact"> Contact us </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div class="main">
+        {% block content %}
+        {% endblock %}
+      </div>
+      <footer>This is footer</footer>
+    </div>
+  </body>
+</html>
