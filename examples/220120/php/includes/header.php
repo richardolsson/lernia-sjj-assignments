@@ -1,3 +1,21 @@
+<?php
+  $menu = array(
+    array(
+      'label' => 'Home',
+      'link' => '/',
+    ),
+    array(
+      'label' => 'About us',
+      'link' => '/about.php',
+    ),
+    array(
+      'label' => 'Contact us',
+      'link' => '/contact.php',
+    ),
+  );
+
+  $path = $_SERVER['REQUEST_URI'];
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,15 +27,11 @@
       <header>
         <nav>
           <ul>
-            <li class="menu-item inactive">
-              <a href="/"> Home page </a>
+            <?php foreach ($menu as $item) { ?>
+            <li class="menu-item <?php if ($path == $item['link']) echo 'active';?>">
+              <a href="<?php echo $item['link']; ?>"> <?php echo $item['label'];?></a>
             </li>
-            <li class="menu-item active">
-              <a href="/about.php"> About us </a>
-            </li>
-            <li class="menu-item inactive">
-              <a href="/contact.php"> Contact us </a>
-            </li>
+            <?php } ?>
           </ul>
         </nav>
       </header>
