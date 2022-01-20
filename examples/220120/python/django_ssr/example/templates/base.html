@@ -9,15 +9,11 @@
       <header>
         <nav>
           <ul>
-            <li class="menu-item active">
-              <a href="/"> Home page </a>
+            {% for item in menu %}
+            <li class="menu-item {% if item.link == cur_page %}active{% endif %}">
+              <a href="{{ item.link }}"> {{ item.label }}</a>
             </li>
-            <li class="menu-item inactive">
-              <a href="/about"> About us </a>
-            </li>
-            <li class="menu-item inactive">
-              <a href="/contact"> Contact us </a>
-            </li>
+            {% endfor %}
           </ul>
         </nav>
       </header>
