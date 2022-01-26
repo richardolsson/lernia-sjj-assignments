@@ -26,3 +26,9 @@ export async function loadScreenings() {
   const payload = await res.json();
   return payload.data;
 }
+
+export default {
+  loadMovies: loadMovies,
+  loadMovie: loadMovie,
+  loadScreenings: loadScreenings,
+};
