@@ -20,3 +20,9 @@ export async function loadMovie(id) {
   const payload = await res.json();
   return simplifyMovieObject(payload.data);
 }
+
+export async function loadScreenings() {
+  const res = await fetch(API_BASE + '/screenings?populate=movie&pagination[pageSize]=1000');
+  const payload = await res.json();
+  return payload.data;
+}
