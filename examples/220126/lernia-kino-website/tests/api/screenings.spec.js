@@ -1,4 +1,16 @@
+import { jest } from "@jest/globals";
 import { getScreenings } from "../../src/screenings.js";
+
+beforeEach(() => {
+  // Fake the date to 2022-01-26 when running tests
+  // so that the mock data never gets old
+  jest.useFakeTimers();
+  jest.setSystemTime(new Date(2022, 0, 26));
+});
+
+afterEach(() => {
+  jest.clearAllTimers();
+});
 
 test("Correct response format", async () => {
   const payload = await getScreenings(api);
