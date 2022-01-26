@@ -1,7 +1,8 @@
 import express from "express";
 import { engine } from "express-handlebars";
 import { marked } from "marked";
-import { loadMovie, loadMovies, loadScreenings } from "./movies.js";
+import { loadMovie, loadMovies } from "./movies.js";
+import { getScreenings } from "./screenings.js";
 
 const app = express();
 
@@ -28,22 +29,7 @@ app.get("/movies/:movieId", async (req, res) => {
 });
 
 app.get("/api/screenings", async (req, res) => {
-  const screenings = await loadScreenings();
-
-  // TODO: Filter screenings
-
-  res.json({
-    data: screenings.map(obj => {
-      return {
-        time: obj.attributes.start_time,
-        room: obj.attributes.room,
-        movie: {
-          id: obj.attributes.movie.data.id,
-          title: obj.attributes.movie.data.attributes.title,
-        }
-      };
-    }),
-  })
+  res.json(await getScreenings());
 });
 
 app.use("/static", express.static("./static"));
