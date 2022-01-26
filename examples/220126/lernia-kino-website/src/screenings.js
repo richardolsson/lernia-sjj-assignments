@@ -1,7 +1,12 @@
 import { loadScreenings } from "./movies.js";
 
 export async function getScreenings() {
-  const screenings = await loadScreenings();
+  const now = new Date();
+  const screenings = (await loadScreenings())
+    .filter(obj => {
+      const screeningTime = new Date(obj.attributes.start_time);
+      return screeningTime > now;
+    });
 
   // TODO: Filter screenings
 
