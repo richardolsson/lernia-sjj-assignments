@@ -6,9 +6,8 @@ export async function getScreenings() {
     .filter(obj => {
       const screeningTime = new Date(obj.attributes.start_time);
       return screeningTime > now;
-    });
-
-  // TODO: Filter screenings
+    })
+    .slice(0, 10);
 
   return {
     data: screenings.map(obj => {

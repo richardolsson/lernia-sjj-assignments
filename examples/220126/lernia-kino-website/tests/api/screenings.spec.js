@@ -20,3 +20,9 @@ test("Upcoming screenings only", async () => {
     expect(screeningTime > now).toBeTruthy();
   });
 });
+
+test("At most ten screenings", async () => {
+  const payload = await getScreenings();
+
+  expect(payload.data.length).toBeLessThan(11);
+});
