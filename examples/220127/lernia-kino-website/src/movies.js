@@ -22,7 +22,7 @@ export async function loadMovie(id) {
 }
 
 export async function loadReviews(movieId) {
-  const res = await fetch(API_BASE + '/reviews?pagination[pageSize]=1000');
+  const res = await fetch(API_BASE + '/reviews?filters[movie]=' + movieId);
   const payload = await res.json();
   return payload.data.map(simplifyCmsObject);
 }
