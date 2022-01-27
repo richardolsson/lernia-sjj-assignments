@@ -1,3 +1,4 @@
+import cookieParser from "cookie-parser";
 import express from "express";
 import { engine } from "express-handlebars";
 import { marked } from "marked";
@@ -9,6 +10,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.engine("handlebars", engine({
   helpers: {
@@ -26,8 +28,9 @@ app.get("/", async (req, res) => {
 app.get("/movies/:movieId", async (req, res) => {
   const movie = await api.loadMovie(req.params.movieId);
   const reviews = await api.loadReviews(req.params.movieId);
+  const savedName = req.cookies.name || '';
   if (movie) {
-    res.render("movie", { movie, reviews });
+    res.render("movie", { movie, reviews, savedName });
   } else {
     res.status(404).render("404");
   }
@@ -48,7 +51,7 @@ app.get("/api/movies/:movieId/reviews", async (req, res) => {
 });
 
 app.post("/api/movies/:movieId/reviews", async (req, res) => {
-  console.log(req.body);
+  const name = req.body.name || req.cookies.name;
   const resp = await fetch("https://lernia-kino-cms.herokuapp.com/api/reviews", {
     method: 'POST',
     headers: {
@@ -56,14 +59,18 @@ app.post("/api/movies/:movieId/reviews", async (req, res) => {
     },
     body: JSON.stringify({
       data: {
-        author: req.body.name,
+        author: name,
         comment: req.body.comment,
         rating: 0,
         movie: req.params.movieId,
       }
     }),
   });
-  console.log(resp);
+
+  if (name) {
+    res.cookie('name', name, { sameSite: 'strict' });
+  }
+
   res.status(201).end();
 });
 
