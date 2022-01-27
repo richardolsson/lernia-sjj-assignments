@@ -2,23 +2,29 @@ import fetch from "node-fetch";
 
 const API_BASE = 'https://lernia-kino-cms.herokuapp.com/api';
 
-function simplifyMovieObject(movie) {
+function simplifyCmsObject(obj) {
   return {
-    id: movie.id,
-    ...movie.attributes,
+    id: obj.id,
+    ...obj.attributes,
   };
 }
 
 export async function loadMovies() {
   const res = await fetch(API_BASE + '/movies');
   const payload = await res.json();
-  return payload.data.map(simplifyMovieObject);
+  return payload.data.map(simplifyCmsObject);
 }
 
 export async function loadMovie(id) {
   const res = await fetch(API_BASE + '/movies/' + id);
   const payload = await res.json();
-  return simplifyMovieObject(payload.data);
+  return simplifyCmsObject(payload.data);
+}
+
+export async function loadReviews(movieId) {
+  const res = await fetch(API_BASE + '/reviews?pagination[pageSize]=1000');
+  const payload = await res.json();
+  return payload.data.map(simplifyCmsObject);
 }
 
 export async function loadScreenings() {
@@ -30,5 +36,6 @@ export async function loadScreenings() {
 export default {
   loadMovies: loadMovies,
   loadMovie: loadMovie,
+  loadReviews: loadReviews,
   loadScreenings: loadScreenings,
 };
