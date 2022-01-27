@@ -38,12 +38,11 @@ app.get("/api/screenings", async (req, res) => {
 });
 
 app.get("/api/movies/:movieId/reviews", async (req, res) => {
-  const resp = await fetch("https://lernia-kino-cms.herokuapp.com/api/reviews?filters[movie]=" + req.params.movieId);
-  const payload = await resp.json();
+  const reviews = await api.loadReviews(req.params.movieId);
   res.json({
-    data: payload.data.map(review => ({
-      name: review.attributes.author,
-      comment: review.attributes.comment,
+    data: reviews.map(review => ({
+      name: review.author,
+      comment: review.comment,
     })),
   });
 });
