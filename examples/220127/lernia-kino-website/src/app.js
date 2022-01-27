@@ -7,6 +7,7 @@ import { getScreenings } from "./screenings.js";
 
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.engine("handlebars", engine({
