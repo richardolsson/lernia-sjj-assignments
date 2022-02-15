@@ -1,13 +1,7 @@
 import { jest } from "@jest/globals";
 import getAllScreenings from "./getAllScreenings";
+import { mockScreening } from "../utils/testing.js";
 
-const mockScreening = (id, startTime) => ({
-  id,
-  attributes: {
-    start_time: startTime,
-    room: "Big room",
-  },
-});
 
 describe("getAllScreenings()", () => {
   beforeEach(() => {
