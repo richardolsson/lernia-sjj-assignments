@@ -3,6 +3,8 @@ import { engine } from "express-handlebars";
 import { marked } from "marked";
 import { loadMovie, loadMovies } from "./movies.js";
 
+import api from "./api/index.js";
+
 const app = express();
 
 app.engine("handlebars", engine({
@@ -27,6 +29,7 @@ app.get("/movies/:movieId", async (req, res) => {
   }
 });
 
+app.use("/api", api);
 app.use("/static", express.static("./static"));
 
 export default app;
