@@ -5,7 +5,7 @@ export default function createAdapter() {
 
   return {
     async loadAllScreenings() {
-      const res = await fetch(apiBase + "/screenings");
+      const res = await fetch(apiBase + "/screenings?pagination[pageSize]=100");
       return await res.json();
     },
   };
