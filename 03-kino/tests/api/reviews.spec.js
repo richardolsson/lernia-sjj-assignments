@@ -1,11 +1,11 @@
-import { test } from "@jest/globals";
+import { test, jest } from "@jest/globals";
 import request from "supertest";
 
 import createCmsAdapter from "../../src/adapters/cms.js";
 import initApp from "../../src/app.js";
 
 
-describe("/api/movies/{movie_id}/reviews", () => {
+describe("GET /api/movies/{movie_id}/reviews", () => {
   test("returns only verified reviews", async () => {
     const cms = createCmsAdapter();
     const app = initApp(cms);
@@ -33,5 +33,24 @@ describe("/api/movies/{movie_id}/reviews", () => {
       .expect(200);
 
     expect(response0.body.data.data[0].id).not.toEqual(response1.body.data.data[0].id);
+  });
+});
+
+describe("POST /api/movies/{movie_id}/reviews", () => {
+  test("responds with 400 for invalid input data", async () => {
+    const mockCms = {
+      postMovieReview: jest.fn().mockResolvedValue(null),
+    };
+
+    const app = initApp(mockCms);
+
+    await request(app)
+      .post("/api/movies/1/reviews")
+      .send({
+        name: "Richard",
+        comment: "This is good",
+        // Missing rating
+      })
+      .expect(400);
   });
 });

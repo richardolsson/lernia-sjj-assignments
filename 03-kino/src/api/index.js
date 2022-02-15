@@ -27,7 +27,11 @@ export default function initApiRouter(cms) {
   });
 
   router.get("/movies/:movieId/reviews", async (req, res) => {
-    const reviews = await getMovieReviews(cms, req.params.movieId, req.query.page);
+    const reviews = await getMovieReviews(
+      cms,
+      req.params.movieId,
+      req.query.page
+    );
 
     res.status(200).json({
       data: reviews,
@@ -37,9 +41,13 @@ export default function initApiRouter(cms) {
   router.post("/movies/:movieId/reviews", async (req, res) => {
     const review = await createMovieReview(cms, req.params.movieId, req.body);
 
-    res.status(201).json({
-      data: review,
-    });
+    if (review) {
+      res.status(201).json({
+        data: review,
+      });
+    } else {
+      res.status(400).end();
+    }
   });
 
   return router;
