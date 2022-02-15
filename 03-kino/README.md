@@ -12,8 +12,7 @@
 
 ### `/api/movies/{movie_id}/reviews`
 * `GET` to retrieve reviews of `movie_id`, paginated 5 reviews at a time
-  * `?page=0` for first page
-  * `?page=N` for (N+1)th page
+  * `?page=N` for Nth page
 * `POST` to create review, with JSON object containing:
   * `rating`, number between 0-5
   * `name`, string

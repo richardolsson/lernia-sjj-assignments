@@ -1,5 +1,6 @@
 import express from "express";
 import getAllScreenings from "./getAllScreenings.js";
+import getMovieReviews from "./getMovieReviews.js";
 import getMovieScreenings from "./getMovieScreenings.js";
 
 
@@ -19,6 +20,14 @@ export default function initApiRouter(cms) {
 
     res.status(200).json({
       data: screenings,
+    });
+  });
+
+  router.get("/movies/:movieId/reviews", async (req, res) => {
+    const reviews = await getMovieReviews(cms, req.params.movieId, req.query.page);
+
+    res.status(200).json({
+      data: reviews,
     });
   });
 
