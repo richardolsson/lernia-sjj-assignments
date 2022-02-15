@@ -50,5 +50,17 @@ export default function createAdapter() {
 
       return await res.json();
     },
+
+    async loadAllMovieReviews(movieId) {
+      const qs = querystring.stringify({
+        "filters[movie]": movieId,
+        "filters[verified]": true,
+        "pagination[pageSize]": 100,
+      });
+
+      const url = apiBase + "/reviews?" + qs;
+      const res = await fetch(url);
+      return await res.json();
+    }
   };
 }

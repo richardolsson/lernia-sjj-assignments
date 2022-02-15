@@ -1,6 +1,7 @@
 import express from "express";
 import createMovieReview from "./createMovieReview.js";
 import getAllScreenings from "./getAllScreenings.js";
+import getMovieRating from "./getMovieRating.js";
 import getMovieReviews from "./getMovieReviews.js";
 import getMovieScreenings from "./getMovieScreenings.js";
 
@@ -48,6 +49,14 @@ export default function initApiRouter(cms) {
     } else {
       res.status(400).end();
     }
+  });
+
+  router.get("/movies/:movieId/rating", async (req, res) => {
+    const rating = await getMovieRating(cms, req.params.movieId);
+
+    res.status(200).json({
+      data: rating,
+    });
   });
 
   return router;
