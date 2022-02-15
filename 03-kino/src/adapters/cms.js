@@ -5,6 +5,11 @@ export default function createAdapter() {
   const apiBase = "https://lernia-kino-cms.herokuapp.com/api";
 
   return {
+    async loadMovie(movieId) {
+      const res = await fetch(apiBase + "/movies/" + movieId);
+      return await res.json();
+    },
+
     async loadAllScreenings() {
       const res = await fetch(apiBase + "/screenings?pagination[pageSize]=100");
       return await res.json();

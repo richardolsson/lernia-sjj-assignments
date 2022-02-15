@@ -6,7 +6,7 @@ import getMovieReviews from "./getMovieReviews.js";
 import getMovieScreenings from "./getMovieScreenings.js";
 
 
-export default function initApiRouter(cms) {
+export default function initApiRouter(cms, imdb) {
   const router = express.Router();
 
   router.use(express.json());
@@ -52,7 +52,7 @@ export default function initApiRouter(cms) {
   });
 
   router.get("/movies/:movieId/rating", async (req, res) => {
-    const rating = await getMovieRating(cms, req.params.movieId);
+    const rating = await getMovieRating(cms, imdb, req.params.movieId);
 
     res.status(200).json({
       data: rating,

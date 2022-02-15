@@ -7,7 +7,7 @@ import initApiRouter from "./api/index.js";
 
 const app = express();
 
-export default function initApp(cms) {
+export default function initApp(cms, imdb) {
   app.engine("handlebars", engine({
     helpers: {
       markdown: md => marked(md),
@@ -30,7 +30,7 @@ export default function initApp(cms) {
     }
   });
 
-  const api = initApiRouter(cms);
+  const api = initApiRouter(cms, imdb);
 
   app.use("/api", api);
   app.use("/static", express.static("./static"));

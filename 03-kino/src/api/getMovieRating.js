@@ -1,13 +1,24 @@
-export default async function getMovieRating(cms, movieId) {
+export default async function getMovieRating(cms, imdb, movieId) {
   const dataFromCms = await cms.loadAllMovieReviews(movieId);
 
-  let sum = 0;
-  dataFromCms.data.forEach(review => {
-    sum += review.attributes.rating;
-  });
+  if (dataFromCms.data.length < 5) {
+    const movieDataFromCms = await cms.loadMovie(movieId);
+    const imdbId = movieDataFromCms.data.attributes.imdbId;
 
-  return {
-    rating: sum / dataFromCms.data.length,
-    source: "cms",
-  };
+    const imdbData = await imdb.loadMovieInfo(imdbId);
+    return {
+      rating: imdbData.imdbRating / 2,
+      source: "imdb",
+    };
+  } else {
+    let sum = 0;
+    dataFromCms.data.forEach((review) => {
+      sum += review.attributes.rating;
+    });
+
+    return {
+      rating: sum / dataFromCms.data.length,
+      source: "cms",
+    };
+  }
 }
