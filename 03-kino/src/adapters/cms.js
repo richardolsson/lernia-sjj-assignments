@@ -8,5 +8,13 @@ export default function createAdapter() {
       const res = await fetch(apiBase + "/screenings?pagination[pageSize]=100");
       return await res.json();
     },
+
+    async loadMovieScreenings(movieId) {
+      const url =
+        apiBase +
+        `/screenings?filters[movie]=${movieId}&pagination[pageSize]=100`;
+      const res = await fetch(url);
+      return await res.json();
+    },
   };
 }
