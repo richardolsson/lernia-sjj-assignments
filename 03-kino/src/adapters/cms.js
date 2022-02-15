@@ -31,5 +31,24 @@ export default function createAdapter() {
       const res = await fetch(url);
       return await res.json();
     },
+
+    async postMovieReview(movieId, data) {
+      const res = await fetch(apiBase + "/reviews", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          data: {
+            author: data.name,
+            comment: data.comment,
+            movie: movieId,
+            rating: data.rating,
+          },
+        }),
+      });
+
+      return await res.json();
+    },
   };
 }
