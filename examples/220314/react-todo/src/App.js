@@ -11,19 +11,14 @@ function App() {
 
   const taskElements = tasks.map((task, index) => {
     const onClickTask = () => {
-      const updatedTasks = [];
-      tasks.forEach((taskToUpdate) => {
-        if (taskToUpdate === task) {
-          updatedTasks.push({
-            completed: !task.completed,
-            label: task.label,
-          });
-        } else {
-          updatedTasks.push(taskToUpdate);
-        }
-      });
-
-      setTasks(updatedTasks);
+      setTasks([
+        ...tasks.slice(0, index),
+        {
+          ...task,
+          completed: !task.completed,
+        },
+        ...tasks.slice(index + 1),
+      ]);
     };
 
     return (
