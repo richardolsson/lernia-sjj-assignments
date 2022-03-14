@@ -1,6 +1,21 @@
 import "./App.css";
 
 function App() {
+  const tasks = [
+    { label: "Learn HTML" },
+    { label: "Learn CSS" },
+    { label: "Learn JS" },
+  ];
+
+  const taskElements = tasks.map((task) => {
+    return (
+      <li key={task.label}>
+        <span className="label">{task.label}</span>
+        <span className="trashcan">🗑</span>
+      </li>
+    );
+  });
+
   return (
     <div className="App">
       <div className="container">
@@ -9,16 +24,7 @@ function App() {
         <input type="text" />
         <button>OK</button>
         <small className="error"></small>
-        <ul>
-          <li>
-            <span className="label">Learn HTML</span>
-            <span className="trashcan">🗑</span>
-          </li>
-          <li>
-            <span className="label">Learn CSS</span>
-            <span className="trashcan">🗑</span>
-          </li>
-        </ul>
+        <ul>{taskElements}</ul>
       </div>
     </div>
   );
