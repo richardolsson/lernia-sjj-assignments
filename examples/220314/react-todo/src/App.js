@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [text, setText] = useState("");
   const [tasks, setTasks] = useState([
     { label: "Learn HTML" },
     { label: "Learn CSS" },
@@ -18,12 +19,17 @@ function App() {
   });
 
   const onClickOk = () => {
+    setText("");
     setTasks([
       ...tasks,
       {
-        label: "New task",
+        label: text,
       },
     ]);
+  };
+
+  const onTextChange = (event) => {
+    setText(event.target.value);
   };
 
   return (
@@ -31,7 +37,7 @@ function App() {
       <div className="container">
         <h1>My ToDo</h1>
         <p className="counter">0 completed</p>
-        <input type="text" />
+        <input type="text" value={text} onChange={onTextChange} />
         <button onClick={onClickOk}>OK</button>
         <small className="error"></small>
         <ul>{taskElements}</ul>
