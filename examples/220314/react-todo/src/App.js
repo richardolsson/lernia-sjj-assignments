@@ -51,11 +51,13 @@ function App() {
     setText(event.target.value);
   };
 
+  const completedCount = tasks.filter((task) => task.completed).length;
+
   return (
     <div className="App">
       <div className="container">
         <h1>My ToDo</h1>
-        <p className="counter">0 completed</p>
+        <p className="counter">{completedCount} completed</p>
         <input type="text" value={text} onChange={onTextChange} />
         <button onClick={onClickOk}>OK</button>
         <small className="error"></small>
