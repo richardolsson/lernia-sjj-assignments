@@ -21,12 +21,18 @@ function App() {
       ]);
     };
 
+    const onClickTrashcan = () => {
+      setTasks(tasks.filter((taskToFilter) => taskToFilter !== task));
+    };
+
     return (
       <li key={task.label} className={task.completed ? "completed" : null}>
         <span className="label" onClick={onClickTask}>
           {task.label}
         </span>
-        <span className="trashcan">🗑</span>
+        <span className="trashcan" onClick={onClickTrashcan}>
+          🗑
+        </span>
       </li>
     );
   });
