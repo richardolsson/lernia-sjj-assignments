@@ -1,13 +1,11 @@
 import TaskItem from "./TaskItem";
 
-function TaskList() {
-  return (
-    <ul>
-      <TaskItem label="Learn HTML" />
-      <TaskItem label="Learn CSS" />
-      <TaskItem label="Learn JS" />
-    </ul>
-  );
+function TaskList({ tasks }) {
+  const taskElements = tasks.map((task) => {
+    return <TaskItem key={task.label} label={task.label} />;
+  });
+
+  return <ul>{taskElements}</ul>;
 }
 
 export default TaskList;
