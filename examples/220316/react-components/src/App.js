@@ -11,12 +11,22 @@ function App() {
     { completed: false, label: "Learn JS" },
   ]);
 
+  const onSubmit = (label) => {
+    setTasks([
+      ...tasks,
+      {
+        label,
+        completed: false,
+      },
+    ]);
+  };
+
   return (
     <div className="App">
       <div className="container">
         <h1>My ToDo</h1>
         <Count />
-        <TaskInput />
+        <TaskInput onSubmit={onSubmit} />
         <TaskList tasks={tasks} />
       </div>
     </div>
