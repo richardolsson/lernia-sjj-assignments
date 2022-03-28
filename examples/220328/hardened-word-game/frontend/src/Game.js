@@ -40,7 +40,7 @@ function Game({ gameId }) {
       name,
     };
 
-    await fetch("http://localhost:5080/api/highscores", {
+    await fetch(`http://localhost:5080/api/games/${gameId}/highscore`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

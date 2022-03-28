@@ -52,9 +52,20 @@ app.post("/api/games/:id/guesses", (req, res) => {
   }
 });
 
-app.post("/api/highscores", async (req, res) => {
-  const highscore = await saveHighscore(req.body);
-  res.status(201).json({ highscore });
+// POST /api/games/:id/highscore
+app.post("/api/games/:id/highscore", async (req, res) => {
+  const game = GAMES.find((savedGame) => savedGame.id == req.params.id);
+  if (game) {
+    const name = req.body.name;
+    const highscore = await saveHighscore({
+      ...game,
+      name,
+    });
+
+    res.status(201).json({ highscore });
+  } else {
+    res.status(404).end();
+  }
 });
 
 app.get("/api/highscores", async (req, res) => {
