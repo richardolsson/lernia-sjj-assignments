@@ -30,18 +30,19 @@ function Game({ correctWord }) {
       startTime,
     };
 
-    const res = await fetch("http://localhost:5080/api/highscores", {
+    await fetch("http://localhost:5080/api/highscores", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(highscore),
     });
+
+    setGameState("end");
   };
 
-  const duration = Math.round((endTime - startTime) / 1000);
-
   if (gameState === "won") {
+    const duration = Math.round((endTime - startTime) / 1000);
     return (
       <div className="Game">
         <h1>You won!</h1>
@@ -57,6 +58,12 @@ function Game({ correctWord }) {
           />
           <input type="submit" />
         </form>
+      </div>
+    );
+  } else if (gameState === "end") {
+    return (
+      <div className="Game">
+        <h1>Done!</h1>
       </div>
     );
   }
