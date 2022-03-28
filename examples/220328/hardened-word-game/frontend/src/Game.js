@@ -1,9 +1,7 @@
 import { useState } from "react";
 
-function Game({ correctWord }) {
-  const [startTime] = useState(new Date());
+function Game({ gameId }) {
   const [gameState, setGameState] = useState("playing");
-  const [endTime, setEndtime] = useState(null);
   const [inputText, setInputText] = useState("");
   const [guesses, setGuesses] = useState([]);
   const [name, setName] = useState("");
@@ -12,10 +10,6 @@ function Game({ correctWord }) {
     if (keyCode === "Enter") {
       setGuesses([...guesses, inputText]);
       setInputText("");
-      if (inputText === correctWord) {
-        setGameState("won");
-        setEndtime(new Date());
-      }
     }
   };
 
@@ -23,11 +17,7 @@ function Game({ correctWord }) {
     ev.preventDefault();
 
     const highscore = {
-      correctWord,
-      endTime,
-      guesses,
       name,
-      startTime,
     };
 
     await fetch("http://localhost:5080/api/highscores", {
@@ -42,7 +32,7 @@ function Game({ correctWord }) {
   };
 
   if (gameState === "won") {
-    const duration = Math.round((endTime - startTime) / 1000);
+    const duration = 0;
     return (
       <div className="Game">
         <h1>You won!</h1>

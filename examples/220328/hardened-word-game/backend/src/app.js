@@ -1,5 +1,6 @@
 import cors from "cors";
 import express from "express";
+import * as uuid from "uuid";
 
 import { getRandomWord } from "./utils.js";
 import { loadHighscores, saveHighscore } from "./db.js";
@@ -9,12 +10,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/api/random_word", (req, res) => {
-  const word = getRandomWord();
+const GAMES = [];
 
-  res.json({
-    word,
-  });
+// POST /api/games
+app.post("/api/games", (req, res) => {
+  const game = {
+    correctWord: getRandomWord(),
+    id: uuid.v4(),
+    startTime: new Date(),
+  };
+
+  GAMES.push(game);
+
+  res.status(201).json({ id: game.id });
 });
 
 app.post("/api/highscores", async (req, res) => {

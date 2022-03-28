@@ -1,26 +1,27 @@
 import { useEffect, useState } from "react";
 
-import logo from "./logo.svg";
 import "./App.css";
 import Game from "./Game.js";
 
 function App() {
-  const [correctWord, setCorrectWord] = useState(null);
+  const [gameId, setGameId] = useState(null);
 
   useEffect(() => {
-    const loadWord = async () => {
-      const res = await fetch("http://localhost:5080/api/random_word");
+    const startGame = async () => {
+      const res = await fetch("http://localhost:5080/api/games", {
+        method: "post",
+      });
       const data = await res.json();
-      setCorrectWord(data.word);
+      setGameId(data.id);
     };
 
-    loadWord();
+    startGame();
   }, []);
 
-  if (correctWord) {
+  if (gameId) {
     return (
       <div className="App">
-        <Game correctWord={correctWord} />
+        <Game gameId={gameId} />
       </div>
     );
   } else {
