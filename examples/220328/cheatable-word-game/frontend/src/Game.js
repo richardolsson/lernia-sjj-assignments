@@ -6,6 +6,7 @@ function Game({ correctWord }) {
   const [endTime, setEndtime] = useState(null);
   const [inputText, setInputText] = useState("");
   const [guesses, setGuesses] = useState([]);
+  const [name, setName] = useState("");
 
   const handleKeyUp = (keyCode) => {
     if (keyCode === "Enter") {
@@ -18,6 +19,26 @@ function Game({ correctWord }) {
     }
   };
 
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+
+    const highscore = {
+      correctWord,
+      endTime,
+      guesses,
+      name,
+      startTime,
+    };
+
+    const res = await fetch("http://localhost:5080/api/highscores", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(highscore),
+    });
+  };
+
   const duration = Math.round((endTime - startTime) / 1000);
 
   if (gameState === "won") {
@@ -27,6 +48,15 @@ function Game({ correctWord }) {
         <p>The correct word was {guesses.at(-1)}</p>
         <p>Guesses: {guesses.length}</p>
         <p>Duration: {duration}s</p>
+        <h2>Add to highscore</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            value={name}
+            onChange={(ev) => setName(ev.target.value)}
+            placeholder="Your name"
+          />
+          <input type="submit" />
+        </form>
       </div>
     );
   }
