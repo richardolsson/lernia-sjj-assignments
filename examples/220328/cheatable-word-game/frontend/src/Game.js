@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function Game({ correctWord }) {
+  const [gameState, setGameState] = useState("playing");
   const [inputText, setInputText] = useState("");
   const [guesses, setGuesses] = useState([]);
 
@@ -8,8 +9,20 @@ function Game({ correctWord }) {
     if (keyCode === "Enter") {
       setGuesses([...guesses, inputText]);
       setInputText("");
+      if (inputText === correctWord) {
+        setGameState("won");
+      }
     }
   };
+
+  if (gameState === "won") {
+    return (
+      <div className="Game">
+        <h1>You won!</h1>
+        <p>The correct word was {guesses.at(-1)}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="Game">
