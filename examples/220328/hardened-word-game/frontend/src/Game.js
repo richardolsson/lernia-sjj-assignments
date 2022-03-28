@@ -4,12 +4,32 @@ function Game({ gameId }) {
   const [gameState, setGameState] = useState("playing");
   const [inputText, setInputText] = useState("");
   const [guesses, setGuesses] = useState([]);
+  const [result, setResult] = useState(null);
   const [name, setName] = useState("");
 
-  const handleKeyUp = (keyCode) => {
+  const handleKeyUp = async (keyCode) => {
     if (keyCode === "Enter") {
-      setGuesses([...guesses, inputText]);
       setInputText("");
+
+      const res = await fetch(
+        `http://localhost:5080/api/games/${gameId}/guesses`,
+        {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ guess: inputText }),
+        }
+      );
+
+      const data = await res.json();
+
+      if (data.correct) {
+        setResult(data.result);
+        setGameState("won");
+      }
+
+      setGuesses(data.guesses);
     }
   };
 
@@ -32,7 +52,8 @@ function Game({ gameId }) {
   };
 
   if (gameState === "won") {
-    const duration = 0;
+    const duration =
+      (new Date(result.endTime) - new Date(result.startTime)) / 1000;
     return (
       <div className="Game">
         <h1>You won!</h1>
