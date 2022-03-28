@@ -23,7 +23,13 @@ app.post("/api/highscores", async (req, res) => {
 });
 
 app.get("/api/highscores", async (req, res) => {
-  res.json({ highscores: await loadHighscores() });
+  const highscores = await loadHighscores();
+  res.json({
+    highscores: highscores.map((entry) => ({
+      ...entry,
+      duration: new Date(entry.endTime) - new Date(entry.startTime),
+    })),
+  });
 });
 
 export default app;
