@@ -1,7 +1,4 @@
-type Task = {
-  label: string;
-  completed: boolean;
-};
+import { Task } from "../types";
 
 type TaskListProps = {
   tasks: Task[];
