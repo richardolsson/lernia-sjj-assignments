@@ -1,15 +1,31 @@
+type Task = {
+  label: string;
+  completed: boolean;
+};
+
+type TaskListProps = {
+  tasks: Task[];
+};
+
 // Synonyms:
 //function TaskList(): JSX.Element | null {
 //const TaskList: () => JSX.Element | null = () => {
 //const TaskList: React.FunctionComponent = () => {
-const TaskList: React.FC = () => {
+
+// Pass in TaskListProps using Typescript "Generics"
+const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
   return (
     <ul>
-      <li>Learn HTML</li>
-      <li>Learn CSS</li>
-      <li>Learn JS</li>
-      <li>Learn React</li>
-      <li>Learn Typescript</li>
+      {tasks.map((task) => {
+        return (
+          <li
+            key={task.label}
+            style={{ textDecoration: task.completed ? "line-through" : "none" }}
+          >
+            {task.label}
+          </li>
+        );
+      })}
     </ul>
   );
 };
