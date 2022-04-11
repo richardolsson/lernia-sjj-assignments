@@ -1,6 +1,6 @@
-import GuessBoxes from "../components/GuessBoxes";
 import GuessInput from "../components/GuessInput";
 import { Game } from "../types";
+import GuessList from "../components/GuessList";
 
 type GameScreenProps = {
   game: Game;
@@ -11,13 +11,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ game, onGuess }) => {
   return (
     <div className="GameScreen">
       <GuessInput onGuess={onGuess} wordLength={game.wordLength} />
-      <ul>
-        {game.guesses.map((guess, index) => (
-          <li key={index}>
-            <GuessBoxes guess={guess} />
-          </li>
-        ))}
-      </ul>
+      <GuessList guesses={game.guesses} />
     </div>
   );
 };

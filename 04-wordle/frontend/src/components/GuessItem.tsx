@@ -1,9 +1,9 @@
 import { Guess } from "../types";
 
-type GuessBoxesProps = {
+type GuessItemProps = {
   guess: Guess;
 };
-const GuessBoxes: React.FC<GuessBoxesProps> = ({ guess }) => {
+const GuessItem: React.FC<GuessItemProps> = ({ guess }) => {
   return (
     <ul>
       {guess.map((letter, index) => (
@@ -15,4 +15,4 @@ const GuessBoxes: React.FC<GuessBoxesProps> = ({ guess }) => {
   );
 };
 
-export default GuessBoxes;
+export default GuessItem;
