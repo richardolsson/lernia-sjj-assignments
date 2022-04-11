@@ -1,0 +1,39 @@
+@startuml
+title "Development"
+
+Browser -> WDS: GET http://localhost:3000/
+Browser <- WDS: index.html
+note over Browser
+  Parse index.html
+  and build DOM
+end note
+Browser -> WDS: GET javascript
+Browser <- WDS: javascript
+note over Browser
+  Run javascript
+end note
+
+Browser -> Node: javascript fetch /api/random
+Browser <- Node: JSON
+
+@enduml
+
+@startuml
+title "Production"
+
+Browser -> Node: GET http://localhost:5080/
+Browser <- Node: index.html
+note over Browser
+  Parse index.html
+  and build DOM
+end note
+Browser -> Node: GET javascript
+Browser <- Node: javascript
+note over Browser
+  Run javascript
+end note
+
+Browser -> Node: javascript fetch /api/random
+Browser <- Node: JSON
+
+@enduml
