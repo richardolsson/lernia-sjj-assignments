@@ -48,7 +48,7 @@ app.post("/api/games", (req, res) => {
 
   GAMES.push(game);
 
-  res.status(201).json({ id: game.id });
+  res.status(201).json({ id: game.id, wordLength, unique });
 });
 
 app.post("/api/games/:id/guesses", (req, res) => {
