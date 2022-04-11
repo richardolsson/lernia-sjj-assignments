@@ -53,13 +53,13 @@ const App: React.FC = () => {
             );
             const data = await res.json();
 
+            setGame({
+              ...game,
+              guesses: data.guesses,
+            });
+
             if (data.correct) {
               setGameState(GameState.WON);
-            } else {
-              setGame({
-                ...game,
-                guesses: data.guesses,
-              });
             }
           }}
         />
