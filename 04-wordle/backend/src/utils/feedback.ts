@@ -1,42 +1,35 @@
-enum Result {
-  CORRECT = "correct",
-  INCORRECT = "incorrect",
-  MISPLACED = "misplaced",
-}
-
-type LetterResult = {
-  letter: string;
-  result: Result;
-};
+import { LetterFeedback, LetterResult } from "../types";
 
 export default function feedback(
   correctWord: string,
   guess: string
-): LetterResult[] {
+): LetterFeedback[] {
   const correctLetters = Array.from(correctWord).map((letter, index) => ({
     letter,
     index,
     consumed: false,
   }));
 
-  const preliminary: LetterResult[] = Array.from(guess).map((letter, index) => {
-    const correctLetter = correctWord.charAt(index);
+  const preliminary: LetterFeedback[] = Array.from(guess).map(
+    (letter, index) => {
+      const correctLetter = correctWord.charAt(index);
 
-    let result: Result =
-      correctLetter == letter ? Result.CORRECT : Result.INCORRECT;
+      let result: LetterResult =
+        correctLetter == letter ? LetterResult.CORRECT : LetterResult.INCORRECT;
 
-    if (result == Result.CORRECT) {
-      correctLetters[index].consumed = true;
+      if (result == LetterResult.CORRECT) {
+        correctLetters[index].consumed = true;
+      }
+
+      return {
+        letter,
+        result,
+      };
     }
-
-    return {
-      letter,
-      result,
-    };
-  });
+  );
 
   return preliminary.map((letterResult, index) => {
-    if (letterResult.result == Result.INCORRECT) {
+    if (letterResult.result == LetterResult.INCORRECT) {
       const other = correctLetters.find(
         (l) =>
           l.index != index && l.letter == letterResult.letter && !l.consumed
@@ -46,7 +39,7 @@ export default function feedback(
         other.consumed = true;
         return {
           letter: letterResult.letter,
-          result: Result.MISPLACED,
+          result: LetterResult.MISPLACED,
         };
       }
     }
