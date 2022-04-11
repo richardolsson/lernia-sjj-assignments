@@ -5,6 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "ts-node .",
+    "test": "jest",
     "dev": "nodemon --watch src --ext ts --exec \"ts-node .\""
   },
   "author": "",
