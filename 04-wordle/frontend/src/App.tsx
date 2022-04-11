@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import { GameState } from "./types";
 import HomeScreen from "./screens/HomeScreen";
+import GameScreen from "./screens/GameScreen";
 
 const App: React.FC = () => {
   const [gameState, setGameState] = useState<GameState>(GameState.HOME);
@@ -11,6 +12,8 @@ const App: React.FC = () => {
     return (
       <HomeScreen
         onStart={async (wordLength, unique) => {
+          setGameState(GameState.GAME);
+
           const res = await fetch("http://localhost:5080/api/games", {
             method: "POST",
             headers: {
@@ -22,13 +25,17 @@ const App: React.FC = () => {
             }),
           });
           const data = await res.json();
+
           setGameId(data.id);
-          setGameState(GameState.GAME);
         }}
       />
     );
   } else if (gameState === GameState.GAME) {
-    return <h1>GAME {gameId}</h1>;
+    if (gameId) {
+      return <GameScreen />;
+    } else {
+      return <h1>Loading...</h1>;
+    }
   } else {
     return <></>;
   }
