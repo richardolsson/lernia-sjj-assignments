@@ -26,7 +26,10 @@ const App: React.FC = () => {
           });
           const data = (await res.json()) as Game;
 
-          setGame(data);
+          setGame({
+            ...data,
+            guesses: [],
+          });
         }}
       />
     );

@@ -9,7 +9,7 @@ type LetterFeedback = {
   result: "correct" | "incorrect" | "misplaced";
 };
 
-type Guess = LetterFeedback[];
+export type Guess = LetterFeedback[];
 
 export type Game = {
   id: string;
