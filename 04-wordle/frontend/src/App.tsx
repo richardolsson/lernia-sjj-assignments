@@ -1,25 +1,37 @@
-import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
+import { useState } from "react";
 import "./App.css";
+import { GameState } from "./types";
+import HomeScreen from "./screens/HomeScreen";
 
-function App() {
-  const [randomNumber, setRandomNumber] = useState(0);
+const App: React.FC = () => {
+  const [gameState, setGameState] = useState<GameState>(GameState.HOME);
+  const [gameId, setGameId] = useState<string | null>(null);
 
-  useEffect(() => {
-    const loadNumber = async () => {
-      const res = await fetch("http://localhost:5080/api/random");
-      const data = await res.json();
-      setRandomNumber(data.randomNumber);
-    };
-
-    loadNumber();
-  }, []);
-
-  return (
-    <div className="App">
-      <h1 style={{ color: "red" }}>{randomNumber}</h1>
-    </div>
-  );
-}
+  if (gameState === GameState.HOME) {
+    return (
+      <HomeScreen
+        onStart={async (wordLength, unique) => {
+          const res = await fetch("http://localhost:5080/api/games", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              wordLength: wordLength,
+              unique: unique,
+            }),
+          });
+          const data = await res.json();
+          setGameId(data.id);
+          setGameState(GameState.GAME);
+        }}
+      />
+    );
+  } else if (gameState === GameState.GAME) {
+    return <h1>GAME {gameId}</h1>;
+  } else {
+    return <></>;
+  }
+};
 
 export default App;
