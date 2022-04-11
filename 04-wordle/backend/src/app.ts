@@ -1,12 +1,16 @@
 import express from "express";
 import cors from "cors";
 import { v4 as uuidv4 } from "uuid";
+import { connect } from "mongoose";
 
 import { makeWordPicker } from "./utils/wordPicker";
 import { Game, LetterResult } from "./types";
 import feedback from "./utils/feedback";
+import { GameHighscore } from "./models";
 
 const app = express();
+
+connect("mongodb://localhost:27017/test");
 
 const wordPicker = makeWordPicker([
   "HELLO",
@@ -61,6 +65,33 @@ app.post("/api/games/:id/guesses", (req, res) => {
   } else {
     res.status(201).json({ correct: false, guesses: game.guesses });
   }
+});
+
+app.post("/api/games/:id/highscore", async (req, res) => {
+  const name = req.body.name;
+  const game = GAMES.find((game) => game.id == req.params.id);
+
+  if (!game) {
+    res.status(404).end();
+    return;
+  }
+
+  if (!game.endTime) {
+    res.status(403).end();
+    return;
+  }
+
+  const hs = new GameHighscore({
+    ...game,
+    name,
+  });
+
+  await hs.save();
+
+  res.status(201).json({
+    ...game,
+    name,
+  });
 });
 
 app.use(express.static("../frontend/build"));
