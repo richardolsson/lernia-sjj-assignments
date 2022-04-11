@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  const [randomNumber, setRandomNumber] = useState(0);
+
+  useEffect(() => {
+    const loadNumber = async () => {
+      const res = await fetch("http://localhost:5080/api/random");
+      const data = await res.json();
+      setRandomNumber(data.randomNumber);
+    };
+
+    loadNumber();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 style={{ color: "red" }}>{randomNumber}</h1>
     </div>
   );
 }
