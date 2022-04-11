@@ -99,6 +99,10 @@ app.post("/api/games/:id/highscore", async (req, res) => {
   });
 });
 
+app.get("/info", (req, res) => {
+  res.render("info");
+});
+
 app.get("/highscore", async (req, res) => {
   const wordLength = req.query.wordLength
     ? parseInt(req.query.wordLength as string)
