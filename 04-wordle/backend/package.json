@@ -13,6 +13,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.3",
+    "express-handlebars": "^6.0.4",
     "mongoose": "^6.2.10",
     "ts-node": "^10.7.0",
     "uuid": "^8.3.2"

@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { v4 as uuidv4 } from "uuid";
 import { connect } from "mongoose";
+import { engine } from "express-handlebars";
 
 import { makeWordPicker } from "./utils/wordPicker";
 import { Game, LetterResult } from "./types";
@@ -9,6 +10,10 @@ import feedback from "./utils/feedback";
 import { GameHighscore } from "./models";
 
 const app = express();
+
+app.engine("handlebars", engine());
+app.set("view engine", "handlebars");
+app.set("views", "./templates");
 
 connect("mongodb://localhost:27017/test");
 
@@ -91,6 +96,38 @@ app.post("/api/games/:id/highscore", async (req, res) => {
   res.status(201).json({
     ...game,
     name,
+  });
+});
+
+app.get("/highscore", async (req, res) => {
+  const wordLength = req.query.wordLength
+    ? parseInt(req.query.wordLength as string)
+    : undefined;
+
+  const unique = req.query.unique as "true" | "false" | undefined;
+
+  const highscores = await GameHighscore.find();
+  const filtered = highscores.filter((hs) => {
+    if (wordLength && hs.wordLength != wordLength) {
+      return false;
+    }
+
+    if (unique == "true" && !hs.unique) {
+      return false;
+    } else if (unique == "false" && hs.unique) {
+      return false;
+    }
+
+    return true;
+  });
+
+  res.render("highscore", {
+    highscores: filtered.map((hs) => ({
+      name: hs.name,
+      wordLength: hs.wordLength,
+      unique: hs.unique,
+      duration: (hs.endTime.getTime() - hs.startTime.getTime()) / 1000,
+    })),
   });
 });
 

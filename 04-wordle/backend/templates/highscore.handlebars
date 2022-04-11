@@ -1,0 +1,15 @@
+<h1>Highscore</h1>
+<ul>
+{{#each highscores }}
+  <li>
+    <h2>
+      <span class="name">{{this.name}}</span>
+      <span class="time">{{this.duration}}</span>
+    </h2>
+    <p>
+      {{this.wordLength}}-letter words
+      {{#if this.unique}}with unique characters{{/if}}
+    </p>
+  </li>
+{{/each}}
+</ul>
