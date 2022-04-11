@@ -135,6 +135,6 @@ app.get("/highscore", async (req, res) => {
   });
 });
 
-app.use(express.static("../frontend/build"));
+app.use(express.static("./public"));
 
 export default app;
