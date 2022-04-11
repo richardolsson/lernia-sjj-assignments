@@ -1,0 +1,14 @@
+.GuessInput ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.GuessInput li {
+  list-style-type: none;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  background-color: #ddd;
+  margin: 0.1em;
+}

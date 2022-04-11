@@ -1,11 +1,13 @@
 import { Guess } from "../types";
 
+import "./GuessItem.css";
+
 type GuessItemProps = {
   guess: Guess;
 };
 const GuessItem: React.FC<GuessItemProps> = ({ guess }) => {
   return (
-    <ul>
+    <ul className="GuessItem">
       {guess.map((letter, index) => (
         <li key={index} className={letter.result}>
           {letter.letter}
