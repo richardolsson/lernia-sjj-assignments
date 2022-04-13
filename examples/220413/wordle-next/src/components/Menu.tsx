@@ -1,13 +1,15 @@
+import Link from "next/link";
+
 const Menu: React.FC = () => (
   <ul>
     <li>
-      <a href="/">Game</a>
+      <Link href="/">Game</Link>
     </li>
     <li>
-      <a href="/highscore">Highscore</a>
+      <Link href="/highscore">Highscore</Link>
     </li>
     <li>
-      <a href="/info">Info</a>
+      <Link href="/info">Info</Link>
     </li>
   </ul>
 );
