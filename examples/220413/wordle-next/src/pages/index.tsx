@@ -79,7 +79,7 @@ const HomePage: NextPage = () => {
               name,
             }),
           });
-          window.location.href = "http://localhost:5080/highscore";
+          window.location.href = "/highscore";
         }}
       />
     );
