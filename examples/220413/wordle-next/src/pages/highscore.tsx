@@ -1,3 +1,4 @@
+import { connect } from "mongoose";
 import { GetServerSideProps, NextPage } from "next";
 import { GameHighscore } from "../server/models";
 
@@ -20,6 +21,8 @@ export const getServerSideProps: GetServerSideProps<
     : undefined;
 
   const unique = context.query.unique as "true" | "false" | undefined;
+
+  await connect("mongodb://localhost:27017/test");
 
   const highscores = await GameHighscore.find();
   const filtered = highscores.filter((hs) => {
