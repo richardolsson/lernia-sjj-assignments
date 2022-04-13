@@ -1,0 +1,26 @@
+.container {
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.container li {
+  padding: 0;
+  list-style-type: none;
+  width: 30px;
+  height: 30px;
+  background-color: #ddd;
+  margin: 0.1em;
+}
+
+.correct {
+  background-color: green !important;
+}
+
+.incorrect {
+  background-color: red !important;
+}
+
+.misplaced {
+  background-color: yellow !important;
+}

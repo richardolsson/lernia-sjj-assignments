@@ -1,0 +1,14 @@
+.container ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.container li {
+  list-style-type: none;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  background-color: #ddd;
+  margin: 0.1em;
+}
