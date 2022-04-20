@@ -1,18 +1,24 @@
 import Cookies from "cookies";
+import Iron from "@hapi/iron";
 import { GetServerSideProps, NextPage } from "next";
+import { ENC_KEY } from "./api/login";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = new Cookies(context.req, context.res);
   const sessionStr = cookies.get("session");
 
   if (sessionStr) {
-    const session = JSON.parse(sessionStr);
-    if (session.loggedIn) {
-      return {
-        props: {
-          username: session.username,
-        },
-      };
+    try {
+      const session = await Iron.unseal(sessionStr, ENC_KEY, Iron.defaults);
+      if (session.loggedIn) {
+        return {
+          props: {
+            username: session.username,
+          },
+        };
+      }
+    } catch (err) {
+      // Incorrect encrypted string. Proceed to notFound
     }
   }
 

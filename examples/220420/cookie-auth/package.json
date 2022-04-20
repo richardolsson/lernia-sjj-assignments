@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hapi/iron": "^6.0.0",
     "cookies": "^0.8.0",
     "next": "12.1.5",
     "react": "18.0.0",
