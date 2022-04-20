@@ -3,23 +3,33 @@ import { GetServerSideProps, NextPage } from "next";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = new Cookies(context.req, context.res);
-  const loggedIn = cookies.get("loggedin");
+  const sessionStr = cookies.get("session");
 
-  if (loggedIn == "yes") {
-    return {
-      props: {},
-    };
-  } else {
-    return {
-      notFound: true,
-    };
+  if (sessionStr) {
+    const session = JSON.parse(sessionStr);
+    if (session.loggedIn) {
+      return {
+        props: {
+          username: session.username,
+        },
+      };
+    }
   }
+
+  return {
+    notFound: true,
+  };
 };
 
-const SecretPage: NextPage = () => {
+type SecretPageProps = {
+  username: string;
+};
+
+const SecretPage: NextPage<SecretPageProps> = ({ username }) => {
   return (
     <div>
       <h1>Secret!</h1>
+      <h2>Hello, {username}</h2>
       <p>This is secret content</p>
     </div>
   );
