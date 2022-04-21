@@ -1,11 +1,12 @@
+import bcrypt from "bcrypt";
 import Cookies from "cookies";
 import Iron from "@hapi/iron";
 import { NextApiRequest, NextApiResponse } from "next";
 
 // INSECURE! Do not do this. Only for the sake of example
 const USERS: Record<string, string> = {
-  richard: "secret",
-  marcus: "sosecret",
+  richard: "$2b$10$jlvz/FpomygRnM7pUjucF.fBt.b.bHx73tbfL33OFrQNcQojCu4W.",
+  marcus: "$2b$10$ABjGTjCDD71yL2b2CTP8YOao0P44zRo90HZasCd1ZzN0dqlgmzX62",
 };
 
 export const ENC_KEY =
@@ -18,7 +19,9 @@ export default async function handler(
   if (req.method == "POST") {
     const { username, password } = req.body;
 
-    if (USERS[username] && USERS[username] == password) {
+    const isCorrect = await bcrypt.compare(password, USERS[username]);
+
+    if (isCorrect) {
       const cookies = new Cookies(req, res);
       cookies.set(
         "session",
