@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../authContext";
 
 const AuthWidget: React.FC = () => {
-  const user = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <div>
