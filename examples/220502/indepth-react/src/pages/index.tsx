@@ -4,7 +4,7 @@ import MainLayout from "../layouts/MainLayout";
 
 const Home: NextPage = () => {
   return (
-    <MainLayout>
+    <MainLayout bgColor="green">
       <Headline>Welcome</Headline>
     </MainLayout>
   );
