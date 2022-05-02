@@ -1,7 +1,14 @@
 import type { NextPage } from "next";
+import Headline from "../components/Headline";
 
 const Home: NextPage = () => {
-  return <div>Hello</div>;
+  return (
+    <div>
+      <Headline>
+        Hello <em>from</em> children
+      </Headline>
+    </div>
+  );
 };
 
 export default Home;
