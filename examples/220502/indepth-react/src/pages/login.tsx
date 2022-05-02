@@ -1,13 +1,13 @@
-import type { NextPage } from "next";
+import { NextPage } from "next";
 import Headline from "../components/Headline";
 import MainLayout from "../layouts/MainLayout";
 
-const Home: NextPage = () => {
+const LoginPage: NextPage = () => {
   return (
     <MainLayout>
-      <Headline>Welcome</Headline>
+      <Headline>Log in</Headline>
     </MainLayout>
   );
 };
 
-export default Home;
+export default LoginPage;
