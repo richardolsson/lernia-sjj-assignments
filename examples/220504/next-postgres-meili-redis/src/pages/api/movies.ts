@@ -14,10 +14,7 @@ type Movie = {
   reviews: Review[];
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+async function loadMoviesFromPostgres(): Promise<Movie[]> {
   const client = new Client({
     // TODO: Do not hard code passwords in code.
     // Should be in env variable
@@ -52,6 +49,20 @@ export default async function handler(
 
     movies.push(movie);
   }
+
+  return movies;
+}
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const startTime = new Date();
+
+  const movies = await loadMoviesFromPostgres();
+
+  const endTime = new Date();
+  console.log("Finished request", endTime.getTime() - startTime.getTime());
 
   res.status(200).json(movies);
 }
