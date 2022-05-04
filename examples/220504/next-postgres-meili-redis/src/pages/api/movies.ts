@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { createClient } from "redis";
 import { Client, Query } from "ts-postgres";
 
 type Review = {
@@ -59,10 +60,28 @@ export default async function handler(
 ) {
   const startTime = new Date();
 
-  const movies = await loadMoviesFromPostgres();
+  const redisClient = createClient();
+  await redisClient.connect();
 
-  const endTime = new Date();
-  console.log("Finished request", endTime.getTime() - startTime.getTime());
+  // If it exists in cache
+  const cachedData = await redisClient.get("cache:movies");
+  if (cachedData) {
+    //    respond from cache
+    res.status(200).send(cachedData);
 
-  res.status(200).json(movies);
+    const endTime = new Date();
+    console.log("Finished request", endTime.getTime() - startTime.getTime());
+  } else {
+    //    Query database
+    const movies = await loadMoviesFromPostgres();
+    //    Add to cache
+    const moviesJson = JSON.stringify(movies);
+    await redisClient.set("cache:movies", moviesJson, { EX: 10 });
+
+    //    Respond from database
+    res.status(200).send(moviesJson);
+
+    const endTime = new Date();
+    console.log("Finished request", endTime.getTime() - startTime.getTime());
+  }
 }
