@@ -1,19 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { createClient } from "redis";
 import { Client, Query } from "ts-postgres";
+import { Movie } from "../../types";
 
-type Review = {
-  id: number;
-  rating: number;
-  comment: string;
-};
-
-type Movie = {
-  id: number;
-  title: string;
-  description: string;
-  reviews: Review[];
-};
 
 async function loadMoviesFromPostgres(): Promise<Movie[]> {
   const client = new Client({
