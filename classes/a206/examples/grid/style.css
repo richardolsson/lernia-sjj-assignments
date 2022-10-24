@@ -1,0 +1,18 @@
+.header {
+    padding: 10px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+}
+
+.header {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.footer {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
