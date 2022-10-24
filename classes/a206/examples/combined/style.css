@@ -10,6 +10,14 @@
 
 .header {
     grid-column: span 12;
+    position: relative;
+}
+
+.contact {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px;
 }
 
 .left {
@@ -22,6 +30,10 @@
 
 .main {
     grid-column: span 6;
+}
+
+.main figure {
+    float: left;
 }
 
 .footer {
