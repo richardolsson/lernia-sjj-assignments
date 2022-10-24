@@ -4,15 +4,26 @@
 
 .container {
     display: grid;
-    grid-template-columns: 200px 1fr 200px;
+    gap: 10px;
+    grid-template-columns: repeat(12, 1fr);
 }
 
 .header {
-    grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column: span 12;
+}
+
+.left {
+    grid-column: span 3;
+}
+
+.right {
+    grid-column: span 3;
+}
+
+.main {
+    grid-column: span 6;
 }
 
 .footer {
-    grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column: span 12;
 }
