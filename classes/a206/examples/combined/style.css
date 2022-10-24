@@ -1,0 +1,43 @@
+.header {
+    padding: 10px;
+}
+
+.container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.header {
+    grid-column: span 12;
+}
+
+.left {
+    grid-column: span 3;
+}
+
+.right {
+    grid-column: span 3;
+}
+
+.main {
+    grid-column: span 6;
+}
+
+.footer {
+    grid-column: span 12;
+}
+
+.menu {
+    display: flex;
+    padding: 0;
+    justify-content: space-around;
+}
+
+.menu li {
+    list-style-type: none;
+    flex-basis: 0;
+    flex-shrink: 1;
+    flex-grow: 1;
+    text-align: center;
+}
