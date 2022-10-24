@@ -22,6 +22,7 @@ Lägg till TODO
 4: Sätt ihop
 */
 
+let numCompleted = 0;
 const todoList = document.querySelector('ul');
 
 document.querySelector('form').addEventListener('submit', ev => {
@@ -31,6 +32,16 @@ document.querySelector('form').addEventListener('submit', ev => {
     const itemText = document.createElement('span');
     itemText.innerText = text;
     item.append(itemText);
+
+    itemText.addEventListener('click', () => {
+        item.classList.toggle('completed');
+        if (item.classList.contains('completed')) {
+            numCompleted++;
+        } else {
+            numCompleted--;
+        }
+        document.querySelector('p').innerText = `${numCompleted} completed`;
+    })
 
     const removeButton = document.createElement('button');
     removeButton.innerText = '🗑';
