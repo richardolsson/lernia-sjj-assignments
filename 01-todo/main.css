@@ -1,0 +1,40 @@
+html {
+    min-height: 100%;
+}
+
+* {
+    font-family: sans-serif;
+}
+
+body {
+    background: linear-gradient(#f8cfcd, #f18f8b);
+    background-repeat: no-repeat;
+}
+
+.container {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title {
+    margin: 0;
+    font-family: serif;
+}
+
+.todo-item {
+    list-style-type: none;
+}
+
+.todo-item.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.remove-button {
+    background-color: transparent;
+    border-width: 0;
+}

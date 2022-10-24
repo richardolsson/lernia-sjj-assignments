@@ -28,6 +28,7 @@ const todoList = document.querySelector('ul');
 document.querySelector('form').addEventListener('submit', ev => {
     const text = document.querySelector('input').value;
     const item = document.createElement('li');
+    item.classList.add('todo-item');
 
     const itemText = document.createElement('span');
     itemText.innerText = text;
@@ -45,6 +46,7 @@ document.querySelector('form').addEventListener('submit', ev => {
 
     const removeButton = document.createElement('button');
     removeButton.innerText = '🗑';
+    removeButton.classList.add('remove-button');
     item.append(removeButton);
 
     removeButton.addEventListener('click', () => {
