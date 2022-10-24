@@ -1,0 +1,23 @@
+.container {
+    background-color: silver;
+}
+
+.header {
+    background-color: lightblue;
+}
+
+.left {
+    background-color: lightcoral;
+}
+
+.main {
+    background-color: lightpink;
+}
+
+.right {
+    background-color: lightseagreen;
+}
+
+.footer {
+    background-color: lightskyblue;
+}
