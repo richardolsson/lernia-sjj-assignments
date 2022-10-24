@@ -26,7 +26,16 @@ let numCompleted = 0;
 const todoList = document.querySelector('ul');
 
 document.querySelector('form').addEventListener('submit', ev => {
+    ev.preventDefault();
+
     const text = document.querySelector('input').value;
+    if (text.length == 0) {
+        document.querySelector('.error').classList.add('active');
+        return;
+    } else {
+        document.querySelector('.error').classList.remove('active');
+    }
+
     const item = document.createElement('li');
     item.classList.add('todo-item');
 
@@ -55,5 +64,4 @@ document.querySelector('form').addEventListener('submit', ev => {
     });
 
     todoList.append(item);
-    ev.preventDefault();
 });
