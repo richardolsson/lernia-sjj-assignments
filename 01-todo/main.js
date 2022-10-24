@@ -26,14 +26,17 @@ let numCompleted = 0;
 const todoList = document.querySelector('ul');
 
 document.querySelector('form').addEventListener('submit', ev => {
+    document.querySelector('.error').classList.remove('active');
     ev.preventDefault();
 
     const text = document.querySelector('input').value;
     if (text.length == 0) {
-        document.querySelector('.error').classList.add('active');
+        // Wait 20ms before adding the class, to be sure
+        // that it was first remove (above).
+        setTimeout(() => {
+            document.querySelector('.error').classList.add('active');
+        }, 20)
         return;
-    } else {
-        document.querySelector('.error').classList.remove('active');
     }
 
     const item = document.createElement('li');
