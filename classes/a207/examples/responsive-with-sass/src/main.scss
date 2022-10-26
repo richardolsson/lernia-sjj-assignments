@@ -1,3 +1,5 @@
+@import 'mixins';
+
 $wide-screen-breakpoint: 720px;
 $card-bg-color: white;
 
@@ -9,25 +11,6 @@ html {
     font-size: 24px;
 }
 
-@mixin card {
-    background-color: $card-bg-color;
-    margin: 10px 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-}
-
-@mixin wide-screen {
-    @media screen and (min-width: $wide-screen-breakpoint) {
-        @content;
-    }
-}
-
-@mixin responsive-box($col-span) {
-    @include wide-screen {
-        grid-column: span $col-span;
-        margin: 0;
-    }
-}
 
 .header {
     @include card;
