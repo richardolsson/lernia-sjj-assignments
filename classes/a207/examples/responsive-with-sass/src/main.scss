@@ -9,25 +9,23 @@ html {
     font-size: 24px;
 }
 
-.header {
+@mixin card {
     background-color: $card-bg-color;
     margin: 10px 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
 }
 
+.header {
+    @include card;
+}
+
 .left {
-    background-color:  $card-bg-color;
-    margin: 10px 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    @include card;
 }
 
 .main {
-    background-color:  $card-bg-color;
-    margin: 10px 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    @include card;
 
     figure {
         padding: 0;
@@ -46,17 +44,11 @@ html {
 
 
 .right {
-    background-color:  $card-bg-color;
-    margin: 10px 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    @include card;
 }
 
 .footer {
-    background-color:  $card-bg-color;
-    margin: 10px 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    @include card;
 
     a {
         display: block;
@@ -67,8 +59,6 @@ html {
         }
     }
 }
-
-
 
 h1 {
     font-size: 2rem;
