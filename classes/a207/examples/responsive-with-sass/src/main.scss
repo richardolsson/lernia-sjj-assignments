@@ -22,28 +22,26 @@ html {
     }
 }
 
+@mixin responsive-box($col-span) {
+    @include wide-screen {
+        grid-column: span $col-span;
+        margin: 0;
+    }
+}
+
 .header {
     @include card;
-
-    @include wide-screen {
-        grid-column: span 12;
-    }
+    @include responsive-box(12);
 }
 
 .left {
     @include card;
-
-    @include wide-screen {
-        grid-column: span 3;
-    }
+    @include responsive-box(3);
 }
 
 .main {
     @include card;
-
-    @include wide-screen {
-        grid-column: span 6;
-    }
+    @include responsive-box(6);
 
     figure {
         padding: 0;
@@ -63,18 +61,14 @@ html {
 
 .right {
     @include card;
-
-    @include wide-screen {
-        grid-column: span 3;
-    }
+    @include responsive-box(3);
 }
 
 .footer {
     @include card;
+    @include responsive-box(12);
 
     @include wide-screen {
-        grid-column: span 12;
-
         ul {
             display: flex;
         }
