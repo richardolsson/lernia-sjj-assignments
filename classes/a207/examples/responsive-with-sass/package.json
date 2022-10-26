@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sass": "sass --no-source-map src/main.scss main.css",
+    "watch": "sass --no-source-map --watch src/main.scss main.css"
   },
   "author": "",
   "license": "ISC",
