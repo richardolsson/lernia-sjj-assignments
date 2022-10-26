@@ -24,6 +24,15 @@ body {
     padding: 10px;
 }
 
+.main figure {
+    padding: 0;
+    margin: 0;
+}
+
+figure img {
+    width: 100%;
+}
+
 .main figure span {
     display: block;
 }
