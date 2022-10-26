@@ -1,3 +1,6 @@
+$wide-screen-breakpoint: 720px;
+$card-bg-color: white;
+
 body {
     background-color: #fdd;
 }
@@ -7,21 +10,21 @@ html {
 }
 
 .header {
-    background-color: white;
+    background-color: $card-bg-color;
     margin: 10px 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
 }
 
 .left {
-    background-color: white;
+    background-color:  $card-bg-color;
     margin: 10px 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
 }
 
 .main {
-    background-color: white;
+    background-color:  $card-bg-color;
     margin: 10px 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
@@ -43,14 +46,14 @@ html {
 
 
 .right {
-    background-color: white;
+    background-color:  $card-bg-color;
     margin: 10px 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
 }
 
 .footer {
-    background-color: white;
+    background-color:  $card-bg-color;
     margin: 10px 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
@@ -75,7 +78,7 @@ code {
     font-size: 0.8em;
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: $wide-screen-breakpoint) {
     .container {
         display: grid;
         gap: 10px;
