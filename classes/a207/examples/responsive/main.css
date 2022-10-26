@@ -1,0 +1,48 @@
+body {
+    background-color: #fdd;
+    font-size: 24px;
+}
+
+.header {
+    background-color: white;
+    margin: 10px 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 10px;
+}
+
+.left {
+    background-color: white;
+    margin: 10px 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 10px;
+}
+
+.main {
+    background-color: white;
+    margin: 10px 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 10px;
+}
+
+.main figure span {
+    display: block;
+}
+
+.right {
+    background-color: white;
+    margin: 10px 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 10px;
+}
+
+.footer {
+    background-color: white;
+    margin: 10px 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 10px;
+}
+
+.footer a {
+    display: block;
+    padding: 10px 0;
+}
