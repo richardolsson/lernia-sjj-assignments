@@ -25,7 +25,9 @@ Lägg till TODO
 let numCompleted = 0;
 const todoList = document.querySelector('ul');
 
-document.querySelector('form').addEventListener('submit', ev => {
+document.querySelector('form').addEventListener('submit', handleSubmit);
+
+function handleSubmit(ev) {
     document.querySelector('.error').classList.remove('active');
     ev.preventDefault();
 
@@ -67,4 +69,4 @@ document.querySelector('form').addEventListener('submit', ev => {
     });
 
     todoList.append(item);
-});
+}
