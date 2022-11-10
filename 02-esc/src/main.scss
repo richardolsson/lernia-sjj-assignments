@@ -9,10 +9,15 @@ img {
 }
 
 $bp-medium: 600px;
+$bp-large: 1000px;
 $c-darkblue: #011827;
+$c-blue: #36769D;
 $c-lightblue: #8ACFE5;
+$c-brightred: #E3170A;
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+@import "misc.scss";
 @import "sections/header.scss";
 @import "sections/main-nav.scss";
+@import "sections/hero.scss";

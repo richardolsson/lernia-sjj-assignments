@@ -1,0 +1,42 @@
+.hero {
+    img {
+        width: 100%;
+        min-height: 40vh;
+        object-fit: cover;
+
+        @media (min-width: $bp-medium) {
+            max-height: 60vh;
+        }
+    }
+}
+
+.hero-cta {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 1em 3em;
+
+    .button.primary {
+        background-color: transparent;
+        color: $c-blue;
+        text-decoration: underline;
+        margin: 1em 0;
+    }
+}
+
+@media (min-width: $bp-medium) {
+    .hero-cta {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1em;
+        margin: 0;
+        position: relative;
+        top: -2em;
+
+        .button.primary {
+            background-color: $c-brightred;
+            margin: 0;
+            text-decoration: none;
+            color: white;
+        }
+    }
+}
