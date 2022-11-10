@@ -1,0 +1,50 @@
+footer {
+    background-color: $c-darkblue;
+    color: white;
+
+    padding: 1rem 1rem 3rem;
+
+    h2 {
+        font-size: 1.2em;
+        margin: 2em 0 0.3em;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    .misc-link + .play-link {
+        margin-top: 1em;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+            color: $c-lightblue;
+        }
+    }
+
+    @media (min-width: $bp-large) {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        font-size: 0.7rem;
+
+        .footer-summary {
+            grid-column: 2 / 7;
+        }
+
+        .footer-sitemap {
+            grid-column: 8 / 10;
+        }
+
+        .footer-social {
+            grid-column: 10 / 12;
+        }
+    }
+}
