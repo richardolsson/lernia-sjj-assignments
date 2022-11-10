@@ -14,5 +14,12 @@ header {
         background-image: url('logo.png');
         background-size: 120px auto;
         background-repeat: no-repeat;
+
+        @media (min-width: $bp-medium) {
+            width: auto;
+            font-size: 40px;
+            padding-left: 140px;
+            padding-top: 30px;
+        }
     }
 }
