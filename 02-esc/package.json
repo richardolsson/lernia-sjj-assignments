@@ -1,0 +1,15 @@
+{
+  "name": "02-esc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --no-source-map src/main.scss static/main.css",
+    "watch": "sass --no-source-map --watch src/main.scss static/main.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.56.1"
+  }
+}
