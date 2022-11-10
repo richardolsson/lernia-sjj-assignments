@@ -1,0 +1,31 @@
+@mixin section {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin responsive-ctas {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 1em 3em;
+
+    .button.primary {
+        background-color: transparent;
+        color: $c-blue;
+        text-decoration: underline;
+        margin: 1em 0;
+    }
+
+    @media (min-width: $bp-medium) {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1em;
+
+        .button.primary {
+            background-color: $c-brightred;
+            margin: 0;
+            text-decoration: none;
+            color: white;
+        }
+    }
+}

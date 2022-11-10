@@ -1,3 +1,7 @@
+.testimonials {
+    @include section;
+}
+
 .testimonial-item {
     list-style-type: none;
     display: none;

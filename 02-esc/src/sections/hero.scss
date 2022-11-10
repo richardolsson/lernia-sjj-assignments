@@ -11,32 +11,12 @@
 }
 
 .hero-cta {
-    display: flex;
-    flex-direction: column-reverse;
-    margin: 1em 3em;
+    @include responsive-ctas;
 
-    .button.primary {
-        background-color: transparent;
-        color: $c-blue;
-        text-decoration: underline;
-        margin: 1em 0;
-    }
-}
+    position: relative;
+    top: -2em;
 
-@media (min-width: $bp-medium) {
-    .hero-cta {
-        flex-direction: row;
-        justify-content: center;
-        gap: 1em;
+    @media (min-width: $bp-medium) {
         margin: 0;
-        position: relative;
-        top: -2em;
-
-        .button.primary {
-            background-color: $c-brightred;
-            margin: 0;
-            text-decoration: none;
-            color: white;
-        }
     }
 }

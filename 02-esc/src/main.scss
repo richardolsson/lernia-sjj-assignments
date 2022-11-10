@@ -18,7 +18,9 @@ img {
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 @import "misc.scss";
+@import "mixins.scss";
 @import "sections/header.scss";
 @import "sections/main-nav.scss";
 @import "sections/hero.scss";
 @import "sections/testimonials.scss";
+@import "sections/challenges.scss";
