@@ -1,0 +1,45 @@
+menu,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+.button {
+    display: block;
+    border-radius: 4px;
+    padding: 1em 2em;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    border-width: 0;
+    font-size: 1.1rem;
+
+    &.primary {
+        background-color: $c-brightred;
+        color: white;
+    }
+
+    &.secondary {
+        background-color: $c-lightblue;
+        color: $c-darkblue;
+    }
+}
+
+.rating {
+    display: flex;
+    gap: 0.6em;
+
+    .rating-star {
+        list-style-type: none;
+        width: 23px;
+        height: 26px;
+        background-image: url(star-inactive.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        &.active {
+            background-image: url(star-active.png);
+        }
+    }
+}

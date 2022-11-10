@@ -1,0 +1,38 @@
+.testimonials {
+    @include section;
+}
+
+.testimonial-item {
+    list-style-type: none;
+    display: none;
+
+    &:first-child {
+        display: block;
+    }
+
+    figure {
+        display: grid;
+        grid-template-columns: 74px auto;
+        column-gap: 1em;
+
+        blockquote {
+            margin: 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 0.5em;
+        }
+
+        figcaption {
+            grid-column: 2 / 3;
+        }
+    }
+}
+
+@media (min-width: $bp-large) {
+    .testimonial-list {
+        display: flex;
+    }
+    .testimonial-item {
+        display: block;
+    }
+}

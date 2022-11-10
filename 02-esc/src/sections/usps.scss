@@ -1,0 +1,48 @@
+.usps {
+    @include section;
+
+    .usp {
+        margin: 0 0 2rem;
+
+        .usp-image {
+            object-fit: cover;
+        }
+
+        .usp-title,
+        .usp-intro,
+        .button {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+        .button {
+            margin-top: 2rem;
+        }
+    }
+
+    @media (min-width: $bp-medium) {
+        .usp {
+            display: flex;
+            flex-direction: row;
+            font-size: 0.8rem;
+            margin-bottom: 0;
+
+            .button {
+                margin-top: 0;
+                font-size: 0.8rem;
+            }
+
+            .usp-image {
+                max-width: 50%;
+            }
+
+            .usp-info {
+                padding: 2rem;
+            }
+
+            &:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+        }
+    }
+}

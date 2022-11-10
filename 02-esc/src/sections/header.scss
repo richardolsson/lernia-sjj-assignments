@@ -1,0 +1,24 @@
+header {
+    background-color: $c-darkblue;
+    color: white;
+    padding: 1em;
+
+    h1 {
+        margin: 0;
+        padding: 0 0 0 130px;
+        font-weight: 700;
+        font-size: 22px;
+        width: 120px;
+
+        background-image: url('logo.png');
+        background-size: 120px auto;
+        background-repeat: no-repeat;
+
+        @media (min-width: $bp-medium) {
+            width: auto;
+            font-size: 40px;
+            padding-left: 140px;
+            padding-top: 30px;
+        }
+    }
+}

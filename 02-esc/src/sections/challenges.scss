@@ -1,0 +1,64 @@
+.challenges {
+    margin: 3rem 0;
+
+    @include section;
+
+    h2 {
+        text-align: center;
+    }
+}
+
+.challenge-list {
+    display: flex;
+    overflow-x: scroll;
+}
+
+.challenge-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-width: 360px;
+
+    border-radius: 4px;
+    margin: 1em;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+
+    .challenge-title,
+    .challenge-description,
+    .rating,
+    .challenge-meta,
+    .button {
+        margin: 0.5rem;
+    }
+
+    .challenge-image {
+        grid-column: span 2;
+    }
+
+    .challenge-title {
+        grid-column: span 2;
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-top: 0.8em;
+        margin-bottom: 0;
+    }
+
+    .challenge-meta {
+        text-align: right;
+    }
+
+    .challenge-description {
+        grid-column: span 2;
+    }
+
+    .button {
+        grid-column: 2 / 3;
+        font-size: 0.7em;
+        padding: 1em;
+    }
+}
+
+.challenges-cta {
+    @include responsive-ctas;
+    margin: 4rem 3rem;
+}

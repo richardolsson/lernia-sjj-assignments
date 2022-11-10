@@ -1,0 +1,22 @@
+.hero {
+    img {
+        width: 100%;
+        min-height: 40vh;
+        object-fit: cover;
+
+        @media (min-width: $bp-medium) {
+            max-height: 60vh;
+        }
+    }
+}
+
+.hero-cta {
+    @include responsive-ctas;
+
+    position: relative;
+    top: -2em;
+
+    @media (min-width: $bp-medium) {
+        margin: 0;
+    }
+}

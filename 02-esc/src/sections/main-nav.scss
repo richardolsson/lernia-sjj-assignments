@@ -1,0 +1,38 @@
+.main-nav {
+    display: none;
+
+    a {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: $bp-medium) {
+    .main-nav {
+        display: block;
+        background-color: $c-darkblue;
+        padding-top: 2rem;
+    }
+
+    .main-menu {
+        margin: 0;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .main-menu-item {
+        list-style-type: none;
+
+        a {
+            display: block;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 0.8em 1.5em;
+            transition: color 0.2s;
+
+            &:hover {
+                color: $c-lightblue;
+            }
+        }
+    }
+}
