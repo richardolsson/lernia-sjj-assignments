@@ -1,2 +1,14 @@
-html {
+html, body {
+    margin: 0;
+    padding: 0;
 }
+
+img {
+    max-width: 100%;
+}
+
+$c-darkblue: #011827;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+@import "sections/header.scss";
