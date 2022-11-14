@@ -1,9 +1,112 @@
 .main-nav {
-    display: none;
-
     a {
         font-size: 1rem;
     }
+}
+
+.main-nav-toggle {
+    display: none;
+}
+
+@media (max-width: $bp-medium) {
+    @mixin burger-menu-line {
+        display: block;
+        content: "";
+        width: 3em;
+        height: 0.4em;
+        border-radius: 0.2em;
+        background-color: white;
+    }
+
+    .main-nav-toggle {
+        display: block;
+        position: absolute;
+        top: 1em;
+        right: 1em;
+        @include burger-menu-line;
+
+        /* Reset button styling */
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+        display: block;
+
+        &::before {
+            @include burger-menu-line;
+            position: relative;
+            top: 0.8em;
+        }
+
+        &::after {
+            @include burger-menu-line;
+            position: relative;
+            top: 1.2em;
+        }
+    }
+
+    .main-menu {
+        display: none;
+    }
+
+    .main-nav.open {
+        display: block;
+        background-color: rgba(white, 0.5);
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 900;
+
+        .main-nav-toggle {
+            z-index: 1001;
+            transform: rotate(45deg);
+
+            top: 3em;
+            right: 2em;
+
+            &::before {
+                top: 0;
+                transform: rotate(90deg);
+            }
+
+            &::after {
+                display: none;
+            }
+        }
+
+        .main-menu {
+            z-index: 1;
+            background-color: $c-darkblue;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 1em rgba(black, 0.4);
+
+            position: absolute;
+            top: 1em;
+            left: 1em;
+            right: 1em;
+            bottom: 1em;
+            z-index: 1000;
+        }
+
+        .main-menu-item {
+            list-style-type: none;
+            padding: 0;
+            margin: 1em 0;
+
+            a {
+                color: white;
+                font-size: 1.5em;
+                font-weight: 700;
+                text-decoration: none;
+            }
+        }
+    }
+
 }
 
 @media (min-width: $bp-medium) {

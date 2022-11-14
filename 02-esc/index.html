@@ -14,6 +14,7 @@
         <h1>Hacker Escape Rooms</h1>
     </header>
     <nav class="main-nav">
+        <button class="main-nav-toggle"></button>
         <menu class="main-menu">
             <li class="main-menu-item"><a href="">Play online</a></li>
             <li class="main-menu-item"><a href="">Play on-site</a></li>
@@ -194,6 +195,11 @@
             </menu>
         </nav>
     </footer>
+    <script>
+        document.querySelector('.main-nav-toggle').addEventListener('click', () => {
+            document.querySelector('.main-nav').classList.toggle('open');
+        })
+    </script>
 </body>
 
 </html>
