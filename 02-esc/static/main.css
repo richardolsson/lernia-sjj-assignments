@@ -81,13 +81,123 @@ header h1 {
   }
 }
 
-.main-nav {
-  display: none;
-}
 .main-nav a {
   font-size: 1rem;
 }
 
+.main-nav-toggle {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .main-nav-toggle {
+    display: block;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    display: block;
+    content: "";
+    width: 3em;
+    height: 0.4em;
+    border-radius: 0.2em;
+    background-color: white;
+    /* Reset button styling */
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+    display: block;
+    transition: top 0.5s, right 0.5s, transform 0.5s;
+  }
+  .main-nav-toggle::before {
+    display: block;
+    content: "";
+    width: 3em;
+    height: 0.4em;
+    border-radius: 0.2em;
+    background-color: white;
+    position: relative;
+    top: 0.8em;
+    transition: transform 0.5s;
+  }
+  .main-nav-toggle::after {
+    display: block;
+    content: "";
+    width: 3em;
+    height: 0.4em;
+    border-radius: 0.2em;
+    background-color: white;
+    position: relative;
+    top: 1.2em;
+  }
+  .main-menu {
+    display: none;
+  }
+  .main-nav {
+    background-color: rgba(255, 255, 255, 0);
+    transition: background-color 0.5s;
+  }
+  .main-nav.open {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 900;
+  }
+  .main-nav.open .main-nav-toggle {
+    z-index: 1001;
+    transform: rotate(225deg);
+    top: 3em;
+    right: 2em;
+  }
+  .main-nav.open .main-nav-toggle::before {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  .main-nav.open .main-nav-toggle::after {
+    display: none;
+  }
+  .main-nav.open .main-menu {
+    z-index: 1;
+    background-color: #011827;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    right: 1em;
+    bottom: 1em;
+    z-index: 1000;
+    animation: main-menu_reveal 0.3s 0.2s;
+    animation-fill-mode: backwards;
+  }
+  @keyframes main-menu_reveal {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .main-nav.open .main-menu-item {
+    list-style-type: none;
+    padding: 0;
+    margin: 1em 0;
+  }
+  .main-nav.open .main-menu-item a {
+    color: white;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-decoration: none;
+  }
+}
 @media (min-width: 600px) {
   .main-nav {
     display: block;
