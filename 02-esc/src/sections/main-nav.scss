@@ -31,10 +31,14 @@
         border-width: 0;
         display: block;
 
+        transition: top 0.5s, right 0.5s, transform 0.5s;
+
         &::before {
             @include burger-menu-line;
             position: relative;
             top: 0.8em;
+
+            transition: transform 0.5s;
         }
 
         &::after {
@@ -46,6 +50,11 @@
 
     .main-menu {
         display: none;
+    }
+
+    .main-nav {
+        background-color: rgba(white, 0);
+        transition: background-color 0.5s;
     }
 
     .main-nav.open {
@@ -61,7 +70,7 @@
 
         .main-nav-toggle {
             z-index: 1001;
-            transform: rotate(45deg);
+            transform: rotate(225deg);
 
             top: 3em;
             right: 2em;
@@ -91,6 +100,20 @@
             right: 1em;
             bottom: 1em;
             z-index: 1000;
+
+            animation: main-menu_reveal 0.3s 0.2s;
+            animation-fill-mode: backwards;
+        }
+
+        @keyframes main-menu_reveal {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1.0);
+            }
         }
 
         .main-menu-item {
@@ -106,7 +129,6 @@
             }
         }
     }
-
 }
 
 @media (min-width: $bp-medium) {
