@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="outer">
+        <ul id="inner">
+            <li onclick="eventFromAttribute()">Click me</li>
+            <li id="item2">Click me too</li>
+            <li id="item3">Click me three</li>
+        </ul>
+    </div>
+    <script>
+        function eventFromAttribute() {
+            console.log('event from attribute');
+        }
+
+        function eventFromProperty() {
+            console.log('event from property');
+        }
+
+        const item2 = document.getElementById('item2');
+        item2.onclick = eventFromProperty;
+
+        function eventFromListener() {
+            console.log('event from listener');
+        }
+
+        const item3 = document.getElementById('item3');
+        item3.addEventListener('click', eventFromListener);
+    </script>
+</body>
+</html>
