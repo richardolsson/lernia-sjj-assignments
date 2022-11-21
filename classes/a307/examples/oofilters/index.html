@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        async function init() {
+            const ctr = document.querySelector('#container');
+
+            const challengeList = new ChallengeList();
+            const ul = await challengeList.render();
+            ctr.append(ul);
+        }
+
+        init();
+    </script>
+</body>
+</html>
