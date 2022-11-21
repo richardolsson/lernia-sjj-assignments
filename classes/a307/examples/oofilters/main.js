@@ -3,17 +3,29 @@ class ChallengeList {
         const api = new APIAdapter();
         const challenges = await api.loadChallenges();
 
-        const ul = document.createElement('ul');
+        const ctr = document.createElement('div');
 
-        /*
-        for (let i = 0; i < challenges.length; i++) {
-            const li = challenges[i].render();
-            ul.append(li);
+        this.filter = new FilterCollection(this);
+        const filterInterface = this.filter.render();
+        ctr.append(filterInterface);
+
+        this.ul = document.createElement('ul');
+        ctr.append(this.ul);
+
+        this.challenges = challenges;
+        this.update();
+
+        return ctr;
+    }
+
+    update() {
+        this.ul.innerHTML = '';
+        for (let i = 0; i < this.challenges.length; i++) {
+            if (this.filter.challengeDoesMatch(this.challenges[i])) {
+                const li = this.challenges[i].render();
+                this.ul.append(li);
+            }
         }
-        */
-        challenges.forEach(challenge => ul.append(challenge.render()));
-
-        return ul;
     }
 }
 
@@ -56,16 +68,74 @@ class Challenge {
 }
 
 class FilterCollection {
+    constructor(list) {
+        this.list;
+        this.filters = [
+            new RatingFilter(list),
+            new StringFilter(list),
+        ];
+    }
+
     challengeDoesMatch(challenge) {
+        return this.filters.every(filter => filter.challengeDoesMatch(challenge));
+    }
+
+    render() {
+        const ctr = document.createElement('div');
+        this.filters.forEach(filter => ctr.append(filter.render()));
+        return ctr;
     }
 }
 
 class RatingFilter {
+    constructor(list) {
+        this.minRating = 0;
+        this.list = list;
+    }
+
     challengeDoesMatch(challenge) {
+        if (challenge.data.rating >= this.minRating) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    render() {
+        const input = document.createElement('input');
+        input.type = 'range';
+        input.min = 0;
+        input.max = 5;
+        input.value = 0;
+        input.addEventListener('change', (ev) => {
+            this.minRating = ev.target.value;
+            this.list.update();
+        });
+        return input;
     }
 }
 
 class StringFilter {
+    constructor(list) {
+        this.list = list;
+        this.filterText = '';
+    }
+
     challengeDoesMatch(challenge) {
+        if (challenge.data.title.includes(this.filterText)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    render() {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.addEventListener('keyup', (ev) => {
+            this.filterText = ev.target.value;
+            this.list.update();
+        });
+        return input;
     }
 }
