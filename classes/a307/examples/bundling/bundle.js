@@ -1,0 +1,1 @@
+(()=>{"use strict";window.esc={},window.esc.initAll=function(){document.querySelector("button").addEventListener("click",(()=>{console.log("Doing first thing"),console.log("Do second thing")}))}})();
