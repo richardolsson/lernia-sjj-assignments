@@ -57,6 +57,20 @@ li {
   background-image: url(star-active.png);
 }
 
+.modal {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  right: 1em;
+  bottom: 1em;
+  background-color: white;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+  display: none;
+}
+.modal.open {
+  display: block;
+}
+
 header {
   background-color: #011827;
   color: white;

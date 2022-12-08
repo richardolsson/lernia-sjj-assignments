@@ -1,7 +1,10 @@
 import ChallengeCard from './ChallengeCard';
+import ChallengeEvent from './ChallengeEvent';
 
-export default class ChallengeGrid {
+export default class ChallengeGrid extends EventTarget {
     constructor(api, filter) {
+        super();
+
         this.api = api;
         this.filter = filter;
     }
@@ -27,7 +30,13 @@ export default class ChallengeGrid {
     update() {
         const filteredChallenges = this.filter.filter(this.challenges);
 
-        const cards = filteredChallenges.map(challenge => new ChallengeCard(challenge));
+        const cards = filteredChallenges.map(challenge => {
+            const card = new ChallengeCard(challenge)
+            card.addEventListener('select', (event) => {
+                this.dispatchEvent(new ChallengeEvent('select', event.challenge));
+            });
+            return card;
+        });
 
         this.ul.innerHTML = '';
         cards.forEach(card => {

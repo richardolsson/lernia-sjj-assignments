@@ -1,0 +1,14 @@
+.modal {
+    position: fixed;
+    top: 1em;
+    left: 1em;
+    right: 1em;
+    bottom: 1em;
+    background-color: white;
+    box-shadow: 0 0 1em rgba(0,0,0, 0.2);
+    display: none;
+
+    &.open {
+        display: block;
+    }
+}

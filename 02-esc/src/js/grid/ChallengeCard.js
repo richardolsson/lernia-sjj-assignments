@@ -1,5 +1,9 @@
-export default class ChallengeCard {
+import ChallengeEvent from './ChallengeEvent';
+
+export default class ChallengeCard extends EventTarget {
     constructor(data) {
+        super();
+
         this.data = data;
     }
 
@@ -58,6 +62,10 @@ export default class ChallengeCard {
         button.classList.add('primary');
         button.innerText = this.data.type == 'online'? 'Take challenge online' : 'Book this room';
         li.append(button);
+
+        button.addEventListener('click', () => {
+            this.dispatchEvent(new ChallengeEvent('select', this.data));
+        });
 
         return li;
     }
