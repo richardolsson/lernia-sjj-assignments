@@ -8,4 +8,11 @@ export default class APIAdapter {
         const data = await res.json();
         return data.challenges;
     }
+
+    async loadTimeSlots(challenge, date) {
+        const res = await fetch(this.baseUrl +
+            `/booking/available-times?challenge=${challenge.id}&date=${date}`);
+        const data = await res.json();
+        return data.slots;
+    }
 }

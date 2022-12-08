@@ -1,5 +1,6 @@
 export default class BookingModal {
-    constructor() {
+    constructor(api) {
+        this.api = api;
         this.step = 1;
     }
 
@@ -23,9 +24,16 @@ export default class BookingModal {
 
         if (this.step == 1) {
             this.dialog.innerText = 'step 1';
+
+            const input = document.createElement('input');
+            input.type = 'date';
+            input.value = new Date().toISOString().slice(0, 10);
+            this.dialog.append(input);
+
             const button = document.createElement('button');
             button.innerText = 'continue';
-            button.addEventListener('click', () => {
+            button.addEventListener('click', async () => {
+                this.timeSlots = await this.api.loadTimeSlots(this.challenge, input.value);
                 this.step = 2;
                 this.update();
             });
