@@ -13,6 +13,9 @@ export default class CombinedFilter extends EventTarget {
         });
 
         this.ratingFilter = new RatingFilter();
+        this.ratingFilter.addEventListener('change', () => {
+            this.dispatchEvent(new Event('change'));
+        });
 
         this.textFilter = new TextFilter();
         this.textFilter.addEventListener('change', () => {
@@ -35,6 +38,9 @@ export default class CombinedFilter extends EventTarget {
         const labelElem = this.labelFilter.render();
         div.append(labelElem);
 
+        const ratingElem = this.ratingFilter.render();
+        div.append(ratingElem);
+
         const typeElem = this.typeFilter.render();
         div.append(typeElem);
 
@@ -45,7 +51,8 @@ export default class CombinedFilter extends EventTarget {
     }
 
     filter(challenges) {
-        const labelFilteredChallenges = this.labelFilter.filter(challenges);
+        const ratingFilteredChallenges = this.ratingFilter.filter(challenges);
+        const labelFilteredChallenges = this.labelFilter.filter(ratingFilteredChallenges);
         const textFilteredChallenges = this.textFilter.filter(labelFilteredChallenges);
 
         return this.typeFilter.filter(textFilteredChallenges);
