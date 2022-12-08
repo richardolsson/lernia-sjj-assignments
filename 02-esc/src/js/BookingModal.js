@@ -33,7 +33,8 @@ export default class BookingModal {
             const button = document.createElement('button');
             button.innerText = 'continue';
             button.addEventListener('click', async () => {
-                this.timeSlots = await this.api.loadTimeSlots(this.challenge, input.value);
+                this.selectedDate = input.value;
+                this.timeSlots = await this.api.loadTimeSlots(this.challenge, this.selectedDate);
                 this.step = 2;
                 this.update();
             });
@@ -61,6 +62,14 @@ export default class BookingModal {
             }
             this.dialog.append(countSelect);
 
+            const nameInput = document.createElement('input');
+            nameInput.placeholder = 'Name';
+            this.dialog.append(nameInput);
+
+            const emailInput = document.createElement('input');
+            emailInput.placeholder = 'E-mail';
+            this.dialog.append(emailInput);
+
             const button = document.createElement('button');
             button.innerText = 'continue';
             button.addEventListener('click', () => {
@@ -68,6 +77,21 @@ export default class BookingModal {
                 this.update();
             });
             this.dialog.append(button);
+
+            button.addEventListener('click', async () => {
+                await this.api.createBooking(
+                    this.challenge,
+                    nameInput.value,
+                    emailInput.value,
+                    this.selectedDate,
+                    timeSelect.value,
+                    countSelect.value
+                );
+
+                this.step = 3;
+                this.update();
+            });
+
         } else if (this.step == 3) {
             this.dialog.innerText = 'Thank you!';
             const button = document.createElement('button');
