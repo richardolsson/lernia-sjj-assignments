@@ -4,10 +4,18 @@ export default class RatingFilter extends EventTarget {
 
         this.minWidget = new RatingWidget(0);
         this.minWidget.addEventListener('change', () => {
+            if (this.minWidget.value > this.maxWidget.value) {
+                this.maxWidget.update(this.minWidget.value);
+            }
+
             this.dispatchEvent(new Event('change'));
         });
         this.maxWidget = new RatingWidget(5);
         this.maxWidget.addEventListener('change', () => {
+            if (this.maxWidget.value < this.minWidget.value) {
+                this.minWidget.update(this.maxWidget.value);
+            }
+
             this.dispatchEvent(new Event('change'));
         });
     }
