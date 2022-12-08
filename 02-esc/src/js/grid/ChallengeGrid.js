@@ -30,6 +30,13 @@ export default class ChallengeGrid extends EventTarget {
     update() {
         const filteredChallenges = this.filter.filter(this.challenges);
 
+        this.ul.innerHTML = '';
+
+        if (filteredChallenges.length == 0) {
+            this.ul.innerText = 'No matching challenges';
+            return;
+        }
+
         const cards = filteredChallenges.map(challenge => {
             const card = new ChallengeCard(challenge)
             card.addEventListener('select', (event) => {
@@ -38,7 +45,6 @@ export default class ChallengeGrid extends EventTarget {
             return card;
         });
 
-        this.ul.innerHTML = '';
         cards.forEach(card => {
             const li = card.render();
             this.ul.append(li);
