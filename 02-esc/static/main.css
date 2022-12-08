@@ -324,6 +324,7 @@ header h1 {
 }
 
 .challenge-item {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-width: 360px;
@@ -339,6 +340,13 @@ header h1 {
 .challenge-item .challenge-meta,
 .challenge-item .button {
   margin: 0.5rem;
+}
+.challenge-item .challenge-type {
+  position: absolute;
+  background-color: #8ACFE5;
+  top: 0.5em;
+  right: 0.5em;
+  padding: 0.2em;
 }
 .challenge-item .challenge-image {
   grid-column: span 2;

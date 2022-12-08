@@ -19,6 +19,7 @@
 }
 
 .challenge-item {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-width: 360px;
@@ -35,6 +36,14 @@
     .challenge-meta,
     .button {
         margin: 0.5rem;
+    }
+
+    .challenge-type {
+        position: absolute;
+        background-color: $c-lightblue;
+        top: 0.5em;
+        right: 0.5em;
+        padding: 0.2em;
     }
 
     .challenge-image {

@@ -7,6 +7,11 @@ export default class ChallengeCard {
         const li = document.createElement('li');
         li.classList.add('challenge-item');
 
+        const typeIcon = document.createElement('div');
+        typeIcon.classList.add('challenge-type');
+        typeIcon.innerText = this.data.type;
+        li.append(typeIcon);
+
         const img = document.createElement('img');
         img.src = this.data.image;
         img.alt = this.data.title;
