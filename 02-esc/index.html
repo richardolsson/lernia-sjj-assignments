@@ -57,6 +57,8 @@
     <section class="challenges">
         <h2>Popular challenges right now</h2>
 
+        <div class="top-challenges"></div>
+
         <div class="challenges-cta">
             <a class="button primary" href="">Online challenges</a>
             <a class="button secondary" href="">On-site challenges</a>
@@ -137,7 +139,7 @@
         })
 
         const filter = new esc.TopThreeFilter();
-        const container = document.querySelector('.challenges');
+        const container = document.querySelector('.top-challenges');
         esc.init(filter, container);
     </script>
 </body>

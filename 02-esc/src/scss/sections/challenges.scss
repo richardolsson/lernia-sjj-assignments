@@ -8,15 +8,21 @@
     }
 }
 
-.challenge-list {
+.top-challenges .challenge-list {
     display: flex;
     overflow-x: scroll;
+}
+
+.all-challenges .challenge-list {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .challenge-item {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-width: 360px;
+    max-width: 400px;
 
     border-radius: 4px;
     margin: 1em;
