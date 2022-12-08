@@ -303,6 +303,17 @@ header h1 {
     display: block;
   }
 }
+.filter-label {
+  padding: 0.2em 0.4em;
+  border: 1px solid gray;
+  border-radius: 1em;
+  margin: 0.1em;
+  display: inline-block;
+}
+.filter-label.active {
+  background-color: silver;
+}
+
 .challenges {
   margin: 3rem 0;
   max-width: 1400px;

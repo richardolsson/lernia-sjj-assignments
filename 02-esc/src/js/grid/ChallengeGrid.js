@@ -15,6 +15,8 @@ export default class ChallengeGrid {
     async init() {
         this.challenges = await this.api.loadChallenges();
 
+        this.filter.init(this.challenges);
+
         this.filter.addEventListener('change', () => {
             this.update();
         });
