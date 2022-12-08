@@ -16,7 +16,9 @@ export default class ChallengeGrid {
         const challenges = await this.api.loadChallenges();
         console.log(challenges);
 
-        const cards = challenges.map(challenge => new ChallengeCard(challenge));
+        const filteredChallenges = this.filter.filter(challenges);
+
+        const cards = filteredChallenges.map(challenge => new ChallengeCard(challenge));
 
         this.ul.innerHTML = '';
         cards.forEach(card => {
