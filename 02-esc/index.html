@@ -56,71 +56,6 @@
     </section>
     <section class="challenges">
         <h2>Popular challenges right now</h2>
-        <ul class="challenge-list">
-            <li class="challenge-item">
-                <img class="challenge-image" alt="Hacker" src="static/hero.png">
-                <h3 class="challenge-title">Title of room (on-site)</h3>
-                <ul role="meter" class="rating" aria-label="rating"
-                    arial-valuemin="0" aria-valuemax="5" aria-valuenow="4"
-                    aria-valuetext="4 out of 5">
-
-                    <li class="rating-star active"></li>
-                    <li class="rating-star active"></li>
-                    <li class="rating-star active"></li>
-                    <li class="rating-star active"></li>
-                    <li class="rating-star"></li>
-                </ul>
-                <small class="challenge-meta">2-6 participants</small>
-                <p class="challenge-description">
-                    Praeterea, ex culpa non invenies unum aut non accusatis
-                    unum. Et nihil inuitam. Nemo nocere tibi
-                    erit, et non inimicos, et
-                </p>
-                <button class="button primary">Book this room</button>
-            </li>
-            <li class="challenge-item">
-                <img class="challenge-image" alt="Hacker" src="static/hero.png">
-                <h3 class="challenge-title">Title of room (on-site)</h3>
-                <ul role="meter" class="rating" aria-label="rating"
-                    arial-valuemin="0" aria-valuemax="5" aria-valuenow="4"
-                    aria-valuetext="4 out of 5">
-
-                    <li class="rating-star active"></li>
-                    <li class="rating-star active"></li>
-                    <li class="rating-star active"></li>
-                    <li class="rating-star active"></li>
-                    <li class="rating-star"></li>
-                </ul>
-                <small class="challenge-meta">2-6 participants</small>
-                <p class="challenge-description">
-                    Praeterea, ex culpa non invenies unum aut non accusatis
-                    unum. Et nihil inuitam. Nemo nocere tibi
-                    erit, et non inimicos, et
-                </p>
-                <button class="button primary">Book this room</button>
-            </li>
-            <li class="challenge-item">
-                <img class="challenge-image" alt="Hacker" src="static/hero.png">
-                <h3 class="challenge-title">Title of room (on-site)</h3>
-                <ul role="meter" class="rating" aria-label="rating"
-                    arial-valuemin="0" aria-valuemax="5" aria-valuenow="4"
-                    aria-valuetext="4 out of 5">
-
-                    <li class="rating-star active"></li>
-                    <li class="rating-star active"></li>
-                    <li class="rating-star active"></li>
-                    <li class="rating-star active"></li>
-                    <li class="rating-star"></li>
-                </ul>
-                <small class="challenge-meta">2-6 participants</small>
-                <p class="challenge-description">
-                    Praeterea, ex culpa non invenies unum aut non accusatis
-                    unum. Et nihil inuitam. Nemo nocere tibi
-                    erit, et non inimicos, et
-                </p>
-                <button class="button primary">Book this room</button>
-            </li>
-        </ul>
 
         <div class="challenges-cta">
             <a class="button primary" href="">Online challenges</a>
@@ -200,6 +135,10 @@
         document.querySelector('.main-nav-toggle').addEventListener('click', () => {
             document.querySelector('.main-nav').classList.toggle('open');
         })
+
+        const filter = new esc.TopThreeFilter();
+        const container = document.querySelector('.challenges');
+        esc.init(filter, container);
     </script>
 </body>
 
