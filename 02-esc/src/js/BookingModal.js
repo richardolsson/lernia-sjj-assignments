@@ -37,9 +37,30 @@ export default class BookingModal {
                 this.step = 2;
                 this.update();
             });
+
             this.dialog.append(button);
         } else if (this.step == 2) {
             this.dialog.innerText = 'step 2';
+
+            const timeSelect = document.createElement('select');
+            this.timeSlots.forEach(time => {
+                const option = document.createElement('option');
+                option.value = time;
+                option.innerText = time;
+                timeSelect.append(option);
+            });
+            this.dialog.append(timeSelect);
+
+            const countSelect = document.createElement('select');
+            const { minParticipants, maxParticipants } = this.challenge;
+            for (let i = minParticipants; i <= maxParticipants; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.innerText = `${i} participants`;
+                countSelect.append(option);
+            }
+            this.dialog.append(countSelect);
+
             const button = document.createElement('button');
             button.innerText = 'continue';
             button.addEventListener('click', () => {

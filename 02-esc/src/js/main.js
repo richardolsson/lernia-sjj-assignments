@@ -10,7 +10,7 @@ window.esc = {
 
     init: (filter, gridContainer, modalContainer) => {
         const api = new APIAdapter();
-        const modal = new BookingModal();
+        const modal = new BookingModal(api);
         const grid = new ChallengeGrid(api, filter);
 
         grid.addEventListener('select', (event) => {
