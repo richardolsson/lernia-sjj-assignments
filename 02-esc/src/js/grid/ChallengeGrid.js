@@ -13,10 +13,17 @@ export default class ChallengeGrid {
     }
 
     async init() {
-        const challenges = await this.api.loadChallenges();
-        console.log(challenges);
+        this.challenges = await this.api.loadChallenges();
 
-        const filteredChallenges = this.filter.filter(challenges);
+        this.filter.addEventListener('change', () => {
+            this.update();
+        });
+
+        this.update();
+    }
+
+    update() {
+        const filteredChallenges = this.filter.filter(this.challenges);
 
         const cards = filteredChallenges.map(challenge => new ChallengeCard(challenge));
 

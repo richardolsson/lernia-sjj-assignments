@@ -26,6 +26,8 @@
     <section class="challenges">
         <h2>Our challenges</h2>
 
+        <div class="challenge-filters"></div>
+
         <div class="all-challenges"></div>
     </section>
     <footer>
@@ -62,6 +64,9 @@
         })
 
         const filter = new esc.CombinedFilter();
+        const filterElem = filter.render();
+        document.querySelector('.challenge-filters').append(filterElem);
+
         const container = document.querySelector('.all-challenges');
         esc.init(filter, container);
     </script>
