@@ -1,0 +1,102 @@
+@startuml page-loads-data
+title Option 1: pages load data
+
+cloud API
+file indexPage
+file challengesPage
+rectangle APIAdapter
+rectangle ChallengeCard
+rectangle ChallengeGrid
+rectangle TypeFilter
+rectangle RatingFilter
+rectangle LabelFilter
+rectangle TextFilter
+rectangle CombinedFilter
+rectangle BookingModal
+
+CombinedFilter <-- TypeFilter: part of
+CombinedFilter <-- RatingFilter: part of
+CombinedFilter <-- LabelFilter: part of
+CombinedFilter <-- TextFilter: part of
+
+ChallengeGrid --> ChallengeCard: contains
+
+ChallengeGrid --> CombinedFilter: uses
+
+indexPage --> ChallengeGrid
+challengesPage --> ChallengeGrid
+
+APIAdapter --> API: Loads data from
+
+APIAdapter <-- challengesPage: uses to load data
+APIAdapter <-- indexPage: uses to load data
+
+@enduml
+
+@startuml list-loads-data-abstract
+title Option 2: Lists load data, pages filter (abstract role Filter)
+
+cloud API
+file indexPage
+file challengesPage
+rectangle APIAdapter
+rectangle ChallengeCard
+rectangle ChallengeGrid
+rectangle Filter
+rectangle BookingModal
+
+ChallengeGrid --> ChallengeCard: contains
+
+ChallengeGrid --> BookingModal: creates
+BookingModal --> APIAdapter: loads/creates booking
+
+challengesPage --> Filter: creates
+challengesPage --> ChallengeGrid: passes filter
+
+indexPage --> Filter: creates
+indexPage --> ChallengeGrid: passes filter
+
+APIAdapter --> API: Loads data from
+
+ChallengeGrid --> APIAdapter: uses to load data
+
+@enduml
+
+@startuml list-loads-data
+title Option 2: Lists load data, pages filter
+
+cloud API
+file indexPage
+file challengesPage
+rectangle APIAdapter
+rectangle ChallengeCard
+rectangle ChallengeGrid
+rectangle TypeFilter
+rectangle RatingFilter
+rectangle LabelFilter
+rectangle TextFilter
+rectangle CombinedFilter
+rectangle TopThreeFilter
+rectangle BookingModal
+
+CombinedFilter <-- TypeFilter: part of
+CombinedFilter <-- RatingFilter: part of
+CombinedFilter <-- LabelFilter: part of
+CombinedFilter <-- TextFilter: part of
+
+ChallengeGrid --> ChallengeCard: contains
+
+ChallengeGrid --> BookingModal: creates
+BookingModal --> APIAdapter: loads/creates booking
+
+challengesPage --> CombinedFilter: creates
+challengesPage --> ChallengeGrid: passes filter
+
+indexPage --> TopThreeFilter: creates
+indexPage --> ChallengeGrid: passes filter
+
+APIAdapter --> API: Loads data from
+
+ChallengeGrid --> APIAdapter: uses to load data
+
+@enduml
