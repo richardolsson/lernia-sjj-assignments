@@ -71,7 +71,11 @@ class RatingWidget extends EventTarget {
 
         this.starElems.forEach((elem, index) => {
             elem.addEventListener('click', () => {
-                this.update(index + 1);
+                if (index == 0 && this.value == 1) {
+                    this.update(0);
+                } else {
+                    this.update(index + 1);
+                }
                 this.dispatchEvent(new Event('change'));
             });
         });
