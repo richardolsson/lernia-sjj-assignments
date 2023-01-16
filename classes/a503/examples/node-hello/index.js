@@ -1,3 +1,3 @@
 import sayHello from './lib/hello.js';
 
-sayHello();
+sayHello(process.argv[2]);
