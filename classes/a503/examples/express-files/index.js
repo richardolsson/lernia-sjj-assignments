@@ -9,6 +9,16 @@ app.get('/', async (req, res) => {
     res.send(buf);
 });
 
+app.get('/:name', async (req, res) => {
+    const name = req.params.name;
+
+    const buf = await fs.readFile('./static/index.html');
+    const html = buf.toString().replace('world', name);
+
+    res.type('html');
+    res.send(html);
+});
+
 /*
 app.get('/static/*', async (req, res) => {
     const path = req.path;
