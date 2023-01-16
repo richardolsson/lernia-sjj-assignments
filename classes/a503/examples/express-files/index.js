@@ -9,6 +9,7 @@ app.get('/', async (req, res) => {
     res.send(buf);
 });
 
+/*
 app.get('/static/*', async (req, res) => {
     const path = req.path;
     try {
@@ -20,5 +21,8 @@ app.get('/static/*', async (req, res) => {
         res.status(404).end();
     }
 });
+*/
+
+app.use('/static', express.static('./static'));
 
 app.listen(3080);
