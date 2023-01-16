@@ -9,10 +9,15 @@ app.get('/', async (req, res) => {
     res.send(buf);
 });
 
-app.get('/style.css', async (req, res) => {
-    const buf = await fs.readFile('./static/style.css');
-    res.type('css');
-    res.send(buf);
+app.get('/:file', async (req, res) => {
+    try {
+        const buf = await fs.readFile('./static/' + req.params.file);
+        const fields = req.params.file.split('.');
+        res.type(fields.pop());
+        res.send(buf);
+    } catch (err) {
+        res.status(404).end();
+    }
 });
 
 app.listen(3080);
