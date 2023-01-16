@@ -9,10 +9,11 @@ app.get('/', async (req, res) => {
     res.send(buf);
 });
 
-app.get('/:file', async (req, res) => {
+app.get('/static/*', async (req, res) => {
+    const path = req.path;
     try {
-        const buf = await fs.readFile('./static/' + req.params.file);
-        const fields = req.params.file.split('.');
+        const buf = await fs.readFile('./' + path);
+        const fields = path.split('.');
         res.type(fields.pop());
         res.send(buf);
     } catch (err) {
