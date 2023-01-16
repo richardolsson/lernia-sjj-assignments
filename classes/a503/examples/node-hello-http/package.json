@@ -1,3 +1,9 @@
 {
-    "type": "module"
+    "scripts": {
+        "start": "nodemon ."
+    },
+    "type": "module",
+    "devDependencies": {
+        "nodemon": "^2.0.20"
+    }
 }
