@@ -4,9 +4,9 @@ import fs from 'fs/promises';
 const app = express();
 
 app.get('/', async (req, res) => {
-    const { name } = req.query;
+    const { firstName } = req.query;
     const buf = await fs.readFile('./static/index.html');
-    const html = buf.toString().replace('world', name || 'world');
+    const html = buf.toString().replace('firstName', firstName || 'world');
     res.type('html');
     res.send(html);
 });
