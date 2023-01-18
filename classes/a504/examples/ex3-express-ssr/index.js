@@ -3,22 +3,24 @@ import fs from 'fs/promises';
 
 const app = express();
 
-app.get('/', async (req, res) => {
-    const templateBuf = await fs.readFile('./templates/index.html');
+async function renderTemplate(res, template) {
+    const templateBuf = await fs.readFile('./templates/' + template);
+    const headerBuf = await fs.readFile('./templates/header.html');
+    const htmlText = templateBuf.toString().replace('%header%', headerBuf.toString());
     res.type('html');
-    res.send(templateBuf);
+    res.send(htmlText);
+}
+
+app.get('/', async (req, res) => {
+    await renderTemplate(res, 'index.html');
 });
 
 app.get('/about', async (req, res) => {
-    const templateBuf = await fs.readFile('./templates/about.html');
-    res.type('html');
-    res.send(templateBuf);
+    await renderTemplate(res, 'about.html');
 });
 
 app.get('/contact', async (req, res) => {
-    const templateBuf = await fs.readFile('./templates/contact.html');
-    res.type('html');
-    res.send(templateBuf);
+    await renderTemplate(res, 'contact.html');
 });
 
 app.use('/static', express.static('./static'));
