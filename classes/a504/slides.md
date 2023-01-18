@@ -57,7 +57,7 @@ Interaktiv slide där deltagaren kan skriva fritt
 * Innehåll som uppdateras över tid (ex blogg, nyheter etc)
 * Innehåll som genereras (ex tågtidtabeller, väderprognoser)
 
-## Slide 11: När kan det vara användbart att generera innehåll DYNAMISKT (istället för statiskt)?
+## Slide 11: När kan det vara användbart att generera innehåll på SERVERN (istället för i webbläsaren)?
 Interaktiv slide där deltagaren kan skriva fritt
 
 ## Slide 12: Varför dynamiskt på SERVERN? (exempel)
