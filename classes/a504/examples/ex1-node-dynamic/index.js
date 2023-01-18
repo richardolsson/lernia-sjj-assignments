@@ -6,7 +6,7 @@ const app = express();
 app.get('/', async (req, res) => {
     const { firstName } = req.query;
     const buf = await fs.readFile('./static/index.html');
-    const html = buf.toString().replace('firstName', firstName || 'world');
+    const html = buf.toString().replace('$%firstName%$', firstName || 'world');
     res.type('html');
     res.send(html);
 });
