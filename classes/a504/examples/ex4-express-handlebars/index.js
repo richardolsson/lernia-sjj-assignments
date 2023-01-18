@@ -21,21 +21,30 @@ app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./templates");
 
+function menuWithActive(items, path) {
+    return items.map(item => ({
+        active: item.link == path,
+
+        // Spread syntax
+        ...item,
+    }));
+}
+
 app.get('/', (req, res) => {
     res.render('index', {
-        menu: MENU,
+        menu: menuWithActive(MENU, '/'),
     });
 });
 
 app.get('/about', (req, res) => {
     res.render('about', {
-        menu: MENU,
+        menu: menuWithActive(MENU, '/about'),
     });
 });
 
 app.get('/contact', (req, res) => {
     res.render('contact', {
-        menu: MENU,
+        menu: menuWithActive(MENU, '/contact'),
     });
 });
 

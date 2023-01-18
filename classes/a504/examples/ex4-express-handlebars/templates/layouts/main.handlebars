@@ -10,7 +10,7 @@
         <nav>
           <ul>
             {{#each menu}}
-            <li class="menu-item">
+            <li class="menu-item {{#if this.active}}active{{else}}inactive{{/if}}">
               <a href="{{this.link}}">{{this.label}}</a>
             </li>
             {{/each}}
