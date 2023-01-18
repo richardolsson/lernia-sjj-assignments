@@ -18,12 +18,13 @@ const MENU = [
     }
 ];
 
-async function renderTemplate(res, template) {
+async function renderTemplate(res, template, activePath) {
     const templateBuf = await fs.readFile('./templates/' + template);
 
     const headerBuf = await fs.readFile('./templates/header.html');
     const htmlItems = MENU.map(itemObj => {
-        return `<li class="menu-item"><a href="${itemObj.link}">${itemObj.label}</a></li>`;
+        const stateClass = (itemObj.link == activePath)? 'active' : 'inactive';
+        return `<li class="menu-item ${stateClass}"><a href="${itemObj.link}">${itemObj.label}</a></li>`;
     });
 
     const headerText = headerBuf.toString().replace('%items%', htmlItems.join('\n'));
@@ -34,15 +35,15 @@ async function renderTemplate(res, template) {
 }
 
 app.get('/', async (req, res) => {
-    await renderTemplate(res, 'index.html');
+    await renderTemplate(res, 'index.html', '/');
 });
 
 app.get('/about', async (req, res) => {
-    await renderTemplate(res, 'about.html');
+    await renderTemplate(res, 'about.html', '/about');
 });
 
 app.get('/contact', async (req, res) => {
-    await renderTemplate(res, 'contact.html');
+    await renderTemplate(res, 'contact.html', '/contact');
 });
 
 app.use('/static', express.static('./static'));
