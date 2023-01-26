@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>This is the page</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css" />
+</head>
+
+<body class="page">
+    <header>
+        <nav>
+            <ul>
+                <li class="">
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/about">About</a>
+                </li>
+                <li>
+                    <a href="/contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        This is the footer
+    </footer>
+</body>
+
+</html>
