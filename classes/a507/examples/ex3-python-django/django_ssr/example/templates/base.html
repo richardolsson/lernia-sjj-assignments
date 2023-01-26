@@ -11,7 +11,7 @@
         <nav>
             <ul>
                 {% for item in menu %}
-                <li class="{% if item.link == cur_path %}active{% else %}inactive{% endif %}">
+                <li class="{% if item.active%}active{% else %}inactive{% endif %}">
                     <a href="{{item.link}}">{{item.label}}</a>
                 </li>
                 {% endfor %}

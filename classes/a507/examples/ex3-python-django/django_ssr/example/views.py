@@ -16,9 +16,13 @@ MENU = [
 ]
 
 def render_with_menu(request, template):
+    menu_with_active = [{
+        **item,
+        'active': item['link'] == request.path,
+    } for item in MENU]
+
     return render(request, template, {
-        'menu': MENU,
-        'cur_path': request.path,
+        'menu': menu_with_active,
     })
 
 # Create your views here.
