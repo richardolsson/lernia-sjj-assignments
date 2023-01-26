@@ -13,10 +13,10 @@
               <a href="/"> Home page </a>
             </li>
             <li class="menu-item inactive">
-              <a href="/about.html"> About us </a>
+              <a href="/about.php"> About us </a>
             </li>
             <li class="menu-item inactive">
-              <a href="/contact.html"> Contact us </a>
+              <a href="/contact.php"> Contact us </a>
             </li>
           </ul>
         </nav>
