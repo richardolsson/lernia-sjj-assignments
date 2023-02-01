@@ -12,12 +12,61 @@ describe('getRecentReviews()', () => {
     });
 
     test('only positive reviews', async () => {
-        const result = await getRecentReviews(mockApiAdapter);
-        result.forEach(review => {
-            expect(review.rating).toBeGreaterThanOrEqual(3);
+        const result = await getRecentReviews({
+            loadAllReviews: async () => {
+                return {
+                    data: [
+                        {
+                            ...reviewMock,
+                            attributes: {
+                                ...reviewMock.attributes,
+                                rating: 2,
+                            }
+                        },
+                        {
+                            ...reviewMock,
+                            attributes: {
+                                ...reviewMock.attributes,
+                                rating: 4,
+                            }
+                        },
+                    ],
+                }
+            },
         });
+
+        expect(result.length).toBe(1);
+        expect(result[0].rating).toBe(4);
     });
 });
+
+const reviewMock = {
+    "id": 1,
+    "attributes": {
+        "comment": "I don't like this!",
+        "rating": 0,
+        "author": "Richard",
+        "verified": false,
+        "createdAt": "2023-01-31T08:32:50.177Z",
+        "updatedAt": "2023-01-31T08:32:58.231Z",
+        "movie": {
+            "data": {
+                "id": 2,
+                "attributes": {
+                    "title": "Encanto",
+                    "imdbId": "tt2953050",
+                    "intro": "A Colombian teenage girl has to face the frustration of being **the only member of her family** without magical powers.\n\n",
+                    "image": {
+                        "url": "https://m.media-amazon.com/images/M/MV5BNjE5NzA4ZDctOTJkZi00NzM0LTkwOTYtMDI4MmNkMzIxODhkXkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_.jpg"
+                    },
+                    "createdAt": "2023-01-23T06:46:24.765Z",
+                    "updatedAt": "2023-01-27T07:11:39.088Z",
+                    "publishedAt": "2023-01-23T06:46:29.324Z"
+                }
+            }
+        }
+    }
+};
 
 const mockApiAdapter = {
     loadAllReviews: async () => {
