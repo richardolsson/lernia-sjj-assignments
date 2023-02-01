@@ -10,4 +10,11 @@ describe('getRecentReviews()', () => {
         expect(result[0].comment).not.toBeUndefined();
         expect(result[0].rating).not.toBeUndefined();
     });
+
+    test('only positive reviews', async () => {
+        const result = await getRecentReviews();
+        result.forEach(review => {
+            expect(review.rating).toBeGreaterThanOrEqual(3);
+        });
+    });
 });
