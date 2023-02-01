@@ -1,14 +1,29 @@
-import { describe, expect, test } from '@jest/globals';
+import { describe, expect, jest, test } from '@jest/globals';
 
 import getRecentReviews from './getRecentReviews.js';
 
 describe('getRecentReviews()', () => {
+    beforeEach(() => {
+        jest.useFakeTimers();
+        jest.setSystemTime(new Date(2023, 2, 1));
+    });
+
+    afterEach(() => {
+        jest.clearAllTimers();
+    });
+
     test('correct response format', async () => {
         const result = await getRecentReviews(mockApiAdapter);
         expect(Array.isArray(result)).toBeTruthy();
         expect(result.length).toBeGreaterThan(0);
         expect(result[0].comment).not.toBeUndefined();
         expect(result[0].rating).not.toBeUndefined();
+    });
+
+    test('within last 60 days', async () => {
+        jest.setSystemTime(new Date(2023, 4, 1));
+        const result = await getRecentReviews(mockApiAdapter);
+        expect(result.length).toBe(0);
     });
 
     test('only positive reviews', async () => {
