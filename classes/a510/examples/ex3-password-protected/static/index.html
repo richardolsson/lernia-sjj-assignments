@@ -15,9 +15,17 @@
 
       console.log(b64credentials);
 
-      const res = await fetch('/api/protected', {
+      const loginRes = await fetch('/api/login', {
+        method: 'POST',
         headers: {
           'Authorization': 'Basic ' + b64credentials,
+        },
+      });
+      const loginPayload = await loginRes.json();
+
+      const res = await fetch('/api/protected', {
+        headers: {
+          'Authorization': 'Bearer ' + loginPayload.token,
         },
       });
       const payload = await res.json();
