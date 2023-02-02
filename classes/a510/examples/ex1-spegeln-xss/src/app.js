@@ -1,3 +1,4 @@
+import cookieParser from "cookie-parser";
 import express from "express";
 import { engine } from "express-handlebars";
 import { marked } from "marked";
@@ -7,6 +8,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.engine("handlebars", engine({
   helpers: {
@@ -24,17 +26,19 @@ app.get("/", async (req, res) => {
 app.get("/movies/:movieId", async (req, res) => {
   const movie = await api.loadMovie(req.params.movieId);
   const reviews = await api.loadReviews(req.params.movieId);
+  const savedName = req.cookies.name || '';
   if (movie) {
-    res.render("movie", { movie, reviews, savedName: '' });
+    res.render("movie", { movie, reviews, savedName });
   } else {
     res.status(404).render("404");
   }
 });
 
 app.post("/movies/:movieId/reviews", async (req, res) => {
-  const name = req.body.name;
+  const name = req.body.name || req.cookies.name;
   await api.createReview(req.params.movieId, name, req.body.comment);
 
+  res.cookie('name', name);
   res.redirect(`/movies/${req.params.movieId}`);
 });
 
