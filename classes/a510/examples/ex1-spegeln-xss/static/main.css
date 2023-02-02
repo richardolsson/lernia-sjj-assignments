@@ -1,0 +1,38 @@
+* {
+  font-family: sans-serif;
+}
+
+.header {
+  padding: 1em;
+  background: #eee;
+}
+
+.header h1 {
+  font-size: 2em;
+}
+
+.movie img {
+  max-width: 14rem;
+}
+
+form {
+  max-width: 20em;
+  display: flex;
+  flex-direction: column;
+}
+
+form * {
+  margin:  0 0 1em 0;
+}
+
+.review {
+  padding: 1em;
+  margin: 1em;
+  background-color: #eee;
+}
+
+.review .name {
+  font-style: italic;
+  font-size: 0.8em;
+  margin-top: 0.5em;
+}
