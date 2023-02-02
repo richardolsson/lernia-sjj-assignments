@@ -1,11 +1,13 @@
 import express from 'express';
+import jsonwebtoken from 'jsonwebtoken';
 
 
 const app = express();
 
 const USERNAME = 'admin';
 const PASSWORD = 'secret';
-const TOKENS = [];
+
+const TOKEN_SECRET = 'averylongstringthatnoonewillguessshouldhavenumbersandotherstuff';
 
 app.post('/api/login', (req, res) => {
   const authHeader = req.headers.authorization;
@@ -14,10 +16,13 @@ app.post('/api/login', (req, res) => {
   const [username, password] = credentials.split(':');
 
   if (username == USERNAME && password == PASSWORD) {
-    const randomToken = Math.random().toString();
-    TOKENS.push(randomToken);
+    // Issue JSON Web Token
+    const jwt = jsonwebtoken.sign({
+      username: username,
+    }, TOKEN_SECRET);
+
     res.status(200).json({
-      token: randomToken,
+      token: jwt,
     });
   }
 });
@@ -25,13 +30,13 @@ app.post('/api/login', (req, res) => {
 app.get('/api/protected', (req, res) => {
   const authHeader = req.headers.authorization;
 
-  // Ex: "Bearer 0.123123123"
   const token = authHeader.slice(7);
+  const payload = jsonwebtoken.decode(token, TOKEN_SECRET);
 
-  if (TOKENS.includes(token)) {
-    res.status(200).json({ hello: 'world' });
+  if (payload) {
+    res.status(200).json({ hello: payload.username });
   } else {
-    res.status(401).json({error: 'not allowed' });
+    res.status(401).json({ error: 'not allowed' });
   }
 });
 
