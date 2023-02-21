@@ -6,6 +6,18 @@ export default class MovieResource {
 
   async retrieveScreenings() {
     const allScreenings = await this.cmsAdapter.getAllScreenings();
-    return allScreenings.filter(screening => screening.attributes.movie.data.id == this.id);
+    return allScreenings.filter(screening => {
+      if (screening.attributes.movie.data.id != this.id) {
+        return false;
+      }
+
+      const now = new Date();
+      const startTime = new Date(screening.attributes.start_time);
+      if (startTime < now) {
+        return false;
+      }
+
+      return true;
+    });
   }
 }
