@@ -1,7 +1,8 @@
 export default class MovieResource {
-  constructor(movieId, cmsAdapter) {
+  constructor(movieId, cmsAdapter, omdbAdapter) {
     this.id = movieId;
     this.cmsAdapter = cmsAdapter;
+    this.omdbAdapter = omdbAdapter;
   }
 
   async addReview(name, rating, comment) {
