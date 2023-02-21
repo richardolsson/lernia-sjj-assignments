@@ -4,7 +4,7 @@ export default class NextScreeningsResource {
   }
 
   async retrieve() {
-    const screenings = await this.cmsAdapter.getNextScreenings();
+    const screenings = await this.cmsAdapter.getAllScreenings();
     return screenings.filter(screening => {
       const now = new Date();
       const startTime = new Date(screening.attributes.start_time);

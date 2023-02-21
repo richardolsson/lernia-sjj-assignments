@@ -14,7 +14,7 @@ describe('NextScreeningsResource', () => {
 
     it('includes only next five days', async () => {
       const resource = new NextScreeningsResource({
-        getNextScreenings: async () => [
+        getAllScreenings: async () => [
           mockScreening(1, '2023-02-20T13:37:00.000Z'),
           mockScreening(2, '2023-02-22T13:37:00.000Z'),
           mockScreening(3, '2023-02-28T13:37:00.000Z'),
@@ -29,7 +29,7 @@ describe('NextScreeningsResource', () => {
 
     it('shows at most ten screenings', async () => {
       const resource = new NextScreeningsResource({
-        getNextScreenings: async () => [
+        getAllScreenings: async () => [
           // Tomorrow
           mockScreening(1, '2023-02-22T13:37:00.000Z'),
           mockScreening(2, '2023-02-22T13:37:00.000Z'),
