@@ -28,9 +28,9 @@ export default function initAPIRoutes(cms) {
   });
 
   router.post('/movies/:movieId/reviews', async (req, res) => {
-    const resource = new MovieResource(req.params.movieId, cms);
+    const resource = new MovieResource(parseInt(req.params.movieId), cms);
     const addRes = await resource.addReview(req.body.name, req.body.rating, req.body.comment);
-    res.status(200).json(addRes);
+    res.status(201).json(addRes);
   });
 
   return router;
