@@ -1,6 +1,8 @@
 import request from 'supertest';
 
-import app from '../src/app.js';
+import initApp from '../src/app.js';
+
+const app = initApp();
 
 test('home page shows list of movies', async () => {
   const response = await request(app)

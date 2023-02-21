@@ -1,11 +1,13 @@
 import express from "express";
 
-import api from './routes/api.js';
-import pages from './routes/pages.js';
+import initAPIRoutes from './routes/api.js';
+import initPageRoutes from './routes/pages.js';
 
-const app = express();
+export default function initApp() {
+  const app = express();
 
-app.use('/api', api);
-app.use(pages);
+  app.use('/api', initAPIRoutes());
+  app.use(initPageRoutes());
 
-export default app;
+  return app;
+}
