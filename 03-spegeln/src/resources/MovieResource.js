@@ -20,4 +20,15 @@ export default class MovieResource {
       return true;
     });
   }
+
+  async retrieveReviews(page) {
+    const allReviews = await this.cmsAdapter.getAllReviews();
+    return allReviews.filter(review => {
+      if (review.attributes.movie.data.id != this.id) {
+        return false;
+      }
+
+      return true;
+    });
+  }
 }

@@ -1,9 +1,27 @@
 import { describe, expect, it, jest } from '@jest/globals';
+import mockReview from '../testing/mockReview';
 
 import mockScreening from '../testing/mockScreening';
 import MovieResource from './MovieResource';
 
 describe('MovieResource', () => {
+  describe('retrieveReviews(page)', () => {
+    it('returns only reviews for specific movie', async () => {
+      const resource = new MovieResource(1, {
+        getAllReviews: async () => [
+          mockReview(1, { movieId: 1 }),
+          mockReview(2, { movieId: 1 }),
+          mockReview(3, { movieId: 100 }),
+        ],
+      });
+
+      const result = await resource.retrieveReviews(0);
+      expect(result.length).toBe(2);
+      expect(result[0].id).toBe(1);
+      expect(result[1].id).toBe(2);
+    });
+  });
+
   describe('retrieveScreenings()', () => {
     beforeEach(() => {
       jest.useFakeTimers();

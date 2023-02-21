@@ -35,4 +35,12 @@ router.get('/movies/:movieId/screenings', async (req, res) => {
   res.status(200).json({ data });
 });
 
+router.get('/movies/:movieId/reviews', async (req, res) => {
+  const page = req.query.p || 0;
+  const cms = new CMSAdapter();
+  const resource = new MovieResource(req.params.movieId, cms);
+  const data = await resource.retrieveReviews(page);
+  res.status(200).json({ data });
+});
+
 export default router;
