@@ -5,7 +5,7 @@ import pages from './routes/pages.js';
 
 const app = express();
 
-app.use(api);
+app.use('/api', api);
 app.use(pages);
 
 export default app;
