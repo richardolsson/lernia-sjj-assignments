@@ -1,5 +1,6 @@
 import { describe, it, jest, expect } from '@jest/globals';
 import NextScreeningsResource from './NextScreeningsResource';
+import mockScreening from '../testing/mockScreening';
 
 describe('NextScreeningsResource', () => {
   describe('retrieve()', () => {
@@ -15,9 +16,9 @@ describe('NextScreeningsResource', () => {
     it('includes only next five days', async () => {
       const resource = new NextScreeningsResource({
         getAllScreenings: async () => [
-          mockScreening(1, '2023-02-20T13:37:00.000Z'),
-          mockScreening(2, '2023-02-22T13:37:00.000Z'),
-          mockScreening(3, '2023-02-28T13:37:00.000Z'),
+          mockScreening(1, { startTime: '2023-02-20T13:37:00.000Z'}),
+          mockScreening(2, { startTime: '2023-02-22T13:37:00.000Z'}),
+          mockScreening(3, { startTime: '2023-02-28T13:37:00.000Z'}),
         ],
       });
 
@@ -31,20 +32,20 @@ describe('NextScreeningsResource', () => {
       const resource = new NextScreeningsResource({
         getAllScreenings: async () => [
           // Tomorrow
-          mockScreening(1, '2023-02-22T13:37:00.000Z'),
-          mockScreening(2, '2023-02-22T13:37:00.000Z'),
-          mockScreening(3, '2023-02-22T13:37:00.000Z'),
-          mockScreening(4, '2023-02-22T13:37:00.000Z'),
-          mockScreening(5, '2023-02-22T13:37:00.000Z'),
-          mockScreening(6, '2023-02-22T13:37:00.000Z'),
-          mockScreening(7, '2023-02-22T13:37:00.000Z'),
+          mockScreening(1, { startTime: '2023-02-22T13:37:00.000Z'}),
+          mockScreening(2, { startTime: '2023-02-22T13:37:00.000Z'}),
+          mockScreening(3, { startTime: '2023-02-22T13:37:00.000Z'}),
+          mockScreening(4, { startTime: '2023-02-22T13:37:00.000Z'}),
+          mockScreening(5, { startTime: '2023-02-22T13:37:00.000Z'}),
+          mockScreening(6, { startTime: '2023-02-22T13:37:00.000Z'}),
+          mockScreening(7, { startTime: '2023-02-22T13:37:00.000Z'}),
 
           // Day after tomorrow
-          mockScreening(8, '2023-02-23T13:37:00.000Z'),
-          mockScreening(9, '2023-02-23T13:37:00.000Z'),
-          mockScreening(10, '2023-02-23T13:37:00.000Z'),
-          mockScreening(11, '2023-02-23T13:37:00.000Z'),
-          mockScreening(12, '2023-02-23T13:37:00.000Z'),
+          mockScreening(8, { startTime: '2023-02-23T13:37:00.000Z'}),
+          mockScreening(9, { startTime: '2023-02-23T13:37:00.000Z'}),
+          mockScreening(10, { startTime: '2023-02-23T13:37:00.000Z'}),
+          mockScreening(11, { startTime: '2023-02-23T13:37:00.000Z'}),
+          mockScreening(12, { startTime: '2023-02-23T13:37:00.000Z'}),
         ]
       })
 
@@ -56,31 +57,3 @@ describe('NextScreeningsResource', () => {
     });
   });
 });
-
-function mockScreening(id, startTime) {
-  return {
-    "id": id,
-    "attributes": {
-      "start_time": startTime,
-      "room": "Stora salongen",
-      "createdAt": "2023-01-31T04:27:02.786Z",
-      "updatedAt": "2023-01-31T04:27:02.786Z",
-      "movie": {
-        "data": {
-          "id": 3,
-          "attributes": {
-            "title": "The Shawshank Redemption",
-            "imdbId": "tt0111161",
-            "intro": "Over the course of several years, **two convicts form a friendship**, seeking consolation and, eventually, redemption through basic compassion.",
-            "image": {
-              "url": "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg"
-            },
-            "createdAt": "2023-01-23T07:17:34.923Z",
-            "updatedAt": "2023-01-27T07:12:24.582Z",
-            "publishedAt": "2023-01-23T07:17:39.384Z"
-          }
-        }
-      }
-    }
-  }
-}
