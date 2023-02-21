@@ -13,7 +13,7 @@ Instruktioner för att delta i mentimeter
 ## Slide 3: Vad är sant om testning och säkerhet
 Interaktiv slide där deltagaren kan ange 1-5 hur sanna följande påståenden är.
 
-* Med "dependency injection" kan man uppnå testning som är helt beroende av miljön
+* Med "dependency injection" kan man uppnå testning som är helt oberoende av miljön
 * Man ska alltid använda HTTPS för webbapplikationer som är tillgängliga på internet
 * XSS-brister kan uppstå genom misstag i programmeringen på frontend eller backend
 * Automatiserade tester ska köras på utvecklarens dator efter varje ändring
