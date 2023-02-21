@@ -17,6 +17,34 @@ describe('NextScreeningsResource', () => {
       expect(screenings.length).toBe(1);
       expect(screenings[0].id).toBe(2);
     });
+
+    it('shows at most ten screenings', async () => {
+      const resource = new NextScreeningsResource({
+        getNextScreenings: async () => [
+          // Tomorrow
+          mockScreening(1, '2023-02-22T13:37:00.000Z'),
+          mockScreening(2, '2023-02-22T13:37:00.000Z'),
+          mockScreening(3, '2023-02-22T13:37:00.000Z'),
+          mockScreening(4, '2023-02-22T13:37:00.000Z'),
+          mockScreening(5, '2023-02-22T13:37:00.000Z'),
+          mockScreening(6, '2023-02-22T13:37:00.000Z'),
+          mockScreening(7, '2023-02-22T13:37:00.000Z'),
+
+          // Day after tomorrow
+          mockScreening(8, '2023-02-23T13:37:00.000Z'),
+          mockScreening(9, '2023-02-23T13:37:00.000Z'),
+          mockScreening(10, '2023-02-23T13:37:00.000Z'),
+          mockScreening(11, '2023-02-23T13:37:00.000Z'),
+          mockScreening(12, '2023-02-23T13:37:00.000Z'),
+        ]
+      })
+
+      const screenings = await resource.retrieve();
+
+      expect(screenings.length).toBe(10);
+      expect(screenings[0].id).toBe(1);
+      expect(screenings[9].id).toBe(10);
+    });
   });
 });
 

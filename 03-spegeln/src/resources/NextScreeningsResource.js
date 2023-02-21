@@ -21,6 +21,7 @@ export default class NextScreeningsResource {
       }
 
       return true;
-    });
+    })
+      .slice(0, 10);
   }
 }

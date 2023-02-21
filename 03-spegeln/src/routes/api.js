@@ -16,7 +16,7 @@ Ovanstående logik ska programmeras på servern, och testas med hjälp av ett en
   - [x] Find the right URL
   - [x] Fetch from code
   - [x] Fetch in a way that works with tests
-- [ ] Filter according to logic in assignment
+- [x] Filter according to logic in assignment
 - [x] Respond with JSON
 */
 
