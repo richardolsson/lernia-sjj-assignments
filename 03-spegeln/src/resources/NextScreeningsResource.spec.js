@@ -1,8 +1,17 @@
-import { describe, it, expect } from '@jest/globals';
+import { describe, it, jest, expect } from '@jest/globals';
 import NextScreeningsResource from './NextScreeningsResource';
 
 describe('NextScreeningsResource', () => {
   describe('retrieve()', () => {
+    beforeEach(() => {
+      jest.useFakeTimers();
+      jest.setSystemTime(new Date('2023-02-21T13:30:00.000Z'));
+    });
+
+    afterEach(() => {
+      jest.clearAllTimers();
+    });
+
     it('includes only next five days', async () => {
       const resource = new NextScreeningsResource({
         getNextScreenings: async () => [
