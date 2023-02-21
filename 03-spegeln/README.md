@@ -10,6 +10,7 @@ Not necessary for assignment
 
 ### /api/movies/{ID}/reviews
 * `GET` to retrieve list of reviews
+  * Use query param `p` for page
 * `POST` to create a new review
 
 ### /api/movies/{ID}/rating

@@ -23,12 +23,15 @@ export default class MovieResource {
 
   async retrieveReviews(page) {
     const allReviews = await this.cmsAdapter.getAllReviews();
-    return allReviews.filter(review => {
-      if (review.attributes.movie.data.id != this.id) {
+    const filteredReviews = allReviews.filter(review => {
+      if (review.attributes.movie.data?.id != this.id) {
         return false;
       }
 
       return true;
     });
+
+    const startIndex = page * 5;
+    return filteredReviews.slice(startIndex, startIndex + 5);
   }
 }
