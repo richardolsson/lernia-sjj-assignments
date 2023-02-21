@@ -6,6 +6,8 @@ import NextScreeningsResource from '../resources/NextScreeningsResource.js';
 export default function initAPIRoutes(cms) {
   const router = express();
 
+  router.use(express.json());
+
   router.get('/next_screenings', async (req, res) => {
     const resource = new NextScreeningsResource(cms);
     const data = await resource.retrieve();
@@ -23,6 +25,12 @@ export default function initAPIRoutes(cms) {
     const resource = new MovieResource(req.params.movieId, cms);
     const data = await resource.retrieveReviews(page);
     res.status(200).json({ data });
+  });
+
+  router.post('/movies/:movieId/reviews', async (req, res) => {
+    const resource = new MovieResource(req.params.movieId, cms);
+    const addRes = await resource.addReview(req.body.name, req.body.rating, req.body.comment);
+    res.status(200).json(addRes);
   });
 
   return router;

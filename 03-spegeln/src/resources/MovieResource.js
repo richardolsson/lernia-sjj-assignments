@@ -4,6 +4,14 @@ export default class MovieResource {
     this.cmsAdapter = cmsAdapter;
   }
 
+  async addReview(name, rating, comment) {
+    return await this.cmsAdapter.createMovieReview(this.id, {
+      author: name,
+      rating: rating,
+      comment: comment,
+    });
+  }
+
   async retrieveScreenings() {
     const allScreenings = await this.cmsAdapter.getAllScreenings();
     return allScreenings.filter(screening => {
