@@ -5,6 +5,27 @@ import mockScreening from '../testing/mockScreening';
 import MovieResource from './MovieResource';
 
 describe('MovieResource', () => {
+  describe('retrieveAverageRating', () => {
+    it('returns average of reviews', async () => {
+      const resource = new MovieResource(1, {
+        getAllReviews: async () => [
+          mockReview(1, { movieId: 1, rating: 0 }),
+          mockReview(2, { movieId: 1, rating: 0 }),
+          mockReview(3, { movieId: 1, rating: 0 }),
+          mockReview(4, { movieId: 1, rating: 5 }),
+          mockReview(5, { movieId: 1, rating: 5 }),
+        ],
+      });
+
+      const result = await resource.retrieveAverageRating();
+      expect(result).toMatchObject({
+        rating: 2,
+        source: 'reviews',
+      });
+    });
+  });
+
+
   describe('retrieveReviews(page)', () => {
     it('returns only reviews for specific movie', async () => {
       const resource = new MovieResource(1, {

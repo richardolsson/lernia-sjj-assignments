@@ -1,11 +1,12 @@
 export default function mockReview(id, config) {
   const movieId = config.movieId || 1;
+  const rating = config.rating || 0;
 
   return {
     "id": id,
     "attributes": {
       "comment": "I don't like this!",
-      "rating": 0,
+      "rating": rating,
       "author": "Richard",
       "verified": false,
       "createdAt": "2023-01-31T08:32:50.177Z",

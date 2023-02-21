@@ -12,6 +12,20 @@ export default class MovieResource {
     });
   }
 
+  async retrieveAverageRating() {
+    const allReviews = await this.cmsAdapter.getAllReviews();
+    const movieReviews = allReviews
+      .filter(review => review.attributes.movie.data?.id == this.id);
+
+    const sum = movieReviews
+      .reduce((sum, review) => sum + review.attributes.rating, 0);
+
+    return {
+      rating: sum / movieReviews.length,
+      source: 'reviews',
+    };
+  }
+
   async retrieveScreenings() {
     const allScreenings = await this.cmsAdapter.getAllScreenings();
     return allScreenings.filter(screening => {

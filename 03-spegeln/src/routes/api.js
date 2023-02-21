@@ -33,5 +33,11 @@ export default function initAPIRoutes(cms) {
     res.status(201).json(addRes);
   });
 
+  router.get('/movies/:movieId/rating', async (req, res) => {
+    const resource = new MovieResource(parseInt(req.params.movieId), cms);
+    const data = await resource.retrieveAverageRating();
+    res.status(200).json({ data });
+  });
+
   return router;
 }
