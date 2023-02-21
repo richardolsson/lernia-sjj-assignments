@@ -1,8 +1,10 @@
 import request from 'supertest';
+import CMSAdapter from '../src/adapters/CMSAdapter.js';
 
 import initApp from '../src/app.js';
 
-const app = initApp();
+const cms = new CMSAdapter();
+const app = initApp(cms);
 
 test('home page shows list of movies', async () => {
   const response = await request(app)
