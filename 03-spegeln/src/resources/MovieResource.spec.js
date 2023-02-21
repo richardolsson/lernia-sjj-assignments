@@ -23,6 +23,33 @@ describe('MovieResource', () => {
         source: 'reviews',
       });
     });
+
+    it('returns IMDB rating when less than five reviews are available', async () => {
+      const omdb = {
+        getMovieRating: jest.fn(async (imdbId) => 7.8),
+      };
+
+      const resource = new MovieResource(1, {
+        getAllReviews: async () => [
+          mockReview(1, { movieId: 1, rating: 0 }),
+          mockReview(2, { movieId: 1, rating: 5 }),
+        ],
+        getMovie: async (id) => ({
+          id,
+          attributes: {
+            imdbId: 'tt123123123',
+          }
+        }),
+      }, omdb);
+
+      const result = await resource.retrieveAverageRating();
+      expect(result).toMatchObject({
+        rating: 3.9,
+        source: 'imdb',
+      });
+
+      expect(omdb.getMovieRating).toBeCalledWith('tt123123123');
+    });
   });
 
 

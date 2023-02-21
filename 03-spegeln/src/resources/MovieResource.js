@@ -18,13 +18,24 @@ export default class MovieResource {
     const movieReviews = allReviews
       .filter(review => review.attributes.movie.data?.id == this.id);
 
-    const sum = movieReviews
-      .reduce((sum, review) => sum + review.attributes.rating, 0);
+    if (movieReviews.length < 5) {
+      const movie = await this.cmsAdapter.getMovie(this.id);
+      const imdbId = movie.attributes.imdbId;
+      const imdbRating = await this.omdbAdapter.getMovieRating(imdbId);
 
-    return {
-      rating: sum / movieReviews.length,
-      source: 'reviews',
-    };
+      return {
+        rating: imdbRating / 2,
+        source: 'imdb',
+      }
+    } else {
+      const sum = movieReviews
+        .reduce((sum, review) => sum + review.attributes.rating, 0);
+
+      return {
+        rating: sum / movieReviews.length,
+        source: 'reviews',
+      };
+    }
   }
 
   async retrieveScreenings() {

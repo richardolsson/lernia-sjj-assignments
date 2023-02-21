@@ -25,4 +25,10 @@ export default class CMSAdapter {
     const cmsPayload = await cmsRes.json();
     return cmsPayload.data;
   }
+
+  async getMovie(id) {
+    const cmsRes = await fetch(API_URL + '/movies/' + id);
+    const cmsPayload = await cmsRes.json();
+    return cmsPayload.data;
+  }
 }
