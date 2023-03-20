@@ -12,7 +12,10 @@ function App() {
       <h1>My Todo</h1>
       <small>0 completed</small>
       <form onSubmit={(ev) => {
-        setItems([...items, text]);
+        setItems([...items, {
+          text: text,
+          completed: false,
+        }]);
         ev.preventDefault();
       }}>
         <input
@@ -25,9 +28,27 @@ function App() {
       <ul className="todo-list">
         {items.map((item, index) => {
           return (
-            <li className="todo-item" key={index}>
-              <span>
-                {item}
+            <li
+              key={index}
+              className={ item.completed? 'todo-item completed' : 'todo-item'}
+            >
+              <span onClick={() => {
+                const newItems = items.map((oldItem, oldItemIndex) => {
+                  const newItem = {
+                    text: oldItem.text,
+                    completed: oldItem.completed,
+                  };
+
+                  if (oldItemIndex === index) {
+                    newItem.completed = !newItem.completed;
+                  }
+
+                  return newItem;
+                });
+
+                setItems(newItems);
+              }}>
+                {item.text}
               </span>
               <button className="remove-button">🗑</button>
             </li>
