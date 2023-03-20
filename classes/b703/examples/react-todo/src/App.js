@@ -36,6 +36,16 @@ function App() {
       </ul>
     </div>
   );
+
+  /* Non-JSX alternative
+  return (
+    React.createElement('div', { className: 'container' }, [
+      React.createElement('h1', {}, 'My Todo'),
+      React.createElement('small', {}, '0 completed'),
+      …
+    ])
+  );
+  */
 }
 
 export default App;
