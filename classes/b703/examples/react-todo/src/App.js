@@ -7,10 +7,12 @@ function App() {
   const [items, setItems] = useState([]);
   const [text, setText] = useState('');
 
+  const numCompleted = items.filter(item => item.completed).length;
+
   return (
     <div className="container">
       <h1>My Todo</h1>
-      <small>0 completed</small>
+      <small>{numCompleted} completed</small>
       <form onSubmit={(ev) => {
         setItems([...items, {
           text: text,
