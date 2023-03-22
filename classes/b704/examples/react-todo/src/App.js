@@ -8,7 +8,6 @@ import TaskList from './components/TaskList';
 
 function App() {
   const [items, setItems] = useState([]);
-  const [text, setText] = useState('');
 
   const numCompleted = items.filter(item => item.completed).length;
 
