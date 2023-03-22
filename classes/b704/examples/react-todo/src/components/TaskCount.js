@@ -1,5 +1,6 @@
-export default function TaskCount() {
+export default function TaskCount({ items }) {
+  const count = items.filter(item => item.completed).length
   return (
-    <p>3 completed</p>
+    <p>{count} completed</p>
   );
 }

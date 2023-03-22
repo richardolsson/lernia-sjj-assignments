@@ -9,14 +9,12 @@ import TaskList from './components/TaskList';
 function App() {
   const [items, setItems] = useState([]);
 
-  const numCompleted = items.filter(item => item.completed).length;
-
   return (
     <div className="container">
       <h1>My Todo</h1>
-      <TaskCount />
+      <TaskCount items={items} />
       <TaskInput />
-      <TaskList />
+      <TaskList items={items} />
     </div>
   );
 
@@ -25,6 +23,7 @@ function App() {
     React.createElement('div', { className: 'container' }, [
       React.createElement('h1', {}, 'My Todo'),
       React.createElement('small', {}, '0 completed'),
+      React.createElement(TaskCount, { count: 5, myFavoriteColor: 'blue' }),
       …
     ])
   );
