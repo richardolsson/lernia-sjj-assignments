@@ -19,7 +19,22 @@ function App() {
           completed: false,
         }]);
       }} />
-      <TaskList items={items} />
+      <TaskList items={items} onTaskComplete={(index) => {
+        const newItems = items.map((oldItem, oldItemIndex) => {
+          const newItem = {
+            text: oldItem.text,
+            completed: oldItem.completed,
+          };
+
+          if (oldItemIndex === index) {
+            newItem.completed = !newItem.completed;
+          }
+
+          return newItem;
+        });
+
+        setItems(newItems);
+      }} />
     </div>
   );
 
