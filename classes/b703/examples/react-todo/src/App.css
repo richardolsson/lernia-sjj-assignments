@@ -9,6 +9,7 @@ html {
 body {
     background: linear-gradient(#f8cfcd, #f18f8b);
     background-repeat: no-repeat;
+    padding: 20px;
 }
 
 .container {

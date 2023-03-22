@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="container">
       <h1>My Todo</h1>
-      <small>{numCompleted} completed</small>
+      <p>{numCompleted} completed</p>
       <form onSubmit={(ev) => {
         setItems([...items, {
           text: text,
