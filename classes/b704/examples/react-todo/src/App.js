@@ -13,7 +13,12 @@ function App() {
     <div className="container">
       <h1>My Todo</h1>
       <TaskCount items={items} />
-      <TaskInput />
+      <TaskInput onCreateItem={(label) => {
+        setItems([...items, {
+          text: label,
+          completed: false,
+        }]);
+      }} />
       <TaskList items={items} />
     </div>
   );

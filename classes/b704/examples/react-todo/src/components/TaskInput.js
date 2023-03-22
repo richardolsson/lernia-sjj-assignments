@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-export default function TaskInput() {
+export default function TaskInput({ onCreateItem }) {
   const [text, setText] = useState('');
 
   return (
     <form onSubmit={(ev) => {
-      // TODO: Set items here
+      onCreateItem(text);
       ev.preventDefault();
     }}>
       <input
