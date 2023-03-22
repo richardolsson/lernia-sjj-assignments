@@ -1,6 +1,9 @@
 import { useState } from 'react';
 
 import './App.css';
+import TaskCount from './components/TaskCount';
+import TaskInput from './components/TaskInput';
+import TaskList from './components/TaskList';
 
 
 function App() {
@@ -12,51 +15,9 @@ function App() {
   return (
     <div className="container">
       <h1>My Todo</h1>
-      <p>{numCompleted} completed</p>
-      <form onSubmit={(ev) => {
-        setItems([...items, {
-          text: text,
-          completed: false,
-        }]);
-        ev.preventDefault();
-      }}>
-        <input
-          type="text"
-          value={text}
-          onChange={(event) => setText(event.target.value)}
-        />
-        <button type="submit">OK</button>
-      </form>
-      <ul className="todo-list">
-        {items.map((item, index) => {
-          return (
-            <li
-              key={index}
-              className={ item.completed? 'todo-item completed' : 'todo-item'}
-            >
-              <span onClick={() => {
-                const newItems = items.map((oldItem, oldItemIndex) => {
-                  const newItem = {
-                    text: oldItem.text,
-                    completed: oldItem.completed,
-                  };
-
-                  if (oldItemIndex === index) {
-                    newItem.completed = !newItem.completed;
-                  }
-
-                  return newItem;
-                });
-
-                setItems(newItems);
-              }}>
-                {item.text}
-              </span>
-              <button className="remove-button">🗑</button>
-            </li>
-          );
-        })}
-      </ul>
+      <TaskCount />
+      <TaskInput />
+      <TaskList />
     </div>
   );
 
