@@ -24,10 +24,20 @@ function App() {
       <h1>My Todo</h1>
       <TaskCount items={items} />
       <TaskInput onCreateItem={(label) => {
-        setItems([...items, {
+        const task = {
           text: label,
           completed: false,
-        }]);
+        };
+
+        // Send to server
+        fetch('/tasks', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(task),
+        });
+
+        // Update local React state
+        setItems([...items, task]);
       }} />
       <TaskList items={items} onTaskComplete={(index) => {
         const newItems = items.map((oldItem, oldItemIndex) => {
