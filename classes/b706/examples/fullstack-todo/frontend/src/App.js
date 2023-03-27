@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './App.css';
 import TaskCount from './components/TaskCount';
@@ -8,6 +8,16 @@ import TaskList from './components/TaskList';
 
 function App() {
   const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    async function loadTasks() {
+      const res = await fetch('/tasks');
+      const payload = await res.json();
+      setItems(payload.data);
+    }
+
+    loadTasks();
+  }, []);
 
   return (
     <div className="container">
