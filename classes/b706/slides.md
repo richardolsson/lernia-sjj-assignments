@@ -1,4 +1,4 @@
-# Föreläsning A706
+# Föreläsning B706
 
 ## Slide 1: Delta i presentationen
 Instruktioner för att delta i mentimeter
