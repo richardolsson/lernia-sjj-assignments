@@ -1,11 +1,11 @@
 export default function bug1() {
-  const data = {
+  let data = {
     data: {
       data: ["word1", "word2"],
     },
   };
 
-  data.data.push("word3");
+  data.data.data.push("word3");
 }
 
 bug1();
