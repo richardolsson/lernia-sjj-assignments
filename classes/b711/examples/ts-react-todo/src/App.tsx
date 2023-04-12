@@ -1,9 +1,24 @@
-import React from 'react';
+import { useState } from 'react';
 import './App.css';
+import TaskList from './components/TaskList';
 
 function App() {
+  const [tasks, setTasks] = useState([
+    {
+      text: 'Learn React',
+      completed: false,
+    },
+    {
+      text: 'Learn Typescript',
+      completed: false,
+    }
+  ]);
+
   return (
-    <h1>HELLO</h1>
+    <div className='container'>
+      <h1>My ToDo list</h1>
+      <TaskList tasks={tasks}/>
+    </div>
   );
 }
 
