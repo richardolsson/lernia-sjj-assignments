@@ -1,9 +1,5 @@
 import { FC } from 'react';
-
-type Task = {
-  text: string;
-  completed: boolean;
-};
+import { Task } from '../types';
 
 type TaskListProps = {
   tasks: Task[];
