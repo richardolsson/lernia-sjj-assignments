@@ -1,5 +1,7 @@
+import App from "@/components/App";
+
 export default function Home() {
   return (
-    <h1>HELLO</h1>
-  )
+    <App />
+  );
 }
