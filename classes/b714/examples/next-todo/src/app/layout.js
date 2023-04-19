@@ -1,3 +1,4 @@
+import ClickCounter from "@/components/ClickCounter";
 import "./global.css";
 
 export const metadata = {
@@ -8,7 +9,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <div>{children}</div>
+        <ClickCounter/>
+      </body>
     </html>
   )
 }
