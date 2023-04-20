@@ -2,7 +2,7 @@ import TaskItem from "./TaskItem";
 
 export default function TaskList({ items, onTaskComplete }) {
   return (
-    <ul className="todo-list">
+    <ul className="todo-list" data-testid="todo-list">
       {items.map((item, index) => {
         return (
           <TaskItem key={index} item={item} onComplete={() => {

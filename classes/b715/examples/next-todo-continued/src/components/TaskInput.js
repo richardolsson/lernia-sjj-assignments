@@ -13,7 +13,7 @@ export default function TaskInput({ onCreateItem }) {
         value={text}
         onChange={(event) => setText(event.target.value)}
       />
-      <button type="submit">OK</button>
+      <button data-testid="submit-button" type="submit">OK</button>
     </form>
   )
 }

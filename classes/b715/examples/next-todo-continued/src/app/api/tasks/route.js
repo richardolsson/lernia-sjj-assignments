@@ -2,6 +2,11 @@ import { NextResponse } from "next/server";
 
 const fakeDatabase = [];
 
+export function DELETE() {
+  fakeDatabase.length = 0;
+  return new NextResponse();
+}
+
 export function GET() {
   return NextResponse.json(fakeDatabase);
 }
