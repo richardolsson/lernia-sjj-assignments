@@ -10,5 +10,5 @@ export async function POST(request) {
   const payload = await request.json();
   fakeDatabase.push(payload);
 
-  return NextResponse.json(fakeDatabase, { status: 201 });
+  return NextResponse.json(payload, { status: 201 });
 }
