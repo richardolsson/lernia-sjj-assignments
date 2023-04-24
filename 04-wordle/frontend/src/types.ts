@@ -5,7 +5,7 @@ export type Game = {
 
 export type LetterResult = {
   letter: string;
-  result: 'misplaced' | 'correct' | 'incorrect'
+  result: 'misplaced' | 'correct' | 'incorrect' | 'empty'
 }
 
 export type GuessResult = {

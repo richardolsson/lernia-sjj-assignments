@@ -13,13 +13,30 @@ const GameScreen: FC<GameScreenProps> = ({ game, onReset }) => {
   const [guesses, setGuesses] = useState<GuessResult[]>([]);
   const [highscoreSubmitted, setHighscoreSubmitted] = useState(false);
 
+  const boardGuesses = [...guesses];
+  while (boardGuesses.length < 6) {
+    const emptyGuess: GuessResult = {
+      correct: false,
+      letters: [],
+    };
+
+    while (emptyGuess.letters.length < game.wordLength) {
+      emptyGuess.letters.push({
+        letter: '',
+        result: 'empty',
+      });
+    }
+
+    boardGuesses.push(emptyGuess);
+  }
+
   const won = guesses.some(guess => guess.correct);
 
   return (
     <div>
       <h1>GAME</h1>
       <ul>
-        {guesses.map((guess, index) => {
+        {boardGuesses.map((guess, index) => {
           return (
             <li key={index}>
               <Guess result={guess} />

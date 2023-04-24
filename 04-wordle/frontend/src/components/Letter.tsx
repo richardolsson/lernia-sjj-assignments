@@ -9,6 +9,7 @@ const BG_COLORS = {
   'incorrect': 'red',
   'misplaced': 'yellow',
   'correct': 'green',
+  'empty': 'silver',
 } as const;
 
 const Letter: FC<LetterProps> = ({letterResult}) => {
