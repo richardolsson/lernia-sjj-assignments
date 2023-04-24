@@ -91,4 +91,22 @@ describe('feedback()', () => {
       },
     ]);
   });
+
+  test('baa + abb => misplaced, misplaced, incorrect', () => {
+    const result = feedback('baa', 'abb');
+    expect(result).toEqual([
+      {
+        letter: 'b',
+        result: 'misplaced',
+      },
+      {
+        letter: 'a',
+        result: 'misplaced',
+      },
+      {
+        letter: 'a',
+        result: 'incorrect',
+      },
+    ]);
+  });
 });

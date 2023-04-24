@@ -27,7 +27,9 @@ export default function feedback(guess: string, correctWord: string): FeedbackRe
 
   return result.map(result => {
     if (result.result == 'incorrect') {
-      if (leftovers.includes(result.letter)) {
+      const leftOverIndex = leftovers.indexOf(result.letter);
+      if (leftOverIndex >= 0) {
+        leftovers.splice(leftOverIndex, 1);
         return {
           ...result,
           result: 'misplaced',
