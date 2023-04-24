@@ -24,3 +24,20 @@ Det innebär också att jag behöver bryta ner i flera moment som jag måste kun
 3. Avgöra om en bokstav är på samma plats i båda orden, eller på olika platser
 4. Bygga en array
 
+
+## `getRandomWord(length, allowRepeating, allWords)`
+Väljer slumpmässigt ut ett ord med `length` bokstäver.
+Om `allowRepeating` är `true` så kan samma bokstav förekomma
+flera gånger, annars måste varje bokstav vara unik.
+
+### Lösningsstrategi
+Jag arbetar testdrivet.
+Jag skriver ett test för varje ny aspekt av funktionen, och ser sedan till att det fungerar.
+
+Det leder till en heltäckande testsvit.
+
+Följande moment måste jag kunna lösa:
+
+1. Välja ut slumpat ord ur en lista av ord
+2. Upptäcka om ett ord har bokstäver som förekommer mer än en gång
+3. Filtrera ut ord med en viss längd
