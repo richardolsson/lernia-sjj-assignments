@@ -40,6 +40,8 @@ app.post('/api/games', async (req, res) => {
   res.status(200).json({
     data: {
       id: game.id,
+      allowRepeating: game.allowRepeating,
+      wordLength: game.wordLength,
     }
   });
 });
