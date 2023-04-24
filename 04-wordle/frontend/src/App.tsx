@@ -2,10 +2,11 @@ import './App.css';
 import { useState } from 'react';
 import StartScreen from './components/StartScreen';
 import GameScreen from './components/GameScreen';
+import { Game } from './types';
 
 function App() {
   const [screen, setScreen] = useState<'start' | 'game'>('start');
-  const [gameId, setGameId] = useState<string | null>(null);
+  const [game, setGame] = useState<Game | null>(null);
 
   return (
     <div className="App">
@@ -25,12 +26,12 @@ function App() {
 
             const payload = await res.json();
 
-            setGameId(payload.data.id);
+            setGame(payload.data);
             setScreen('game');
           }}
         />
       )}
-      {screen === 'game' && gameId && <GameScreen gameId={gameId} />}
+      {screen === 'game' && game && <GameScreen game={game} />}
     </div>
   );
 }
