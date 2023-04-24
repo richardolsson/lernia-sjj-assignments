@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { Game, GuessResult } from "../types";
+import Guess from "./Guess";
 import GuessInput from "./GuessInput";
 
 type GameScreenProps = {
@@ -16,7 +17,7 @@ const GameScreen: FC<GameScreenProps> = ({ game }) => {
         {guesses.map((guess, index) => {
           return (
             <li key={index}>
-              {JSON.stringify(guess)}
+              <Guess result={guess}/>
             </li>
           );
         })}

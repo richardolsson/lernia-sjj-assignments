@@ -3,10 +3,12 @@ export type Game = {
   wordLength: number;
 }
 
+export type LetterResult = {
+  letter: string;
+  result: 'misplaced' | 'correct' | 'incorrect'
+}
+
 export type GuessResult = {
   correct: boolean,
-  letters: {
-    letter: string;
-    result: 'misplaced' | 'correct' | 'incorrect'
-  }[],
+  letters: LetterResult[],
 }
