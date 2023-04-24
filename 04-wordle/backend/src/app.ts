@@ -27,10 +27,15 @@ app.post('/api/games', async (req, res) => {
   const game: Game = {
     id: uuidv4().toString(),
     correctWord,
+    allowRepeating,
+    wordLength,
     guesses: [],
+    startTime: new Date(),
+    endTime: null,
   };
 
   GAMES.push(game);
+  console.log(game);
 
   res.status(200).json({
     data: {
@@ -50,9 +55,19 @@ app.post('/api/games/:id/guesses', (req, res) => {
 
   game.guesses.push(guess);
 
-  const result = feedback(guess, game.correctWord);
+  const letters = feedback(guess, game.correctWord);
+  const correct = letters.every(letterResult => letterResult.result == 'correct');
 
-  res.status(200).json({ data: result })
+  if (correct) {
+    game.endTime = new Date();
+  }
+
+  res.status(200).json({
+    data: {
+      correct,
+      letters
+    }
+  })
 });
 
 app.post('/api/games/:id/highscore', async (req, res) => {
@@ -62,6 +77,10 @@ app.post('/api/games/:id/highscore', async (req, res) => {
   const game = GAMES.find(game => game.id == id);
   if (!game) {
     return res.status(404).end();
+  }
+
+  if (!game.endTime) {
+    return res.status(409).end();
   }
 
   const entry = new HighscoreModel({
