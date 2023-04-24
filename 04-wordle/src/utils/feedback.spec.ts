@@ -55,4 +55,40 @@ describe('feedback()', () => {
       },
     ]);
   });
+
+  test('abc + cba => misplaced, correct, misplaced', () => {
+    const result = feedback('abc', 'cba');
+    expect(result).toEqual([
+      {
+        letter: 'a',
+        result: 'misplaced',
+      },
+      {
+        letter: 'b',
+        result: 'correct',
+      },
+      {
+        letter: 'c',
+        result: 'misplaced',
+      },
+    ]);
+  });
+
+  test('abb + abc => correct, correct, incorrect', () => {
+    const result = feedback('abb', 'abc');
+    expect(result).toEqual([
+      {
+        letter: 'a',
+        result: 'correct',
+      },
+      {
+        letter: 'b',
+        result: 'correct',
+      },
+      {
+        letter: 'b',
+        result: 'incorrect',
+      },
+    ]);
+  });
 });
