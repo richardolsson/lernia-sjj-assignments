@@ -6,10 +6,12 @@ import HighscoreForm from "./HighscoreForm";
 
 type GameScreenProps = {
   game: Game;
+  onReset: () => void;
 }
 
-const GameScreen: FC<GameScreenProps> = ({ game }) => {
+const GameScreen: FC<GameScreenProps> = ({ game, onReset }) => {
   const [guesses, setGuesses] = useState<GuessResult[]>([]);
+  const [highscoreSubmitted, setHighscoreSubmitted] = useState(false);
 
   const won = guesses.some(guess => guess.correct);
 
@@ -25,7 +27,26 @@ const GameScreen: FC<GameScreenProps> = ({ game }) => {
           );
         })}
       </ul>
-      {won && (
+      {won && highscoreSubmitted && (
+        <div>
+          <h1>Thank you!</h1>
+          <ul>
+            <li><a href="/highscore">Go to highscore</a></li>
+            <li>
+              <a
+                href="/"
+                onClick={(ev) => {
+                  ev.preventDefault();
+                  onReset();
+                }}
+              >
+                Play again
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
+      {won && !highscoreSubmitted && (
         <HighscoreForm
           onSubmit={async (name) => {
             await fetch(`/api/games/${game.id}/highscore`, {
@@ -37,6 +58,8 @@ const GameScreen: FC<GameScreenProps> = ({ game }) => {
                 name,
               }),
             });
+
+            setHighscoreSubmitted(true);
           }}
         />
       )}

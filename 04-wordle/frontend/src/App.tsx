@@ -31,7 +31,15 @@ function App() {
           }}
         />
       )}
-      {screen === 'game' && game && <GameScreen game={game} />}
+      {screen === 'game' && game && (
+        <GameScreen
+          game={game}
+          onReset={() => {
+            setGame(null);
+            setScreen('start');
+          }}
+        />
+      )}
     </div>
   );
 }
