@@ -27,6 +27,10 @@ app.get('/', (req, res) => {
   res.render('game');
 });
 
+app.get('/info', (req, res) => {
+  res.render('info');
+});
+
 app.get('/highscore', async (req, res) => {
   const entryModels = await HighscoreModel.find();
   const entries = entryModels
