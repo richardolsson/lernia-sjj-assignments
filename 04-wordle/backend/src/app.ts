@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import express from 'express';
+import { engine } from 'express-handlebars';
 import getRandomWord from './utils/getRandomWord';
 import feedback from './utils/feedback';
 import { v4 as uuidv4 } from 'uuid';
@@ -10,11 +11,21 @@ import mongoose from 'mongoose';
 const app = express();
 app.use(express.json());
 
+app.engine('handlebars', engine());
+app.set('view engine', 'handlebars');
+app.set('views', './templates');
+
+app.use('/static', express.static('./static'));
+
 const GAMES: Game[] = [];
 
 const MONGODB_URL = process.env.MONGODB_URL as string;
 
 mongoose.connect(MONGODB_URL);
+
+app.get('/', (req, res) => {
+  res.render('game');
+});
 
 app.post('/api/games', async (req, res) => {
   const { wordLength, allowRepeating } = req.body;
