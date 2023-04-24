@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Game, GuessResult } from "../types";
 import Guess from "./Guess";
 import GuessInput from "./GuessInput";
@@ -12,6 +12,45 @@ type GameScreenProps = {
 const GameScreen: FC<GameScreenProps> = ({ game, onReset }) => {
   const [guesses, setGuesses] = useState<GuessResult[]>([]);
   const [highscoreSubmitted, setHighscoreSubmitted] = useState(false);
+  const [pendingGuess, setPendingGuess] = useState('');
+
+  useEffect(() => {
+    let guessValue = '';
+
+    async function handleKeyUp(ev: KeyboardEvent) {
+      if (ev.key == 'Enter') {
+        const res = await fetch(`/api/games/${game.id}/guesses`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            guess: guessValue
+          })
+        });
+
+        const payload = await res.json();
+        setGuesses(curValue => curValue.concat([payload.data]));
+
+        guessValue = '';
+        setPendingGuess(guessValue);
+
+        return;
+      } else if (ev.key == 'Backspace') {
+        guessValue = guessValue.slice(0, -1);
+      } else if (guessValue.length < game.wordLength && ev.key.length == 1) {
+        guessValue = guessValue + ev.key;
+      }
+
+      setPendingGuess(guessValue);
+    }
+
+    window.addEventListener('keyup', handleKeyUp);
+
+    return () => {
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, []);
 
   const boardGuesses = [...guesses];
   while (boardGuesses.length < 6) {
@@ -20,9 +59,13 @@ const GameScreen: FC<GameScreenProps> = ({ game, onReset }) => {
       letters: [],
     };
 
+    const isPendingGuess = boardGuesses.length === guesses.length;
+
     while (emptyGuess.letters.length < game.wordLength) {
+      const index = emptyGuess.letters.length;
+      const letter = isPendingGuess ? pendingGuess[index] : '';
       emptyGuess.letters.push({
-        letter: '',
+        letter: letter || '',
         result: 'empty',
       });
     }
