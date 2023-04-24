@@ -8,7 +8,7 @@ type GuessInputProps = {
 const GuessInput: FC<GuessInputProps> = ({ onSubmit, wordLength }) => {
   const [value, setValue] = useState('');
 
-  const isValid = value.length == wordLength;
+  const isValid = value.length === wordLength;
 
   return (
     <div>
