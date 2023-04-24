@@ -3,3 +3,7 @@ export type Game = {
   correctWord: string;
   guesses: string[];
 }
+
+export type HighscoreEntry = Game & {
+  name: string;
+}
