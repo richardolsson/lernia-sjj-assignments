@@ -109,4 +109,30 @@ describe('feedback()', () => {
       },
     ]);
   });
+
+  test('hallå + cykla => incorrect, misplaced, incorrect, correct, incorrect', () => {
+    const result = feedback('hallå', 'cykla');
+    expect(result).toEqual([
+      {
+        letter: 'h',
+        result: 'incorrect',
+      },
+      {
+        letter: 'a',
+        result: 'misplaced',
+      },
+      {
+        letter: 'l',
+        result: 'incorrect',
+      },
+      {
+        letter: 'l',
+        result: 'correct',
+      },
+      {
+        letter: 'å',
+        result: 'incorrect',
+      },
+    ]);
+  });
 });
