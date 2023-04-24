@@ -27,6 +27,24 @@ app.get('/', (req, res) => {
   res.render('game');
 });
 
+app.get('/highscore', async (req, res) => {
+  const entryModels = await HighscoreModel.find();
+  const entries = entryModels
+    .map(model => {
+      const durationMs = model.endTime.getTime() - model.startTime.getTime();
+
+      return {
+        ...model.toJSON(),
+        duration: Math.round(durationMs / 100) / 10,
+      };
+    })
+    .sort((a, b) => {
+      return a.duration - b.duration;
+    });
+
+  res.render('highscore', { entries });
+});
+
 app.post('/api/games', async (req, res) => {
   const { wordLength, allowRepeating } = req.body;
 
