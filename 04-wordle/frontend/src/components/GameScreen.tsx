@@ -31,6 +31,7 @@ const GameScreen: FC<GameScreenProps> = ({ game, onReset }) => {
   }
 
   const won = guesses.some(guess => guess.correct);
+  const lost = guesses.length == 6 && !won;
 
   return (
     <div>
@@ -80,7 +81,13 @@ const GameScreen: FC<GameScreenProps> = ({ game, onReset }) => {
           }}
         />
       )}
-      {!won && (
+      {lost && (
+        <div>
+          <h1>YOU LOST!</h1>
+          <button onClick={() => onReset()}>Try again</button>
+        </div>
+      )}
+      {!won && !lost && (
         <GuessInput
           onSubmit={async (guess) => {
             const res = await fetch(`/api/games/${game.id}/guesses`, {

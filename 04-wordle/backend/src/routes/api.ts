@@ -49,6 +49,10 @@ router.post('/api/games/:id/guesses', (req, res) => {
     return res.status(404).end();
   }
 
+  if (game.guesses.length >= 6) {
+    return res.status(409).end();
+  }
+
   game.guesses.push(guess);
 
   const letters = feedback(guess, game.correctWord);
