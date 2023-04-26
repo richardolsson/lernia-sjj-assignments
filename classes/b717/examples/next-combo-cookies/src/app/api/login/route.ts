@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import JWT from 'jsonwebtoken';
 import { ENC_KEY } from "@/constants";
+import Iron from '@hapi/iron';
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
@@ -8,6 +9,9 @@ export async function POST(request: NextRequest) {
 
   const sessionData = {
     username: username,
+    secretData: await Iron.seal({
+      some: 'secret',
+    }, ENC_KEY, Iron.defaults),
   };
 
   const jwt = JWT.sign(sessionData, ENC_KEY);

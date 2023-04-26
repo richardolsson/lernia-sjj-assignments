@@ -2,8 +2,9 @@ import { cookies } from "next/headers";
 import { FC } from "react";
 import JWT from 'jsonwebtoken';
 import { ENC_KEY } from "@/constants";
+import Iron from '@hapi/iron';
 
-const SecretPage: FC = () => {
+export default async function() {
   const allCookies = cookies();
 
   const jwt = allCookies.get('session')?.value;
@@ -13,8 +14,13 @@ const SecretPage: FC = () => {
   }
 
   try {
-    const payload = JWT.verify(jwt, ENC_KEY);
-    const username = (typeof payload == 'object') ? payload.username : null;
+    const payload = JWT.verify(jwt, ENC_KEY) as Record<string, unknown>;
+    const username = payload.username as string | undefined;
+    const sealed = payload.secretData as string;
+
+    const data = await Iron.unseal(sealed, ENC_KEY, Iron.defaults);
+
+    console.log(data);
 
     return (
       <div>
@@ -31,5 +37,3 @@ const SecretPage: FC = () => {
     );
   }
 }
-
-export default SecretPage;
