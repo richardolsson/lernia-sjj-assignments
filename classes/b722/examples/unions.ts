@@ -48,3 +48,5 @@ const myCoin: Coin = {
 console.log(typeof firstItem); // Prints "object"
 console.log(typeof myCoin.material); // Prints "string"
 
+
+export {}
