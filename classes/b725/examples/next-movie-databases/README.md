@@ -51,3 +51,15 @@ docker run --name redis --rm -p 6379:6379 redis
 * `DEL key` to delete the key and it's value
 * `EXPIRE key 60` to expire (delete) the key after 60 seconds
 * `TTL key` to see how long the key will exist
+
+## MeiliSearch setup
+
+### Start docker container
+```
+docker run --name meilisearch --rm -p 7700:7700 getmeili/meilisearch
+```
+
+### Load data into meilisearch
+```
+curl -X POST "http://localhost:7700/indexes/movies/documents?primaryKey=id" -H "Content-Type: application/json" --data-binary @movies.json
+```
