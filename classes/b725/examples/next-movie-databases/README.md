@@ -36,3 +36,18 @@ Reviews
     references movies(id)
 );
 ```
+
+## Redis setup
+
+### Start docker container
+```
+docker run --name redis --rm -p 6379:6379 redis
+```
+
+### Interesting commands
+* `SET key value` to create a key with value
+* `KEYS *` to list all keys
+* `GET key` to get the value for key
+* `DEL key` to delete the key and it's value
+* `EXPIRE key 60` to expire (delete) the key after 60 seconds
+* `TTL key` to see how long the key will exist
