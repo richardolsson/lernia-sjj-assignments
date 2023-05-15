@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Client, Query } from 'ts-postgres';
+import { createClient } from 'redis';
 
 type Movie = {
   id: number;
@@ -49,6 +50,23 @@ async function loadMovies() {
 }
 
 export async function GET() {
-  const movies = await loadMovies();
-  return NextResponse.json(movies);
+  const startTime = new Date();
+
+  const redisClient = createClient();
+  await redisClient.connect();
+
+  // If the data is in the cache, no need to retrieve from postgres
+  const cachedData = await redisClient.get('cache/movies');
+  if (cachedData) {
+    console.log('Request took (ms):', new Date().getTime() - startTime.getTime());
+    return new NextResponse(cachedData);
+  } else {
+    const movies = await loadMovies();
+
+    const moviesJson = JSON.stringify(movies);
+    await redisClient.set('cache/movies', moviesJson, { EX: 10 });
+
+    console.log('Request took (ms):', new Date().getTime() - startTime.getTime());
+    return new NextResponse(moviesJson);
+  }
 }
