@@ -16,30 +16,31 @@ export async function POST(request: NextRequest) {
 
   const payload = await request.json();
   const parsed = postSchema.safeParse(payload);
-  if (parsed.success) {
-    const { firstName, lastName, email, password } = parsed.data;
 
-    const passwordHash = await bcrypt.hash(password, 3);
+  if (!parsed.success) {
+    return new NextResponse(null, { status: 400 });
+  }
 
-    const user = new UserModel({
+  const { firstName, lastName, email, password } = parsed.data;
+
+  const passwordHash = await bcrypt.hash(password, 3);
+
+  const user = new UserModel({
+    firstName,
+    lastName,
+    email,
+    passwordHash,
+  });
+
+  await user.save();
+
+  return NextResponse.json(
+    {
+      id: user.id,
       firstName,
       lastName,
       email,
-      passwordHash,
-    });
-
-    await user.save();
-
-    return NextResponse.json(
-      {
-        id: user.id,
-        firstName,
-        lastName,
-        email,
-      },
-      { status: 201 }
-    );
-  } else {
-    return new NextResponse(null, { status: 400 });
-  }
+    },
+    { status: 201 }
+  );
 }
