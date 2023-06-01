@@ -43,6 +43,9 @@ Start your MongoDB database, e.g. with mongod --dbpath ./data
   * Render list of movies
   * Link each movie to separate page
 * List screenings per movie
+  * Movie page
+  * Load screenings
+  * Render list of screenings
 
 ### Book seats
 * Pick seats (at screening)
