@@ -39,6 +39,9 @@ Start your MongoDB database, e.g. with mongod --dbpath ./data
 
 ### Movie listing
 * List movies
+  * Load movies from API (on client, useEffect)
+  * Render list of movies
+  * Link each movie to separate page
 * List screenings per movie
 
 ### Book seats

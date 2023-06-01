@@ -8,6 +8,7 @@ const Header: FC = () => {
   return (
     <Box component="header" display="flex" gap={3}>
       <Link href="/register">Register</Link>
+      <Link href="/register">Movies</Link>
       <Link href="/welcome">Welcome</Link>
     </Box>
   );
