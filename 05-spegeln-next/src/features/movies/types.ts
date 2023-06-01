@@ -15,3 +15,8 @@ export type Screening = {
     room: string;
   },
 }
+
+export type SeatInfo = {
+  seatId: string;
+  status: 'available' | 'unavailable' | 'reservedByUser';
+}

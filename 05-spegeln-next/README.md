@@ -52,6 +52,7 @@ Start your MongoDB database, e.g. with mongod --dbpath ./data
   * Page for seat picking
   * API
     * Find available seats
+      * Database for bookings
     * Reserve seats
   * Seatmap component
 * Payment
