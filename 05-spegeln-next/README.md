@@ -17,6 +17,7 @@ Start your MongoDB database, e.g. with mongod --dbpath ./data
     * Submit button that makes API request
   * API route for creating account
     * Handle data from request
+    * Hash password
     * Store in database
 * Log in
 * Log out
