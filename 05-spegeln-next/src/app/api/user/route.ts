@@ -2,8 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import jsonwebtoken from 'jsonwebtoken';
 import getJwtSecret from '@/utils/getJwtSecret';
 import UserModel from '@/db/models/UserModel';
+import connectToDatabase from '@/db/connectToDatabase';
 
 export async function GET(request: NextRequest) {
+  await connectToDatabase();
+
   const tokenCookie = request.cookies.get('token');
   if (!tokenCookie) {
     return new NextResponse(null, { status: 401 });
