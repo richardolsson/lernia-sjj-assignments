@@ -26,6 +26,7 @@ Start your MongoDB database, e.g. with mongod --dbpath ./data
       * Find user by email
       * Compare passwords (hashed)
     * Set JWT in cookie
+  * Login form
 * Log out
 * Recognize user when logged in
 

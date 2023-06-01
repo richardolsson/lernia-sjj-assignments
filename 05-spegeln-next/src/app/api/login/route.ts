@@ -9,6 +9,8 @@ const postSchema = z.object({
   password: z.string(),
 });
 
+export type LoginPostBody = z.infer<typeof postSchema>;
+
 export async function POST(request: NextRequest) {
   const payload = await request.json();
   const parsed = postSchema.safeParse(payload);
