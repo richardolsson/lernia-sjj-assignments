@@ -7,3 +7,11 @@ export type Movie = {
     },
   }
 }
+
+export type Screening = {
+  id: number;
+  attributes: {
+    start_time: string;
+    room: string;
+  },
+}
