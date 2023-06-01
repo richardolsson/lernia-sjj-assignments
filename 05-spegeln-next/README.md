@@ -20,7 +20,14 @@ Start your MongoDB database, e.g. with mongod --dbpath ./data
     * Hash password
     * Store in database
 * Log in
+  * API endpoint
+    * Parse input
+    * Validate password
+      * Find user by email
+      * Compare passwords (hashed)
+    * Set JWT in cookie
 * Log out
+* Recognize user when logged in
 
 ### Movie listing
 * List movies

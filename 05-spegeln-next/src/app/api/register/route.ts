@@ -25,6 +25,7 @@ export async function POST(request: NextRequest) {
 
   const passwordHash = await bcrypt.hash(password, 3);
 
+  // TODO: Add check for unique users (possibly in model)
   const user = new UserModel({
     firstName,
     lastName,
