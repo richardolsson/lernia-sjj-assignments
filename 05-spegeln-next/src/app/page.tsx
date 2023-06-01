@@ -1,6 +1,11 @@
+'use client';
+
+import { Box, Typography } from "@mui/joy";
 
 export default function Home() {
   return (
-    <h1>Hello</h1>
+    <Box>
+      <Typography level="h1">Hello</Typography>
+    </Box>
   )
 }

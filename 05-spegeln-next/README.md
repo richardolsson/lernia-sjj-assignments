@@ -1,3 +1,6 @@
+## Component library
+Joy UI: https://mui.com/joy-ui/getting-started/installation/
+
 ## Features
 
 ### User accounts
