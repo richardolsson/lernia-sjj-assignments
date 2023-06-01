@@ -3,6 +3,7 @@ import UserModel from '@/db/models/UserModel';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import jsonwebtoken from 'jsonwebtoken';
+import getJwtSecret from '@/utils/getJwtSecret';
 
 const postSchema = z.object({
   email: z.string(),
@@ -31,10 +32,7 @@ export async function POST(request: NextRequest) {
     return new NextResponse(null, { status: 401 });
   }
 
-  const secret = process.env.JWT_SECRET;
-  if (!secret) {
-    throw new Error('Env variable JWT_SECRET must be set');
-  }
+  const secret = getJwtSecret();
 
   const jwt = jsonwebtoken.sign(
     {
