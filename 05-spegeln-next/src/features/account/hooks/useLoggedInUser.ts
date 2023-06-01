@@ -1,21 +1,8 @@
-import { useEffect, useState } from "react";
-import { User } from "../types";
-import apiRequest from "@/utils/apiRequest";
+import { useContext } from 'react';
+import { UserContext } from '../components/UserProvider';
 
 export default function useLoggedInUser() {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    apiRequest<User>('GET', '/api/user')
-      .then((user) => {
-        setUser(user);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
-  }, []);
+  const {user, loading} = useContext(UserContext);
 
   return {
     anon: !user && !loading,
