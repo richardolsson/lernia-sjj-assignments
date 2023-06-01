@@ -1,20 +1,10 @@
-import { useEffect, useState } from "react";
-import { Movie } from "../types";
-import apiRequest from "@/utils/apiRequest";
+import { useContext } from 'react';
+import { MoviesContext } from '../components/MoviesProvider';
 
 export default function useMovies() {
-  const [movies, setMovies] = useState<Movie[]>([]);
-
-  useEffect(() => {
-    apiRequest<{ data: Movie[] }>(
-      'GET',
-      'https://plankton-app-xhkom.ondigitalocean.app/api/movies'
-    ).then((payload) => {
-      setMovies(payload.data);
-    });
-  }, []);
+  const { movies } = useContext(MoviesContext);
 
   return {
-    movies
+    movies,
   };
 }

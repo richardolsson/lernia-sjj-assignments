@@ -1,6 +1,7 @@
 'use client';
 
 import UserProvider from '@/features/account/components/UserProvider';
+import MoviesProvider from '@/features/movies/components/MoviesProvider';
 import { CssVarsProvider } from '@mui/joy';
 import { FC, ReactNode } from 'react';
 
@@ -11,7 +12,9 @@ type ProvidersProps = {
 const Providers: FC<ProvidersProps> = ({ children }) => {
   return (
     <CssVarsProvider>
-      <UserProvider>{children}</UserProvider>
+      <UserProvider>
+        <MoviesProvider>{children}</MoviesProvider>
+      </UserProvider>
     </CssVarsProvider>
   );
 };
