@@ -1,5 +1,6 @@
 'use client';
 
+import useMovie from '@/features/movies/hooks/useMovie';
 import useMovies from '@/features/movies/hooks/useMovies';
 import { Screening } from '@/features/movies/types';
 import apiRequest from '@/utils/apiRequest';
@@ -16,7 +17,7 @@ type MovieProps = {
 export default function Movie({ params }: MovieProps) {
   const { movieId } = params;
   const [screenings, setScreenings] = useState<Screening[]>([]);
-  const { loading, movies } = useMovies();
+  const { loading, movie } = useMovie(parseInt(movieId));
 
   useEffect(() => {
     const now = new Date();
@@ -33,8 +34,6 @@ export default function Movie({ params }: MovieProps) {
   if (loading) {
     return <CircularProgress />;
   }
-
-  const movie = movies.find((candidate) => candidate.id.toString() == movieId);
 
   if (!movie) {
     return <Typography>Not found!</Typography>;
