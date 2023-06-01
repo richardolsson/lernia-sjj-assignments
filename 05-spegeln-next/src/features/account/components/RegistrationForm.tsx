@@ -8,7 +8,8 @@ import {
   Typography,
 } from '@mui/joy';
 import { FC, useState } from 'react';
-import { User, UserPostBody } from '../types';
+import { User } from '../types';
+import { RegisterPostBody } from '@/app/api/register/route';
 
 type RegistrationFormProps = {
   onRegistrationComplete: (user: User) => void;
@@ -30,7 +31,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          apiRequest<User, UserPostBody>('POST', '/api/register', {
+          apiRequest<User, RegisterPostBody>('POST', '/api/register', {
             firstName,
             lastName,
             email,

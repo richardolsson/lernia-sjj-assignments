@@ -11,6 +11,8 @@ const postSchema = z.object({
   password: z.string(),
 });
 
+export type RegisterPostBody = z.infer<typeof postSchema>;
+
 export async function POST(request: NextRequest) {
   await connectToDatabase();
 
