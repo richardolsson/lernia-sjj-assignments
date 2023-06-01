@@ -4,8 +4,16 @@ import useMovie from '@/features/movies/hooks/useMovie';
 import useMovies from '@/features/movies/hooks/useMovies';
 import { Screening } from '@/features/movies/types';
 import apiRequest from '@/utils/apiRequest';
-import { Box, CircularProgress, List, ListItem, Typography } from '@mui/joy';
+import {
+  Box,
+  Button,
+  CircularProgress,
+  List,
+  ListItem,
+  Typography,
+} from '@mui/joy';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 type MovieProps = {
@@ -52,7 +60,10 @@ export default function Movie({ params }: MovieProps) {
         {screenings.map((screening) => {
           const date = new Date(screening.attributes.start_time);
           return (
-            <ListItem key={screening.id}>
+            <ListItem
+              key={screening.id}
+              sx={{ justifyContent: 'space-between' }}
+            >
               <Box display="flex" flexDirection="column">
                 <Typography fontWeight="bold" display="block">
                   {date.toLocaleString()}
@@ -61,6 +72,9 @@ export default function Movie({ params }: MovieProps) {
                   {screening.attributes.room}
                 </Typography>
               </Box>
+              <Link href={`/movies/${movieId}/book/${screening.id}`} passHref>
+                <Button>Book</Button>
+              </Link>
             </ListItem>
           );
         })}

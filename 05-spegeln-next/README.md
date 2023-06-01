@@ -49,5 +49,10 @@ Start your MongoDB database, e.g. with mongod --dbpath ./data
 
 ### Book seats
 * Pick seats (at screening)
+  * Page for seat picking
+  * API
+    * Find available seats
+    * Reserve seats
+  * Seatmap component
 * Payment
 * Order confirmation
