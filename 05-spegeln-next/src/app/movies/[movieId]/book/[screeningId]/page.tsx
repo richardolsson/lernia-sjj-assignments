@@ -1,7 +1,8 @@
 'use client';
 
+import SeatMap from '@/features/booking/components/SeatMap';
 import useMovie from '@/features/movies/hooks/useMovie';
-import { Screening } from '@/features/movies/types';
+import { Screening, SeatInfo } from '@/features/movies/types';
 import apiRequest from '@/utils/apiRequest';
 import { Box, CircularProgress, Typography } from '@mui/joy';
 import { useEffect, useState } from 'react';
@@ -18,6 +19,7 @@ export default function Book({ params }: BookProps) {
   const [screening, setScreening] = useState<Screening | null>(null);
   const [screeningLoading, setScreeningLoading] = useState(true);
   const { movie, loading } = useMovie(parseInt(movieId));
+  const [seats, setSeats] = useState<SeatInfo[]>([]);
 
   useEffect(() => {
     apiRequest<{ data: Screening }>(
@@ -29,6 +31,13 @@ export default function Book({ params }: BookProps) {
         setScreeningLoading(false);
       })
       .catch(() => setScreeningLoading(false));
+
+    apiRequest<{ seats: SeatInfo[] }>(
+      'GET',
+      `/api/screenings/${screeningId}/seats`
+    ).then((payload) => {
+      setSeats(payload.seats);
+    });
   }, [screeningId]);
 
   if (loading || screeningLoading) {
@@ -47,6 +56,9 @@ export default function Book({ params }: BookProps) {
       <Typography>
         {date.toLocaleString()} ({screening.attributes.room})
       </Typography>
+      <Box>
+        <SeatMap seats={seats}/>
+      </Box>
     </Box>
   );
 }
