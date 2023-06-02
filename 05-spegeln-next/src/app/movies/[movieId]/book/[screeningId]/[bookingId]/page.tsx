@@ -58,7 +58,17 @@ export default function Book({ params }: BookProps) {
         {date.toLocaleString()} ({screening.attributes.room})
       </Typography>
       <Box>
-        <SeatMap seats={seats}/>
+        <SeatMap
+          seats={seats}
+          onSelectSeat={(seatId) => {
+            // TODO: Patch with all seats, plus this one
+            console.log('PATCH with seatId', seatId);
+          }}
+          onDeselectSeat={(seatId) => {
+            // TODO: Patch with seats, minus this one
+            console.log('PATCH without seatId', seatId);
+          }}
+        />
       </Box>
     </Box>
   );
