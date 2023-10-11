@@ -1,19 +1,62 @@
 <html>
   <head>
     <style>
+      * {
+        margin-block: 0;
+        margin-inline: 0;
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      h2#headline[aria-label=Headline], h2.headline {
+        font-size: 24px;
+        display: inline-block;
+        background-color: orange;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      h2:hover {
+        /*
+        background-color: red;
+        */
+        color: green;
+      }
+
+      body h2.important:hover {
+        color: blue;
+      }
+
+      #header-b {
+        font-style: italic;
+      }
+
+      h2.important {
+        color: red;
+      }
+
+      .large {
+        font-size: 40px;
+      }
     </style>
   </head>
   <body>
-    <h1>Rubrik A</h1>
-    <h2>Rubrik B</h2>
+    <h1 class="important large">Rubrik A</h1>
+    <h2>
+      Rubrik C
+      <span class="important">(med en viktig del)</span>
+    </h2>
+    <h2 id="header-b" class="important">Rubrik B</h2>
+    <input type="text">
+    <input type="checkbox">
     <p>
-      En brödtext med <a href="https://google.se">
-        en länk till svenska Google</a>
-        och lite mer text.
+      En brödtext med
+      <a href="https://google.se">en länk till svenska Google</a>
+      och lite mer text
     </p>
-    <p>En brödtext</p>
-    <a href="https://google.com">
-      Klicka här för amerikanska Google
-    </a>
   </body>
 </html>
