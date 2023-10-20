@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .ball {
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      background-color: red;
+      animation: 2s left-to-right;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    .realistic {
+      /* easeInOutCubic */
+      animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    .container {
+      width: 200px;
+      padding: 10px;
+      border: 1px solid black;
+      margin: 20px 0 200px;
+    }
+
+    @keyframes left-to-right {
+      from {
+        margin-left: 0;
+      }
+      to {
+        margin-left: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="ball"></div>
+  </div>
+  <div class="container">
+    <div class="ball realistic"></div>
+  </div>
+</body>
+
+</html>
