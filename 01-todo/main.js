@@ -4,7 +4,8 @@ function init() {
   document.querySelector('.todoForm').addEventListener('submit', (ev) => {
     ev.preventDefault();
 
-    const text = document.querySelector('.todoForm__input').value;
+    const inputElement = document.querySelector('.todoForm__input');
+    const text = inputElement.value;
     const item = {
       id: `item-${items.length + 1}`,
       text: text,
@@ -12,6 +13,8 @@ function init() {
     };
 
     items.push(item);
+
+    inputElement.value = '';
 
     const listElement = document.querySelector('.todoList');
 
