@@ -29,7 +29,19 @@ function init() {
     deleteButton.textContent = 'Delete';
     deleteButton.classList.add('todoList__deleteButton');
     itemElement.append(deleteButton);
+
+    spanElement.addEventListener('click', () => {
+      item.completed = !item.completed;
+      updateItems();
+    });
   });
+
+  function updateItems() {
+    for (const item of items) {
+      const itemElement = document.getElementById(item.id);
+      itemElement.classList.toggle('todoList__item--completed', item.completed);
+    }
+  }
 }
 
 init();
