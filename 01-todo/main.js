@@ -34,12 +34,23 @@ function init() {
       item.completed = !item.completed;
       updateItems();
     });
+
+    deleteButton.addEventListener('click', () => {
+      const index = items.indexOf(item);
+      items.splice(index, 1);
+      updateItems();
+    });
   });
 
   function updateItems() {
-    for (const item of items) {
-      const itemElement = document.getElementById(item.id);
-      itemElement.classList.toggle('todoList__item--completed', item.completed);
+    const itemElements = document.querySelectorAll('.todoList__item');
+    for (const itemElement of itemElements) {
+      const itemInArray = items.find(i => i.id == itemElement.id);
+      if (itemInArray) {
+        itemElement.classList.toggle('todoList__item--completed', itemInArray.completed);
+      } else {
+        itemElement.remove();
+      }
     }
   }
 }
