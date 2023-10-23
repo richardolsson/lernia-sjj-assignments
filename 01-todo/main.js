@@ -6,6 +6,24 @@ function init() {
 
     const inputElement = document.querySelector('.todoForm__input');
     const text = inputElement.value;
+
+    if (text == '') {
+      const errorElement = document.createElement('p');
+      errorElement.textContent = 'Input must not be empty';
+      errorElement.classList.add('todoForm__error');
+
+      const formElement = document.querySelector('.todoForm');
+      formElement.append(errorElement);
+
+      return;
+    } else {
+      const errorElement = document.querySelector('.todoForm__error');
+      if (errorElement) {
+        errorElement.remove();
+      }
+    }
+
+
     const item = {
       id: `item-${items.length + 1}`,
       text: text,
