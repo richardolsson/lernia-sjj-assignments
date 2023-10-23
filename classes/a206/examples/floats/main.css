@@ -1,0 +1,31 @@
+.container {
+  background: linear-gradient(90deg,
+      lightcoral 20%,
+      lightpink 20%,
+      lightpink 80%,
+      lightseagreen 80%);
+}
+
+.header {
+  height: 100px;
+}
+
+.left {
+  float: left;
+  width: 20%;
+}
+
+.main {
+  float: left;
+  width: 60%;
+}
+
+.right {
+  float: right;
+  width: 20%;
+}
+
+.footer {
+  clear: both;
+  height: 100px;
+}
