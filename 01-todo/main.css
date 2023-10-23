@@ -39,6 +39,11 @@ body {
 
 .todoList__item span {
   cursor: pointer;
+  transition: color 0.2s;
+}
+
+.todoList__item span:hover {
+  text-decoration: line-through;
 }
 
 .todoList__item--completed span {
