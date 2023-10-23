@@ -7,6 +7,11 @@ function init() {
     const inputElement = document.querySelector('.todoForm__input');
     const text = inputElement.value;
 
+    const existingErrorElement = document.querySelector('.todoForm__error');
+    if (existingErrorElement) {
+      existingErrorElement.remove();
+    }
+
     if (text == '') {
       const errorElement = document.createElement('p');
       errorElement.textContent = 'Input must not be empty';
@@ -16,11 +21,6 @@ function init() {
       formElement.append(errorElement);
 
       return;
-    } else {
-      const errorElement = document.querySelector('.todoForm__error');
-      if (errorElement) {
-        errorElement.remove();
-      }
     }
 
 
