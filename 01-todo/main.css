@@ -1,0 +1,68 @@
+html, body {
+  min-height: 100%;
+}
+
+body {
+  background: linear-gradient(#fcc, #f88);
+  font-family: sans-serif;
+}
+
+.app {
+  box-sizing: border-box;
+  background-color: white;
+  width: 350px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  margin: 20px auto;
+}
+
+.app__title {
+  margin: 0;
+  font-family: serif;
+}
+
+.todoForm__error {
+  color: red;
+  font-style: italic;
+  font-size: 11px;
+  margin: 4px 0 10px;
+}
+
+.todoList {
+  padding: 0;
+}
+
+.todoList__item {
+  list-style-type: none;
+}
+
+.todoList__item span {
+  cursor: pointer;
+}
+
+.todoList__item--completed span {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.todoList__deleteButton {
+  color: red;
+  text-indent: -1000px;
+  overflow: hidden;
+  position: relative;
+  border-width: 0;
+  background-color: transparent;
+  min-width: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.todoList__deleteButton::before {
+  display: block;
+  content: "🗑";
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-indent: 0;
+}
