@@ -73,6 +73,10 @@ function init() {
         itemElement.remove();
       }
     }
+
+    const completedItems = items.filter(item => item.completed);
+    const counterElement = document.querySelector('.todoCounter');
+    counterElement.textContent = `${completedItems.length} completed`;
   }
 }
 
