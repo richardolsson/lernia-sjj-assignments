@@ -1,0 +1,49 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.header {
+  grid-column: span 12;
+  height: 50px;
+}
+
+.left {
+  grid-column: span 3;
+}
+
+.main {
+  grid-column: span 6;
+}
+
+.main img {
+  float: right;
+  margin: 0 0 10px 10px;
+}
+
+.right {
+  position: relative;
+  grid-column: span 3;
+}
+
+.right a {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.footer {
+  grid-column: span 12;
+}
+
+.footer ul {
+  display: flex;
+  padding: 0;
+  justify-content: space-evenly;
+}
+
+.footer li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
