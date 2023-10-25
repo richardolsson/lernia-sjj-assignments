@@ -1,3 +1,41 @@
 body {
   background-color: #faa;
+  font-size: 24px;
+}
+
+.container {
+  background-color: white;
+  padding: 1em;
+}
+
+.header {
+  font-size: 2em;
+}
+
+.main img {
+  display: block;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.main {
+  line-height: 1.3em;
+}
+
+.left, .right {
+  margin: 1em 0;
+}
+
+.footer ul {
+  padding: 0;
+}
+
+.footer li {
+  list-style-type: none;
+}
+
+.footer a {
+  display: block;
+  padding: 1em 0;
+  text-align: center;
 }
