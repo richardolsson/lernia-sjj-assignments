@@ -87,6 +87,10 @@ body {
     grid-row: 2 / 3;
   }
 
+  .right {
+    grid-column: 4 / 5;
+  }
+
   .footer {
     grid-column: span 4;
   }
