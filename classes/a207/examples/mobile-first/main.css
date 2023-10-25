@@ -39,3 +39,27 @@ body {
   padding: 1em 0;
   text-align: center;
 }
+
+@media screen and (min-width: 1000px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .header {
+    grid-column: span 4;
+  }
+
+  .main {
+    grid-column: 2 / 4;
+  }
+
+  .left {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+
+  .footer {
+    grid-column: span 4;
+  }
+}
