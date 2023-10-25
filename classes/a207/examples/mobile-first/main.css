@@ -70,6 +70,8 @@ body {
 
 @media screen and (min-width: 1000px) {
   .container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
   }
@@ -93,5 +95,14 @@ body {
 
   .footer {
     grid-column: span 4;
+  }
+
+  .footer ul {
+    display: flex;
+    align-content: stretch;
+  }
+
+  .footer li {
+    flex-grow: 1;
   }
 }
