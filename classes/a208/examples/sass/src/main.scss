@@ -1,17 +1,5 @@
-$medium-screen-breakpoint: 700px;
-$large-screen-breakpoint: 1000px;
-
-@mixin card {
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  padding: 0.5em;
-}
-
-@mixin breakpoint($min-size) {
-  @media screen and (min-width: $min-size) {
-    @content;
-  }
-}
+@import 'mixins';
+@import 'variables';
 
 body {
   background-color: #faa;
