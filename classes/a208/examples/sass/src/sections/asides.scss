@@ -1,0 +1,20 @@
+.left,
+.right {
+  @include card;
+
+  margin: 1em 0;
+
+  @include breakpoint($medium-screen-breakpoint) {
+    margin: 0;
+  }
+}
+
+.right {
+  @include breakpoint($medium-screen-breakpoint) {
+    grid-column: span 2;
+  }
+
+  @include breakpoint($large-screen-breakpoint) {
+    grid-column: 3 / 4;
+  }
+}

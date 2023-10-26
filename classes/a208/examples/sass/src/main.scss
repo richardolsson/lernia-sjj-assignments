@@ -20,75 +20,7 @@ body {
   }
 }
 
-.header {
-  @include card;
-
-  font-size: 2em;
-
-  @include breakpoint($medium-screen-breakpoint) {
-    grid-column: span 2;
-  }
-
-  @include breakpoint($large-screen-breakpoint) {
-    grid-column: span 3;
-  }
-}
-
-.main {
-  @include card;
-
-  line-height: 1.3em;
-
-  img {
-    display: block;
-    width: 100%;
-    margin-bottom: 1em;
-  }
-}
-
-.left,
-.right {
-  @include card;
-
-  margin: 1em 0;
-
-  @include breakpoint($medium-screen-breakpoint) {
-    margin: 0;
-  }
-}
-
-.right {
-  @include breakpoint($medium-screen-breakpoint) {
-    grid-column: span 2;
-  }
-
-  @include breakpoint($large-screen-breakpoint) {
-    grid-column: 3 / 4;
-  }
-}
-
-.footer {
-  @include card;
-
-  ul {
-    padding: 0;
-  }
-
-  li {
-    list-style-type: none;
-  }
-
-  a {
-    display: block;
-    padding: 1em 0;
-    text-align: center;
-  }
-
-  @include breakpoint($medium-screen-breakpoint) {
-    grid-column: span 2;
-  }
-
-  @include breakpoint($large-screen-breakpoint) {
-    grid-column: span 3;
-  }
-}
+@import 'sections/header';
+@import 'sections/main';
+@import 'sections/asides';
+@import 'sections/footer';

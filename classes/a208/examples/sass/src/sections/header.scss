@@ -1,0 +1,13 @@
+.header {
+  @include card;
+
+  font-size: 2em;
+
+  @include breakpoint($medium-screen-breakpoint) {
+    grid-column: span 2;
+  }
+
+  @include breakpoint($large-screen-breakpoint) {
+    grid-column: span 3;
+  }
+}
