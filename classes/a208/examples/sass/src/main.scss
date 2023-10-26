@@ -6,6 +6,11 @@ body {
 .container {
   background-color: white;
   padding: 1em;
+
+  @media screen and (min-width: 700px) {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
 }
 
 .header {
