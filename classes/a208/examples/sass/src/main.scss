@@ -1,5 +1,11 @@
 $medium-screen-breakpoint: 700px;
 
+@mixin card {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 0.5em;
+}
+
 body {
   background-color: #faa;
   font-size: 24px;
@@ -16,9 +22,9 @@ body {
 }
 
 .header {
+  @include card;
+
   font-size: 2em;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 
   @media screen and (min-width: $medium-screen-breakpoint) {
     grid-column: span 2;
@@ -26,9 +32,9 @@ body {
 }
 
 .main {
+  @include card;
+
   line-height: 1.3em;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 
   img {
     display: block;
@@ -39,9 +45,9 @@ body {
 
 .left,
 .right {
+  @include card;
+
   margin: 1em 0;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 
   @media screen and (min-width: $medium-screen-breakpoint) {
     margin: 0;
@@ -55,8 +61,7 @@ body {
 }
 
 .footer {
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  @include card;
 
   ul {
     padding: 0;
