@@ -12,14 +12,14 @@ body {
   font-size: 2em;
 }
 
-.main img {
-  display: block;
-  width: 100%;
-  margin-bottom: 1em;
-}
-
 .main {
   line-height: 1.3em;
+
+  img {
+    display: block;
+    width: 100%;
+    margin-bottom: 1em;
+  }
 }
 
 .left, .right {
