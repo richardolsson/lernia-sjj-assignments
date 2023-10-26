@@ -1,4 +1,5 @@
 $medium-screen-breakpoint: 700px;
+$large-screen-breakpoint: 1000px;
 
 @mixin card {
   background-color: white;
@@ -19,6 +20,10 @@ body {
     gap: 1em;
     grid-template-columns: 1fr 2fr;
   }
+
+  @media screen and (min-width: $large-screen-breakpoint) {
+    grid-template-columns: 1fr 2fr 1fr;
+  }
 }
 
 .header {
@@ -28,6 +33,10 @@ body {
 
   @media screen and (min-width: $medium-screen-breakpoint) {
     grid-column: span 2;
+  }
+
+  @media screen and (min-width: $large-screen-breakpoint) {
+    grid-column: span 3;
   }
 }
 
@@ -58,6 +67,10 @@ body {
   @media screen and (min-width: $medium-screen-breakpoint) {
     grid-column: span 2;
   }
+
+  @media screen and (min-width: $large-screen-breakpoint) {
+    grid-column: 3 / 4;
+  }
 }
 
 .footer {
@@ -79,5 +92,9 @@ body {
 
   @media screen and (min-width: $medium-screen-breakpoint) {
     grid-column: span 2;
+  }
+
+  @media screen and (min-width: $large-screen-breakpoint) {
+    grid-column: span 3;
   }
 }
