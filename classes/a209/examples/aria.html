@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    #percent-loaded {
+      width: 200px;
+      height: 20px;
+      border: 1px solid black;
+    }
+
+    #percent-loaded:before {
+      display: block;
+      content: "";
+      height: 100%;
+      width: 75%;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="percent-loaded" role="progressbar" aria-valuenow="75"
+    aria-valuemin="0" aria-valuemax="100"></div>
+</body>
+
+</html>
