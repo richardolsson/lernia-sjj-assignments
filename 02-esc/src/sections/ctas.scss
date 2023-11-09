@@ -1,3 +1,15 @@
+@mixin button($bgColor, $textColor: black) {
+    @include font-bold;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: $textColor;
+
+    display: block;
+    background-color: $bgColor;
+    padding: 1rem 3rem;
+    border-radius: 0.2rem;
+}
+
 .ctas {
   display: flex;
   flex-direction: column-reverse;
@@ -5,16 +17,17 @@
   gap: 1rem;
   margin: 2rem;
 
-  &__onsiteButton {
-    @include font-bold;
-    font-size: 1.2rem;
-    text-decoration: none;
-    color: black;
+  @include medium-screen {
+    margin-top: 0;
+    flex-direction: row;
+    justify-content: center;
 
-    display: block;
-    background-color: $c-lightblue;
-    padding: 1rem 3rem;
-    border-radius: 0.2rem;
+    position: relative;
+    top: -2rem;
+  }
+
+  &__onsiteButton {
+    @include button($c-lightblue);
   }
 
   &__onlineButton {
@@ -22,5 +35,9 @@
     font-size: 0.8rem;
     padding: 1rem 3rem;
     color: $c-mediumblue;
+
+    @include medium-screen {
+      @include button($c-red, white);
+    }
   }
 }
