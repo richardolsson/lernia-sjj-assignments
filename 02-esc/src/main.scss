@@ -1,0 +1,28 @@
+// Variables
+$c-gray: #B6BDB5;
+$c-red: #E3170A;
+$c-darkblue: #011827;
+$c-mediumblue: #36769D;
+$c-lightblue: #8ACFE5;
+
+@mixin font-regular {
+  font-family: 'Roboto';
+}
+
+@mixin font-bold {
+  @include font-regular;
+  font-weight: bold;
+}
+
+@mixin font-italic {
+  @include font-regular;
+  font-style: italic;
+}
+
+// Reset default styles
+html,
+body {
+  margin: 0;
+  font-size: 18px;
+  @include font-regular;
+}
