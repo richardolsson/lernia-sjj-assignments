@@ -5,6 +5,7 @@ $c-darkblue: #011827;
 $c-mediumblue: #36769D;
 $c-lightblue: #8ACFE5;
 $b-medium: 700px;
+$b-large: 1200px;
 
 @mixin font-regular {
   font-family: 'Roboto';
@@ -24,6 +25,12 @@ $b-medium: 700px;
 
 @mixin medium-screen {
   @media screen and (min-width: $b-medium) {
+    @content;
+  }
+}
+
+@mixin large-screen {
+  @media screen and (min-width: $b-large) {
     @content;
   }
 }
