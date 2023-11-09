@@ -8,6 +8,7 @@ $b-medium: 700px;
 
 @mixin font-regular {
   font-family: 'Roboto';
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -27,6 +28,19 @@ $b-medium: 700px;
   }
 }
 
+@mixin button($bgColor, $textColor: black) {
+    @include font-bold;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: $textColor;
+
+    display: block;
+    background-color: $bgColor;
+    padding: 1rem 3rem;
+    border-radius: 0.2rem;
+  border-width: 0;
+}
+
 // Reset default styles
 html,
 body {
@@ -43,3 +57,4 @@ img {
 @import 'sections/hero.scss';
 @import 'sections/ctas.scss';
 @import 'sections/testimonials.scss';
+@import 'sections/challenges.scss';

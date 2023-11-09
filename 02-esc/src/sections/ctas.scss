@@ -1,15 +1,3 @@
-@mixin button($bgColor, $textColor: black) {
-    @include font-bold;
-    font-size: 1.2rem;
-    text-decoration: none;
-    color: $textColor;
-
-    display: block;
-    background-color: $bgColor;
-    padding: 1rem 3rem;
-    border-radius: 0.2rem;
-}
-
 .ctas {
   display: flex;
   flex-direction: column-reverse;
