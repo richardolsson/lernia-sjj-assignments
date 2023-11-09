@@ -1,6 +1,9 @@
 .testimonials {
   width: 90%;
   margin: 0 auto;
+
+  display: flex;
+  gap: 2rem;
 }
 
 .testimonial {
@@ -8,6 +11,10 @@
 
   align-items: flex-start;
   gap: 2rem;
+
+  @include medium-screen {
+    display: flex;
+  }
 
   &:first-child {
     display: flex;
