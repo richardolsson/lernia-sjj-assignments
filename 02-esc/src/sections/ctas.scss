@@ -1,0 +1,26 @@
+.ctas {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem;
+
+  &__onsiteButton {
+    @include font-bold;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: black;
+
+    display: block;
+    background-color: $c-lightblue;
+    padding: 1rem 3rem;
+    border-radius: 0.2rem;
+  }
+
+  &__onlineButton {
+    @include font-bold;
+    font-size: 0.8rem;
+    padding: 1rem 3rem;
+    color: $c-mediumblue;
+  }
+}
