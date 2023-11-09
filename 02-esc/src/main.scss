@@ -34,5 +34,9 @@ body {
   @include font-regular;
 }
 
+img {
+  max-width: 100%;
+}
+
 @import 'sections/header.scss';
 @import 'sections/hero.scss';
