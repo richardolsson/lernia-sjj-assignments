@@ -1,0 +1,32 @@
+.testimonials {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.testimonial {
+  display: none;
+
+  align-items: flex-start;
+  gap: 2rem;
+
+  &:first-child {
+    display: flex;
+  }
+
+  &__image {
+    border-radius: 50%;
+  }
+
+  &__quote {
+    @include font-italic;
+    margin: 0;
+    font-size: 1.2rem;
+  }
+
+  &__cite {
+    display: block;
+    @include font-regular;
+    font-size: 1rem;
+    margin-top: 0.3rem;
+  }
+}

@@ -8,6 +8,7 @@ $b-medium: 700px;
 
 @mixin font-regular {
   font-family: 'Roboto';
+  font-style: normal;
 }
 
 @mixin font-bold {
@@ -41,3 +42,4 @@ img {
 @import 'sections/header.scss';
 @import 'sections/hero.scss';
 @import 'sections/ctas.scss';
+@import 'sections/testimonials.scss';
