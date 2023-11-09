@@ -1,0 +1,23 @@
+.header {
+  background-color: $c-darkblue;
+  padding: 1rem;
+
+  * {
+    color: white;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &__text {
+    font-size: 1.4rem;
+    width: 120px;
+  }
+}
+
+.navbar {
+  display: none;
+}

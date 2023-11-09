@@ -26,3 +26,5 @@ body {
   font-size: 18px;
   @include font-regular;
 }
+
+@import 'sections/header.scss';
