@@ -1,0 +1,20 @@
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+
+  &__headline {
+    margin: 1rem;
+  }
+
+  &__intro {
+    margin: 1rem;
+    font-size: 1.1rem;
+  }
+
+  &__cta {
+    @include button($c-red, white);
+    margin: 1rem;
+  }
+}
