@@ -5,6 +5,10 @@
   * {
     color: white;
   }
+
+  @include medium-screen {
+    padding-bottom: 0.2rem;
+  }
 }
 
 .logo {
@@ -15,9 +19,49 @@
   &__text {
     font-size: 1.4rem;
     width: 120px;
+    margin: 0;
+
+    @include medium-screen {
+      font-size: 2rem;
+      width: auto;
+    }
+  }
+
+  @include medium-screen {
+    align-items: flex-end;
   }
 }
 
 .navbar {
   display: none;
+
+  @include medium-screen {
+    display: block;
+
+    &__menu {
+      display: flex;
+      margin-top: 2rem;
+      padding: 0;
+
+      justify-content: center;
+    }
+
+    &__menuItem {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+
+      a {
+        @include font-bold;
+        font-size: 1.2rem;
+
+        padding: 0.5rem 2rem;
+        text-decoration: none;
+
+        &:hover {
+          color: $c-lightblue;
+        }
+      }
+    }
+  }
 }

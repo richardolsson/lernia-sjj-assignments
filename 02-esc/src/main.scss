@@ -4,6 +4,7 @@ $c-red: #E3170A;
 $c-darkblue: #011827;
 $c-mediumblue: #36769D;
 $c-lightblue: #8ACFE5;
+$b-medium: 700px;
 
 @mixin font-regular {
   font-family: 'Roboto';
@@ -17,6 +18,12 @@ $c-lightblue: #8ACFE5;
 @mixin font-italic {
   @include font-regular;
   font-style: italic;
+}
+
+@mixin medium-screen {
+  @media screen and (min-width: $b-medium) {
+    @content;
+  }
 }
 
 // Reset default styles
