@@ -3,8 +3,12 @@
   grid-template: 1fr;
   gap: 2rem;
   padding: 2rem;
-
   background-color: $c-darkblue;
+
+  @include medium-screen {
+    padding: 2rem 6rem;
+    grid-template-columns: 6fr 2fr 2fr;
+  }
 
   * {
     color: white;
@@ -17,6 +21,7 @@
 
   p {
     margin: 0;
+    max-width: 500px;
   }
 
   ul {
