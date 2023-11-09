@@ -1,0 +1,39 @@
+.footer {
+  display: grid;
+  grid-template: 1fr;
+  gap: 2rem;
+  padding: 2rem;
+
+  background-color: $c-darkblue;
+
+  * {
+    color: white;
+  }
+
+  h2 {
+    font-size: 1em;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style-type: none;
+    margin: 0;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  &__siteMapItem:nth-child(4) {
+    margin-top: 1rem;
+  }
+}
