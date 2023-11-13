@@ -44,8 +44,9 @@
     //*/
 
     //*/ Example 3: Event listener with anon function (cannot be removed)
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (event) => {
       console.log('Converting to ball');
+      console.log(event);
       convertElementToBall('square');
     });
     //*/
