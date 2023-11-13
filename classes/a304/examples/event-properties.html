@@ -14,9 +14,8 @@
 <body>
   <button>Click me!</button>
   <div id="square">This is a square</div>
-
   <script>
-    function handleClick() {
+    function changeShape() {
       var element = document.getElementById('square');
       element.style.borderRadius = '50px';
 
@@ -24,7 +23,12 @@
       element.textContent = 'This is a ball';
     }
 
-    document.querySelector('button').onclick = handleClick;
+    function logMath() {
+      console.log(5 + 4);
+    }
+
+    document.querySelector('button').onclick = changeShape;
+    document.querySelector('button').onclick = logMath;
   </script>
 </body>
 
