@@ -163,6 +163,9 @@ img {
   }
 }
 
+.navbarOpen {
+  overflow: hidden;
+}
 .navbarOpen .navbar {
   display: block;
   animation-name: openNavBar;

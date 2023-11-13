@@ -157,6 +157,8 @@
 }
 
 .navbarOpen {
+  overflow: hidden;
+
   .navbar {
     display: block;
     animation-name: openNavBar;
