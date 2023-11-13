@@ -27,8 +27,12 @@
       console.log(5 + 4);
     }
 
-    document.querySelector('button').onclick = changeShape;
-    document.querySelector('button').onclick = logMath;
+    function handleClick() {
+      changeShape();
+      logMath();
+    }
+
+    document.querySelector('button').onclick = handleClick;
   </script>
 </body>
 
