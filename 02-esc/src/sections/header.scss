@@ -9,6 +9,51 @@
   @include medium-screen {
     padding-bottom: 0.2rem;
   }
+
+  &__navbarButton {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border-width: 0;
+    background-color: transparent;
+    width: 3rem;
+    height: 3rem;
+
+    @include medium-screen {
+      display: none;
+    }
+
+    span {
+      position: relative;
+      display: block;
+      background-color: white;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+
+      &:before {
+        position: absolute;
+        display: block;
+        content: "";
+        width: 100%;
+        height: 6px;
+        background-color: white;
+        border-radius: 3px;
+        top: -12px;
+      }
+
+      &:after {
+        position: absolute;
+        display: block;
+        content: "";
+        width: 100%;
+        height: 6px;
+        background-color: white;
+        border-radius: 3px;
+        bottom: -12px;
+      }
+    }
+  }
 }
 
 .logo {
@@ -34,12 +79,17 @@
 
 .navbar {
   @media screen and (max-width: $b-medium) {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background-color: rgba(255, 255, 255, 0.5);
+
+    &.open {
+      display: block;
+    }
 
     &__menu {
       position: absolute;

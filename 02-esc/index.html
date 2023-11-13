@@ -18,7 +18,7 @@
       <img class="logo__image" src="assets/logo.png" alt="ESC">
       <h1 class="logo__text">Hacker Escape Rooms</h1>
     </div>
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
       <ul class="navbar__menu" role="menubar">
         <li class="navbar__menuItem" role="menuitem">
           <a href="">Play online</a>
@@ -212,6 +212,22 @@
       </ul>
     </div>
   </footer>
+  <script>
+    function initializeMobileMenu() {
+      const button = document.createElement('button');
+      button.setAttribute('aria-label', 'Open navbar');
+      button.setAttribute('aria-controls', 'navbar');
+      button.classList.add('header__navbarButton');
+      button.append(document.createElement('span'));
+      document.querySelector('#navbar').before(button);
+
+      button.addEventListener('click', () => {
+        document.querySelector('#navbar').classList.add('open');
+      });
+    }
+
+    initializeMobileMenu();
+  </script>
 </body>
 
 </html>
