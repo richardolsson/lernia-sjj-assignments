@@ -33,8 +33,22 @@
     }
 
     const button = document.querySelector('button');
+
+    /*/ Example 1: Add event listeners
     button.addEventListener('click', changeShape);
     button.addEventListener('click', logMath);
+    //*/
+
+    /*/ Example 2: Remove event listener again
+    button.removeEventListener('click', changeShape);
+    //*/
+
+    //*/ Example 3: Event listener with anon function (cannot be removed)
+    button.addEventListener('click', () => {
+      console.log('Converting to ball');
+      convertElementToBall('square');
+    });
+    //*/
   </script>
 </body>
 
