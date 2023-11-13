@@ -1,0 +1,162 @@
+<main>
+# [ESC] Hacker Escape Rooms API
+
+## API basics
+This is the API for the (fictional) [ESC] Hacker Escape Rooms booking system.
+Endpoints in this API can be used to load challenges and make reservations at
+available times.
+
+## Resources
+
+<section>
+### `/challenges`
+Resource used to retrieve a list of all avilable challenges.
+
+#### Response format
+`GET` requests to `/challenges` will return an object with the following shape:
+
+```
+{
+    "challenges": [
+        {
+            "id": 1,
+            "type": "onsite",
+            "title": "Project: X of Doom",
+            "description": "Try your hardest and succeed. Or fail",
+            "minParticipants": 2,
+            "maxParticipants": 4,
+            "rating": 1,
+            "image": "https://placekitten.com/640/480",
+            "labels": [
+                "linux",
+                "web",
+                "javascript"
+            ]
+        },
+        // More objects...
+    ]
+}
+```
+
+#### Code example
+```
+const res = await fetch('https://lernia-sjj-assignments.vercel.app/api/challenges');
+const data = await res.json();
+data.challenges.forEach(challenge => {
+  console.log(challenge.title)
+});
+```
+</section>
+
+<section>
+### `/booking/available-times`
+Resource used to retrieve a list of available time slots for a specific date.
+
+#### Request format
+The request must include a query string with two parameters:
+
+* The `challenge` parameter must be the ID of the challenge
+* The `date` parameter needs to be a valid date string (YYYY-MM-DD), e.g.:
+
+```
+GET /api/booking/available-times?date=2022-12-12&challenge=3
+```
+
+#### Response format
+`GET` requests to this resource (with a valid query string) will return an object with
+the following shape:
+
+```
+{
+    "date": "2022-12-12T00:00:00.000Z",
+    "slots": [
+        "11:00",
+        "12:30",
+        "14:00",
+        "15:30",
+        "18:30",
+        "20:00"
+    ]
+}
+```
+
+Any invalid requests will respond with an object containing details of the error.
+
+#### Code example
+```
+const res = await fetch('https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=2022-12-12&challenge=3');
+const data = await res.json();
+data.slots.forEach(slot => {
+  console.log(slot)
+});
+```
+</section>
+
+<section>
+### `/booking/reservations`
+Resource used to create a booking.
+
+#### Request format
+Only `POST` requests are allowed to this endpoint. The body must be JSON and contain data
+with the following fields:
+
+* `challenge`: A number indicating the ID of the challenge being booked
+* `name`: A string containing the customer's name
+* `email`: A string containing the customer's e-mail address
+* `date`: A string (YYYY-MM-DD format) containing the date to book
+* `time`: A string (HH:mm format) containing the time to book
+* `participants`: A number indicating the number of participants
+
+For example:
+
+```
+{
+    "challenge": 12,
+    "name": "Customer Name",
+    "email": "name@example.com",
+    "date": "2022-12-12",
+    "time": "18:30",
+    "participants": 4,
+}
+```
+
+#### Response format
+A valid `POST` request will return data in the following shape:
+
+```
+{
+    "status": "ok",
+    "booking": {
+        "challenge": 12,
+        "name": "Customer Name",
+        "email": "name@example.com",
+        "date": "2022-12-12",
+        "time": "18:30",
+        "participants": 4
+    }
+}
+```
+
+Any invalid requests will respond with an object containing details of the error.
+
+#### Code example
+```
+const res = await fetch('https://lernia-sjj-assignments.vercel.app/api/booking/reservations', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        challenge: 12,
+        name: "Customer Name",
+        email: "name@example.com",
+        date: "2022-12-12",
+        time: "18:30",
+        participants: 4,
+    }),
+});
+const data = await res.json();
+console.log(data);
+```
+</section>
+</main>
