@@ -33,7 +33,46 @@
 }
 
 .navbar {
-  display: none;
+  @media screen and (max-width: $b-medium) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+
+    &__menu {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      margin: 0;
+      background-color: $c-darkblue;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+    }
+
+    &__menuItem {
+      list-style-type: none;
+      padding: 1rem 0;
+
+      a {
+        @include font-bold;
+        font-size: 2rem;
+
+        padding: 0.5rem 2rem;
+        text-decoration: none;
+
+        &:hover {
+          color: $c-lightblue;
+        }
+      }
+    }
+  }
 
   @include medium-screen {
     display: block;
