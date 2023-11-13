@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    #square {
+      background-color: red;
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <button>Click me!</button>
+  <div id="square">This is a square</div>
+
+  <script>
+    function handleClick() {
+      var element = document.getElementById('square');
+      element.style.borderRadius = '50px';
+
+      // Change text to reflect new shape
+      element.textContent = 'This is a ball';
+    }
+
+    document.querySelector('button').onclick = handleClick;
+  </script>
+</body>
+
+</html>
