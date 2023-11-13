@@ -31,6 +31,7 @@
       width: 100%;
       height: 6px;
       border-radius: 3px;
+      transition: transform 0.5s;
 
       &:before {
         position: absolute;
@@ -41,6 +42,7 @@
         background-color: white;
         border-radius: 3px;
         top: -12px;
+        transition: opacity 0.5s;
       }
 
       &:after {
@@ -52,6 +54,7 @@
         background-color: white;
         border-radius: 3px;
         bottom: -12px;
+        transition: transform 0.5s;
       }
     }
   }
@@ -101,7 +104,7 @@
       justify-content: center;
       align-items: center;
       padding: 0;
-      box-shadow: 0 0 0.5rem rgba(0,0,0,0.5);
+      box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
     }
 
     &__menuItem {
@@ -168,7 +171,9 @@
   }
 
   .header__navbarButton {
-    transform: rotate(45deg);
+    span {
+      transform: rotate(225deg);
+    }
 
     span:before {
       opacity: 0;
@@ -185,6 +190,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -195,6 +201,7 @@
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1.0);
