@@ -222,7 +222,7 @@
       document.querySelector('#navbar').before(button);
 
       button.addEventListener('click', () => {
-        document.querySelector('#navbar').classList.add('open');
+        document.body.classList.toggle('navbarOpen');
       });
     }
 
