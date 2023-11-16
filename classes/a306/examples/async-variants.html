@@ -22,11 +22,69 @@
 
       console.log('D');
     }
+
+    /* Prommises with named callbacks
+    function example2Promises() {
+      console.log('A');
+
+      function fetchCallback(response) {
+        console.log('B', response);
+
+        function textCallback(textValue) {
+          console.log('C', textValue);
+        }
+
+        const textPromise = response.text();
+        textPromise.then(textCallback);
+      }
+
+      console.log('D');
+      const fetchPromise = fetch('word.txt');
+      fetchPromise.then(fetchCallback);
+    }
+    */
+
+    /* Promises with unnamed callbacks
+    function example2Promises() {
+      console.log('A');
+
+      const fetchPromise = fetch('word.txt');
+      fetchPromise.then((response) => {
+        console.log('B', response);
+
+        const textPromise = response.text();
+        textPromise.then((textValue) => {
+          console.log('C', textValue);
+        });
+      });
+    }
+    */
+
+    /* Promises, chained
+    */
+    function example2Promises() {
+      console.log('A');
+
+      fetch('word.txt')
+        .then((response) => {
+          console.log('B', response);
+
+          const textPromise = response.text();
+          return textPromise;
+        })
+        .then((value) => {
+          console.log('C', value);
+        });
+
+      console.log('D');
+    }
+
   </script>
 </head>
 
 <body>
   <button onclick="example1Callback()">Run example 1</button>
+  <button onclick="example2Promises()">Run example 2</button>
 </body>
 
 </html>
