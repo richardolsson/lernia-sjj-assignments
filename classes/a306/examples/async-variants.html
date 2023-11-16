@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+    function example1Callback() {
+      console.log('A');
+
+      setTimeout(() => {
+        console.log('B');
+
+        setTimeout(() => {
+          console.log('C');
+        }, 1);
+      }, 1);
+
+      // Takes 4ms on Richard's machine
+      let x = 1;
+      for (let i = 1; i < 1000000; i++) {
+        x += (i * x);
+      }
+
+      console.log('D');
+    }
+  </script>
+</head>
+
+<body>
+  <button onclick="example1Callback()">Run example 1</button>
+</body>
+
+</html>
