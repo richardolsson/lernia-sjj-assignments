@@ -79,12 +79,21 @@
       console.log('D');
     }
 
+    async function example3AsyncAwait() {
+      console.log('A');
+      const response = await fetch('word.txt');
+      console.log('B');
+      const value = await response.text();
+      console.log('C', value);
+    }
+
   </script>
 </head>
 
 <body>
   <button onclick="example1Callback()">Run example 1</button>
   <button onclick="example2Promises()">Run example 2</button>
+  <button onclick="example3AsyncAwait()">Run example 3</button>
 </body>
 
 </html>
