@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "vite build --base /classes/a307/examples/bundled/dist/"
   },
   "author": "",
   "license": "ISC",
