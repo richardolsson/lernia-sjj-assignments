@@ -21,6 +21,9 @@ class APIAdapter {
   }
 }
 
+// "View role" ---------------------------------------------------
+// Played by two classes
+
 class ChallengeListView {
   async render(container) {
     const api = new APIAdapter();
@@ -33,7 +36,44 @@ class ChallengeListView {
   }
 }
 
+class Top3View {
+  async render(container) {
+    const api = new APIAdapter();
+    const challenges = await api.getAllChallenges();
+
+    const sorted = challenges.sort((item0, item1) => item1.data.rating - item0.data.rating);
+    for (let i = 0; i < 3; i++) {
+      const challenge = sorted[i];
+      const element = challenge.render();
+      container.append(element);
+    }
+  }
+}
+
+// Entry point --------------------------------------
 const challengesDiv = document.querySelector('#challenges');
 
-const view = new ChallengeListView();
+let view = new ChallengeListView();
 view.render(challengesDiv);
+
+let viewMode = 'all';
+const button = document.createElement('button');
+button.textContent = 'Toggle view';
+button.addEventListener('click', () => {
+  if (viewMode == 'all') {
+    viewMode = 'top3';
+    view = new Top3View();
+  } else {
+    viewMode = 'all';
+    view = new ChallengeListView();
+  }
+
+  redraw();
+});
+
+function redraw() {
+  challengesDiv.innerHTML = '';
+  view.render(challengesDiv);
+}
+
+challengesDiv.before(button);
