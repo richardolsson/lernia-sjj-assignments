@@ -5,7 +5,18 @@ class Challenge {
 
   render() {
     const element = document.createElement('div');
-    element.textContent = this.data.title;
+    element.style.backgroundColor = 'white';
+    element.style.boxShadow = '0 0 10px rgba(0,0,0,0.25)';
+    element.style.marginBottom = '20px';
+
+    const image = document.createElement('img');
+    image.src = this.data.image;
+    image.style.maxWidth = '100%';
+    element.append(image);
+
+    const headline = document.createElement('h1');
+    headline.textContent = this.data.title;
+    element.append(headline);
 
     return element;
   }
