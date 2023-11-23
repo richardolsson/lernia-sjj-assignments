@@ -37,6 +37,10 @@ export default function App() {
   );
   */
 
+  const filteredChallenges = challenges.filter(
+    (challenge) => activeIds.includes(challenge.id)
+  );
+
   // With JSX
   return (
     <div>
@@ -44,7 +48,7 @@ export default function App() {
       <button onClick={() => setActiveIds(['b'])}>Only B</button>
       <button onClick={() => setActiveIds(['a', 'b', 'c'])}>All</button>
       <p>Showing {activeIds.length}</p>
-      <ChallengeList challenges={challenges}/>
+      <ChallengeList challenges={filteredChallenges}/>
     </div>
   );
 }
