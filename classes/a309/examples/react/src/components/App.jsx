@@ -17,6 +17,7 @@ const challenges = [
 ];
 
 export default function App() {
+  /* Without JSX
   return (
     React.createElement('div', {},
       React.createElement('button', {}, 'Only A + B'),
@@ -25,5 +26,17 @@ export default function App() {
       React.createElement('p', {}, 'Showing 3'),
       React.createElement(ChallengeList, { challenges: challenges }),
     )
+  );
+  */
+
+  // With JSX
+  return (
+    <div>
+      <button>Only A + B</button>
+      <button>Only B</button>
+      <button>All</button>
+      <p>Showing 3</p>
+      <ChallengeList challenges={challenges}/>
+    </div>
   );
 }
