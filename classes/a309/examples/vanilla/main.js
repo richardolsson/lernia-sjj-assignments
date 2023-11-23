@@ -1,14 +1,14 @@
 const challenges = [
   {
-    id: 1,
+    id: 'a',
     title: 'Challenge A',
   },
   {
-    id: 2,
+    id: 'b',
     title: 'Challenge B',
   },
   {
-    id: 3,
+    id: 'c',
     title: 'Challenge C',
   },
 ];
@@ -22,7 +22,7 @@ init();
 function filterChallenges(ids) {
   const items = list.querySelectorAll('li');
   for (const item of items) {
-    const itemId = parseInt(item.id.slice(10));
+    const itemId = item.id.slice(10);
     if (ids.includes(itemId)) {
       item.style.display = 'list-item';
     } else {
@@ -46,14 +46,14 @@ function init() {
   counter.textContent = 'Showing 3';
 
   document.querySelector('#abButton').addEventListener('click', () => {
-    filterChallenges([1,2]);
+    filterChallenges(['a','b']);
   });
 
   document.querySelector('#bButton').addEventListener('click', () => {
-    filterChallenges([2]);
+    filterChallenges(['b']);
   });
 
   document.querySelector('#allButton').addEventListener('click', () => {
-    filterChallenges([1,2,3]);
+    filterChallenges(['a','b','c']);
   });
 }
