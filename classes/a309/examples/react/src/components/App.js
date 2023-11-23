@@ -1,4 +1,5 @@
 import React from 'react';
+import ChallengeList from './ChallengeList';
 
 const challenges = [
   {
@@ -22,11 +23,7 @@ export default function App() {
       React.createElement('button', {}, 'Only B'),
       React.createElement('button', {}, 'All'),
       React.createElement('p', {}, 'Showing 3'),
-      React.createElement('ul', {}, challenges.map((challenge) => {
-        return (
-          React.createElement('li', {}, challenge.title)
-        );
-      }))
+      React.createElement(ChallengeList, { challenges: challenges }),
     )
   );
 }
