@@ -1,0 +1,59 @@
+const challenges = [
+  {
+    id: 1,
+    title: 'Challenge A',
+  },
+  {
+    id: 2,
+    title: 'Challenge B',
+  },
+  {
+    id: 3,
+    title: 'Challenge C',
+  },
+];
+
+
+const list = document.querySelector('#challenges');
+const counter = document.querySelector('#counter');
+
+init();
+
+function filterChallenges(ids) {
+  const items = list.querySelectorAll('li');
+  for (const item of items) {
+    const itemId = parseInt(item.id.slice(10));
+    if (ids.includes(itemId)) {
+      item.style.display = 'list-item';
+    } else {
+      item.style.display = 'none';
+    }
+  }
+
+  counter.textContent = `Showing ${ids.length}`;
+}
+
+function init() {
+
+  // Create initial labels
+  challenges.forEach((challenge) => {
+    const item = document.createElement('li');
+    item.textContent = challenge.title;
+    item.id = `challenge-${challenge.id}`;
+    list.append(item);
+  });
+
+  counter.textContent = 'Showing 3';
+
+  document.querySelector('#abButton').addEventListener('click', () => {
+    filterChallenges([1,2]);
+  });
+
+  document.querySelector('#bButton').addEventListener('click', () => {
+    filterChallenges([2]);
+  });
+
+  document.querySelector('#allButton').addEventListener('click', () => {
+    filterChallenges([1,2,3]);
+  });
+}
