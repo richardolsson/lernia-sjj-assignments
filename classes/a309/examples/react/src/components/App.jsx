@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ChallengeList from './ChallengeList';
 
 const challenges = [
@@ -17,6 +17,14 @@ const challenges = [
 ];
 
 export default function App() {
+  /* Long version
+  const returnValues = useState(['a', 'b', 'c']);
+  const activeIds = returnValues[0];
+  const setActiveIds = returnValues[1];
+  */
+  // Short version
+  const [activeIds, setActiveIds] = useState(['a', 'b', 'c']);
+
   /* Without JSX
   return (
     React.createElement('div', {},
@@ -32,10 +40,10 @@ export default function App() {
   // With JSX
   return (
     <div>
-      <button>Only A + B</button>
-      <button>Only B</button>
-      <button>All</button>
-      <p>Showing 3</p>
+      <button onClick={() => setActiveIds(['a', 'b']) }>Only A + B</button>
+      <button onClick={() => setActiveIds(['b'])}>Only B</button>
+      <button onClick={() => setActiveIds(['a', 'b', 'c'])}>All</button>
+      <p>Showing {activeIds.length}</p>
       <ChallengeList challenges={challenges}/>
     </div>
   );
