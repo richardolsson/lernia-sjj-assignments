@@ -9,10 +9,18 @@ export default class BookingModal {
   render() {
     const container = document.createElement('div');
     container.className = 'bookingModal';
-    container.textContent = `Book "${this.challenge.data.title}"`;
+
+    const box = document.createElement('div');
+    box.className = 'bookingModal__box';
+    container.append(box);
+
+    const headline = document.createElement('h1');
+    headline.textContent = `Book "${this.challenge.data.title}"`;
+    box.append(headline);
 
     this.contentElem = document.createElement('div');
-    container.append(this.contentElem);
+    this.contentElem.className = 'bookingModal__content';
+    box.append(this.contentElem);
 
     this.update();
 
