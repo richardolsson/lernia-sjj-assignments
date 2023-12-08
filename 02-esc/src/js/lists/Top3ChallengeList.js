@@ -1,5 +1,3 @@
-import MockAPIFacade from "../api/MockAPIFacade";
-
 /**
  * Concerns:
  * - Retrieve challenges from API facade
@@ -7,9 +5,12 @@ import MockAPIFacade from "../api/MockAPIFacade";
  * - Restrict to top 3 rated challenges
  */
 export default class Top3ChallengeList {
+  constructor(api) {
+    this.api = api;
+  }
+
   render() {
-    const api = new MockAPIFacade();
-    const challenges = api.getChallenges();
+    const challenges = this.api.getChallenges();
 
     const container = document.createElement('div');
 
