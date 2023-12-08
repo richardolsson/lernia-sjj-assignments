@@ -4,12 +4,15 @@ import LabelFilter from '../filters/LabelFilter';
 import TextFilter from "../filters/TextFilter";
 import ComboFilter from '../filters/ComboFilter';
 import getUniqueLabels from '../utils/getUniqueLabels';
+import ChallengeEvent from '../events/ChallengeEvent';
 
-export default class FilteredChallengeList {
+export default class FilteredChallengeList extends EventTarget {
   constructor(api) {
+    super();
     this.api = api;
     this.listElem = null;
     this.filter = null;
+    this.challenges = [];
   }
 
   async render() {
@@ -32,19 +35,23 @@ export default class FilteredChallengeList {
     });
     container.append(filterToggle);
 
-    const challenges = await this.api.getChallenges();
+    this.challenges = await this.api.getChallenges();
+    this.challenges.forEach((challenge) => {
+      challenge.addEventListener('bookChallenge', (event) => {
+        this.dispatchEvent(new ChallengeEvent('bookChallenge', event.challenge));
+      });
+    });
 
     this.filter = new ComboFilter([
       new TypeFilter(),
       new RatingFilter(),
-      new LabelFilter([], getUniqueLabels(challenges)),
+      new LabelFilter([], getUniqueLabels(this.challenges)),
       new TextFilter(),
     ]);
 
     this.filter.addEventListener('update', () => {
       this.update();
     });
-
 
     const filterElem = this.filter.render();
     filterSection.append(filterElem);
@@ -61,12 +68,10 @@ export default class FilteredChallengeList {
   async update() {
     this.listElem.innerHTML = '';
 
-    const challenges = await this.api.getChallenges();
-    const filteredChallenges = this.filter.getMatching(challenges);
+    const filteredChallenges = this.filter.getMatching(this.challenges);
     filteredChallenges.forEach((challenge) => {
       const challengeElem = challenge.render();
       this.listElem.append(challengeElem);
     });
-
   }
 }
