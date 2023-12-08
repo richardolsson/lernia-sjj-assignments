@@ -5,6 +5,22 @@ import Challenge from '../lists/Challenge';
 
 
 describe('RatingFilter.getMatching()', () => {
+  it('returns all challenges when no min/max configured', () => {
+    const filter = new RatingFilter();
+    const matching = filter.getMatching([
+      new Challenge({
+        title: 'Challenge A',
+        rating: 1,
+      }),
+      new Challenge({
+        title: 'Challenge B',
+        rating: 3,
+      }),
+    ]);
+
+    expect(matching).toHaveLength(2);
+  });
+
   it('returns challenges whose rating is equal to or above minRating=3', () => {
     const filter = new RatingFilter();
     filter.config.minRating = 3;

@@ -4,6 +4,22 @@ import Challenge from '../lists/Challenge';
 import TypeFilter from './TypeFilter';
 
 describe('TypeFilter.getMatching', () => {
+  it('returns all challenges when no type is configured', () => {
+    const filter = new TypeFilter();
+    const matching = filter.getMatching([
+      new Challenge({
+        type: 'onsite',
+        title: 'An onsite challenge',
+      }),
+      new Challenge({
+        type: 'online',
+        title: 'An online challenge',
+      }),
+    ]);
+
+    expect(matching).toHaveLength(2);
+  });
+
   it('returns only "onsite" challenges when thus configured', () => {
     const filter = new TypeFilter();
     filter.config.type = 'onsite';
