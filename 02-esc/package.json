@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "vite build",
+    "vite": "vite",
     "sass:watch": "sass --no-source-map --watch src/scss/main.scss assets/main.css"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "sass": "^1.69.5"
+    "sass": "^1.69.5",
+    "vite": "^5.0.6"
   }
 }
