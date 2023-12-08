@@ -82,4 +82,20 @@ export default class Challenge extends EventTarget {
   get rating() {
     return this.data.rating;
   }
+
+  get type() {
+    return this.data.type;
+  }
+
+  get title() {
+    return this.data.title;
+  }
+
+  get description() {
+    return this.data.description;
+  }
+
+  get labels() {
+    return this.data.labels;
+  }
 }
