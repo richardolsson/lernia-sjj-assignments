@@ -5,7 +5,15 @@ export default class FilteredChallengeList {
 
   async render() {
     const container = document.createElement('div');
-    container.textContent = 'list';
+    container.className = 'allChallenges__list';
+
+    const challenges = await this.api.getChallenges();
+
+    challenges.forEach((challenge) => {
+      const challengeElem = challenge.render();
+      container.append(challengeElem);
+    });
+
     return container;
   }
 }
