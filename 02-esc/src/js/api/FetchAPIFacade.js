@@ -15,4 +15,23 @@ export default class FetchAPIFacade {
       return new Challenge(challengeData);
     });
   }
+
+  async getTimeSlots(date, challenge) {
+    const res = await fetch(this.base + `/api/booking/available-times?date=${date}&challenge=${challenge.id}`);
+    const data = await res.json();
+    return data.slots;
+  }
+
+  async submitBooking(bookingData) {
+    const res = await fetch(this.base + '/api/booking/reservations', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bookingData),
+    });
+    const data = await res.json();
+
+    return data.status == 'ok';
+  }
 }

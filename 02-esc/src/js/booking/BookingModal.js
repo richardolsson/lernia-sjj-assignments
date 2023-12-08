@@ -6,6 +6,7 @@ export default class BookingModal extends EventTarget {
     this.challenge = challenge;
     this.step = 1;
     this.contentElem = null;
+    this.selectedDate = null;
   }
 
   render() {
@@ -62,8 +63,8 @@ export default class BookingModal extends EventTarget {
     container.append(button);
 
     button.addEventListener('click', async () => {
-      const date = input.value;
-      this.timeSlots = await this.api.getTimeSlots(date);
+      this.selectedDate = input.value;
+      this.timeSlots = await this.api.getTimeSlots(this.selectedDate, this.challenge);
       this.step = 2;
       this.update();
     });
@@ -109,10 +110,12 @@ export default class BookingModal extends EventTarget {
       const count = countSelect.value;
 
       await this.api.submitBooking({
+        challenge: this.challenge.id,
         name: nameInput.value,
         email: emailInput.value,
-        timeSlot: timeSlot,
-        participants: count,
+        date: this.selectedDate,
+        time: timeSlot,
+        participants: parseInt(count),
       });
 
       this.step = 3;

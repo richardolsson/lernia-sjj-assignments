@@ -98,4 +98,8 @@ export default class Challenge extends EventTarget {
   get labels() {
     return this.data.labels;
   }
+
+  get id() {
+    return this.data.id;
+  }
 }
