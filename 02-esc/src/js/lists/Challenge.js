@@ -8,8 +8,58 @@ export default class Challenge {
   }
 
   render() {
-    const elem = document.createElement('div');
-    elem.innerText = this.data.title;
-    return elem;
+    const container = document.createElement('article');
+
+    container.className = 'challengeCard';
+
+    const img = document.createElement('img');
+    img.className = 'challengeCard__image';
+    img.src = this.data.imageUrl;
+    container.append(img);
+
+    const content = document.createElement('div');
+    content.className = 'challengeCard__content';
+    container.append(content);
+
+    const title = document.createElement('h3');
+    title.className = 'challengeCard__title';
+    title.textContent = this.data.title;
+    content.append(title);
+
+    const subtitle = document.createElement('div');
+    subtitle.className = 'challengeCard__subtitle';
+    content.append(subtitle);
+
+    const rating = document.createElement('div');
+    rating.className = 'challengeCard__rating';
+    rating.ariaLabel = 'Rating';
+    rating.ariaRoleDescription = 'meter';
+    rating.ariaValueMin = 0;
+    rating.ariaValueMax = 5;
+    rating.ariaValueNow = this.data.rating;
+    for (let i = 0; i < 5; i++) {
+      const star = document.createElement('span');
+      star.ariaHidden = true;
+      rating.append(star);
+    }
+    subtitle.append(rating);
+
+    const { minParticipants, maxParticipants } = this.data;
+    const details = document.createElement('span');
+    details.className = 'challengeCard__deatils';
+    details.textContent = `${minParticipants}-${maxParticipants} participants`;
+    subtitle.append(details);
+
+    const description = document.createElement('p');
+    description.className = 'challengeCard__description';
+    description.textContent = this.data.description;
+    content.append(description);
+
+    const button = document.createElement('button');
+    button.className = 'challengeCard__bookButton';
+    button.textContent = 'Book this room';
+    content.append(button);
+
+    return container;
   }
 }
