@@ -9,17 +9,17 @@ import Top3ChallengeList from './Top3ChallengeList';
 import Challenge from './Challenge';
 
 describe('Top3ChallengesList', () => {
-  it('shows only three challenges', () => {
+  it('shows only three challenges', async () => {
     const api = new MockAPIFacade();
     const list = new Top3ChallengeList(api);
-    const elem = list.render();
+    const elem = await list.render();
 
     expect(elem.children).toHaveLength(3);
   });
 
-  it('shows top 3 rated', () => {
+  it('shows top 3 rated', async () => {
     const api = {
-      getChallenges: () => [
+      getChallenges: async () => [
         new Challenge({
           title: 'Top challenge A',
           description: '',
@@ -64,7 +64,7 @@ describe('Top3ChallengesList', () => {
     };
 
     const list = new Top3ChallengeList(api);
-    const elem = list.render();
+    const elem = await list.render();
 
     expect(elem.children).toHaveLength(3);
     expect(elem.children[0].innerHTML).toContain('Top challenge A');

@@ -19,19 +19,19 @@ export default class BookingModal {
     return container;
   }
 
-  update() {
+  async update() {
     this.contentElem.innerHTML = '';
 
     if (this.step == 1) {
-      this.contentElem.append(this.renderStep1());
+      this.contentElem.append(await this.renderStep1());
     } else if (this.step == 2) {
-      this.contentElem.append(this.renderStep2());
+      this.contentElem.append(await this.renderStep2());
     } else if (this.step == 3) {
-      this.contentElem.append(this.renderStep3());
+      this.contentElem.append(await this.renderStep3());
     }
   }
 
-  renderStep1() {
+  async renderStep1() {
     const container = document.createElement('div');
     container.textContent = 'This is the form for step 1';
 
@@ -43,9 +43,9 @@ export default class BookingModal {
     button.textContent = 'Search available times';
     container.append(button);
 
-    button.addEventListener('click', () => {
+    button.addEventListener('click', async () => {
       const date = input.value;
-      this.timeSlots = this.api.getTimeSlots(date);
+      this.timeSlots = await this.api.getTimeSlots(date);
       this.step = 2;
       this.update();
     });
@@ -53,7 +53,7 @@ export default class BookingModal {
     return container;
   }
 
-  renderStep2() {
+  async renderStep2() {
     const container = document.createElement('div');
 
     const nameInput = document.createElement('input');
@@ -86,11 +86,11 @@ export default class BookingModal {
 
     const button = document.createElement('button');
     button.textContent = 'Submit booking';
-    button.addEventListener('click', () => {
+    button.addEventListener('click', async () => {
       const timeSlot = timeSelect.value;
       const count = countSelect.value;
 
-      this.api.submitBooking({
+      await this.api.submitBooking({
         name: nameInput.value,
         email: emailInput.value,
         timeSlot: timeSlot,
@@ -105,7 +105,7 @@ export default class BookingModal {
     return container;
   }
 
-  renderStep3() {
+  async renderStep3() {
     const container = document.createElement('div');
     container.innerText = 'Thank you!';
     return container;

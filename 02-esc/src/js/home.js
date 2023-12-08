@@ -17,7 +17,7 @@ list.addEventListener('bookChallenge', (event) => {
   }
 });
 
-const listElem = list.render();
+const listElem = await list.render();
 
 document.querySelector('.challenges__topThree').replaceWith(listElem);
 listElem.className = 'challenges__topThree';

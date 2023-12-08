@@ -12,8 +12,8 @@ export default class Top3ChallengeList extends EventTarget {
     this.api = api;
   }
 
-  render() {
-    const challenges = this.api.getChallenges();
+  async render() {
+    const challenges = await this.api.getChallenges();
 
     const container = document.createElement('div');
 

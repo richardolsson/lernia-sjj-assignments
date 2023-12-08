@@ -5,7 +5,7 @@ import Challenge from "../lists/Challenge";
  * - "Imitate" an API with fake data
  */
 export default class MockAPIFacade {
-  getChallenges() {
+  async getChallenges() {
     return [
       new Challenge({
         title: 'Challenge 1',
@@ -50,7 +50,7 @@ export default class MockAPIFacade {
     ];
   }
 
-  getTimeSlots(date) {
+  async getTimeSlots(date) {
     console.log('getTimeSlots', date);
     return [
       '13:00',
@@ -58,7 +58,7 @@ export default class MockAPIFacade {
     ];
   }
 
-  submitBooking(bookingData) {
+  async submitBooking(bookingData) {
     console.log('submitBooking', bookingData);
     return true;
   }
