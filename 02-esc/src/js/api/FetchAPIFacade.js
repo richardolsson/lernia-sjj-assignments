@@ -9,8 +9,6 @@ export default class FetchAPIFacade {
     const res = await fetch(this.base + '/api/challenges');
     const data = await res.json();
 
-    console.log(data);
-
     return data.challenges.map((challengeData) => {
       return new Challenge(challengeData);
     });
