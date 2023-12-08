@@ -1,9 +1,13 @@
+import ChallengeEvent from '../events/ChallengeEvent';
+
 /**
  * Concerns:
  * - Render a single challenge card
  */
-export default class Challenge {
+export default class Challenge extends EventTarget {
   constructor(data) {
+    super();
+
     this.data = data;
   }
 
@@ -59,6 +63,10 @@ export default class Challenge {
     button.className = 'challengeCard__bookButton';
     button.textContent = 'Book this room';
     content.append(button);
+
+    button.addEventListener('click', () => {
+      this.dispatchEvent(new ChallengeEvent('bookChallenge', this));
+    });
 
     return container;
   }
