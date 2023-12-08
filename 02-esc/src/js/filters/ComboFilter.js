@@ -1,6 +1,13 @@
-export default class ComboFilter {
+export default class ComboFilter extends EventTarget {
   constructor(filters) {
+    super();
     this.filters = filters;
+
+    this.filters.forEach((filter) => {
+      filter.addEventListener('update', () => {
+        this.dispatchEvent(new Event('update'));
+      });
+    });
   }
 
   getMatching(challenges) {
@@ -13,5 +20,15 @@ export default class ComboFilter {
     }
 
     return output;
+  }
+
+  render() {
+    const container = document.createElement('div');
+
+    this.filters.forEach(filter => {
+      container.append(filter.render());
+    });
+
+    return container;
   }
 }
