@@ -17,6 +17,12 @@
     padding: 2rem;
   }
 
+  &__closeButton {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+
   &__content > div {
     display: flex;
     flex-direction: column;

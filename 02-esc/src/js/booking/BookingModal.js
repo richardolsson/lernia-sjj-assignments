@@ -1,5 +1,7 @@
-export default class BookingModal {
+export default class BookingModal extends EventTarget {
   constructor(api, challenge) {
+    super();
+
     this.api = api;
     this.challenge = challenge;
     this.step = 1;
@@ -17,6 +19,14 @@ export default class BookingModal {
     const headline = document.createElement('h1');
     headline.textContent = `Book "${this.challenge.data.title}"`;
     box.append(headline);
+
+    const closeButton = document.createElement('button');
+    closeButton.textContent = 'Close';
+    closeButton.className = 'bookingModal__closeButton';
+    closeButton.addEventListener('click', () => {
+      this.dispatchEvent(new Event('close'));
+    });
+    box.append(closeButton);
 
     this.contentElem = document.createElement('div');
     this.contentElem.className = 'bookingModal__content';

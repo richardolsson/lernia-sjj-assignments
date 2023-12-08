@@ -13,6 +13,11 @@ list.addEventListener('bookChallenge', (event) => {
     modal = new BookingModal(api, event.challenge);
     const modalElem = modal.render();
 
+    modal.addEventListener('close', () => {
+      modalElem.remove();
+      modal = null;
+    });
+
     document.body.append(modalElem);
   }
 });
