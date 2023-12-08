@@ -28,7 +28,7 @@ export default class TextFilter extends EventTarget {
     container.append(header);
 
     const input = document.createElement('input');
-    input.addEventListener('change', () => {
+    input.addEventListener('keyup', () => {
       this.config.text = input.value;
       this.dispatchEvent(new Event('update'));
     });
