@@ -1,7 +1,7 @@
-import MockAPIFacade from './api/MockAPIFacade';
+import FetchAPIFacade from './api/FetchAPIFacade';
 import FilteredChallengeList from './lists/FilteredChallengeList';
 
-const api = new MockAPIFacade();
+const api = new FetchAPIFacade();
 const list = new FilteredChallengeList(api);
 
 const listElem = await list.render();

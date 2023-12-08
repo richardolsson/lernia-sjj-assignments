@@ -14,7 +14,7 @@ export default class MockAPIFacade {
         minParticipants: 2,
         maxParticipants: 5,
         rating: 2,
-        imageUrl: 'http://placekitten.com/400/240',
+        image: 'http://placekitten.com/400/240',
         labels: 'web,hacking,foo,bar',
       }),
       new Challenge({
@@ -24,7 +24,7 @@ export default class MockAPIFacade {
         minParticipants: 2,
         maxParticipants: 5,
         rating: 4,
-        imageUrl: 'http://placekitten.com/400/240',
+        image: 'http://placekitten.com/400/240',
         labels: ['web', 'hacking', 'foo', 'bar'],
       }),
       new Challenge({
@@ -34,7 +34,7 @@ export default class MockAPIFacade {
         minParticipants: 2,
         maxParticipants: 5,
         rating: 5,
-        imageUrl: 'http://placekitten.com/400/240',
+        image: 'http://placekitten.com/400/240',
         labels: ['web', 'hacking', 'foo', 'bar'],
       }),
       new Challenge({
@@ -44,7 +44,7 @@ export default class MockAPIFacade {
         minParticipants: 2,
         maxParticipants: 5,
         rating: 1,
-        imageUrl: 'http://placekitten.com/400/240',
+        image: 'http://placekitten.com/400/240',
         labels: ['web', 'hacking', 'foo', 'bar'],
       }),
     ];

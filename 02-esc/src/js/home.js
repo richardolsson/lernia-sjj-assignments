@@ -1,9 +1,9 @@
-import MockAPIFacade from "./api/MockAPIFacade";
+import FetchAPIFacade from "./api/FetchAPIFacade";
 import BookingModal from "./booking/BookingModal";
 import initializeMobileMenu from "./initializeMobileMenu";
 import Top3ChallengeList from "./lists/Top3ChallengeList";
 
-const api = new MockAPIFacade();
+const api = new FetchAPIFacade();
 const list = new Top3ChallengeList(api);
 
 let modal = null;

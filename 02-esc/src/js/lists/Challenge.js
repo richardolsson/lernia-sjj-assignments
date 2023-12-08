@@ -18,7 +18,7 @@ export default class Challenge extends EventTarget {
 
     const img = document.createElement('img');
     img.className = 'challengeCard__image';
-    img.src = this.data.imageUrl;
+    img.src = this.data.image;
     container.append(img);
 
     const content = document.createElement('div');
@@ -40,7 +40,7 @@ export default class Challenge extends EventTarget {
     rating.ariaRoleDescription = 'meter';
     rating.ariaValueMin = 0;
     rating.ariaValueMax = 5;
-    rating.ariaValueNow = this.data.rating;
+    rating.ariaValueNow = Math.round(this.data.rating);
     for (let i = 0; i < 5; i++) {
       const star = document.createElement('span');
       star.ariaHidden = true;
