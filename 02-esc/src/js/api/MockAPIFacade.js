@@ -49,4 +49,17 @@ export default class MockAPIFacade {
       }),
     ];
   }
+
+  getTimeSlots(date) {
+    console.log('getTimeSlots', date);
+    return [
+      '13:00',
+      '15:00',
+    ];
+  }
+
+  submitBooking(bookingData) {
+    console.log('submitBooking', bookingData);
+    return true;
+  }
 }

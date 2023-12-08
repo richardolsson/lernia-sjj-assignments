@@ -71,6 +71,14 @@ export default class Challenge extends EventTarget {
     return container;
   }
 
+  get maxParticipants() {
+    return this.data.maxParticipants;
+  }
+
+  get minParticipants() {
+    return this.data.minParticipants;
+  }
+
   get rating() {
     return this.data.rating;
   }
