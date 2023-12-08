@@ -62,4 +62,8 @@ export default class Challenge {
 
     return container;
   }
+
+  get rating() {
+    return this.data.rating;
+  }
 }

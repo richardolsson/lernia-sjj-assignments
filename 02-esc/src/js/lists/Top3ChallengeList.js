@@ -12,7 +12,14 @@ export default class Top3ChallengeList {
     const challenges = api.getChallenges();
 
     const container = document.createElement('div');
-    challenges.forEach((challenge) => {
+
+    const top3 = challenges
+      .sort((a, b) => {
+        return b.rating - a.rating;
+      })
+      .slice(0, 3);
+
+    top3.forEach((challenge) => {
       const challengeElement = challenge.render();
       container.append(challengeElement);
     });
