@@ -1,3 +1,27 @@
+.allChallenges {
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__container {
+    .allChallenges__filters {
+      display: none;
+    }
+
+    &--filterOpen {
+      .allChallenges__filterToggle {
+        display: none;
+      }
+
+      .allChallenges__filters {
+        display: block;
+      }
+    }
+  }
+}
+
 .challenges {
   margin: 4rem 0;
 

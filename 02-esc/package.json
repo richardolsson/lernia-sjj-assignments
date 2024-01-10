@@ -4,11 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass:watch": "sass --no-source-map --watch src/main.scss assets/main.css"
+    "build": "vite build",
+    "vite": "vite",
+    "sass:watch": "sass --no-source-map --watch src/scss/main.scss assets/main.css",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch"
   },
   "author": "",
   "license": "ISC",
+  "type": "module",
   "devDependencies": {
-    "sass": "^1.69.5"
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "sass": "^1.69.5",
+    "vite": "^5.0.6"
   }
 }

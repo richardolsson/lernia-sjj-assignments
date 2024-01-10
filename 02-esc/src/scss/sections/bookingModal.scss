@@ -1,0 +1,35 @@
+.bookingModal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  &__box {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    right: 2rem;
+    bottom: 2rem;
+    background-color: white;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+  }
+
+  &__closeButton {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  &__content > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    & > * {
+      margin: 1rem 0;
+    }
+  }
+}

@@ -565,3 +565,12 @@ img {
 .footer__siteMapItem:nth-child(4) {
   margin-top: 1rem;
 }
+
+.bookingModal {
+  position: fixed;
+  background-color: red;
+  left: 2rem;
+  top: 2rem;
+  right: 2rem;
+  bottom: 2rem;
+}

@@ -1,0 +1,13 @@
+.labelFilter {
+  &__label {
+    border: 1px solid gray;
+    padding: 0.2rem 0.5rem;
+    margin: 0.2rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+
+    &--selected {
+      background-color: #ddd;
+    }
+  }
+}
