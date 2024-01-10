@@ -18,6 +18,48 @@ function setName(personId, name) {
   return person;
 }
 
+//*
+// RPC version
+export async function handle(method, path, queryString, headers, body) {
+  console.log('');
+  console.log('= REQUEST =====================');
+  console.log('method:  ', method);
+  console.log('path:    ', path);
+  console.log('query:   ', queryString);
+  console.log('headers: ', headers);
+  console.log('body:    ', body);
+
+  if (method == 'POST' && path == '/rpc') {
+    if (body.func == 'getPeople') {
+      return {
+        status: 200,
+        body: JSON.stringify({
+          returnValue: getPeople(),
+        }),
+      };
+    } else if (body.func == 'getPerson') {
+      const personId = body.parameters[0];
+      return {
+        status: 200,
+        body: JSON.stringify({
+          returnValue: getPerson(personId),
+        }),
+      }
+    } else if (body.func == 'setName') {
+      const personId = body.parameters[0];
+      const newName = body.parameters[1];
+      return {
+        status: 200,
+        body: JSON.stringify({
+          returnValue: setName(personId, newName),
+        })
+      }
+    }
+  }
+}
+
+/*/
+// REST version
 export async function handle(method, path, queryString, headers, body) {
   console.log('');
   console.log('= REQUEST =====================');
@@ -58,3 +100,4 @@ export async function handle(method, path, queryString, headers, body) {
     }
   }
 }
+//*/
