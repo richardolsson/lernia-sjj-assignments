@@ -26,4 +26,35 @@ export async function handle(method, path, queryString, headers, body) {
   console.log('query:   ', queryString);
   console.log('headers: ', headers);
   console.log('body:    ', body);
+
+  if (method == 'GET' && path == '/people') {
+    const allPeople = getPeople();
+
+    return {
+      status: 200,
+      body: JSON.stringify(allPeople),
+    }
+  } else if (path.startsWith('/people/')) {
+    const personId = path.slice(8);
+    const person = getPerson(personId);
+
+    if (person) {
+      if (method == 'GET') {
+        return {
+          status: 200,
+          body: JSON.stringify(person),
+        }
+      } else if (method == 'PATCH') {
+        const person = setName(personId, body.name);
+        return {
+          status: 200,
+          body: JSON.stringify(person),
+        }
+      }
+    } else {
+      return {
+        status: 404,
+      }
+    }
+  }
 }
