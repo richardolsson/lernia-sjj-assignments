@@ -3,7 +3,8 @@ import express from 'express';
 const app = express();
 
 app.get('/hello', (request, response) => {
-  response.send('Hello, world!');
+  const name = request.query.name || 'world'
+  response.send(`Hello, ${name}!`);
 });
 
 app.get('/goodbye', (request, response) => {
