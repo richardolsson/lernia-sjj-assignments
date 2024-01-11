@@ -10,6 +10,15 @@ app.get('/', async (request, response) => {
   response.send(html);
 });
 
+app.get('/richard', async (request, response) => {
+   const buf = await fs.readFile('./static/index.html');
+   const html = buf.toString();
+
+   const changed = html.replace('world', 'richard');
+
+   response.send(changed);
+});
+
 /* Manual implementation
 app.get('/*', async (request, response) => {
   const fileName = `./static${request.path}`;
