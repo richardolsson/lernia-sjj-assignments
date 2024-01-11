@@ -10,4 +10,16 @@ app.get('/', async (request, response) => {
   response.send(html);
 });
 
+app.get('/*', async (request, response) => {
+  const fileName = `./static${request.path}`;
+  const buf = await fs.readFile(fileName);
+
+  // Find suffix (e.g. "css" for "main.css")
+  const fileElements = request.path.split('.');
+  const fileType = fileElements[fileElements.length - 1];
+
+  response.type(fileType);
+  response.send(buf);
+});
+
 app.listen(3080);
