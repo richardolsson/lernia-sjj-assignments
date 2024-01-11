@@ -1,3 +1,3 @@
-import sayHello from "./lib/sayHello";
+import sayHello from "./lib/sayHello.js";
 
 sayHello();
