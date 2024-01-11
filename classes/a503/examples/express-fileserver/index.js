@@ -34,6 +34,6 @@ app.get('/*', async (request, response) => {
 */
 
 // Express simplified solution
-app.use('/', express.static('./static'));
+app.use('/static', express.static('./static'));
 
 app.listen(3080);
