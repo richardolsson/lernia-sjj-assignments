@@ -10,6 +10,7 @@ app.get('/', async (request, response) => {
   response.send(html);
 });
 
+/* Manual implementation
 app.get('/*', async (request, response) => {
   const fileName = `./static${request.path}`;
   const buf = await fs.readFile(fileName);
@@ -21,5 +22,9 @@ app.get('/*', async (request, response) => {
   response.type(fileType);
   response.send(buf);
 });
+*/
+
+// Express simplified solution
+app.use('/', express.static('./static'));
 
 app.listen(3080);
