@@ -10,11 +10,11 @@ app.get('/', async (request, response) => {
   response.send(html);
 });
 
-app.get('/richard', async (request, response) => {
+app.get('/:name', async (request, response) => {
    const buf = await fs.readFile('./static/index.html');
    const html = buf.toString();
 
-   const changed = html.replace('world', 'richard');
+   const changed = html.replace('world', request.params.name);
 
    response.send(changed);
 });
