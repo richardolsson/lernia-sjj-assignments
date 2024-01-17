@@ -4,10 +4,12 @@ import fs from 'fs/promises';
 const app = express();
 
 async function renderPage(response, page) {
-  const buf = await fs.readFile(`./templates/${page}.html`);
+  const buf = await fs.readFile(`./templates/main.html`);
   const html = buf.toString();
 
-  response.send(html);
+  const rendered = html.replace('content', page);
+
+  response.send(rendered);
 }
 
 app.get('/', async (request, response) => {
