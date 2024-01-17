@@ -3,25 +3,23 @@ import fs from 'fs/promises';
 
 const app = express();
 
-app.get('/', async (request, response) => {
-  const buf = await fs.readFile('./templates/index.html');
+async function renderPage(response, page) {
+  const buf = await fs.readFile(`./templates/${page}.html`);
   const html = buf.toString();
 
   response.send(html);
+}
+
+app.get('/', async (request, response) => {
+  renderPage(response, 'index');
 });
 
 app.get('/about', async (request, response) => {
-  const buf = await fs.readFile('./templates/about.html');
-  const html = buf.toString();
-
-  response.send(html);
+  renderPage(response, 'about');
 });
 
 app.get('/contact', async (request, response) => {
-  const buf = await fs.readFile('./templates/contact.html');
-  const html = buf.toString();
-
-  response.send(html);
+  renderPage(response, 'contact');
 });
 
 
