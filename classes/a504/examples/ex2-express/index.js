@@ -7,7 +7,10 @@ async function renderPage(response, page) {
   const buf = await fs.readFile(`./templates/main.html`);
   const html = buf.toString();
 
-  const rendered = html.replace('content', page);
+  const contentBuf = await fs.readFile(`./content/${page}.html`);
+  const contentHtml = contentBuf.toString();
+
+  const rendered = html.replace('%%content%%', contentHtml);
 
   response.send(rendered);
 }
