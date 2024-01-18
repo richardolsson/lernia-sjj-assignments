@@ -23,8 +23,16 @@ const MENU = [
 ];
 
 async function renderPage(response, page) {
+  const currentPath = (page == 'index')? '/' : `/${page}`;
+
   response.render(page, {
-    menuItems: MENU
+    menuItems: MENU.map(item => {
+      return {
+        active: currentPath == item.link,
+        label: item.label,
+        link: item.link,
+      };
+    })
   });
 }
 
