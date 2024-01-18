@@ -23,7 +23,9 @@ const MENU = [
 ];
 
 async function renderPage(response, page) {
-  response.render(page);
+  response.render(page, {
+    menuItems: MENU
+  });
 }
 
 app.get('/', async (request, response) => {

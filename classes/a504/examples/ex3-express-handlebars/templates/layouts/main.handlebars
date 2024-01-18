@@ -9,7 +9,11 @@
       <header>
         <nav>
           <ul>
-            #menu#
+            {{#each menuItems}}
+            <li class="menu-item">
+              <a href="{{this.link}}">{{this.label}}</a>
+            </li>
+            {{/each}}
           </ul>
         </nav>
       </header>
