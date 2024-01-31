@@ -1,6 +1,15 @@
+import { jest } from '@jest/globals';
 import getRecentReviews from './getRecentReviews';
 
 describe('getRecentReviews()', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
   test('includes a review with a 3-5 rating', async () => {
     const cmsAdapter = {
       loadAllReviews: async () => ([
@@ -27,6 +36,21 @@ describe('getRecentReviews()', () => {
     const data = await getRecentReviews(cmsAdapter);
 
     expect(data).toHaveLength(0);
+  });
+
+  test('excludes reviews that are more than 60 days old', async () => {
+    jest.setSystemTime(new Date('2023-01-31T13:37:00.000Z'));
+
+    const cmsAdapter = {
+      loadAllReviews: async () => ([
+        mockReview({ createdAt: '1986-03-21T13:37:00.000Z', rating: 4, }),
+        mockReview({ createdAt: '2023-01-30T13:37:00.000Z', rating: 4, }),
+      ]),
+    };
+
+    const data = await getRecentReviews(cmsAdapter);
+    expect(data).toHaveLength(1);
+    expect(data[0].attributes.createdAt).toBe('2023-01-30T13:37:00.000Z');
   });
 });
 
