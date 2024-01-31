@@ -52,6 +52,8 @@ describe('getRecentReviews()', () => {
     expect(data).toHaveLength(1);
     expect(data[0].attributes.createdAt).toBe('2023-01-30T13:37:00.000Z');
   });
+
+  test.todo('returns empty array if less than 3 matching');
 });
 
 function mockReview(attributes) {

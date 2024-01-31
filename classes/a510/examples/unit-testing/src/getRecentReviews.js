@@ -4,6 +4,8 @@ export default async function getRecentReviews(cmsAdapter) {
     const sixtyDaysAgo = new Date();
     sixtyDaysAgo.setDate(sixtyDaysAgo.getDate() - 60);
 
+    // TODO: If too few reviews, return empty array
+
     return reviews
         .filter(review => review.attributes.rating >= 3)
         .filter(review => {
