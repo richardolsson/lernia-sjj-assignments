@@ -1,9 +1,11 @@
 import express from 'express';
+import jsonwebtoken from 'jsonwebtoken';
 
 const app = express();
 
 const USERNAME = 'admin';
 const PASSWORD = 'secret';
+const JWT_SECRET = 'averylongtextstringthatisdifficulttoguess';
 
 app.post('/api/login', (req, res) => {
   const authHeader = req.headers.authorization;
@@ -19,8 +21,14 @@ app.post('/api/login', (req, res) => {
   }
 
   if (username == USERNAME && password == PASSWORD) {
+    const jwt = jsonwebtoken.sign({
+      username: username,
+      role: 'superuser',
+    }, JWT_SECRET);
+
     res.status(200).json({
       ok: true,
+      token: jwt,
     });
   } else {
     res.status(401).json({
@@ -30,6 +38,20 @@ app.post('/api/login', (req, res) => {
 });
 
 app.get('/api/protected', (req, res) => {
+  const authHeader = req.headers.authorization;
+  const token = authHeader?.slice(7);
+
+  try {
+    const payload = jsonwebtoken.verify(token, JWT_SECRET);
+    res.status(200).json({
+      hello: payload.username,
+      someSecretData: 'Oooh how secret',
+    });
+  } catch (err) {
+    res.status(401).json({
+      error: 'Not allowed',
+    });
+  }
 });
 
 app.use('/', express.static('./static'));
