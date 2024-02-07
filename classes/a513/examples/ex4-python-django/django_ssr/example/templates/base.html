@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>This is the page</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css" />
+</head>
+
+<body class="page">
+    <header>
+        <nav>
+            <ul>
+                {% for item in menu %}
+                <li class="{% if item.active%}active{% else %}inactive{% endif %}">
+                    <a href="{{item.link}}">{{item.label}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        This is the footer
+    </footer>
+</body>
+
+</html>
