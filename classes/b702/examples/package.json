@@ -5,7 +5,7 @@
   "main": "titlecase.js",
   "type": "module",
   "scripts": {
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --collect-coverage",
     "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch"
   },
   "author": "",
