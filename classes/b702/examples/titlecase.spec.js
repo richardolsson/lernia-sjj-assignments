@@ -34,4 +34,10 @@ describe('titleCase()', () => {
     const output = titleCase('the two towers');
     expect(output).toBe('The Two Towers');
   });
+
+  // Parameterized tests using each()
+  it.each(['of', 'the', 'in', 'and', 'to'])('excepts "%s" from the capitalization rule', (exceptedWord) => {
+    const output = titleCase(`fight ${exceptedWord} power`);
+    expect(output).toBe(`Fight ${exceptedWord} Power`);
+  });
 });
