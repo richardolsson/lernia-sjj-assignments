@@ -40,4 +40,9 @@ describe('titleCase()', () => {
     const output = titleCase(`fight ${exceptedWord} power`);
     expect(output).toBe(`Fight ${exceptedWord} Power`);
   });
+
+  it.each(['of', 'the', 'in', 'and', 'to'])('capitalizes exception "%s" when it is the first word', (exceptedWord) => {
+    const output = titleCase(`${exceptedWord} love`);
+    expect(output.charAt(0)).not.toEqual(exceptedWord.charAt(0));
+  });
 });
