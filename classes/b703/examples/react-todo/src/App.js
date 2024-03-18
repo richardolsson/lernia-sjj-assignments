@@ -19,10 +19,12 @@ function App() {
     },
   ]);
 
+  const completed = items.filter(item => item.completed == true).length;
+
   return (
     <div className="app">
       <h1 className="app__title">My ToDo</h1>
-      <p className="todoCounter">2 completed</p>
+      <p className="todoCounter">{`${completed} completed`}</p>
       <form className="todoForm" onSubmit={(ev) => {
         ev.preventDefault();
 
