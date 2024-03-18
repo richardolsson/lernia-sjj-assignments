@@ -1,6 +1,21 @@
 import './App.css';
 
 function App() {
+  const items = [
+    {
+      completed: true,
+      label: 'Learn HTML',
+    },
+    {
+      completed: true,
+      label: 'Learn Javascript',
+    },
+    {
+      completed: false,
+      label: 'Learn React',
+    },
+  ];
+
   return (
     <div className="app">
       <h1 class="app__title">My ToDo</h1>
@@ -10,18 +25,20 @@ function App() {
         <button class="todoForm__submitButton" type="submit">OK</button>
       </form>
       <ul class="todoList">
-        <li class="todoList__item todoList__item--completed" id="item-1">
-          <span class="todoList__itemLabel">Learn HTML</span>
-          <button class="todoList__deleteButton">Delete</button>
-        </li>
-        <li class="todoList__item todoList__item--completed" id="item-2">
-          <span class="todoList__itemLabel">Learn JS</span>
-          <button class="todoList__deleteButton">Delete</button>
-        </li>
-        <li class="todoList__item" id="item-3">
-          <span class="todoList__itemLabel">Learn React</span>
-          <button class="todoList__deleteButton">Delete</button>
-        </li>
+        {
+          items.map((item, index) => {
+            const className = item.completed
+              ? 'todoList__item todoList__item--completed'
+              : 'todoList__item';
+
+            return (
+              <li key={index} class={className}>
+                <span class="todoList__itemLabel">{item.label}</span>
+                <button class="todoList__deleteButton">Delete</button>
+              </li>
+            );
+          })
+        }
       </ul>
     </div>
   );
