@@ -1,7 +1,9 @@
+import { useState } from 'react';
+
 import './App.css';
 
 function App() {
-  const items = [
+  const [items, setItems] = useState([
     {
       completed: true,
       label: 'Learn HTML',
@@ -14,13 +16,25 @@ function App() {
       completed: false,
       label: 'Learn React',
     },
-  ];
+  ]);
 
   return (
     <div className="app">
       <h1 className="app__title">My ToDo</h1>
       <p className="todoCounter">2 completed</p>
-      <form className="todoForm">
+      <form className="todoForm" onSubmit={(ev) => {
+        ev.preventDefault();
+
+        const updatedItems = [
+          ...items,
+          {
+            completed: false,
+            label: 'New item',
+          }
+        ];
+
+        setItems(updatedItems);
+      }}>
         <input className="todoForm__input" type="text" />
         <button className="todoForm__submitButton" type="submit">OK</button>
       </form>
