@@ -18,13 +18,13 @@ function App() {
 
   return (
     <div className="app">
-      <h1 class="app__title">My ToDo</h1>
-      <p class="todoCounter">2 completed</p>
-      <form class="todoForm">
-        <input class="todoForm__input" type="text" />
-        <button class="todoForm__submitButton" type="submit">OK</button>
+      <h1 className="app__title">My ToDo</h1>
+      <p className="todoCounter">2 completed</p>
+      <form className="todoForm">
+        <input className="todoForm__input" type="text" />
+        <button className="todoForm__submitButton" type="submit">OK</button>
       </form>
-      <ul class="todoList">
+      <ul className="todoList">
         {
           items.map((item, index) => {
             const className = item.completed
@@ -32,9 +32,9 @@ function App() {
               : 'todoList__item';
 
             return (
-              <li key={index} class={className}>
-                <span class="todoList__itemLabel">{item.label}</span>
-                <button class="todoList__deleteButton">Delete</button>
+              <li key={index} className={className}>
+                <span className="todoList__itemLabel">{item.label}</span>
+                <button className="todoList__deleteButton">Delete</button>
               </li>
             );
           })
