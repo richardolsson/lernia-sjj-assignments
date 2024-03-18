@@ -49,7 +49,16 @@ function App() {
               : 'todoList__item';
 
             return (
-              <li key={index} className={className}>
+              <li key={index} className={className} onClick={() => {
+                const updatedItems = items.map((oldItem, oldIndex) => {
+                  return {
+                    completed: (oldIndex == index) ? !oldItem.completed : oldItem.completed,
+                    label: oldItem.label,
+                  };
+                });
+
+                setItems(updatedItems);
+              }}>
                 <span className="todoList__itemLabel">{item.label}</span>
                 <button className="todoList__deleteButton">Delete</button>
               </li>
