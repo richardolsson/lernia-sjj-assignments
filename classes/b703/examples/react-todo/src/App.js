@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [value, setValue] = useState('');
   const [items, setItems] = useState([
     {
       completed: true,
@@ -29,13 +30,15 @@ function App() {
           ...items,
           {
             completed: false,
-            label: 'New item',
+            label: value,
           }
         ];
 
         setItems(updatedItems);
       }}>
-        <input className="todoForm__input" type="text" />
+        <input className="todoForm__input" type="text" value={value} onChange={(ev) => {
+          setValue(ev.target.value);
+        }} />
         <button className="todoForm__submitButton" type="submit">OK</button>
       </form>
       <ul className="todoList">
