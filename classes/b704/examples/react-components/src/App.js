@@ -17,17 +17,19 @@ function App() {
     },
   ]);
 
+  function handleCreateItem(newItem) {
+    const updatedItems = [
+      ...items,
+      newItem,
+    ];
+    setItems(updatedItems);
+  }
+
   return (
     <div className="app">
       <h1 className="app__title">My ToDo</h1>
       <TaskCount />
-      <TaskInput onCreateItem={(newItem) => {
-        const updatedItems = [
-          ...items,
-          newItem,
-        ];
-        setItems(updatedItems);
-      }} />
+      <TaskInput onCreateItem={handleCreateItem} />
       <TaskList items={items} />
     </div>
   );
