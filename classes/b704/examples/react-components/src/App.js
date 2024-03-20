@@ -21,7 +21,13 @@ function App() {
     <div className="app">
       <h1 className="app__title">My ToDo</h1>
       <TaskCount />
-      <TaskInput />
+      <TaskInput onCreateItem={(newItem) => {
+        const updatedItems = [
+          ...items,
+          newItem,
+        ];
+        setItems(updatedItems);
+      }} />
       <TaskList items={items} />
     </div>
   );
