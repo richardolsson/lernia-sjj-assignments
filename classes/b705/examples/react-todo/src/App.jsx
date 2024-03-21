@@ -4,6 +4,7 @@ import './App.css';
 import TaskCount from './components/TaskCount';
 import TaskInput from './components/TaskInput';
 import TaskList from './components/TaskList';
+import TaskItem from './components/TaskItem';
 
 function App() {
   const [items, setItems] = useState([
@@ -42,6 +43,12 @@ function App() {
       <TaskCount />
       <TaskInput onCreateItem={handleCreateItem} />
       <TaskList items={items} onToggleItem={handleToggleItem} />
+      <TaskItem
+        item={{
+          label: 'Complete all the things',
+          completed: items.every(item => item.completed),
+        }}
+      />
     </div>
   );
 }
