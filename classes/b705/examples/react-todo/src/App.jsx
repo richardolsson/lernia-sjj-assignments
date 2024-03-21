@@ -25,12 +25,23 @@ function App() {
     setItems(updatedItems);
   }
 
+  function handleToggleItem(index) {
+    const updatedItems = items.map((oldItem, oldIndex) => {
+      return {
+        completed: (oldIndex == index) ? !oldItem.completed : oldItem.completed,
+        label: oldItem.label,
+      };
+    });
+
+    setItems(updatedItems);
+  }
+
   return (
     <div className="app">
       <h1 className="app__title">My ToDo</h1>
       <TaskCount />
       <TaskInput onCreateItem={handleCreateItem} />
-      <TaskList items={items} />
+      <TaskList items={items} onToggleItem={handleToggleItem} />
     </div>
   );
 }
