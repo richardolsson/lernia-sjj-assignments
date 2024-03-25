@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './App.css';
 import TaskCount from './components/TaskCount';
@@ -7,6 +7,16 @@ import TaskList from './components/TaskList';
 
 function App() {
   const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    async function loadItems() {
+      const response = await fetch('/api/items');
+      const payload = await response.json();
+      setItems(payload.items);
+    }
+
+    loadItems();
+  }, []);
 
   function handleCreateItem(newItem) {
     const updatedItems = [
