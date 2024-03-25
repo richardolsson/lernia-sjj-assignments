@@ -1,0 +1,119 @@
+.app {
+  box-sizing: border-box;
+  background-color: white;
+  width: 350px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  margin: 20px auto;
+
+  animation-name: app__enter;
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes app__enter {
+  0% {
+    transform: translateY(-200px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.app__title {
+  margin: 0;
+  font-family: serif;
+
+  animation-name: fadeIn;
+  animation-duration: 0.3s;
+  animation-delay: 0.7s;
+  animation-fill-mode: both;
+}
+
+.todoCounter {
+  animation-name: fadeIn;
+  animation-duration: 0.3s;
+  animation-delay: 0.8s;
+  animation-fill-mode: both;
+}
+
+.todoForm {
+  animation-name: fadeIn;
+  animation-duration: 0.3s;
+  animation-delay: 0.9s;
+  animation-fill-mode: both;
+}
+
+.todoForm__error {
+  color: red;
+  font-style: italic;
+  font-size: 11px;
+  margin: 4px 0 10px;
+
+  animation-name: todoForm__errorFlash;
+  animation-duration: 0.3s;
+  animation-iteration-count: 3;
+}
+
+@keyframes todoForm__errorFlash {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.todoList {
+  padding: 0;
+}
+
+.todoList__item {
+  list-style-type: none;
+}
+
+.todoList__item span {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.todoList__item span:hover {
+  text-decoration: line-through;
+}
+
+.todoList__item--completed span {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.todoList__deleteButton {
+  color: red;
+  text-indent: -1000px;
+  overflow: hidden;
+  position: relative;
+  border-width: 0;
+  background-color: transparent;
+  min-width: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.todoList__deleteButton::before {
+  display: block;
+  content: "🗑";
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-indent: 0;
+}

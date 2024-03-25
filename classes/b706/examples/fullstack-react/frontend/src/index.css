@@ -1,0 +1,8 @@
+html, body {
+  min-height: 100%;
+}
+
+body {
+  background: linear-gradient(#fcc, #f88);
+  font-family: sans-serif;
+}
