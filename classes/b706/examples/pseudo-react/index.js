@@ -5,6 +5,11 @@ initFauxReact();
 function initFauxReact() {
   let num = 0;
 
+  function setNum(value) {
+    num = value;
+    updateUi();
+  }
+
   const container = document.querySelector('#app');
   updateUi();
 
@@ -48,8 +53,7 @@ function initFauxReact() {
       createElement('p', null, num),
       createElement('button', {
         onClick: () => {
-          num += 1;
-          updateUi();
+          setNum(num + 1);
         },
       }, (num == 0) ? 'Click me to increment' : `Click me again (${num})`
       ),
@@ -58,8 +62,7 @@ function initFauxReact() {
           display: (num == 0) ? 'none' : 'inline-block'
         },
         onClick: () => {
-          num = 0;
-          updateUi();
+          setNum(0);
         },
       }, 'Reset'),
     ];
