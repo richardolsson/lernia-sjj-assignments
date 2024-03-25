@@ -1,5 +1,60 @@
 //initImperative();
 //initDeclarative();
+initFauxReact();
+
+function initFauxReact() {
+  let num = 0;
+
+  const container = document.querySelector('#app');
+  updateUi();
+
+  function updateUi() {
+    const requestedUi = render();
+
+    requestedUi.forEach((requestedElem) => {
+      console.log(requestedElem);
+      const domElem = document.createElement(requestedElem.tag);
+      domElem.textContent = requestedElem.content;
+
+      if (requestedElem.style) {
+        Object.keys(requestedElem.style).forEach(attribute => {
+          domElem.style[attribute] = requestedElem.style[attribute];
+        });
+      }
+
+      domElem.addEventListener('click', requestedElem.onClick);
+
+      container.append(domElem);
+    });
+  }
+
+  function render() {
+    return [
+      {
+        tag: 'p',
+        content: num,
+      },
+      {
+        tag: 'button',
+        content: 'Click me to increment',
+        onClick: () => {
+          num += 1;
+          console.log('clicked', num);
+        },
+      },
+      {
+        tag: 'button',
+        content: 'Reset',
+        style: {
+          display: 'none',
+        },
+        onClick: () => {
+          num = 0;
+        },
+      },
+    ];
+  }
+}
 
 /**
  * This function initiates the interface using a purely "imperative"
