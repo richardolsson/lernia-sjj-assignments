@@ -23,6 +23,15 @@ function App() {
       ...items,
       newItem,
     ];
+
+    fetch('/api/items', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newItem)
+    });
+
     setItems(updatedItems);
   }
 
