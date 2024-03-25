@@ -27,31 +27,33 @@ function initFauxReact() {
 
       domElem.textContent = requestedElem.content;
 
-      if (requestedElem.style) {
-        Object.keys(requestedElem.style).forEach(attribute => {
-          domElem.style[attribute] = requestedElem.style[attribute];
-        });
-      }
+      Object.keys(requestedElem.style).forEach(attribute => {
+        domElem.style[attribute] = requestedElem.style[attribute];
+      });
     });
+  }
+
+  function createElement(tag, props, content) {
+    return {
+      tag: tag,
+      style: {},
+      content: content,
+      ...props
+    };
   }
 
   function render() {
     return [
-      {
-        tag: 'p',
-        content: num,
-      },
-      {
-        tag: 'button',
-        content: (num == 0) ? 'Click me to increment' : `Click me again (${num})`,
+      // <p>{num}</p>
+      createElement('p', null, num),
+      createElement('button', {
         onClick: () => {
           num += 1;
           updateUi();
         },
-      },
-      {
-        tag: 'button',
-        content: 'Reset',
+      }, (num == 0) ? 'Click me to increment' : `Click me again (${num})`
+      ),
+      createElement('button', {
         style: {
           display: (num == 0) ? 'none' : 'inline-block'
         },
@@ -59,7 +61,7 @@ function initFauxReact() {
           num = 0;
           updateUi();
         },
-      },
+      }, 'Reset'),
     ];
   }
 }
