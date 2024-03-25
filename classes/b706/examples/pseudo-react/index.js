@@ -11,9 +11,20 @@ function initFauxReact() {
   function updateUi() {
     const requestedUi = render();
 
-    requestedUi.forEach((requestedElem) => {
-      console.log(requestedElem);
-      const domElem = document.createElement(requestedElem.tag);
+    requestedUi.forEach((requestedElem, index) => {
+      const existingDomElement = container.children[index];
+      let domElem;
+
+      if (existingDomElement && existingDomElement.tagName == requestedElem.tag.toUpperCase()) {
+        // Reusing existing DOM element
+        domElem = existingDomElement;
+      } else {
+        // Create new DOM element
+        domElem = document.createElement(requestedElem.tag);
+        domElem.addEventListener('click', requestedElem.onClick);
+        container.append(domElem);
+      }
+
       domElem.textContent = requestedElem.content;
 
       if (requestedElem.style) {
@@ -21,10 +32,6 @@ function initFauxReact() {
           domElem.style[attribute] = requestedElem.style[attribute];
         });
       }
-
-      domElem.addEventListener('click', requestedElem.onClick);
-
-      container.append(domElem);
     });
   }
 
@@ -36,20 +43,21 @@ function initFauxReact() {
       },
       {
         tag: 'button',
-        content: 'Click me to increment',
+        content: (num == 0) ? 'Click me to increment' : `Click me again (${num})`,
         onClick: () => {
           num += 1;
-          console.log('clicked', num);
+          updateUi();
         },
       },
       {
         tag: 'button',
         content: 'Reset',
         style: {
-          display: 'none',
+          display: (num == 0) ? 'none' : 'inline-block'
         },
         onClick: () => {
           num = 0;
+          updateUi();
         },
       },
     ];
