@@ -1,10 +1,12 @@
 import express from 'express';
 import fs from 'fs/promises';
+import mongoose from 'mongoose';
+import { Item } from './src/models.js';
+
+mongoose.connect('mongodb://localhost:27017/test');
 
 const app = express();
 app.use(express.json());
-
-const items = [];
 
 app.use((req, res, next) => {
   console.log(req.method, req.path);
@@ -16,16 +18,19 @@ app.get('/', async (req, res) => {
   res.type('html').send(html);
 });
 
-app.get('/api/items', (req, res) => {
+app.get('/api/items', async (req, res) => {
+  const items = await Item.find();
   res.json({ items });
 });
 
-app.post('/api/items', (req, res) => {
-  const item = req.body
+app.post('/api/items', async (req, res) => {
+  const itemData = req.body
   console.log(req.body);
-  items.push(item);
 
-  res.status(201).json(item);
+  const itemModel = new Item(itemData);
+  await itemModel.save();
+
+  res.status(201).json(itemData);
 });
 
 app.use('/assets', express.static('../frontend/dist/assets'));
