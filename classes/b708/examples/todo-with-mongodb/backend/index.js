@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import mongoose from 'mongoose';
 import { Item } from './src/models.js';
 
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect(process.env.DB_URL);
 
 const app = express();
 app.use(express.json());
