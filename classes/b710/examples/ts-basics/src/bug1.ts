@@ -5,7 +5,7 @@ export default function bug1() {
     },
   };
 
-  data.data.push("word3");
+  data.data.data.push("word3");
 }
 
 bug1();
