@@ -1,14 +1,22 @@
 import express from "express";
 import * as uuid from "uuid";
 
-import { getRandomWord } from "./utils.js";
-import { loadHighscores, saveHighscore } from "./db.js";
+import { getRandomWord } from "./utils";
+import { loadHighscores, saveHighscore } from "./db";
 
 const app = express();
 app.use(express.json());
 app.use(express.static('./static'));
 
-const GAMES = [];
+export type Game = {
+  correctWord: string;
+  endTime?: Date;
+  guesses: string[];
+  id: string;
+  startTime: Date;
+}
+
+const GAMES: Game[] = [];
 
 // POST /api/games
 app.post("/api/games", (req, res) => {
@@ -71,7 +79,9 @@ app.get("/api/highscores", async (req, res) => {
   res.json({
     highscores: highscores.map((entry) => ({
       ...entry,
-      duration: new Date(entry.endTime) - new Date(entry.startTime),
+      duration: entry.endTime
+        ? new Date(entry.endTime).getTime() - new Date(entry.startTime).getTime()
+        : 0,
     })),
   });
 });

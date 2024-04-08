@@ -4,13 +4,19 @@
  * connection, but that's not important for the purpose of this example.
  */
 
-const HIGHSCORES = [];
+import { Game } from "./app";
 
-export async function saveHighscore(highscore) {
+type Highscore = Game & {
+  name: string;
+}
+
+const HIGHSCORES: Highscore[] = [];
+
+export async function saveHighscore(highscore: Highscore) {
   HIGHSCORES.push(highscore);
   return highscore;
 }
 
-export async function loadHighscores() {
+export async function loadHighscores(): Promise<Highscore[]> {
   return HIGHSCORES;
 }
