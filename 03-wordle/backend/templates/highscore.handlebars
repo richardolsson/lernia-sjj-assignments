@@ -1,0 +1,16 @@
+<h1>Highscores</h1>
+<p>
+  Filter by wordlength:
+  <a href="?wordLength=4">4 letters</a>,
+  <a href="?wordLength=5">5 letters</a>,
+  <a href="?wordLength=6">6 letters</a>
+</p>
+<ul>
+  {{#each highscores}}
+  <li>
+    <span class="name">{{this.name}}</span>
+    <span class="guesses">{{this.guessCount}}</span>
+    <span class="duration">{{this.duration}}</span>
+  </li>
+  {{/each}}
+</ul>
