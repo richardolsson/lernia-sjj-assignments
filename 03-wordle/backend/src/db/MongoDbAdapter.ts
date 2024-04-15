@@ -1,15 +1,6 @@
-import mongoose from "mongoose";
-import { Game } from "../game/types";
-import { IDbAdapter } from "./types";
-import { Schema } from "zod";
-
-type Highscore = {
-  allowDuplicates: boolean;
-  wordLength: number;
-  name: string;
-  duration: number;
-  guessCount: number;
-}
+import mongoose from 'mongoose';
+import { Game } from '../game/types';
+import { Highscore, IDbAdapter } from './types';
 
 const highscoreSchema = new mongoose.Schema<Highscore>({
   allowDuplicates: Boolean,
@@ -24,6 +15,11 @@ const HighscoreModel = mongoose.model<Highscore>('Highscore', highscoreSchema);
 export default class MongoDbAdapter implements IDbAdapter {
   constructor(url: string) {
     mongoose.connect(url);
+  }
+
+  async getHighscores(): Promise<Highscore[]> {
+    const highscores = await HighscoreModel.find();
+    return highscores.map((obj) => obj.toJSON());
   }
 
   async saveHighscore(name: string, game: Game): Promise<void> {

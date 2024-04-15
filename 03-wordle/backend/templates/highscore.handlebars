@@ -1,0 +1,10 @@
+<h1>Highscores</h1>
+<ul>
+  {{#each highscores}}
+  <li>
+    <span class="name">{{this.name}}</span>
+    <span class="guesses">{{this.guessCount}}</span>
+    <span class="duration">{{this.duration}}</span>
+  </li>
+  {{/each}}
+</ul>
