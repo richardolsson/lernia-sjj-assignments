@@ -1,4 +1,4 @@
-import { Game } from "../game/types";
+import { Game } from '../game/types';
 
 export type Highscore = {
   allowDuplicates: boolean;
@@ -6,9 +6,9 @@ export type Highscore = {
   name: string;
   duration: number;
   guessCount: number;
-}
+};
 
 export interface IDbAdapter {
   saveHighscore(name: string, game: Game): Promise<void>;
-  getHighscores(): Promise<Highscore[]>
+  getHighscores(filters?: { wordLength?: number }): Promise<Highscore[]>;
 }

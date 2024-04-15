@@ -15,7 +15,7 @@ function initApp(gameStore: IGameStore, db: IDbAdapter) {
   app.set('views', './templates');
 
   app.get('/highscore', async (req, res) => {
-    const highscores = await db.getHighscores();
+    const highscores = await db.getHighscores(req.query);
 
     res.render('highscore', { highscores });
   });

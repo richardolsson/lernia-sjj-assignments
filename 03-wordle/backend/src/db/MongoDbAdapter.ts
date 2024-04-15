@@ -17,8 +17,15 @@ export default class MongoDbAdapter implements IDbAdapter {
     mongoose.connect(url);
   }
 
-  async getHighscores(): Promise<Highscore[]> {
-    const highscores = await HighscoreModel.find();
+  async getHighscores(
+    filters?: { wordLength?: number | undefined } | undefined
+  ): Promise<Highscore[]> {
+    const query: Partial<Highscore> = {};
+    if (filters?.wordLength) {
+      query.wordLength = filters.wordLength;
+    }
+
+    const highscores = await HighscoreModel.find(query);
     return highscores.map((obj) => obj.toJSON());
   }
 
