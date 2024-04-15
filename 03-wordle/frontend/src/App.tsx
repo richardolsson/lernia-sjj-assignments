@@ -34,7 +34,7 @@ function App() {
           }}
         />
       )}
-      {screen == 'game' && <GameScreen />}
+      {screen == 'game' && gameId && <GameScreen gameId={gameId} />}
       {screen == 'win' && <WinScreen />}
       {screen == 'end' && <EndScreen />}
     </div>
