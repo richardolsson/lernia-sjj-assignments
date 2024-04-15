@@ -20,6 +20,10 @@ function initApp(gameStore: IGameStore, db: IDbAdapter) {
     res.render('highscore', { highscores });
   });
 
+  app.get('/about', (req, res) => {
+    res.render('about');
+  });
+
   app.use(express.static('./dist'));
 
   return app;
