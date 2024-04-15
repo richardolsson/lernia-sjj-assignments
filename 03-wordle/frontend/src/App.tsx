@@ -42,7 +42,14 @@ function App() {
           }}
         />
       )}
-      {screen == 'win' && gameId && <WinScreen gameId={gameId} />}
+      {screen == 'win' && gameId && (
+        <WinScreen
+          gameId={gameId}
+          onDone={() => {
+            setScreen('end');
+          }}
+        />
+      )}
       {screen == 'end' && <EndScreen />}
     </div>
   );

@@ -2,9 +2,10 @@ import { FC, useState } from 'react';
 
 type Props = {
   gameId: string;
+  onDone: () => void;
 };
 
-const WinScreen: FC<Props> = ({ gameId }) => {
+const WinScreen: FC<Props> = ({ gameId, onDone }) => {
   const [name, setName] = useState('');
   return (
     <div>
@@ -22,6 +23,8 @@ const WinScreen: FC<Props> = ({ gameId }) => {
               name: name,
             }),
           });
+
+          onDone();
         }}
       >
         Submit highscore
