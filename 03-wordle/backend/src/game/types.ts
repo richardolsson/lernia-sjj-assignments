@@ -7,6 +7,7 @@ export type Game = {
 
 export interface IGameStore {
   createGame(wordLength: number, allowDuplicates: boolean): Game;
+  findGameById(id: string): Game | null;
 }
 
 export interface IWordRandomizer {

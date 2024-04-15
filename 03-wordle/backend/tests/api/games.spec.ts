@@ -8,6 +8,7 @@ describe('Games API', () => {
       createGame: jest.fn().mockReturnValue({
         id: 'id-of-game',
       }),
+      findGameById: jest.fn(),
     };
 
     const app = initApp(gameStore);
@@ -28,6 +29,7 @@ describe('Games API', () => {
   it('returns 400 if body is missing', async () => {
     const gameStore: jest.Mocked<IGameStore> = {
       createGame: jest.fn(),
+      findGameById: jest.fn(),
     };
 
     const app = initApp(gameStore);

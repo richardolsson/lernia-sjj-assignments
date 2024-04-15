@@ -21,4 +21,8 @@ export default class MemGameStore implements IGameStore {
 
     return game;
   }
+
+  findGameById(id: string): Game | null{
+    return this._games.find(game => game.id == id) || null;
+  }
 }

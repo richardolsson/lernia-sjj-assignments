@@ -25,4 +25,18 @@ describe('MemGameStore', () => {
       expect(game1.id).not.toEqual(game2.id);
     });
   });
+
+  describe('findGameById()', () => {
+    it('finds game after creating it', () => {
+      const randomizer: jest.Mocked<IWordRandomizer> = {
+        getRandomWord: jest.fn().mockReturnValue('hello'),
+      }
+
+      const store = new MemGameStore(randomizer);
+      const game = store.createGame(5, true);
+
+      const foundGame = store.findGameById(game.id);
+      expect(foundGame).toEqual(game);
+    });
+  });
 });
