@@ -1,9 +1,14 @@
 import MemGameStore from "./MemGameStore";
+import { IWordRandomizer } from "./types";
 
 describe('MemGameStore', () => {
   describe('createGame()', () => {
     it('returns game with random ID', () => {
-      const store = new MemGameStore();
+      const randomizer: jest.Mocked<IWordRandomizer> = {
+        getRandomWord: jest.fn().mockReturnValue('hello'),
+      }
+
+      const store = new MemGameStore(randomizer);
       const game1 = store.createGame(5, true);
       const game2 = store.createGame(5, true);
 

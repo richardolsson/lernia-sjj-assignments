@@ -1,8 +1,20 @@
-import initApp from "./src/app";
-import MemGameStore from "./src/game/MemGameStore";
+import fs from 'fs/promises';
 
-const gameStore = new MemGameStore();
+import initApp from './src/app';
+import ListWordRandomizer from './src/game/ListWordRandomizer';
+import MemGameStore from './src/game/MemGameStore';
 
-const app = initApp(gameStore);
+async function init() {
+  const wordData = await fs.readFile('./words.txt');
+  const words = wordData.toString().split('\r\n');
 
-app.listen(5080);
+  const randomizer = new ListWordRandomizer(words);
+
+  const gameStore = new MemGameStore(randomizer);
+
+  const app = initApp(gameStore);
+
+  app.listen(5080);
+}
+
+init();
