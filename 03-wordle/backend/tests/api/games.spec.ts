@@ -1,8 +1,13 @@
 import request from 'supertest';
 import initApp from '../../src/app';
 import { IGameStore } from '../../src/game/types';
+import { IDbAdapter } from '../../src/db/types';
 
 describe('Games API', () => {
+  const db: jest.Mocked<IDbAdapter> = {
+    saveHighscore: jest.fn(),
+  };
+
   it('returns game ID for POST to /api/games', async () => {
     const gameStore: jest.Mocked<IGameStore> = {
       createGame: jest.fn().mockReturnValue({
@@ -11,7 +16,7 @@ describe('Games API', () => {
       findGameById: jest.fn(),
     };
 
-    const app = initApp(gameStore);
+    const app = initApp(gameStore, db);
     const result = await request(app)
       .post('/api/games')
       .send({
@@ -32,7 +37,7 @@ describe('Games API', () => {
       findGameById: jest.fn(),
     };
 
-    const app = initApp(gameStore);
+    const app = initApp(gameStore, db);
     await request(app).post('/api/games').expect(400);
   });
 });

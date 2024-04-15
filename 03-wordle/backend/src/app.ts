@@ -2,8 +2,9 @@ import express from 'express';
 import { IGameStore } from './game/types';
 import { z } from 'zod';
 import getFeedback from './game/feedback';
+import { IDbAdapter } from './db/types';
 
-function initApp(gameStore: IGameStore) {
+function initApp(gameStore: IGameStore, db: IDbAdapter) {
   const app = express();
 
   app.use(express.json());
@@ -59,6 +60,26 @@ function initApp(gameStore: IGameStore) {
             result: null,
           });
         }
+      } else {
+        res.status(404).end();
+      }
+    } else {
+      res.status(400).end();
+    }
+  });
+
+  app.post('/api/games/:id/highscore', async (req, res) => {
+    const schema = z.object({
+      name: z.string(),
+    });
+
+    const payload = schema.safeParse(req.body);
+
+    if (payload.success) {
+      const game = gameStore.findGameById(req.params.id);
+      if (game) {
+        await db.saveHighscore(payload.data.name, game);
+        res.status(201).end();
       } else {
         res.status(404).end();
       }

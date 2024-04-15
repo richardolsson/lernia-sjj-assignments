@@ -2,8 +2,13 @@ import initApp from '../../src/app';
 import request from 'supertest';
 import { IGameStore, IWordRandomizer } from '../../src/game/types';
 import MemGameStore from '../../src/game/MemGameStore';
+import { IDbAdapter } from '../../src/db/types';
 
 describe('Guess API', () => {
+  const db: jest.Mocked<IDbAdapter> = {
+    saveHighscore: jest.fn(),
+  };
+
   afterEach(() => {
     jest.clearAllTimers();
   });
@@ -21,7 +26,7 @@ describe('Guess API', () => {
       }),
     };
 
-    const app = initApp(gameStore);
+    const app = initApp(gameStore, db);
 
     const result = await request(app)
       .post('/api/games/abc123/guesses')
@@ -56,7 +61,7 @@ describe('Guess API', () => {
       }),
     };
 
-    const app = initApp(gameStore);
+    const app = initApp(gameStore, db);
 
     const result = await request(app)
       .post('/api/games/abc123/guesses')
@@ -94,7 +99,7 @@ describe('Guess API', () => {
     const gameStore = new MemGameStore(randomizer);
     const game = gameStore.createGame(5, true);
 
-    const app = initApp(gameStore);
+    const app = initApp(gameStore, db);
 
     // First guess
     await request(app)
@@ -127,7 +132,7 @@ describe('Guess API', () => {
       findGameById: jest.fn().mockReturnValue(null),
     };
 
-    const app = initApp(gameStore);
+    const app = initApp(gameStore, db);
 
     await request(app)
       .post('/api/games/abc123/guesses')
@@ -144,7 +149,7 @@ describe('Guess API', () => {
       findGameById: jest.fn(),
     };
 
-    const app = initApp(gameStore);
+    const app = initApp(gameStore, db);
 
     await request(app).post('/api/games/abc123/guesses').expect(400);
   });
