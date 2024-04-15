@@ -34,8 +34,15 @@ function App() {
           }}
         />
       )}
-      {screen == 'game' && gameId && <GameScreen gameId={gameId} />}
-      {screen == 'win' && <WinScreen />}
+      {screen == 'game' && gameId && (
+        <GameScreen
+          gameId={gameId}
+          onWin={() => {
+            setScreen('win');
+          }}
+        />
+      )}
+      {screen == 'win' && gameId && <WinScreen gameId={gameId} />}
       {screen == 'end' && <EndScreen />}
     </div>
   );

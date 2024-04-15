@@ -4,9 +4,10 @@ import GuessFeedback from '../GuessFeedback';
 
 type Props = {
   gameId: string;
+  onWin: () => void;
 };
 
-const GameScreen: FC<Props> = ({ gameId }) => {
+const GameScreen: FC<Props> = ({ gameId , onWin}) => {
   const [text, setText] = useState('');
   const [guesses, setGuesses] = useState<Guess[]>([]);
 
@@ -35,7 +36,11 @@ const GameScreen: FC<Props> = ({ gameId }) => {
 
             setGuesses([...guesses, payload.feedback]);
 
-            setText('');
+            if (payload.result) {
+              onWin();
+            } else {
+              setText('');
+            }
           }
         }}
       />
