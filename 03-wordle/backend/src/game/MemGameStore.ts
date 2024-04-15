@@ -15,6 +15,9 @@ export default class MemGameStore implements IGameStore {
       allowDuplicates,
       correctWord: this._randomizer.getRandomWord(wordLength, allowDuplicates),
       id: uuid.v4(),
+      startTime: new Date(),
+      endTime: null,
+      guesses: [],
     }
 
     this._games.push(game);

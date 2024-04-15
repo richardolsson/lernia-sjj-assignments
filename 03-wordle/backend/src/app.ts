@@ -38,20 +38,27 @@ function initApp(gameStore: IGameStore) {
     if (payload.success) {
       const game = gameStore.findGameById(req.params.id);
       if (game) {
+        game.guesses.push(payload.data.guess);
+
         const feedback = getFeedback(game.correctWord, payload.data.guess);
         const allCorrect = feedback.every((obj) => obj.result == 'correct');
-        const result = allCorrect
-          ? {
-              duration: 0,
-              guessCount: 1,
-              correctWord: game?.correctWord,
-            }
-          : null;
 
-        res.status(200).json({
-          feedback,
-          result,
-        });
+        if (allCorrect) {
+          game.endTime = new Date();
+          res.status(200).json({
+            feedback,
+            result: {
+              duration: game.endTime.getTime() - game.startTime.getTime(),
+              guessCount: game.guesses.length,
+              correctWord: game?.correctWord,
+            },
+          });
+        } else {
+          res.status(200).json({
+            feedback,
+            result: null,
+          });
+        }
       } else {
         res.status(404).end();
       }

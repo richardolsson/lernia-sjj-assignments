@@ -3,6 +3,9 @@ export type Game = {
   correctWord: string;
   wordLength: number;
   allowDuplicates: boolean;
+  startTime: Date;
+  endTime: Date | null;
+  guesses: string[];
 };
 
 export interface IGameStore {

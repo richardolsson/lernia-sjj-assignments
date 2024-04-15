@@ -1,8 +1,13 @@
 import initApp from '../../src/app';
 import request from 'supertest';
-import { IGameStore } from '../../src/game/types';
+import { IGameStore, IWordRandomizer } from '../../src/game/types';
+import MemGameStore from '../../src/game/MemGameStore';
 
 describe('Guess API', () => {
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
   it('returns feedback for incorrect word', async () => {
     const gameStore: jest.Mocked<IGameStore> = {
       createGame: jest.fn(),
@@ -11,6 +16,8 @@ describe('Guess API', () => {
         correctWord: 'cycle',
         allowDuplicates: true,
         wordLength: 5,
+        startTime: new Date(),
+        guesses: [],
       }),
     };
 
@@ -44,6 +51,8 @@ describe('Guess API', () => {
         correctWord: 'cycle',
         allowDuplicates: true,
         wordLength: 5,
+        startTime: new Date(),
+        guesses: [],
       }),
     };
 
@@ -72,6 +81,44 @@ describe('Guess API', () => {
     });
 
     expect(typeof result.body.result.duration == 'number').toBeTruthy();
+  });
+
+  it('returns correct duration and guess count', async () => {
+    const randomizer: jest.Mocked<IWordRandomizer> = {
+      getRandomWord: jest.fn().mockReturnValue('hello'),
+    };
+
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2024-04-15T12:00:00.000Z'));
+
+    const gameStore = new MemGameStore(randomizer);
+    const game = gameStore.createGame(5, true);
+
+    const app = initApp(gameStore);
+
+    // First guess
+    await request(app)
+      .post(`/api/games/${game.id}/guesses`)
+      .send({ guess: 'cycle' })
+      .set('Content-Type', 'application/json');
+
+    // Second guess
+    await request(app)
+      .post(`/api/games/${game.id}/guesses`)
+      .send({ guess: 'clara' })
+      .set('Content-Type', 'application/json');
+
+    jest.setSystemTime(new Date('2024-04-15T12:00:05.000Z'));
+
+    // Third guess – correct!
+    const result = await request(app)
+      .post(`/api/games/${game.id}/guesses`)
+      .send({ guess: 'hello' })
+      .set('Content-Type', 'application/json');
+
+    expect(result.body.result.correctWord).toEqual('hello');
+    expect(result.body.result.duration).toBeCloseTo(5000);
+    expect(result.body.result.guessCount).toEqual(3);
   });
 
   it('returns 404 when using nonexistent game', async () => {
