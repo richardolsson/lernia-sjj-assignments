@@ -1,6 +1,5 @@
-import Image from 'next/image';
-import styles from './page.module.css';
+import ToDo from '@/components/ToDo';
 
 export default function Home() {
-  return <h1>HELO</h1>;
+  return <ToDo/>
 }
