@@ -9,7 +9,7 @@ type Props = {
 
 const TaskList: FC<Props> = ({ items, onToggleItem }) => {
   return (
-    <ul className="todoList">
+    <ul className="todoList" data-testid="task-list">
       {items.map((item, index) => {
         return (
           <TaskItem key={index} item={item} onClick={() => {

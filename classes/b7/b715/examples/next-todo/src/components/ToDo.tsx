@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './ToDo.css';
 import TaskCount from './TaskCount';
@@ -10,20 +10,29 @@ import TaskItem from './TaskItem';
 import { Task } from '../types';
 
 function ToDo() {
-  const [items, setItems] = useState<Task[]>([
-    {
-      label: 'Learn JS',
-      completed: true,
-    },
-    {
-      label: 'Learn React',
-      completed: false,
-    },
-  ]);
+  const [items, setItems] = useState<Task[]>([]);
+
+  useEffect(() => {
+    async function loadTasks() {
+      const res = await fetch('/api/tasks');
+      const payload = await res.json();
+      setItems(payload.tasks);
+    }
+
+    loadTasks();
+  }, []);
 
   function handleCreateItem(newItem: Task) {
     const updatedItems = [...items, newItem];
     setItems(updatedItems);
+
+    fetch('/api/tasks', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newItem),
+    });
   }
 
   function handleToggleItem(index: number) {
