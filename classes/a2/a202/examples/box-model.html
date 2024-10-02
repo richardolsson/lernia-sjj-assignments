@@ -3,6 +3,22 @@
 
 <head>
   <style>
+    * {
+      /*
+      * Changes how the box model works, so that width
+      * and height determine the dimensions of the border
+      * box (rather than content box, which is the default).
+      */
+      box-sizing: border-box;
+    }
+
+    .container {
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid black;
+      height: 100px;
+      background-color: salmon;
+    }
   </style>
 </head>
 
