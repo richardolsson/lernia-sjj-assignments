@@ -19,11 +19,15 @@
 
     @keyframes left-to-right {
       0% {
-        transform: translateX(0);
+        transform: translateX(0) translateY(0);
+      }
+
+      50% {
+        transform: translateX(300px) translateY(-50px);
       }
 
       100% {
-        transform: translateX(400px);
+        transform: translateX(400px) translateY(200px);
       }
     }
   </style>
