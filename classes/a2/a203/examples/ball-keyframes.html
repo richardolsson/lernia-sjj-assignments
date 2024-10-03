@@ -8,11 +8,26 @@
       height: 100px;
       border-radius: 50px;
       background-color: rgb(255, 0, 0);
+
+      /* Just some layout stuff to be discussed in lecture 7
+      */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #ball span {
+      opacity: 0;
+      transition: opacity 1s;
     }
 
     .with-animation {
       animation-name: color-shift;
       animation-duration: 5s;
+    }
+
+    #ball.with-animation span {
+      opacity: 1;
     }
 
     @keyframes color-shift {
@@ -34,6 +49,7 @@
 
 <body>
   <div id="ball">
+    <span>Hello</span>
   </div>
 
   <button
