@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    #ball {
+      width: 100px;
+      height: 100px;
+      border-radius: 50px;
+      background-color: rgb(255, 0, 0);
+    }
+
+    .with-animation {
+      animation-name: color-shift;
+      animation-duration: 5s;
+    }
+
+    @keyframes color-shift {
+      0% {
+        background-color: rgb(255, 0, 0);
+      }
+
+      50% {
+        background-color: rgb(0, 128, 0);
+      }
+
+      100% {
+        background-color: rgb(0, 0, 255);
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="ball">
+  </div>
+
+  <button
+    onclick="document.querySelector('#ball').classList.toggle('with-animation');">
+    Click me
+  </button>
+</body>
+
+</html>
