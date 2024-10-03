@@ -11,6 +11,10 @@
       transition: background-color 3s;
     }
 
+    #ball.special {
+      background-color: rgb(0, 0, 255);
+    }
+
     #ball:hover {
       background-color: rgb(0, 128, 0);
     }
@@ -21,6 +25,11 @@
 <body>
   <div id="ball">
   </div>
+
+  <button
+    onclick="document.querySelector('#ball').classList.toggle('special');">
+    Click me
+  </button>
 </body>
 
 </html>
