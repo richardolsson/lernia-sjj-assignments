@@ -63,6 +63,7 @@ body {
 .todoItem__label {
   font-size: 1.2em;
   cursor: pointer;
+  transition: opacity 0.3s;
 }
 
 .todoItem__label:hover {
@@ -80,6 +81,7 @@ body {
   cursor: pointer;
   margin-left: 0.8em;
   opacity: 0.6;
+  transition: opacity 0.3s;
 }
 
 .todoItem__deleteButton:hover {
