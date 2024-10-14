@@ -3,7 +3,16 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
 
   const input = document.querySelector('.todoForm__input');
-  const text = input.value;
+  const text = input.value.trim();
+
+  const form = document.querySelector('.todoForm');
+
+  if (text.length == 0) {
+    form.classList.add('todoForm--withError');
+    return;
+  } else {
+    form.classList.remove('todoForm--withError');
+  }
 
   const todoItem = document.createElement('li');
   todoItem.classList.add('todoItem');
