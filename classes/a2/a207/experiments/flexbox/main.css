@@ -1,0 +1,21 @@
+.content {
+  display: flex;
+}
+
+.header {
+  height: 100px;
+}
+
+.footer {
+  height: 100px;
+}
+
+.left {
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.right {
+  width: 100px;
+  flex-shrink: 0;
+}
