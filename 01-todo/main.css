@@ -1,0 +1,87 @@
+html {
+  min-height: 100vh;
+  font-size: 24px;
+}
+
+body {
+  background: linear-gradient(#ffcccc, #ff8888);
+}
+
+.app {
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  font-family: sans-serif;
+  text-align: center;
+  padding: 10px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.app__header {
+  margin: 0;
+  font-size: 2rem;
+  font-family: serif;
+}
+
+.app__status {
+  font-size: 0.75rem;
+}
+
+.todoForm__input {
+  font-size: 1.1rem;
+  padding: 0.15rem;
+}
+
+.todoForm__okButton {
+  font-size: 1.0rem;
+  padding: 0.25rem;
+}
+
+.todoForm__error {
+  color: #dd0000;
+  display: none;
+  font-style: italic;
+  font-size: 0.75rem;
+  margin-top: 0.3em;
+}
+
+.todoForm--withError .todoForm__error {
+  display: block;
+}
+
+.todoList {
+  margin: 1rem 0;
+}
+
+.todoItem {
+  list-style-type: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.todoItem__label {
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.todoItem__label:hover {
+  text-decoration: line-through;
+}
+
+.todoItem--completed .todoItem__label {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.todoItem__deleteButton {
+  border-width: 0;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 0.8em;
+  opacity: 0.6;
+}
+
+.todoItem__deleteButton:hover {
+  opacity: 1;
+}
