@@ -1,13 +1,12 @@
-.content {
+.container {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .header {
   height: 100px;
-}
-
-.footer {
-  height: 100px;
+  width: 100%;
+  flex-shrink: 0;
 }
 
 .left {
@@ -15,7 +14,17 @@
   flex-shrink: 0;
 }
 
+.main {
+  width: calc(100% - 200px);
+  flex-shrink: 0;
+}
+
 .right {
   width: 100px;
   flex-shrink: 0;
+}
+
+.footer {
+  height: 100px;
+  width: 100%;
 }
