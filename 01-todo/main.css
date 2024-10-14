@@ -80,6 +80,7 @@ body {
   list-style-type: none;
   padding: 0;
   margin: 0.5rem 0;
+  animation: todoItem__enter 0.4s;
 }
 
 .todoItem__label {
@@ -108,6 +109,17 @@ body {
 
 .todoItem__deleteButton:hover {
   opacity: 1;
+}
+
+@keyframes todoItem__enter {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes app__enter {
