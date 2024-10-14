@@ -11,11 +11,7 @@ form.addEventListener('submit', (event) => {
   todoItem.addEventListener('click', () => {
     todoItem.classList.toggle('todoItem--completed');
 
-    const completedItems = document.querySelectorAll('.todoItem--completed');
-    const completeCount = completedItems.length;
-
-    const statusLabel = document.querySelector('.app__status');
-    statusLabel.textContent = `${completeCount} completed`;
+    updateStatus();
   });
 
   const label = document.createElement('span');
@@ -28,9 +24,24 @@ form.addEventListener('submit', (event) => {
   deleteButton.textContent = '🗑️';
   todoItem.append(deleteButton);
 
+  deleteButton.addEventListener('click', (event) => {
+    event.stopImmediatePropagation();
+    todoItem.remove();
+
+    updateStatus();
+  });
+
   const todoList = document.querySelector('.todoList');
   todoList.append(todoItem);
 
   // Clear input
   input.value = '';
 });
+
+function updateStatus() {
+  const completedItems = document.querySelectorAll('.todoItem--completed');
+  const completeCount = completedItems.length;
+
+  const statusLabel = document.querySelector('.app__status');
+  statusLabel.textContent = `${completeCount} completed`;
+}
