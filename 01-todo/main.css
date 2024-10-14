@@ -70,6 +70,10 @@ body {
 
 .todoForm--withError .todoForm__error {
   display: block;
+  animation-name: blink;
+  animation-duration: 0.4s;
+  animation-iteration-count: 3;
+  animation-timing-function: linear;
 }
 
 .todoList {
@@ -109,6 +113,18 @@ body {
 
 .todoItem__deleteButton:hover {
   opacity: 1;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes todoItem__enter {
