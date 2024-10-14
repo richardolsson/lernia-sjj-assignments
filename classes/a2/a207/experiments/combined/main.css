@@ -1,0 +1,48 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.header {
+  grid-column: span 12;
+  height: 100px;
+}
+
+.left {
+  grid-column: span 3;
+}
+
+.main {
+  grid-column: span 6;
+}
+
+.main img {
+  float: left;
+  margin: 0 1em 1em 0;
+}
+
+.right {
+  position: relative;
+  grid-column: span 3;
+}
+
+.right a {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.footer {
+  grid-column: span 12;
+}
+
+.footer ul {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0;
+}
+
+.footer li {
+  padding: 0;
+  list-style-type: none;
+}
