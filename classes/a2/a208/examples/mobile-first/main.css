@@ -34,3 +34,27 @@ nav li a {
   display: block;
   padding: 0.5rem;
 }
+
+@media screen and (min-width: 1000px) {
+  .container {
+    display: grid;
+    grid-template-columns: 10rem auto;
+  }
+
+  .header {
+    grid-column: span 2;
+  }
+
+  .left {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .right {
+    grid-column: span 2;
+  }
+
+  .footer {
+    grid-column: span 2;
+  }
+}
