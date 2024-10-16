@@ -1,0 +1,13 @@
+body {
+  background-color: #faa;
+  font-size: 24px;
+}
+
+.header,
+.main,
+.left,
+.right,
+.footer {
+  background-color: white;
+  margin: 0.5rem;
+}
