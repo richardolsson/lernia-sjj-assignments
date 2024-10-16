@@ -58,3 +58,34 @@ nav li a {
     grid-column: span 2;
   }
 }
+
+@media screen and (min-width: 1400px) {
+  html {
+    font-size: 20px;
+  }
+
+  .container {
+    grid-template-columns: 14rem auto 14rem;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .header {
+    grid-column: span 3;
+  }
+
+  .right {
+    grid-column: span 1;
+  }
+
+  .footer {
+    grid-column: span 3;
+  }
+
+  nav ul {
+    display: flex;
+    padding: 0;
+    justify-content: space-evenly;
+  }
+}
