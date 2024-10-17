@@ -6,21 +6,15 @@ body {
   background-color: #faa;
 }
 
+.container {
+  background-color: white;
+}
 @media screen and (min-width: 700px) {
   .container {
     display: grid;
     grid-template-columns: 15rem auto;
+    gap: 1em;
   }
-}
-
-.header,
-.main,
-.left,
-.right,
-.footer {
-  background-color: white;
-  margin: 0.5rem;
-  padding: 0.5rem;
 }
 
 .header {

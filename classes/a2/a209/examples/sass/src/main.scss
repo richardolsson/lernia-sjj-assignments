@@ -9,20 +9,13 @@ body {
 }
 
 .container {
+  background-color: white;
+
   @media screen and (min-width: $medium-screen-breakpoint) {
     display: grid;
     grid-template-columns: 15rem auto;
+    gap: 1em;
   }
-}
-
-.header,
-.main,
-.left,
-.right,
-.footer {
-  background-color: white;
-  margin: 0.5rem;
-  padding: 0.5rem;
 }
 
 .header {
