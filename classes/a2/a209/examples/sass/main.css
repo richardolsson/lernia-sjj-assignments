@@ -42,6 +42,22 @@ body {
   padding: 0.5rem;
 }
 
+.right {
+  background-color: white;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+  padding: 0.5rem;
+}
+@media screen and (min-width: 700px) {
+  .right {
+    grid-column: span 2;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .right {
+    grid-column: 3;
+  }
+}
+
 .main {
   background-color: white;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
@@ -56,22 +72,6 @@ body {
   .main {
     grid-column: 2;
     grid-row: 2;
-  }
-}
-
-.right {
-  background-color: white;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
-  padding: 0.5rem;
-}
-@media screen and (min-width: 700px) {
-  .right {
-    grid-column: span 2;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .right {
-    grid-column: 3;
   }
 }
 

@@ -1,0 +1,20 @@
+.footer {
+  @include card;
+
+  nav li {
+    list-style-type: none;
+
+    a {
+      display: block;
+      padding: 0.5rem;
+    }
+  }
+
+  @include breakpoint($medium-screen-breakpoint) {
+    grid-column: span 2;
+  }
+
+  @include breakpoint($large-screen-breakpoint) {
+    grid-column: span 3;
+  }
+}

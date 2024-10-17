@@ -1,17 +1,4 @@
-$medium-screen-breakpoint: 700px;
-$large-screen-breakpoint: 1200px;
-
-@mixin card {
-  background-color: white;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
-  padding: 0.5rem;
-}
-
-@mixin breakpoint($min-size) {
-  @media screen and (min-width: $min-size) {
-    @content;
-  }
-}
+@import 'lib.scss';
 
 html {
   font-size: 28px;
@@ -33,68 +20,7 @@ body {
   }
 }
 
-.header {
-  @include card;
-
-  font-size: 1.5rem;
-
-  @include breakpoint($medium-screen-breakpoint) {
-    grid-column: span 2;
-  }
-
-  @include breakpoint($large-screen-breakpoint) {
-    grid-column: span 3;
-  }
-}
-
-.left {
-  @include card;
-}
-
-.main {
-  @include card;
-
-  img {
-    display: block;
-    margin-bottom: 0.5rem;
-    width: 100%;
-  }
-
-  @include breakpoint($medium-screen-breakpoint) {
-    grid-column: 2;
-    grid-row: 2;
-  }
-}
-
-.right {
-  @include card;
-
-  @include breakpoint($medium-screen-breakpoint) {
-    grid-column: span 2;
-  }
-
-  @include breakpoint($large-screen-breakpoint) {
-    grid-column: 3;
-  }
-}
-
-.footer {
-  @include card;
-
-  nav li {
-    list-style-type: none;
-
-    a {
-      display: block;
-      padding: 0.5rem;
-    }
-  }
-
-  @include breakpoint($medium-screen-breakpoint) {
-    grid-column: span 2;
-  }
-
-  @include breakpoint($large-screen-breakpoint) {
-    grid-column: span 3;
-  }
-}
+@import 'sections/header';
+@import 'sections/asides';
+@import 'sections/main';
+@import 'sections/footer';
