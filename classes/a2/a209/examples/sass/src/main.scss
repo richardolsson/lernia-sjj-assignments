@@ -1,9 +1,16 @@
 $medium-screen-breakpoint: 700px;
+$large-screen-breakpoint: 1200px;
 
 @mixin card {
   background-color: white;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
   padding: 0.5rem;
+}
+
+@mixin breakpoint($min-size) {
+  @media screen and (min-width: $min-size) {
+    @content;
+  }
 }
 
 html {
@@ -15,10 +22,14 @@ body {
 }
 
 .container {
-  @media screen and (min-width: $medium-screen-breakpoint) {
+  @include breakpoint($medium-screen-breakpoint) {
     display: grid;
     grid-template-columns: 15rem auto;
     gap: 1em;
+  }
+
+  @include breakpoint($large-screen-breakpoint) {
+    grid-template-columns: 10rem auto 10rem;
   }
 }
 
@@ -27,8 +38,12 @@ body {
 
   font-size: 1.5rem;
 
-  @media screen and (min-width: $medium-screen-breakpoint) {
+  @include breakpoint($medium-screen-breakpoint) {
     grid-column: span 2;
+  }
+
+  @include breakpoint($large-screen-breakpoint) {
+    grid-column: span 3;
   }
 }
 
@@ -45,7 +60,7 @@ body {
     width: 100%;
   }
 
-  @media screen and (min-width: $medium-screen-breakpoint) {
+  @include breakpoint($medium-screen-breakpoint) {
     grid-column: 2;
     grid-row: 2;
   }
@@ -54,8 +69,12 @@ body {
 .right {
   @include card;
 
-  @media screen and (min-width: $medium-screen-breakpoint) {
+  @include breakpoint($medium-screen-breakpoint) {
     grid-column: span 2;
+  }
+
+  @include breakpoint($large-screen-breakpoint) {
+    grid-column: 3;
   }
 }
 
@@ -71,7 +90,11 @@ body {
     }
   }
 
-  @media screen and (min-width: $medium-screen-breakpoint) {
+  @include breakpoint($medium-screen-breakpoint) {
     grid-column: span 2;
+  }
+
+  @include breakpoint($large-screen-breakpoint) {
+    grid-column: span 3;
   }
 }
