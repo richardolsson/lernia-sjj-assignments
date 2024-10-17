@@ -15,9 +15,10 @@ body {
 }
 
 .header {
-  font-size: 1.5rem;
   background-color: white;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+  padding: 0.5rem;
+  font-size: 1.5rem;
 }
 @media screen and (min-width: 700px) {
   .header {
@@ -27,12 +28,14 @@ body {
 
 .left {
   background-color: white;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+  padding: 0.5rem;
 }
 
 .main {
   background-color: white;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+  padding: 0.5rem;
 }
 .main img {
   display: block;
@@ -48,7 +51,8 @@ body {
 
 .right {
   background-color: white;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+  padding: 0.5rem;
 }
 @media screen and (min-width: 700px) {
   .right {
@@ -58,7 +62,8 @@ body {
 
 .footer {
   background-color: white;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+  padding: 0.5rem;
 }
 .footer nav li {
   list-style-type: none;

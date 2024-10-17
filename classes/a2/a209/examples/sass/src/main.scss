@@ -1,5 +1,11 @@
 $medium-screen-breakpoint: 700px;
 
+@mixin card {
+  background-color: white;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+  padding: 0.5rem;
+}
+
 html {
   font-size: 28px;
 }
@@ -17,9 +23,9 @@ body {
 }
 
 .header {
+  @include card;
+
   font-size: 1.5rem;
-  background-color: white;
-  box-shadow: 0 0 1rem rgba(0,0,0, 0.15);
 
   @media screen and (min-width: $medium-screen-breakpoint) {
     grid-column: span 2;
@@ -27,13 +33,11 @@ body {
 }
 
 .left {
-  background-color: white;
-  box-shadow: 0 0 1rem rgba(0,0,0, 0.15);
+  @include card;
 }
 
 .main {
-  background-color: white;
-  box-shadow: 0 0 1rem rgba(0,0,0, 0.15);
+  @include card;
 
   img {
     display: block;
@@ -48,8 +52,7 @@ body {
 }
 
 .right {
-  background-color: white;
-  box-shadow: 0 0 1rem rgba(0,0,0, 0.15);
+  @include card;
 
   @media screen and (min-width: $medium-screen-breakpoint) {
     grid-column: span 2;
@@ -57,8 +60,7 @@ body {
 }
 
 .footer {
-  background-color: white;
-  box-shadow: 0 0 1rem rgba(0,0,0, 0.15);
+  @include card;
 
   nav li {
     list-style-type: none;
