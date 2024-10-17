@@ -6,7 +6,7 @@ body {
   background-color: #faa;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 700px) {
   .container {
     display: grid;
     grid-template-columns: 15rem auto;
@@ -26,7 +26,7 @@ body {
 .header {
   font-size: 1.5rem;
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 700px) {
   .header {
     grid-column: span 2;
   }
@@ -37,14 +37,14 @@ body {
   margin-bottom: 0.5rem;
   width: 100%;
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 700px) {
   .main {
     grid-column: 2;
     grid-row: 2;
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 700px) {
   .right {
     grid-column: span 2;
   }
@@ -57,7 +57,7 @@ body {
   display: block;
   padding: 0.5rem;
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 700px) {
   .footer {
     grid-column: span 2;
   }

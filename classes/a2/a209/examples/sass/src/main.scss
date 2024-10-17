@@ -1,3 +1,5 @@
+$medium-screen-breakpoint: 700px;
+
 html {
   font-size: 28px;
 }
@@ -7,7 +9,7 @@ body {
 }
 
 .container {
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: $medium-screen-breakpoint) {
     display: grid;
     grid-template-columns: 15rem auto;
   }
@@ -26,7 +28,7 @@ body {
 .header {
   font-size: 1.5rem;
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: $medium-screen-breakpoint) {
     grid-column: span 2;
   }
 }
@@ -38,14 +40,14 @@ body {
     width: 100%;
   }
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: $medium-screen-breakpoint) {
     grid-column: 2;
     grid-row: 2;
   }
 }
 
 .right {
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: $medium-screen-breakpoint) {
     grid-column: span 2;
   }
 }
@@ -60,7 +62,7 @@ body {
     }
   }
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: $medium-screen-breakpoint) {
     grid-column: span 2;
   }
 }
