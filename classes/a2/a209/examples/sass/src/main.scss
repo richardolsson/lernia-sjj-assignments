@@ -6,6 +6,13 @@ body {
   background-color: #faa;
 }
 
+.container {
+  @media screen and (min-width: 800px) {
+    display: grid;
+    grid-template-columns: 15rem auto;
+  }
+}
+
 .header,
 .main,
 .left,
@@ -18,19 +25,42 @@ body {
 
 .header {
   font-size: 1.5rem;
+
+  @media screen and (min-width: 800px) {
+    grid-column: span 2;
+  }
 }
 
-.main img {
-  display: block;
-  margin-bottom: 0.5rem;
-  width: 100%;
-}
-
-nav li {
-  list-style-type: none;
-
-  a {
+.main {
+  img {
     display: block;
-    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 800px) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+.right {
+  @media screen and (min-width: 800px) {
+    grid-column: span 2;
+  }
+}
+
+.footer {
+  nav li {
+    list-style-type: none;
+
+    a {
+      display: block;
+      padding: 0.5rem;
+    }
+  }
+
+  @media screen and (min-width: 800px) {
+    grid-column: span 2;
   }
 }
