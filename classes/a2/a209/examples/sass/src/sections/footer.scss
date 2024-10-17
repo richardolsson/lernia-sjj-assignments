@@ -1,3 +1,5 @@
+@use '../lib' as *;
+
 .footer {
   @include card;
 

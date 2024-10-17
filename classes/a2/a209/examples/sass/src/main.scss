@@ -1,4 +1,8 @@
-@import 'lib.scss';
+@use 'lib.scss' as *;
+@use 'sections/header';
+@use 'sections/asides';
+@use 'sections/main';
+@use 'sections/footer';
 
 html {
   font-size: 28px;
@@ -19,8 +23,3 @@ body {
     grid-template-columns: 10rem auto 10rem;
   }
 }
-
-@import 'sections/header';
-@import 'sections/asides';
-@import 'sections/main';
-@import 'sections/footer';
