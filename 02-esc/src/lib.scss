@@ -12,6 +12,7 @@ $c-white: white;
 }
 
 @mixin button($bgColor, $fgColor, $baseSize: 1rem) {
+  display: block;
   border-width: 0;
   background-color: $bgColor;
   padding: $baseSize calc(3 * $baseSize);
@@ -19,4 +20,9 @@ $c-white: white;
   text-decoration: none;
   font-size: calc(1.5 * $baseSize);
   border-radius: 0.2em;
+}
+
+@mixin border-button($color, $baseSize: 1rem) {
+  @include button(transparent, $color, $baseSize);
+  border: 2px solid $color;
 }
