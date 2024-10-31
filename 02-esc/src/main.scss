@@ -1,6 +1,7 @@
 @use 'reset.scss';
 @use 'components/ctas.scss';
 @use 'components/rating.scss';
+@use 'components/linkList.scss';
 @use 'sections/header.scss';
 @use 'sections/nav.scss';
 @use 'sections/hero.scss';
@@ -8,3 +9,4 @@
 @use 'sections/challenges.scss';
 @use 'sections/story.scss';
 @use 'sections/features.scss';
+@use 'sections/footer.scss';
