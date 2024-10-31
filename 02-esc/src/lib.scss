@@ -10,3 +10,12 @@ $c-white: white;
     @content;
   }
 }
+
+@mixin button($bgColor, $fgColor) {
+  background-color: $bgColor;
+  padding: 1rem 3rem;
+  color: $fgColor;
+  text-decoration: none;
+  font-size: 1.5rem;
+  border-radius: 0.2rem;
+}

@@ -1,0 +1,30 @@
+@use '../lib.scss';
+
+.ctas {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: column-reverse;
+  margin: 2rem 1rem;
+
+  @include lib.wide-screen {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  &__cta {
+    font-weight: bold;
+  }
+
+  &__ctaOnsite {
+    @include lib.button(lib.$c-lightblue, lib.$c-darkblue);
+  }
+
+  &__ctaOnline {
+    color: lib.$c-mediumblue;
+
+    @include lib.wide-screen {
+      @include lib.button(lib.$c-red, lib.$c-white);
+    }
+  }
+}

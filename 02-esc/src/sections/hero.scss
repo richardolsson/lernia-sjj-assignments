@@ -8,5 +8,9 @@
 
   @include lib.wide-screen {
     height: 50vh;
+
+    + .ctas {
+      margin-top: -2rem;
+    }
   }
 }
