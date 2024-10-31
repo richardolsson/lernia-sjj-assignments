@@ -1,0 +1,12 @@
+$c-red: #E3170A;
+$c-darkblue: #011827;
+$c-grey: #B6BDB5;
+$c-mediumblue: #36769D;
+$c-lightblue: #8ACFE5;
+$c-white: white;
+
+@mixin wide-screen {
+  @media screen and (min-width: 800px) {
+    @content;
+  }
+}

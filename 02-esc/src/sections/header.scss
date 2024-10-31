@@ -1,0 +1,26 @@
+@use '../lib.scss' as lib;
+
+.header {
+  background-color: lib.$c-darkblue;
+  padding: 1.5rem;
+}
+
+.header__logo {
+  background-image: url('logo.png');
+  background-size: 8rem;
+  background-repeat: no-repeat;
+  color: lib.$c-white;
+  width: 10rem;
+  padding-left: 8.5rem;
+  font-size: 1.5rem;
+  height: 5.4rem;
+  margin: 0;
+
+  @include lib.wide-screen {
+    display: flex;
+    align-items: end;
+    width: auto;
+    font-size: 2.5rem;
+    padding-left: 10rem;
+  }
+}
