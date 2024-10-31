@@ -1,0 +1,59 @@
+@use '../lib.scss';
+
+.features {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.feature {
+  margin: 0 0 2rem;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 1rem;
+  }
+
+  &__headline {
+    margin: 1rem 0;
+    font-size: 1.8rem;
+  }
+
+  &__intro {
+    font-size: 1.4rem;
+  }
+
+  &__cta {
+    @include lib.button(lib.$c-red, lib.$c-white);
+    margin: 1rem 0;
+  }
+
+  @include lib.wide-screen {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0;
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &__content {
+      justify-content: center;
+      padding: 0 8vw;
+    }
+
+    &:nth-child(even) {
+      .feature__image {
+        grid-column: 2;
+      }
+
+      .feature__content {
+        grid-column: 1;
+        grid-row: 1;
+      }
+    }
+  }
+}

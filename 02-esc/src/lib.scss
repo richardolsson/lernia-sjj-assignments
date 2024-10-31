@@ -6,7 +6,7 @@ $c-lightblue: #8ACFE5;
 $c-white: white;
 
 @mixin wide-screen {
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: 960px) {
     @content;
   }
 }
