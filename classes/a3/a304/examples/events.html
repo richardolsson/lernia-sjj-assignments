@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Example</title>
+  <style>
+    div {
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <h1>Hello, world</h1>
+    <p>
+      This is an example.
+      <button>A button</button>
+    </p>
+  </div>
+  <script>
+    const container = document.querySelector('.content');
+    const headline = document.querySelector('h1');
+    const paragraph = container.querySelector('p');
+    const button = paragraph.querySelector('button');
+
+    const handleClick = (event) => {
+      console.log('click', event);
+    };
+
+    button.addEventListener('click', handleClick);
+  </script>
+</body>
+
+</html>
