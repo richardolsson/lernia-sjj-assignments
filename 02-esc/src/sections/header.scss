@@ -30,4 +30,49 @@
   top: 1rem;
   right: 1rem;
   z-index: 999;
+
+  border-width: 0;
+  width: 2rem;
+  height: 0.3rem;
+  border-radius: 0.15rem;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    background-color: white;
+    width: 2rem;
+    height: 0.3rem;
+    border-radius: 0.15rem;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 1.2rem;
+    background-color: white;
+    width: 2rem;
+    height: 0.3rem;
+    border-radius: 0.15rem;
+  }
+}
+
+.body--menuOpen {
+  .header__mobileMenuButton {
+    transform: rotate(45deg);
+    top: 2.5rem;
+    right: 1.5rem;
+
+    &::before {
+      transform: rotate(90deg) translateX(-0.55rem);
+    }
+
+    &::after {
+      display: none;
+    }
+  }
 }

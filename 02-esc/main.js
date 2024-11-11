@@ -3,7 +3,6 @@ const nav = document.querySelector('.nav');
 const header = document.querySelector('.header');
 const menuButton = document.createElement('button');
 menuButton.classList.add('header__mobileMenuButton');
-menuButton.append('MENU');
 header.append(menuButton);
 
 menuButton.addEventListener('click', () => {
