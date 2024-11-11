@@ -35,6 +35,7 @@
   width: 2rem;
   height: 0.3rem;
   border-radius: 0.15rem;
+  transition: transform 0.5s, top 0.5s, right 0.5s;
 
   &::before {
     content: "";
@@ -46,6 +47,7 @@
     width: 2rem;
     height: 0.3rem;
     border-radius: 0.15rem;
+    transition: transform 0.5s;
   }
 
   &::after {
@@ -58,12 +60,13 @@
     width: 2rem;
     height: 0.3rem;
     border-radius: 0.15rem;
+    transition: opacity 0.3s;
   }
 }
 
 .body--menuOpen {
   .header__mobileMenuButton {
-    transform: rotate(45deg);
+    transform: rotate(225deg);
     top: 2.5rem;
     right: 1.5rem;
 
@@ -72,7 +75,7 @@
     }
 
     &::after {
-      display: none;
+      opacity: 0;
     }
   }
 }
