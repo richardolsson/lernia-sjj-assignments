@@ -1,5 +1,9 @@
 @use '../lib.scss';
 
+.body--menuOpen .nav {
+  display: flex;
+}
+
 .nav {
   position: fixed;
   top: 0;

@@ -24,3 +24,10 @@
     padding-left: 10rem;
   }
 }
+
+.header__mobileMenuButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+}
