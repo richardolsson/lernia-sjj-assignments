@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Event properties</title>
+</head>
+
+<body>
+  <h1>This is the header</h1>
+  <button>Push me</button>
+  <script>
+    function handleMouseOver() {
+      console.log('mouse over!')
+    }
+
+    function handleClick() {
+      document.querySelector('h1').innerText = 'This is another header'
+    }
+
+    const button = document.querySelector('button');
+    button.onclick = handleClick;
+    button.onmouseover = handleMouseOver;
+    button.onmouseout = () => {
+      console.log('mouse out!');
+    };
+  </script>
+</body>
+
+</html>
