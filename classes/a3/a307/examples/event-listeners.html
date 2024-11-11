@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Event listeners</title>
+</head>
+
+<body>
+  <h1>This is the header</h1>
+  <button>Push me</button>
+  <script>
+    function handleMouseOver() {
+      console.log('mouse over!')
+    }
+
+    function handleClick() {
+      document.querySelector('h1').innerText = 'This is another header'
+    }
+
+    const button = document.querySelector('button');
+    button.addEventListener('click', handleClick);
+    button.addEventListener('click', () => console.log('click!'));
+    button.addEventListener('mouseover', handleMouseOver);
+    button.addEventListener('mouseout', (event) => {
+      console.log('mouse out!');
+      console.log(event);
+    });
+  </script>
+</body>
+
+</html>
