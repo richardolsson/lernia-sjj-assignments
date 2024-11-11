@@ -1,31 +1,56 @@
 @use '../lib.scss';
 
 .nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(white, 0.5);
+
   display: none;
+  justify-content: stretch;
+  align-items: stretch;
+
+  &__menu {
+    background-color: lib.$c-darkblue;
+    margin: 1rem;
+    flex-grow: 1;
+    box-shadow: 0 0 1rem rgba(black, 0.3);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__menuLink {
+    color: lib.$c-white;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    &:hover {
+      color: lib.$c-lightblue;
+    }
+  }
 
   @include lib.wide-screen {
     display: block;
     background-color: lib.$c-darkblue;
+    position: static;
 
     &__menu {
       display: flex;
+      flex-direction: row;
       justify-content: space-around;
       margin: 0 auto;
       max-width: 1200px;
+      box-shadow: none;
     }
 
     &__menuItem {
       padding: 1rem;
-    }
-
-    &__menuLink {
-      color: lib.$c-white;
-      font-size: 1.5rem;
-      font-weight: bold;
-
-      &:hover {
-        color: lib.$c-lightblue;
-      }
     }
   }
 }
