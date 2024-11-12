@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    div {
+      background-color: pink;
+      padding: 1em;
+    }
+
+    ul {
+      background-color: yellow;
+      padding: 1em;
+    }
+
+    #item1 {
+      background-color: lightblue;
+    }
+
+    #item2 {
+      background-color: teal;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <a href="https://google.com">A link</a>
+    <ul>
+      <li id="item1">Option 1</li>
+      <li id="item2">Option 2</li>
+    </ul>
+  </div>
+  <script>
+    // Preventing default behavior
+    document.querySelector('a').addEventListener('click', (event) => {
+      console.log('A clicked');
+      event.preventDefault();
+    });
+
+    // Event phases
+    document.querySelector('div').addEventListener('click', () => {
+      console.log('DIV clicked');
+    });
+
+    document.querySelector('ul').addEventListener('click', () => {
+      console.log('UL clicked');
+    });
+
+    document.querySelector('#item1').addEventListener('click', () => {
+      console.log('LI 1 clicked');
+    });
+
+    document.querySelector('#item2').addEventListener('click', () => {
+      console.log('LI 2 clicked');
+    });
+
+    document.querySelector('#item1').addEventListener('click', (event) => {
+      console.log('(Capture) LI 1 clicked');
+      event.stopPropagation();
+    }, true);
+
+    document.querySelector('#item2').addEventListener('click', () => {
+      console.log('(Capture) LI 2 clicked');
+    }, true);
+
+    document.querySelector('UL').addEventListener('click', () => {
+      console.log('(Capture) UL clicked');
+    }, true);
+
+    document.querySelector('div').addEventListener('click', () => {
+      console.log('(Capture) DIV clicked');
+    }, true);
+  </script>
+</body>
+
+</html>
