@@ -110,7 +110,7 @@ function createRandomChallenges(count) {
       minParticipants: minParticipants,
       maxParticipants: minParticipants + getNext(NUMBERS, "participants"),
       rating: getNext(NUMBERS, "rating") / 2,
-      image: "https://placekitten.com/640/480",
+      image: "https://placecats.com/640/480",
       labels: labels,
     });
   }
