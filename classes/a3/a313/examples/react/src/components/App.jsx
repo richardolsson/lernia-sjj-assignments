@@ -47,6 +47,7 @@ function App() {
       <button onClick={() => setVisibleIds(['a', 'b'])}>Only A + B</button>
       <button onClick={() => setVisibleIds(['b'])}>Only B</button>
       <button onClick={() => setVisibleIds(['a', 'b', 'c'])}>All</button>
+      <button onClick={() => setVisibleIds([])}>None</button>
       <p>Showing {filteredChallenges.length}</p>
       <ChallengeList challenges={filteredChallenges} />
     </div>
