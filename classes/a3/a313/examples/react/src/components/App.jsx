@@ -1,5 +1,7 @@
 import { createElement, useState } from 'react'
 
+import ChallengeList from './ChallengeList'
+
 function App() {
   return (
     createElement('div', { className: 'container' }, 
@@ -7,11 +9,7 @@ function App() {
       createElement('button', {}, 'Only B'),
       createElement('button', {}, 'All'),
       createElement('p', {}, 'Showing 3'),
-      createElement('ul', {},
-        createElement('li', {}, 'Challenge A'),
-        createElement('li', {}, 'Challenge B'),
-        createElement('li', {}, 'Challenge C'),
-      )
+      createElement(ChallengeList, {}),
     )
   )
 }
