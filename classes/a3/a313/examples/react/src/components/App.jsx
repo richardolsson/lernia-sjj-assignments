@@ -2,6 +2,21 @@ import { createElement, useState } from 'react'
 
 import ChallengeList from './ChallengeList'
 
+const challenges = [
+  {
+    id: 'a',
+    title: 'Challenge A',
+  },
+  {
+    id: 'b',
+    title: 'Challenge B',
+  },
+  {
+    id: 'c',
+    title: 'Challenge C',
+  },
+];
+
 function App() {
   /*
   Longer JS-only version
@@ -11,7 +26,7 @@ function App() {
       createElement('button', {}, 'Only B'),
       createElement('button', {}, 'All'),
       createElement('p', {}, 'Showing 3'),
-      createElement(ChallengeList, {}),
+      createElement(ChallengeList, { challenges: challenges }),
     )
   )
   */
@@ -23,7 +38,7 @@ function App() {
       <button>Only B</button>
       <button>All</button>
       <p>Showing 3</p>
-      <ChallengeList/>
+      <ChallengeList challenges={challenges}/>
     </div>
   );
 }

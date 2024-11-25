@@ -1,21 +1,19 @@
 import { createElement } from 'react';
 
-function ChallengeList() {
+function ChallengeList({ challenges }) {
   /*
   return (
     createElement('ul', {},
-      createElement('li', {}, 'Challenge A'),
-      createElement('li', {}, 'Challenge B'),
-      createElement('li', {}, 'Challenge C'),
+      challenges.map(challenge => createElement('li', { key: challenge.id }, challenge.title))
     )
   );
   */
 
+  console.log(challenges);
+
   return (
     <ul>
-      <li>Challenge A</li>
-      <li>Challenge B</li>
-      <li>Challenge C</li>
+      {challenges.map(challenge => (<li key={challenge.id}>{challenge.title}</li>))}
     </ul>
   );
 }
