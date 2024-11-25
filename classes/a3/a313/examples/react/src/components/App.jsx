@@ -2,7 +2,17 @@ import { createElement, useState } from 'react'
 
 function App() {
   return (
-    createElement('h1', null, 'Hello, world')
+    createElement('div', { className: 'container' }, 
+      createElement('button', {}, 'Only A + B'),
+      createElement('button', {}, 'Only B'),
+      createElement('button', {}, 'All'),
+      createElement('p', {}, 'Showing 3'),
+      createElement('ul', {},
+        createElement('li', {}, 'Challenge A'),
+        createElement('li', {}, 'Challenge B'),
+        createElement('li', {}, 'Challenge C'),
+      )
+    )
   )
 }
 
