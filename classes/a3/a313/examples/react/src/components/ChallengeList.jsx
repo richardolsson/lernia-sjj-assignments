@@ -9,8 +9,6 @@ function ChallengeList({ challenges }) {
   );
   */
 
-  console.log(challenges);
-
   return (
     <ul>
       {challenges.map(challenge => (<li key={challenge.id}>{challenge.title}</li>))}

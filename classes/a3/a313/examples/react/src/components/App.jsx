@@ -31,14 +31,24 @@ function App() {
   )
   */
 
+  /* Longer, explicit code
+  const returnValue = useState(['a', 'b', 'c']);
+  const visibleIds = returnValue[0];
+  const setVisibleIds = returnValue[1];
+  */
+
+  const [visibleIds, setVisibleIds] = useState(['a', 'b', 'c']);
+
+  const filteredChallenges = challenges.filter(challenge => visibleIds.includes(challenge.id));
+
   // JSX version
   return (
     <div className="container">
-      <button>Only A + B</button>
-      <button>Only B</button>
-      <button>All</button>
-      <p>Showing 3</p>
-      <ChallengeList challenges={challenges}/>
+      <button onClick={() => setVisibleIds(['a', 'b'])}>Only A + B</button>
+      <button onClick={() => setVisibleIds(['b'])}>Only B</button>
+      <button onClick={() => setVisibleIds(['a', 'b', 'c'])}>All</button>
+      <p>Showing {filteredChallenges.length}</p>
+      <ChallengeList challenges={filteredChallenges} />
     </div>
   );
 }
