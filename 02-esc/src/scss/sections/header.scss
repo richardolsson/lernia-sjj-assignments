@@ -37,6 +37,10 @@
   border-radius: 0.15rem;
   transition: transform 0.5s, top 0.5s, right 0.5s;
 
+  @include lib.wide-screen {
+    display: none;
+  }
+
   &::before {
     content: "";
     display: block;
