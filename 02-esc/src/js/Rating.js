@@ -1,7 +1,11 @@
-export default class Rating {
-  constructor(rating, className) {
+export default class Rating extends EventTarget {
+  constructor(rating, className, interactive) {
+    super();
+
     this.rating = rating;
     this.className = className;
+    this.interactive = interactive;
+    this.stars = [];
   }
 
   render(elemFactory) {
@@ -14,12 +18,28 @@ export default class Rating {
     for (let i = 0; i < 5; i++) {
       const star = elemFactory.createElement('span');
       star.className = 'rating__star';
-      if (i < this.rating) {
-        star.classList.add('rating__star--filled');
-      }
       container.append(star);
+
+      if (this.interactive) {
+        star.addEventListener('click', () => {
+          this.rating = i + 1;
+          this.update();
+          this.dispatchEvent(new Event('change'));
+        });
+      }
+
+      this.stars[i] = star;
     }
 
+    this.update();
+
     return container;
+  }
+
+  update() {
+    this.stars.forEach((star, index) => {
+      const isBelowRating = index < this.rating;
+      star.classList.toggle('rating__star--filled', isBelowRating);
+    });
   }
 }

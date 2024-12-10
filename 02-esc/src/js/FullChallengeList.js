@@ -3,6 +3,7 @@ import TextFilter from "./filters/TextFilter";
 import TypeFilter from "./filters/TypeFilter";
 import CombinedFilter from "./filters/CombinedFilter";
 import LabelFilter from "./filters/LabelFilter";
+import RatingFilter from "./filters/RatingFilter";
 
 export default class FullChallengeList {
   constructor(backend) {
@@ -16,9 +17,10 @@ export default class FullChallengeList {
     const uniqueLabels = Array.from(new Set(allLabels));
 
     this.filter = new CombinedFilter([
-      new TextFilter(),
       new TypeFilter(),
+      new RatingFilter(),
       new LabelFilter([], uniqueLabels),
+      new TextFilter(),
     ]);
     this.filter.addEventListener('change', () => {
       this.update();
