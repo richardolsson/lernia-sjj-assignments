@@ -12,15 +12,17 @@ menuButton.addEventListener('click', () => {
   document.body.classList.toggle('body--menuOpen');
 });
 
-const backend = new ApiBackend('https://lernia-sjj-assignments.vercel.app/api');
+(() => {
+  const backend = new ApiBackend('https://lernia-sjj-assignments.vercel.app/api');
 
-const isHomePage = document.querySelector('.challenges .ctas') != null;
+  const isHomePage = document.querySelector('.challenges .ctas') != null;
 
-const challengeList = isHomePage ? new Top3ChallengeList(backend) : new FullChallengeList(backend);
-challengeList.addEventListener('book', (event) => {
-  const modal = new BookingModal(backend, event.challenge);
-  const modalElem = modal.render(document);
+  const challengeList = isHomePage ? new Top3ChallengeList(backend) : new FullChallengeList(backend);
+  challengeList.addEventListener('book', (event) => {
+    const modal = new BookingModal(backend, event.challenge);
+    const modalElem = modal.render(document);
 
-  document.body.append(modalElem);
-});
-challengeList.start(document.querySelector('.challenges__listContainer'), document);
+    document.body.append(modalElem);
+  });
+  challengeList.start(document.querySelector('.challenges__listContainer'), document);
+})();
