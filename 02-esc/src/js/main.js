@@ -1,4 +1,5 @@
 import ApiBackend from "./ApiBackend";
+import BookingModal from "./BookingModal";
 import FullChallengeList from "./FullChallengeList";
 import Top3ChallengeList from "./Top3ChallengeList";
 
@@ -15,8 +16,11 @@ const backend = new ApiBackend('https://lernia-sjj-assignments.vercel.app/api');
 
 const isHomePage = document.querySelector('.challenges .ctas') != null;
 
-const challengeList = isHomePage? new Top3ChallengeList(backend) : new FullChallengeList(backend);
+const challengeList = isHomePage ? new Top3ChallengeList(backend) : new FullChallengeList(backend);
 challengeList.addEventListener('book', (event) => {
-  console.log('challenge', event.challenge);
+  const modal = new BookingModal(backend, event.challenge);
+  const modalElem = modal.render(document);
+
+  document.body.append(modalElem);
 });
 challengeList.start(document.querySelector('.challenges__listContainer'), document);
