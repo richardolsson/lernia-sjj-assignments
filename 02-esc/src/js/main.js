@@ -16,4 +16,7 @@ const backend = new ApiBackend('https://lernia-sjj-assignments.vercel.app/api');
 const isHomePage = document.querySelector('.challenges .ctas') != null;
 
 const challengeList = isHomePage? new Top3ChallengeList(backend) : new FullChallengeList(backend);
+challengeList.addEventListener('book', (event) => {
+  console.log('challenge', event.challenge);
+});
 challengeList.start(document.querySelector('.challenges__listContainer'), document);

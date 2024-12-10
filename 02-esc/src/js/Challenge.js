@@ -1,7 +1,8 @@
 import Rating from "./Rating";
 
-export default class Challenge {
+export default class Challenge extends EventTarget {
   constructor(data) {
+    super();
     this.data = data;
   }
 
@@ -36,6 +37,9 @@ export default class Challenge {
     const button = elemFactory.createElement('button');
     button.className = 'challenge__bookButton';
     button.textContent = this.data.type == 'online' ? 'Take challenge online' : 'Book this room';
+    button.addEventListener('click', () => {
+      this.dispatchEvent(new Event('book'));
+    });
     this.container.append(button);
 
     return this.container;

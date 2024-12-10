@@ -4,9 +4,11 @@ import TypeFilter from "./filters/TypeFilter";
 import CombinedFilter from "./filters/CombinedFilter";
 import LabelFilter from "./filters/LabelFilter";
 import RatingFilter from "./filters/RatingFilter";
+import ChallengeEvent from "./ChallengeEvent";
 
-export default class FullChallengeList {
+export default class FullChallengeList extends EventTarget {
   constructor(backend) {
+    super();
     this.backend = backend;
   }
 
@@ -37,6 +39,9 @@ export default class FullChallengeList {
 
     challengesFromApi.forEach(challengeData => {
       const challenge = new Challenge(challengeData);
+      challenge.addEventListener('book', () => {
+        this.dispatchEvent(new ChallengeEvent('book', challenge));
+      });
       this.challenges.push(challenge);
 
       const listItem = elemFactory.createElement('li');

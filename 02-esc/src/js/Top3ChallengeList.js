@@ -1,7 +1,9 @@
 import Challenge from "./Challenge";
+import ChallengeEvent from "./ChallengeEvent";
 
-export default class Top3ChallengeList {
+export default class Top3ChallengeList extends EventTarget {
   constructor(backend) {
+    super();
     this.backend = backend;
   }
 
@@ -17,6 +19,9 @@ export default class Top3ChallengeList {
       .slice(0, 3)
       .forEach((challengeData) => {
         const challenge = new Challenge(challengeData);
+        challenge.addEventListener('book', () => {
+          this.dispatchEvent(new ChallengeEvent('book', challenge));
+        });
 
         const listItem = elemFactory.createElement('li');
         listItem.className = 'challenges__listItem';
