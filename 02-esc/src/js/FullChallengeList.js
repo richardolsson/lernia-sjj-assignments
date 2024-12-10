@@ -1,5 +1,7 @@
 import Challenge from "./Challenge";
 import TextFilter from "./filters/TextFilter";
+import TypeFilter from "./filters/TypeFilter";
+import CombinedFilter from "./filters/CombinedFilter";
 
 export default class FullChallengeList {
   constructor(backend) {
@@ -9,7 +11,10 @@ export default class FullChallengeList {
   async start(listContainer, elemFactory) {
     const challengesFromApi = await this.backend.loadAllChallenges();
 
-    this.filter = new TextFilter();
+    this.filter = new CombinedFilter([
+      new TextFilter(),
+      new TypeFilter(),
+    ]);
     this.filter.addEventListener('change', () => {
       this.update();
     });
