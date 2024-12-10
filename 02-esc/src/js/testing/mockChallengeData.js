@@ -9,6 +9,7 @@ export default function mockChallengeData(overrides) {
     minParticipants: 2,
     maxParticipants: 5,
     type: 'onsite',
+    labels: [],
     ...overrides,
   };
 }
