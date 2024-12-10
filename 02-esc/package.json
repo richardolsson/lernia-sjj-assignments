@@ -4,12 +4,11 @@
   "description": "För varje sektion: 1. HTML 2. CSS mobil 3. CSS desktop",
   "main": "index.js",
   "scripts": {
-    "sass:build": "sass src/main.scss main.css",
-    "sass:watch": "sass --watch src/main.scss main.css"
+    "vite": "vite"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "sass": "^1.80.5"
+  "devDependencies": {
+    "vite": "^6.0.3"
   }
 }

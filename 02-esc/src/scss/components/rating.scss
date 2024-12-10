@@ -7,11 +7,11 @@
     width: 1.2rem;
     height: 1.2rem;
 
-    background-image: url('star.png');
+    background-image: url('/star.png');
     background-size: contain;
 
     &--filled {
-      background-image: url('star-filled.png');
+      background-image: url('/star-filled.png');
     }
   }
 }
