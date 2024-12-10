@@ -20,6 +20,12 @@
   }
 }
 
+.challenges__fullList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .challenge {
   display: grid;
   grid-template-columns: 0.7rem 1fr 1fr 0.7rem;
