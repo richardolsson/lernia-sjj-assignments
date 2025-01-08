@@ -23,6 +23,36 @@ export async function handle(method, path, queryString, headers, body) {
   console.log('headers: ', headers);
   console.log('body:    ', body);
 
+  //*
+  if (method == 'GET' && path == '/people') {
+    const people = getPeople();
+
+    return {
+      status: 200,
+      body: people,
+    }
+  } else if (path.startsWith('/people/')) {
+    const personId = path.slice(8);
+    const person = getPersonById(personId);
+
+    if (method == 'GET') {
+      return {
+        status: 200,
+        body: person,
+      }
+    } else if (method == 'PATCH') {
+      const newName = body.name;
+      const person = setName(personId, newName);
+
+      return {
+        status: 200,
+        body: person,
+      }
+    }
+  }
+  //*/
+
+  /*
   if (method == 'POST') {
     if (body.funcName == 'getPeople') {
       const people = getPeople();
@@ -54,4 +84,5 @@ export async function handle(method, path, queryString, headers, body) {
       }
     }
   }
+    //*/
 }
