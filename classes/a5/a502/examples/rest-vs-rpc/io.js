@@ -5,11 +5,11 @@ const people = [
 function getPeople() {
   return people;
 }
-function getPerson(personId) {
+function getPersonById(personId) {
   return people.find(person => person.id == personId);
 }
 function setName(personId, name) {
-  const person = getPerson(personId);
+  const person = getPersonById(personId);
   person.name = name;
   return person;
 }
@@ -22,4 +22,36 @@ export async function handle(method, path, queryString, headers, body) {
   console.log('query:   ', queryString);
   console.log('headers: ', headers);
   console.log('body:    ', body);
+
+  if (method == 'POST') {
+    if (body.funcName == 'getPeople') {
+      const people = getPeople();
+      return {
+        status: 200,
+        body: {
+          result: people,
+        }
+      }
+    } else if (body.funcName == 'getPerson') {
+      const personId = body.params[0];
+      const person = getPersonById(personId);
+      return {
+        status: 200,
+        body: {
+          result: person
+        }
+      }
+    } else if (body.funcName == 'setPersonName') {
+      const personId = body.params[0];
+      const newName = body.params[1];
+      setName(personId, newName);
+
+      return {
+        status: 200,
+        body: {
+          result: true
+        }
+      }
+    }
+  }
 }
