@@ -11,12 +11,16 @@
     <header>
       <nav>
         <ul>
-          %%menu%%
+          {{#each menuItems}}
+          <li class="menu-item {{#if this.active}}active{{else}}inactive{{/if}}">
+            <a href="{{this.link}}">{{this.label}}</a>
+          </li>
+          {{/each}}
         </ul>
       </nav>
     </header>
     <div class="main">
-      =#content#=
+      {{{body}}}
     </div>
     <footer>This is footer</footer>
   </div>

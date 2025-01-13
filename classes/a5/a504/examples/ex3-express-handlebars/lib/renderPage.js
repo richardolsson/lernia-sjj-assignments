@@ -19,22 +19,13 @@ const MENU = [
 ];
 
 export default async function renderPage(response, page) {
-  const contentBuf = await fs.readFile(`./content/${page}.html`);
-  const contentText = contentBuf.toString();
-
-  const templateBuf = await fs.readFile('./templates/main.html');
-  const templateText = templateBuf.toString();
-
-  const htmlItems = MENU.map((item) => {
-    const className = item.id == page ? 'active' : 'inactive';
-    return `<li class="menu-item ${className}"><a href="${item.link}">${item.label}</a></li>`;
+  response.render(page, {
+    menuItems: MENU.map((item) => {
+      return {
+        label: item.label,
+        link: item.link,
+        active: item.id == page,
+      };
+    })
   });
-
-  const menuText = htmlItems.join('\n');
-
-  const outputHtml = templateText
-    .replace('=#content#=', contentText)
-    .replace('%%menu%%', menuText);
-
-  response.send(outputHtml);
 }
