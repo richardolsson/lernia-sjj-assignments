@@ -3,6 +3,24 @@ import fs from 'fs/promises';
 
 const app = express();
 
+const MENU = [
+  {
+    label: 'Home page',
+    id: 'index',
+    link: '/',
+  },
+  {
+    label: 'About us',
+    id: 'about',
+    link: '/about',
+  },
+  {
+    label: 'Contact us',
+    id: 'contact',
+    link: '/contact',
+  }
+];
+
 async function renderPage(response, page) {
   const contentBuf = await fs.readFile(`./content/${page}.html`);
   const contentText = contentBuf.toString();
@@ -10,7 +28,16 @@ async function renderPage(response, page) {
   const templateBuf = await fs.readFile('./templates/main.html');
   const templateText = templateBuf.toString();
 
-  const outputHtml = templateText.replace('=#content#=', contentText);
+  const htmlItems = MENU.map((item) => {
+    const className = item.id == page? 'active' : 'inactive';
+    return `<li class="menu-item ${className}"><a href="${item.link}">${item.label}</a></li>`;
+  });
+
+  const menuText = htmlItems.join('\n');
+
+  const outputHtml = templateText
+    .replace('=#content#=', contentText)
+    .replace('%%menu%%', menuText);
 
   response.send(outputHtml);
 }
