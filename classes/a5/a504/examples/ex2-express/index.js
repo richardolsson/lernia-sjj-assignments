@@ -10,7 +10,7 @@ async function renderPage(response, page) {
   const templateBuf = await fs.readFile('./templates/main.html');
   const templateText = templateBuf.toString();
 
-  const outputHtml = templateText.replace('Hello', contentText);
+  const outputHtml = templateText.replace('=#content#=', contentText);
 
   response.send(outputHtml);
 }
