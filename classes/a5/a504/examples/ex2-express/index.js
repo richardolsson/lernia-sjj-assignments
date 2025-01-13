@@ -3,25 +3,28 @@ import fs from 'fs/promises';
 
 const app = express();
 
-app.get('/', async (request, response) => {
-  const buf = await fs.readFile('./content/index.html');
-  const text = buf.toString();
+async function renderPage(response, page) {
+  const contentBuf = await fs.readFile(`./content/${page}.html`);
+  const contentText = contentBuf.toString();
 
-  response.send(text);
+  const templateBuf = await fs.readFile('./templates/main.html');
+  const templateText = templateBuf.toString();
+
+  const outputHtml = templateText.replace('Hello', contentText);
+
+  response.send(outputHtml);
+}
+
+app.get('/', (request, response) => {
+  renderPage(response, 'index');
 });
 
 app.get('/about', async (request, response) => {
-  const buf = await fs.readFile('./content/about.html');
-  const text = buf.toString();
-
-  response.send(text);
+  renderPage(response, 'about');
 });
 
 app.get('/contact', async (request, response) => {
-  const buf = await fs.readFile('./content/contact.html');
-  const text = buf.toString();
-
-  response.send(text);
+  renderPage(response, 'contact');
 });
 
 app.use('/static', express.static('./static'));
