@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "nodemon .",
     "start": "node .",
+    "test-watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "author": "",
