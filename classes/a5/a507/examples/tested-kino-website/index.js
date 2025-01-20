@@ -1,5 +1,11 @@
 import initApp from "./src/app.js";
+import { loadMovie, loadMovies } from './src/movies.js';
 
-const app = initApp();
+const api = {
+  loadMovie,
+  loadMovies,
+};
+
+const app = initApp(api);
 
 app.listen(5080);
