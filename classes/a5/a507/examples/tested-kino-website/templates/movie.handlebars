@@ -1,10 +1,10 @@
 <a href="/">Back to home page</a>
 <article class="movie">
-  <h1>{{ movie.attributes.title }}</h1>
+  <h1>{{ movie.title }}</h1>
   <div class="intro">
-    {{{ movie.attributes.intro }}}
+    {{{ movie.intro }}}
   </div>
-  {{#if movie.attributes.image }}
-  <img src="{{ movie.attributes.image.url }}">
+  {{#if movie.image }}
+  <img src="{{ movie.image.url }}">
   {{/if }}
 </article>
