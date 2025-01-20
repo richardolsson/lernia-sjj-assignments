@@ -1,9 +1,10 @@
 import { expect, test } from '@jest/globals';
 import request from 'supertest';
 
-import app from '../src/app.js';
+import initApp from '../src/app.js';
 
 test('Home page shows list of movies', async () => {
+  const app = initApp();
   const response = await request(app)
     .get('/')
     .expect('Content-Type', /html/)
