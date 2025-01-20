@@ -6,12 +6,16 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon .",
-    "start": "node ."
+    "start": "node .",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.9",
+    "supertest": "^7.0.0"
   },
   "dependencies": {
     "express": "^4.17.2",
