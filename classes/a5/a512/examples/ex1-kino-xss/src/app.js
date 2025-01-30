@@ -27,7 +27,7 @@ app.get("/movies/:movieId", async (req, res) => {
   const movie = await api.loadMovie(req.params.movieId);
   const reviews = await api.loadReviews(req.params.movieId);
   if (movie) {
-    res.render("movie", { movie, reviews});
+    res.render("movie", { movie, reviews });
   } else {
     res.status(404).render("404");
   }
