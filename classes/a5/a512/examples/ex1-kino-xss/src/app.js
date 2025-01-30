@@ -2,6 +2,8 @@ import express from "express";
 import { engine } from "express-handlebars";
 import { marked } from "marked";
 import api from "./movies.js";
+import { JSDOM } from 'jsdom';
+import createDOMPurify from 'dompurify';
 
 const app = express();
 
@@ -33,7 +35,14 @@ app.get("/movies/:movieId", async (req, res) => {
 
 app.post("/movies/:movieId/reviews", async (req, res) => {
   const name = req.body.name;
-  await api.createReview(req.params.movieId, name, req.body.comment);
+  const window = new JSDOM('').window;
+  const DOMPurify = createDOMPurify(window);
+
+  console.log(req.body.comment);
+  const comment = DOMPurify.sanitize(req.body.comment);
+  console.log(comment);
+
+  await api.createReview(req.params.movieId, name, comment);
 
   res.redirect(`/movies/${req.params.movieId}`);
 });
