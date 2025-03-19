@@ -1,0 +1,16 @@
+{
+  "name": "4sm-tdd",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "titlecase.test.js",
+  "scripts": {
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0"
+  }
+}
