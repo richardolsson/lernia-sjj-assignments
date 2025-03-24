@@ -1,27 +1,43 @@
 
 function App() {
+  const items = [
+    {
+      label: 'Learn HTML',
+      completed: true,
+    },
+    {
+      label: 'Learn JS',
+      completed: true,
+    },
+    {
+      label: 'Learn React',
+      completed: false,
+    }
+  ];
+
   return (
-    <main class="app">
-      <h1 class="app__header">My ToDo</h1>
-      <p class="app__status">1 completed</p>
-      <form class="todoForm">
-        <input type="text" class="todoForm__input" />
-        <button type="submit" class="todoForm__okButton">OK</button>
-        <small class="todoForm__error">Input must not be empty</small>
+    <main className="app">
+      <h1 className="app__header">My ToDo</h1>
+      <p className="app__status">1 completed</p>
+      <form className="todoForm">
+        <input type="text" className="todoForm__input" />
+        <button type="submit" className="todoForm__okButton">OK</button>
+        <small className="todoForm__error">Input must not be empty</small>
       </form>
-      <ul class="todoList">
-        <li class="todoItem todoItem--completed">
-          <span class="todoItem__label">Learn HTML</span>
-          <button class="todoItem__deleteButton">🗑️</button>
-        </li>
-        <li class="todoItem">
-          <span class="todoItem__label">Learn JS</span>
-          <button class="todoItem__deleteButton">🗑️</button>
-        </li>
-        <li class="todoItem">
-          <span class="todoItem__label">Learn React</span>
-          <button class="todoItem__deleteButton">🗑️</button>
-        </li>
+      <ul className="todoList">
+        {items.map((item) => {
+          let className = 'todoItem';
+          if (item.completed) {
+            className += ' todoItem--completed';
+          }
+
+          return (
+            <li className={className}>
+              <span className="todoItem__label">{item.label}</span>
+              <button className="todoItem__deleteButton">🗑️</button>
+            </li>
+          );
+        })}
       </ul>
     </main>
   )
