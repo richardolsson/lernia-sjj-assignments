@@ -1,6 +1,7 @@
+import { useState } from 'react';
 
 function App() {
-  const items = [
+  const [items, setItems] = useState([
     {
       label: 'Learn HTML',
       completed: true,
@@ -13,12 +14,12 @@ function App() {
       label: 'Learn React',
       completed: false,
     }
-  ];
+  ]);
 
   return (
     <main className="app">
       <h1 className="app__header">My ToDo</h1>
-      <p className="app__status">1 completed</p>
+      <p className="app__status">{items.filter(item => item.completed).length} completed</p>
       <form className="todoForm">
         <input type="text" className="todoForm__input" />
         <button type="submit" className="todoForm__okButton">OK</button>
@@ -32,7 +33,12 @@ function App() {
           }
 
           return (
-            <li className={className}>
+            <li className={className} onClick={() => {
+              setItems(items.map(oldItem => ({
+                ...oldItem,
+                completed: oldItem == item ? !oldItem.completed : oldItem.completed,
+              })));
+            }}>
               <span className="todoItem__label">{item.label}</span>
               <button className="todoItem__deleteButton">🗑️</button>
             </li>
