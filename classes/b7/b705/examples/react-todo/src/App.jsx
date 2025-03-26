@@ -66,7 +66,10 @@ function App() {
               })));
             }}>
               <span className="todoItem__label">{item.label}</span>
-              <button className="todoItem__deleteButton">🗑️</button>
+              <button className="todoItem__deleteButton" onClick={(ev) => {
+                ev.stopPropagation();
+                setItems(items.filter(oldItem => oldItem != item));
+              }}>🗑️</button>
             </li>
           );
         })}
