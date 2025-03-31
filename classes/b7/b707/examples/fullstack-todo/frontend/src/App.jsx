@@ -1,23 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TaskCount from './components/TaskCount';
 import TaskInput from './components/TaskInput';
 import TaskList from './components/TaskList';
 
 function App() {
-  const [items, setItems] = useState([
-    {
-      label: 'Learn HTML',
-      completed: true,
-    },
-    {
-      label: 'Learn JS',
-      completed: true,
-    },
-    {
-      label: 'Learn React',
-      completed: false,
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    async function loadTasks() {
+      const response = await fetch('/api/tasks');
+      const payload = await response.json();
+      const tasks = payload.data;
+      setItems(tasks);
     }
-  ]);
+
+    loadTasks();
+  }, []);
 
   const handleTaskDelete = (item) => {
     setItems(items.filter(oldItem => oldItem != item));
