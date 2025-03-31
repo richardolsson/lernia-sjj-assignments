@@ -25,8 +25,22 @@ function App() {
     <main className="app">
       <h1 className="app__header">My ToDo</h1>
       <TaskCount items={items} />
-      <TaskInput onCreateItem={(newItem) => {
-        setItems([...items, newItem]);
+      <TaskInput onCreateItem={async (newItem) => {
+        const response = await fetch('/api/tasks', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newItem),
+        });
+
+        if (response.status == 201) {
+          const payload = await response.json();
+          const createdTask = payload.data;
+          setItems([...items, createdTask]);
+        } else {
+          console.log('error');
+        }
       }} />
       <TaskList
         items={items}
