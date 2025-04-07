@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/tasks', async (req, res) => {
-  await mongoose.connect('mongodb://localhost:27017/todo');
+  await mongoose.connect(process.env.MONGODB_URL);
 
   const tasks = await Task.find();
 
@@ -23,7 +23,7 @@ app.get('/api/tasks', async (req, res) => {
 });
 
 app.post('/api/tasks', async (req, res) => {
-  await mongoose.connect('mongodb://localhost:27017/todo');
+  await mongoose.connect(process.env.MONGODB_URL);
 
   const newTask = new Task({
     label: req.body.label,
