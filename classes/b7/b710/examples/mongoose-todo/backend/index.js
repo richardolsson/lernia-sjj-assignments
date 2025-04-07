@@ -1,22 +1,9 @@
 import fs from 'fs/promises';
 import express from 'express';
+import mongoose from 'mongoose';
+import { Task } from './src/models.js';
 
 const app = express();
-
-const TASKS = [
-  {
-    label: 'Learn HTML',
-    completed: true,
-  },
-  {
-    label: 'Learn JS',
-    completed: true,
-  },
-  {
-    label: 'Learn React',
-    completed: false,
-  }
-];
 
 app.use(express.json());
 
@@ -25,18 +12,25 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/api/tasks', (req, res) => {
+app.get('/api/tasks', async (req, res) => {
+  await mongoose.connect('mongodb://localhost:27017/todo');
+
+  const tasks = await Task.find();
+
   res.json({
-    data: TASKS
+    data: tasks
   });
 });
 
-app.post('/api/tasks', (req, res) => {
-  const newTask = {
+app.post('/api/tasks', async (req, res) => {
+  await mongoose.connect('mongodb://localhost:27017/todo');
+
+  const newTask = new Task({
     label: req.body.label,
     completed: false,
-  }
-  TASKS.push(newTask);
+  });
+
+  await newTask.save();
 
   res.status(201).json({ data: newTask });
 });
