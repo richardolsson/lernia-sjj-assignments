@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     const loadWord = async () => {
-      const res = await fetch("http://localhost:5080/api/random_word");
+      const res = await fetch("/api/random_word");
       const data = await res.json();
       setCorrectWord(data.word);
     };

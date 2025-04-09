@@ -12,7 +12,7 @@ function Game({ gameId }) {
       setInputText("");
 
       const res = await fetch(
-        `http://localhost:5080/api/games/${gameId}/guesses`,
+        `/api/games/${gameId}/guesses`,
         {
           method: "post",
           headers: {
@@ -40,7 +40,7 @@ function Game({ gameId }) {
       name,
     };
 
-    await fetch(`http://localhost:5080/api/games/${gameId}/highscore`, {
+    await fetch(`/api/games/${gameId}/highscore`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

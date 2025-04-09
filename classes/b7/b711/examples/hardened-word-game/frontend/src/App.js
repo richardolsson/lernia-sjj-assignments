@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     const startGame = async () => {
-      const res = await fetch("http://localhost:5080/api/games", {
+      const res = await fetch("/api/games", {
         method: "post",
       });
       const data = await res.json();
