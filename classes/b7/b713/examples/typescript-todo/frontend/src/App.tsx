@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import TaskCount from './components/TaskCount';
 import TaskInput from './components/TaskInput';
 import TaskList from './components/TaskList';
+import { TaskItem } from './types';
 
 function App() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<TaskItem[]>([]);
 
   useEffect(() => {
     async function loadTasks() {
@@ -17,7 +18,7 @@ function App() {
     loadTasks();
   }, []);
 
-  const handleTaskDelete = (item) => {
+  const handleTaskDelete = (item: TaskItem) => {
     setItems(items.filter(oldItem => oldItem != item));
   };
 

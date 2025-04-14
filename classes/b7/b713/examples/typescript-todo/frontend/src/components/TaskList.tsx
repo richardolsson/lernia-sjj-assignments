@@ -1,4 +1,17 @@
-export default function TaskList({ items, onTaskDelete, onTaskToggle }) {
+import { FC } from "react";
+import { TaskItem } from "../types";
+
+
+type Props = {
+  items: TaskItem[],
+  onTaskDelete: (itemToDelete: TaskItem) => void;
+  onTaskToggle: (taskToToggle: TaskItem) => void;
+}
+
+//export default function TaskList({ items, onTaskDelete, onTaskToggle }: Props) : ReactNode {
+//const TaskList: FunctionComponent<Props> = ({ items, onTaskDelete, onTaskToggle }) => {
+
+const TaskList: FC<Props> = ({ items, onTaskDelete, onTaskToggle }) => {
   return (
     <ul className="todoList">
       {items.map((item) => {
@@ -22,3 +35,5 @@ export default function TaskList({ items, onTaskDelete, onTaskToggle }) {
     </ul>
   );
 }
+
+export default TaskList;

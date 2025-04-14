@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { FC, useState } from "react";
+import { TaskItem } from "../types";
 
-export default function TaskInput({ onCreateItem }) {
+type Props = {
+  onCreateItem: (itemToCreate: TaskItem) => void;
+}
+
+const TaskInput: FC<Props> = ({onCreateItem}) => {
   const [text, setText] = useState('');
   const [error, setError] = useState(false);
 
@@ -33,3 +38,5 @@ export default function TaskInput({ onCreateItem }) {
     </form>
   );
 }
+
+export default TaskInput;
