@@ -1,0 +1,11 @@
+services:
+  webapp:
+    build: .
+    ports:
+      - 5080:5080
+    environment:
+      MONGODB_URL: 'mongodb://db:27017'
+  db:
+    image: mongo
+    volumes:
+      - ./data:/data/db
