@@ -1,5 +1,19 @@
 import fs from 'fs/promises';
 import express from 'express';
+import { Pool } from 'pg';
+
+const pool = new Pool({
+  user: 'postgres',
+  password: 'password',
+});
+
+await pool.query(`
+  CREATE TABLE IF NOT EXISTS tasks (
+    id SERIAL PRIMARY KEY,
+    label TEXT NOT NULL,
+    completed BOOLEAN NOT NULL
+  )`
+);
 
 const app = express();
 
@@ -11,10 +25,10 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/tasks', async (req, res) => {
-  // TODO: Get tasks from database
+  const result = await pool.query('SELECT * FROM tasks');
 
   res.json({
-    data: tasks
+    data: result.rows
   });
 });
 

@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "pg": "^8.15.5"
   },
   "name": "backend",
   "version": "1.0.0",
