@@ -40,9 +40,24 @@ app.get('/api/tasks', async (req, res) => {
 });
 
 app.post('/api/tasks', async (req, res) => {
-  // TODO: Create task in database
+  try {
+    // WARNING! This line has a SQL injection vulnerability
+    const sql = `INSERT INTO tasks(label, completed)
+      VALUES ('${req.body.label}', false) RETURNING id`;
 
-  res.status(201).json({ data: newTask });
+    console.log(sql);
+    const result = await pool.query(sql);
+    const newTask = {
+      id: result.rows[0].id,
+      label: req.body.label,
+      completed: false,
+    };
+
+    res.status(201).json({ data: newTask });
+  } catch (err) {
+    console.log(err);
+    res.status(500).end();
+  }
 });
 
 app.get('/', async (req, res) => {
