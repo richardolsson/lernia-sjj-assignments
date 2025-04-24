@@ -1,7 +1,5 @@
 import fs from 'fs/promises';
 import express from 'express';
-import mongoose from 'mongoose';
-import { Task } from './src/models.js';
 
 const app = express();
 
@@ -13,9 +11,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/tasks', async (req, res) => {
-  await mongoose.connect(process.env.MONGODB_URL);
-
-  const tasks = await Task.find();
+  // TODO: Get tasks from database
 
   res.json({
     data: tasks
@@ -23,14 +19,7 @@ app.get('/api/tasks', async (req, res) => {
 });
 
 app.post('/api/tasks', async (req, res) => {
-  await mongoose.connect(process.env.MONGODB_URL);
-
-  const newTask = new Task({
-    label: req.body.label,
-    completed: false,
-  });
-
-  await newTask.save();
+  // TODO: Create task in database
 
   res.status(201).json({ data: newTask });
 });
