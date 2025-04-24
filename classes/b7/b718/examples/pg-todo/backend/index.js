@@ -41,12 +41,11 @@ app.get('/api/tasks', async (req, res) => {
 
 app.post('/api/tasks', async (req, res) => {
   try {
-    // WARNING! This line has a SQL injection vulnerability
     const sql = `INSERT INTO tasks(label, completed)
-      VALUES ('${req.body.label}', false) RETURNING id`;
+      VALUES ($1::text, false) RETURNING id`;
 
     console.log(sql);
-    const result = await pool.query(sql);
+    const result = await pool.query(sql, [req.body.label]);
     const newTask = {
       id: result.rows[0].id,
       label: req.body.label,
