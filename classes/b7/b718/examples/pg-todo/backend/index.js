@@ -7,13 +7,17 @@ const pool = new Pool({
   password: 'password',
 });
 
-await pool.query(`
-  CREATE TABLE IF NOT EXISTS tasks (
-    id SERIAL PRIMARY KEY,
-    label TEXT NOT NULL,
-    completed BOOLEAN NOT NULL
-  )`
-);
+try {
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS tasks (
+      id SERIAL PRIMARY KEY,
+      label TEXT NOT NULL,
+      completed BOOLEAN NOT NULL
+    )`
+  );
+} catch (err) {
+  console.log('No database. Make sure to run postgres');
+}
 
 const app = express();
 
@@ -25,11 +29,14 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/tasks', async (req, res) => {
-  const result = await pool.query('SELECT * FROM tasks');
-
-  res.json({
-    data: result.rows
-  });
+  try {
+    const result = await pool.query('SELECT * FROM tasks');
+    res.json({
+      data: result.rows
+    });
+  } catch (err) {
+    res.status(500).end();
+  }
 });
 
 app.post('/api/tasks', async (req, res) => {
