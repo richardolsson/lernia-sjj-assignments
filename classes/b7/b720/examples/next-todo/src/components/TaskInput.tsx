@@ -1,3 +1,5 @@
+'use client';
+
 import { TaskItem } from "@/types";
 import { FC, useState } from "react";
 
