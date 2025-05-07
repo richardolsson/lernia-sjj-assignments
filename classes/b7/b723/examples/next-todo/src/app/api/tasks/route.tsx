@@ -1,23 +1,26 @@
-import { TaskItem } from "@/types";
+import { Task } from "@/models";
+import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
-const fakeDatabase: TaskItem[] = [
-  {
-    label: 'Learn NEXT.js',
-    completed: false,
-  }
-];
+export async function GET() {
+  await mongoose.connect(process.env.MONGODB_URL!);
 
-export function GET() {
+  const tasks = await Task.find();
+
   return NextResponse.json({
-    data: fakeDatabase,
+    data: tasks
   });
 }
 
 export async function POST(req: NextRequest) {
-  const newTask = await req.json();
+  await mongoose.connect(process.env.MONGODB_URL!);
+  const payload = await req.json();
+  const newTask = new Task({
+    label: payload.label,
+    completed: false,
+  });
 
-  fakeDatabase.push(newTask);
+  await newTask.save();
 
   return NextResponse.json({ data: newTask }, { status: 201 });
 }
