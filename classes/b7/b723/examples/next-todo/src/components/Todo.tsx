@@ -5,6 +5,7 @@ import TaskCount from './TaskCount';
 import TaskInput from './TaskInput';
 import TaskList from './TaskList';
 import { TaskItem } from '../types';
+import { createTask } from '@/action';
 
 type Props = {
   tasks: TaskItem[];
@@ -24,21 +25,9 @@ const Todo: FC<Props> = ({ tasks }) => {
       <h1 className="app__header">My ToDo</h1>
       <TaskCount items={items} />
       <TaskInput onCreateItem={async (newItem) => {
-        const response = await fetch('/api/tasks', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newItem),
-        });
-
-        if (response.status == 201) {
-          const payload = await response.json();
-          const createdTask = payload.data;
-          setItems([...items, createdTask]);
-        } else {
-          console.log('error');
-        }
+        console.log('onCreateItem');
+        const createdTask = await createTask(newItem.label);
+        setItems([...items, createdTask]);
       }} />
       <TaskList
         items={items}
