@@ -1,26 +1,19 @@
 'use client';
 
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import TaskCount from './TaskCount';
 import TaskInput from './TaskInput';
 import TaskList from './TaskList';
 import { TaskItem } from '../types';
 
-const Todo: FC = () => {
-  const [items, setItems] = useState<TaskItem[]>([]);
+type Props = {
+  tasks: TaskItem[];
+}
+
+const Todo: FC<Props> = ({ tasks }) => {
+  const [items, setItems] = useState<TaskItem[]>(tasks);
 
   console.log('Todo render!');
-
-  useEffect(() => {
-    async function loadTasks() {
-      const response = await fetch('/api/tasks');
-      const payload = await response.json();
-      const tasks = payload.data;
-      setItems(tasks);
-    }
-
-    loadTasks();
-  }, []);
 
   const handleTaskDelete = (item: TaskItem) => {
     setItems(items.filter(oldItem => oldItem != item));
