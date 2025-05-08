@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import './index.css';
 
 export default function RootLayout({
@@ -8,6 +9,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <nav className="nav">
+          <input/>
+          <menu>
+            <li>
+              <Link href="/">Todo</Link>
+            </li>
+            <li>
+              <Link href="/info">Info</Link>
+            </li>
+          </menu>
+        </nav>
         {children}
       </body>
     </html>

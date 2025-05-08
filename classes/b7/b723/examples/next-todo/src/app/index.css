@@ -7,6 +7,18 @@ body {
   background: linear-gradient(#ffcccc, #ff8888);
 }
 
+.nav menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
 .app {
   background-color: white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);

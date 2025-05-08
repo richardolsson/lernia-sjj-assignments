@@ -9,6 +9,8 @@ import { TaskItem } from '../types';
 const Todo: FC = () => {
   const [items, setItems] = useState<TaskItem[]>([]);
 
+  console.log('Todo render!');
+
   useEffect(() => {
     async function loadTasks() {
       const response = await fetch('/api/tasks');
