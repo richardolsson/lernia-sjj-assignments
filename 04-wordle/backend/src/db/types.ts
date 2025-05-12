@@ -11,12 +11,20 @@ export type GameInfo = {
   endTime: string | null;
 };
 
+export type HighscoreInfo = {
+  id: number;
+  game: GameInfo;
+  guessCount: number;
+  name: string;
+};
+
 export type GameInfoInit = Pick<GameInfo, 'config' | 'correctWord'>;
 
 export interface IDbAdapter {
   createGame(game: GameInfoInit): Promise<GameInfo>;
   endGame(gameId: number): Promise<GameInfo>;
   findGame(gameId: number): Promise<GameInfo | null>;
+  listHighscores(): Promise<HighscoreInfo[]>;
   submitGuess(gameId: number, guess: string): Promise<void>;
   submitHighscore(gameId: number, name: string): Promise<number>;
 }

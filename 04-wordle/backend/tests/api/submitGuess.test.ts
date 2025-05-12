@@ -9,6 +9,7 @@ describe('POST /api/games/:id/guesses', () => {
       endGame: jest.fn(),
       createGame: jest.fn(),
       findGame: jest.fn().mockResolvedValue(null),
+      listHighscores: jest.fn(),
       submitGuess: jest.fn(),
       submitHighscore: jest.fn(),
     };
@@ -35,6 +36,7 @@ describe('POST /api/games/:id/guesses', () => {
         startTime: new Date().toISOString(),
         endTime: new Date().toISOString(),
       }),
+      listHighscores: jest.fn(),
       submitGuess: jest.fn(),
       submitHighscore: jest.fn(),
     };
@@ -59,6 +61,7 @@ describe('POST /api/games/:id/guesses', () => {
         },
         correctWord: 'FRANK',
       }),
+      listHighscores: jest.fn(),
       submitGuess: jest.fn(),
       submitHighscore: jest.fn(),
     };
@@ -83,6 +86,7 @@ describe('POST /api/games/:id/guesses', () => {
         },
         correctWord: 'FRANK',
       }),
+      listHighscores: jest.fn(),
       submitGuess: jest.fn(),
       submitHighscore: jest.fn(),
     };
@@ -112,6 +116,7 @@ describe('POST /api/games/:id/guesses', () => {
         startTime: startTime,
         endTime: null,
       }),
+      listHighscores: jest.fn(),
       submitGuess: jest.fn(),
       submitHighscore: jest.fn(),
     };
@@ -172,6 +177,7 @@ describe('POST /api/games/:id/guesses', () => {
         startTime: startTime,
         endTime: null,
       }),
+      listHighscores: jest.fn(),
       submitGuess: jest.fn(),
       submitHighscore: jest.fn(),
     };
@@ -231,6 +237,7 @@ describe('POST /api/games/:id/guesses', () => {
         startTime: startTime,
         endTime: null,
       }),
+      listHighscores: jest.fn(),
       submitGuess: jest.fn(),
       submitHighscore: jest.fn(),
     };

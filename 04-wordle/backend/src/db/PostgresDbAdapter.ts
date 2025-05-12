@@ -1,5 +1,5 @@
 import { Pool, PoolConfig } from 'pg';
-import { GameInfo, GameInfoInit, IDbAdapter } from './types';
+import { GameInfo, GameInfoInit, HighscoreInfo, IDbAdapter } from './types';
 
 export default class PostgresDbAdapter implements IDbAdapter {
   private pool: Pool;
@@ -87,6 +87,34 @@ export default class PostgresDbAdapter implements IDbAdapter {
       endTime: res.rows[0].end_time,
       startTime: res.rows[0].start_time,
     };
+  }
+
+  async listHighscores(): Promise<HighscoreInfo[]> {
+    const res = await this.pool.query(`
+      SELECT
+        hs.id, hs.name, hs.game_id,
+        COUNT(guesses.id) AS guess_count,
+        g.word_length, g.allow_repeat, g.correct_word, g.start_time, g.end_time
+      FROM highscore hs
+        LEFT JOIN games g ON (hs.game_id = g.id)
+        LEFT JOIN guesses ON (guesses.game_id = g.id)
+      GROUP BY hs.id, g.id`);
+
+    return res.rows.map((row) => ({
+      id: row.id,
+      name: row.name,
+      game: {
+        id: row.game_id,
+        config: {
+          allowRepeat: row.allow_repeat,
+          wordLength: row.word_length,
+        },
+        correctWord: row.correct_word,
+        startTime: row.start_time,
+        endTime: row.end_time,
+      },
+      guessCount: row.guess_count,
+    }));
   }
 
   async submitGuess(gameId: number, guess: string): Promise<void> {

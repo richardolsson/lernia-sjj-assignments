@@ -19,6 +19,7 @@ describe('POST /api/games', () => {
         endTime: null,
       }),
       findGame: jest.fn(),
+      listHighscores: jest.fn(),
       submitGuess: jest.fn(),
       submitHighscore: jest.fn(),
     };
@@ -55,6 +56,7 @@ describe('POST /api/games', () => {
       endGame: jest.fn(),
       createGame: jest.fn(),
       findGame: jest.fn(),
+      listHighscores: jest.fn(),
       submitGuess: jest.fn(),
       submitHighscore: jest.fn(),
     };

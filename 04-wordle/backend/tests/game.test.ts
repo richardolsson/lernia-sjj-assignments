@@ -24,6 +24,7 @@ describe('Game API', () => {
       }),
       createGame: jest.fn().mockResolvedValue(mockGame),
       findGame: jest.fn().mockImplementation(() => mockGame),
+      listHighscores: jest.fn(),
       submitGuess: jest.fn(),
       submitHighscore: jest.fn().mockResolvedValue(11),
     };

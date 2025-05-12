@@ -9,6 +9,7 @@ describe('POST /api/games/:id/highscore', () => {
       createGame: jest.fn(),
       endGame: jest.fn(),
       findGame: jest.fn().mockResolvedValue(null),
+      listHighscores: jest.fn(),
       submitGuess: jest.fn(),
       submitHighscore: jest.fn(),
     };
@@ -37,6 +38,7 @@ describe('POST /api/games/:id/highscore', () => {
         startTime,
         endTime: null,
       }),
+      listHighscores: jest.fn(),
       submitGuess: jest.fn(),
       submitHighscore: jest.fn(),
     };
@@ -66,6 +68,7 @@ describe('POST /api/games/:id/highscore', () => {
         startTime,
         endTime,
       }),
+      listHighscores: jest.fn(),
       submitGuess: jest.fn(),
       submitHighscore: jest.fn(),
     };
