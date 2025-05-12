@@ -39,6 +39,10 @@ export default function initApp(
     });
   });
 
+  app.get('/info', (req, res) => {
+    res.render('info');
+  });
+
   app.use(express.json());
 
   app.post('/api/games', async (req, res) => {
