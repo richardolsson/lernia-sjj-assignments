@@ -6,7 +6,7 @@ export default function selectWord(allWords: string[], config: GameConfig) {
       return false;
     }
 
-    const letterSet = new Set(word);
+    const letterSet = new Set(word.toLowerCase());
     const hasRepeating = letterSet.size != word.length;
 
     if (!config.allowRepeat && hasRepeating) {

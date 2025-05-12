@@ -28,6 +28,15 @@ describe('selectWord()', () => {
     expect(uniqueResult).toEqual('EIGHT');
   });
 
+  it('it uses case-insensitive matching for repeating letters', () => {
+    const result = selectWord(['Treat'], {
+      allowRepeat: false,
+      wordLength: 5,
+    });
+
+    expect(result).toBeNull();
+  });
+
   it('randomly selects matching word', () => {
     const words = [];
     for (let i = 0; i < 10; i++) {
