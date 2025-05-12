@@ -1,5 +1,15 @@
 import initApp from './src/app';
+import PostgresDbAdapter from './src/db/PostgresDbAdapter';
 
-const app = initApp();
+(async () => {
+  const dbAdapter = new PostgresDbAdapter({
+    user: 'postgres',
+    password: 'password',
+  });
 
-app.listen(5080);
+  await dbAdapter.init();
+
+  const app = initApp(dbAdapter);
+
+  app.listen(5080);
+})();
