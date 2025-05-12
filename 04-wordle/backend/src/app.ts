@@ -2,6 +2,7 @@ import express from 'express';
 import { IDbAdapter } from './db/types';
 import selectWord from './utils/selectWord';
 import feedback from './utils/feedback';
+import { engine } from 'express-handlebars';
 
 export default function initApp(
   dbAdapter: IDbAdapter | null = null,
@@ -12,6 +13,10 @@ export default function initApp(
   }
 
   const app = express();
+
+  app.engine('handlebars', engine());
+  app.set('view engine', 'handlebars');
+  app.set('views', './templates');
 
   app.use(express.json());
 
