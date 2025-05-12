@@ -5,10 +5,17 @@ export type GameConfig = {
 
 export type GameInfo = {
   id: number;
+  config: GameConfig;
+  correctWord: string;
+  startTime: string;
+  endTime: string | null;
 };
 
+export type GameInfoInit = Pick<GameInfo, 'config' | 'correctWord'>;
+
 export interface IDbAdapter {
-  createGame(config: GameConfig): Promise<GameInfo>;
+  createGame(game: GameInfoInit): Promise<GameInfo>;
+  findGame(gameId: number): Promise<GameInfo>;
   submitGuess(gameId: number, guess: string): Promise<void>;
   submitHighscore(gameId: number, name: string): Promise<void>;
 }
