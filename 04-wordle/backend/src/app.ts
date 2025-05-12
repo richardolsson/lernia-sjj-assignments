@@ -39,6 +39,12 @@ export default function initApp(
     });
   });
 
+  app.get('/', async (req, res) => {
+    res.render('home');
+  });
+
+  app.use('/assets', express.static('../frontend/dist/assets'));
+
   app.get('/info', (req, res) => {
     res.render('info');
   });
