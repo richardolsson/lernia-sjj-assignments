@@ -18,6 +18,21 @@ export default function initApp(
   app.set('view engine', 'handlebars');
   app.set('views', './templates');
 
+  app.get('/highscore', async (req, res) => {
+    const highscores = await dbAdapter.listHighscores();
+    res.render('highscore', {
+      items: highscores.map((item) => ({
+        name: item.name,
+        guessCount: item.guessCount,
+        word: item.game.correctWord,
+        time:
+          (new Date(item.game.endTime!).getTime() -
+            new Date(item.game.startTime).getTime()) /
+          1000,
+      })),
+    });
+  });
+
   app.use(express.json());
 
   app.post('/api/games', async (req, res) => {
