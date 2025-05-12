@@ -19,7 +19,13 @@ export default function initApp(
   app.set('views', './templates');
 
   app.get('/highscore', async (req, res) => {
-    const highscores = await dbAdapter.listHighscores();
+    const wordLengthValue = Array.isArray(req.query.wordLength)
+      ? req.query.wordLength[0].toString()
+      : req.query.wordLength?.toString();
+
+    const wordLength = wordLengthValue ? parseInt(wordLengthValue) : undefined;
+
+    const highscores = await dbAdapter.listHighscores(wordLength);
     res.render('highscore', {
       items: highscores.map((item) => ({
         name: item.name,

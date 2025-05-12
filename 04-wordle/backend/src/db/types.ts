@@ -24,7 +24,7 @@ export interface IDbAdapter {
   createGame(game: GameInfoInit): Promise<GameInfo>;
   endGame(gameId: number): Promise<GameInfo>;
   findGame(gameId: number): Promise<GameInfo | null>;
-  listHighscores(): Promise<HighscoreInfo[]>;
+  listHighscores(wordLength?: number): Promise<HighscoreInfo[]>;
   submitGuess(gameId: number, guess: string): Promise<void>;
   submitHighscore(gameId: number, name: string): Promise<number>;
 }

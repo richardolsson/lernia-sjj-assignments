@@ -89,16 +89,30 @@ export default class PostgresDbAdapter implements IDbAdapter {
     };
   }
 
-  async listHighscores(): Promise<HighscoreInfo[]> {
-    const res = await this.pool.query(`
-      SELECT
-        hs.id, hs.name, hs.game_id,
-        COUNT(guesses.id) AS guess_count,
-        g.word_length, g.allow_repeat, g.correct_word, g.start_time, g.end_time
-      FROM highscore hs
-        LEFT JOIN games g ON (hs.game_id = g.id)
-        LEFT JOIN guesses ON (guesses.game_id = g.id)
-      GROUP BY hs.id, g.id`);
+  async listHighscores(wordLength?: number): Promise<HighscoreInfo[]> {
+    const res = wordLength
+      ? await this.pool.query(
+          `
+          SELECT
+            hs.id, hs.name, hs.game_id,
+            COUNT(guesses.id) AS guess_count,
+            g.word_length, g.allow_repeat, g.correct_word, g.start_time, g.end_time
+          FROM highscore hs
+            LEFT JOIN games g ON (hs.game_id = g.id)
+            LEFT JOIN guesses ON (guesses.game_id = g.id)
+          WHERE g.word_length = $1::int
+          GROUP BY hs.id, g.id`,
+          [wordLength],
+        )
+      : await this.pool.query(`
+          SELECT
+            hs.id, hs.name, hs.game_id,
+            COUNT(guesses.id) AS guess_count,
+            g.word_length, g.allow_repeat, g.correct_word, g.start_time, g.end_time
+          FROM highscore hs
+            LEFT JOIN games g ON (hs.game_id = g.id)
+            LEFT JOIN guesses ON (guesses.game_id = g.id)
+          GROUP BY hs.id, g.id`);
 
     return res.rows.map((row) => ({
       id: row.id,
