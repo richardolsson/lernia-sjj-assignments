@@ -8,6 +8,7 @@
     "check:lint": "eslint .",
     "check:types": "tsc --noEmit",
     "check": "npm run check:format && npm run check:lint && npm run check:types",
+    "dev": "tsx watch index.ts",
     "start": "tsx index.ts",
     "test": "jest"
   },
