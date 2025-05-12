@@ -1,4 +1,4 @@
-type LetterResult = {
+export type LetterResult = {
   letter: string;
   result: 'correct' | 'incorrect' | 'misplaced';
 };
