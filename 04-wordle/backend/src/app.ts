@@ -78,5 +78,30 @@ export default function initApp(
     });
   });
 
+  app.post('/api/games/:id/highscore', async (req, res) => {
+    const gameId = parseInt(req.params.id);
+    const name = req.body.name;
+
+    const game = await dbAdapter.findGame(gameId);
+
+    if (!game) {
+      res.status(404).send();
+      return;
+    }
+
+    if (!game.endTime) {
+      res.status(409).send();
+      return;
+    }
+
+    const id = await dbAdapter.submitHighscore(gameId, name);
+
+    res.status(201).json({
+      id,
+      game,
+      name,
+    });
+  });
+
   return app;
 }

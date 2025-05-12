@@ -18,5 +18,5 @@ export interface IDbAdapter {
   endGame(gameId: number): Promise<void>;
   findGame(gameId: number): Promise<GameInfo | null>;
   submitGuess(gameId: number, guess: string): Promise<void>;
-  submitHighscore(gameId: number, name: string): Promise<void>;
+  submitHighscore(gameId: number, name: string): Promise<number>;
 }
