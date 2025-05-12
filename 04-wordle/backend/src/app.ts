@@ -45,7 +45,7 @@ export default function initApp(
 
     const game = await dbAdapter.findGame(gameId);
 
-    if (!game) {
+    if (!game || game.endTime) {
       res.status(404).send();
       return;
     }
@@ -59,6 +59,10 @@ export default function initApp(
 
     const letters = feedback(guess, game.correctWord);
     const correct = letters.every((item) => item.result == 'correct');
+
+    if (correct) {
+      await dbAdapter.endGame(gameId);
+    }
 
     res.status(201).json({
       game: {

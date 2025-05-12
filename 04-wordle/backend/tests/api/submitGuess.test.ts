@@ -6,6 +6,7 @@ import { IDbAdapter } from '../../src/db/types';
 describe('POST /api/games/:id/guesses', () => {
   it('returns 404 for missing game', async () => {
     const dbAdapter: jest.Mocked<IDbAdapter> = {
+      endGame: jest.fn(),
       createGame: jest.fn(),
       findGame: jest.fn().mockResolvedValue(null),
       submitGuess: jest.fn(),
@@ -20,8 +21,35 @@ describe('POST /api/games/:id/guesses', () => {
       .expect(404);
   });
 
+  it('returns 404 for game that ended', async () => {
+    const dbAdapter: jest.Mocked<IDbAdapter> = {
+      endGame: jest.fn(),
+      createGame: jest.fn(),
+      findGame: jest.fn().mockResolvedValue({
+        id: 1,
+        config: {
+          wordLength: 5,
+          allowRepeat: false,
+        },
+        correctWord: 'FRANK',
+        startTime: new Date().toISOString(),
+        endTime: new Date().toISOString(),
+      }),
+      submitGuess: jest.fn(),
+      submitHighscore: jest.fn(),
+    };
+
+    const app = initApp(dbAdapter, []);
+
+    await request(app)
+      .post('/api/games/1/guesses')
+      .send({ guess: 'ABC' })
+      .expect(404);
+  });
+
   it('returns 400 for guess with wrong length', async () => {
     const dbAdapter: jest.Mocked<IDbAdapter> = {
+      endGame: jest.fn(),
       createGame: jest.fn(),
       findGame: jest.fn().mockResolvedValue({
         id: 1,
@@ -45,6 +73,7 @@ describe('POST /api/games/:id/guesses', () => {
 
   it('saves guess to database', async () => {
     const dbAdapter: jest.Mocked<IDbAdapter> = {
+      endGame: jest.fn(),
       createGame: jest.fn(),
       findGame: jest.fn().mockResolvedValue({
         id: 1,
@@ -71,6 +100,7 @@ describe('POST /api/games/:id/guesses', () => {
   it('returns feedback for incorrect guess', async () => {
     const startTime = new Date().toISOString();
     const dbAdapter: jest.Mocked<IDbAdapter> = {
+      endGame: jest.fn(),
       createGame: jest.fn(),
       findGame: jest.fn().mockResolvedValue({
         id: 1,
@@ -120,6 +150,7 @@ describe('POST /api/games/:id/guesses', () => {
   it('returns feedback for correct guess', async () => {
     const startTime = new Date().toISOString();
     const dbAdapter: jest.Mocked<IDbAdapter> = {
+      endGame: jest.fn(),
       createGame: jest.fn(),
       findGame: jest.fn().mockResolvedValue({
         id: 1,
@@ -164,5 +195,35 @@ describe('POST /api/games/:id/guesses', () => {
         ],
       },
     });
+  });
+
+  it('ends game after correct guess', async () => {
+    const startTime = new Date().toISOString();
+    const dbAdapter: jest.Mocked<IDbAdapter> = {
+      endGame: jest.fn(),
+      createGame: jest.fn(),
+      findGame: jest.fn().mockResolvedValue({
+        id: 1,
+        config: {
+          wordLength: 5,
+          allowRepeat: false,
+        },
+        correctWord: 'FRANK',
+        startTime: startTime,
+        endTime: null,
+      }),
+      submitGuess: jest.fn(),
+      submitHighscore: jest.fn(),
+    };
+
+    const app = initApp(dbAdapter, []);
+
+    await request(app)
+      .post('/api/games/1/guesses')
+      .send({ guess: 'FRANK' })
+      .expect(201)
+      .expect('Content-Type', /json/);
+
+    expect(dbAdapter.endGame).toHaveBeenCalledWith(1);
   });
 });

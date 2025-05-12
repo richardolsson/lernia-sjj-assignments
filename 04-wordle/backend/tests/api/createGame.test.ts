@@ -7,6 +7,7 @@ describe('POST /api/games', () => {
   it('Creates game for valid input', async () => {
     const startTime = new Date().toISOString();
     const dbAdapter: jest.Mocked<IDbAdapter> = {
+      endGame: jest.fn(),
       createGame: jest.fn().mockResolvedValue({
         id: 1,
         config: {
@@ -51,6 +52,7 @@ describe('POST /api/games', () => {
 
   it('responds with 409 when there is no matching word', async () => {
     const dbAdapter: jest.Mocked<IDbAdapter> = {
+      endGame: jest.fn(),
       createGame: jest.fn(),
       findGame: jest.fn(),
       submitGuess: jest.fn(),
