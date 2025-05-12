@@ -1,3 +1,5 @@
-import app from './src/app';
+import initApp from './src/app';
+
+const app = initApp();
 
 app.listen(5080);

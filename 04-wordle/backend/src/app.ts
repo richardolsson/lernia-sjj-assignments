@@ -1,9 +1,16 @@
 import express from 'express';
+import { IDbAdapter } from './db/types';
 
-const app = express();
+export default function initApp(dbAdapter: IDbAdapter | null = null) {
+  if (!dbAdapter) {
+    throw new Error('Cant work without db adapter');
+  }
 
-app.get('/', (req, res) => {
-  res.send('Hello, world!');
-});
+  const app = express();
 
-export default app;
+  app.get('/', (req, res) => {
+    res.send('Hello, world!');
+  });
+
+  return app;
+}
