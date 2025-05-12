@@ -43,7 +43,7 @@ export default function initApp(
     const gameId = parseInt(req.params.id);
     const guess = req.body.guess;
 
-    const game = await dbAdapter.findGame(gameId);
+    let game = await dbAdapter.findGame(gameId);
 
     if (!game || game.endTime) {
       res.status(404).send();
@@ -61,7 +61,7 @@ export default function initApp(
     const correct = letters.every((item) => item.result == 'correct');
 
     if (correct) {
-      await dbAdapter.endGame(gameId);
+      game = await dbAdapter.endGame(gameId);
     }
 
     res.status(201).json({

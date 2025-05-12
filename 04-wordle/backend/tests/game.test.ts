@@ -20,6 +20,7 @@ describe('Game API', () => {
     const dbAdapter: jest.Mocked<IDbAdapter> = {
       endGame: jest.fn().mockImplementation(() => {
         mockGame.endTime = new Date().toISOString();
+        return mockGame;
       }),
       createGame: jest.fn().mockResolvedValue(mockGame),
       findGame: jest.fn().mockImplementation(() => mockGame),

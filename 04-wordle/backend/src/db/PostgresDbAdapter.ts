@@ -49,10 +49,22 @@ export default class PostgresDbAdapter implements IDbAdapter {
     };
   }
 
-  async endGame(gameId: number): Promise<void> {
-    await this.pool.query(`UPDATE games SET end_time=now() WHERE id=$1::int`, [
-      gameId,
-    ]);
+  async endGame(gameId: number): Promise<GameInfo> {
+    const resp = await this.pool.query(
+      `UPDATE games SET end_time=now() WHERE id=$1::int RETURNING id, word_length, allow_repeat, correct_word, start_time, end_time`,
+      [gameId],
+    );
+
+    return {
+      id: resp.rows[0].id,
+      config: {
+        allowRepeat: resp.rows[0].allow_repeat,
+        wordLength: resp.rows[0].word_length,
+      },
+      correctWord: resp.rows[0].correct_word,
+      startTime: resp.rows[0].start_time,
+      endTime: resp.rows[0].end_time,
+    };
   }
 
   async findGame(gameId: number): Promise<GameInfo | null> {

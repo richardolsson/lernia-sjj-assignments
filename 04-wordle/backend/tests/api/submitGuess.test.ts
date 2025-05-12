@@ -149,8 +149,18 @@ describe('POST /api/games/:id/guesses', () => {
 
   it('returns feedback for correct guess', async () => {
     const startTime = new Date().toISOString();
+    const endTime = new Date().toISOString();
     const dbAdapter: jest.Mocked<IDbAdapter> = {
-      endGame: jest.fn(),
+      endGame: jest.fn().mockResolvedValue({
+        id: 1,
+        config: {
+          wordLength: 5,
+          allowRepeat: false,
+        },
+        correctWord: 'FRANK',
+        startTime: startTime,
+        endTime: endTime,
+      }),
       createGame: jest.fn(),
       findGame: jest.fn().mockResolvedValue({
         id: 1,
@@ -182,7 +192,7 @@ describe('POST /api/games/:id/guesses', () => {
           allowRepeat: false,
         },
         startTime: startTime,
-        endTime: null,
+        endTime: endTime,
       },
       guess: {
         correct: true,
@@ -200,7 +210,16 @@ describe('POST /api/games/:id/guesses', () => {
   it('ends game after correct guess', async () => {
     const startTime = new Date().toISOString();
     const dbAdapter: jest.Mocked<IDbAdapter> = {
-      endGame: jest.fn(),
+      endGame: jest.fn().mockResolvedValue({
+        id: 1,
+        config: {
+          wordLength: 5,
+          allowRepeat: false,
+        },
+        correctWord: 'FRANK',
+        startTime: startTime,
+        endTime: new Date().toISOString(),
+      }),
       createGame: jest.fn(),
       findGame: jest.fn().mockResolvedValue({
         id: 1,
