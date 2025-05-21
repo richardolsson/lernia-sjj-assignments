@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "dependencies": {
+    "bcrypt": "^6.0.0"
+  }
+}
