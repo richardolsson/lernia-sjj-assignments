@@ -11,8 +11,6 @@ section {
   padding: 10px 40px;
   margin: 10px;
   background-color: lightblue;
-
-  width: 300px;
 }
 
 section h1 {
@@ -21,4 +19,15 @@ section h1 {
 
 section h2 {
   margin-top: 20px;
+}
+
+em {
+  text-transform: uppercase;
+  margin: 20px;
+}
+
+strong {
+  display: inline-block;
+  text-decoration: underline;
+  padding: 10px;
 }
