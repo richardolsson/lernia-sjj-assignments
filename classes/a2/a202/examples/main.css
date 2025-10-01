@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+section {
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  padding: 5%;
+  margin: 10px;
+  background-color: lightblue;
+
+  width: 300px;
+}
