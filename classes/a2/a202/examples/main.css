@@ -3,10 +3,12 @@
 }
 
 section {
-  border-width: 1px;
-  border-style: solid;
-  border-color: black;
-  padding: 5%;
+  border-top: 4px solid black;
+  border-right: 20px dashed black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+
+  padding: 10px 40px;
   margin: 10px;
   background-color: lightblue;
 
