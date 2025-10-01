@@ -14,3 +14,11 @@ section {
 
   width: 300px;
 }
+
+section h1 {
+  margin-bottom: 100px;
+}
+
+section h2 {
+  margin-top: 20px;
+}
