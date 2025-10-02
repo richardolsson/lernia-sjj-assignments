@@ -18,6 +18,10 @@
         border-color 5s;
     }
 
+    #ball.green {
+      background-color: greenyellow;
+    }
+
     #ball:hover {
       background-color: red;
       border-color: pink;
@@ -29,6 +33,8 @@
 </head>
 
 <body>
+  <button
+    onclick="document.querySelector('#ball').classList.toggle('green');">Switch</button>
   <div id="ball"></div>
 </body>
 
