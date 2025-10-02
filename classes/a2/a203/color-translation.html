@@ -8,12 +8,22 @@
       background-color: lightblue;
       width: 300px;
       height: 300px;
+      border: 1px solid black;
       border-radius: 50%;
-      transition: 3s;
+      transition:
+        width 3s,
+        height 3s,
+        background-color 5s,
+        border-width 2s,
+        border-color 5s;
     }
 
     #ball:hover {
       background-color: red;
+      border-color: pink;
+      width: 400px;
+      height: 400px;
+      border-width: 5px;
     }
   </style>
 </head>
