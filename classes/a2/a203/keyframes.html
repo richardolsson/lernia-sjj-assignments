@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    #ball {
+      background-color: green;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+    }
+
+    #ball.animated {
+      animation-name: color-shift;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes color-shift {
+      0% {
+        background-color: red;
+      }
+
+      50% {
+        background-color: yellow;
+      }
+
+      100% {
+        background-color: lightblue;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <button
+    onclick="document.querySelector('#ball').classList.toggle('animated')">Toggle
+    animation</button>
+  <div id="ball"></div>
+</body>
+
+</html>
