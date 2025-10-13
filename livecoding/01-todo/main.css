@@ -9,6 +9,16 @@ body {
   font-family: sans-serif;
 }
 
+@keyframes app__enterAnimation {
+  0% {
+    transform: translateY(-300px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .app {
   background-color: white;
   max-width: 400px;
@@ -17,21 +27,49 @@ body {
   padding: 20px;
   text-align: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  animation-name: app__enterAnimation;
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .app__title {
   margin: 0 0 10px;
   font-family: serif;
+
+  animation-name: fadeInAnimation;
+  animation-duration: 0.4s;
+  animation-delay: 0.8s;
+  animation-fill-mode: backwards;
 }
 
 .app__counter {
   display: block;
   margin: 10px 0 20px;
   font-size: 70%;
+
+  animation-name: fadeInAnimation;
+  animation-duration: 0.4s;
+  animation-delay: 0.9s;
+  animation-fill-mode: backwards;
 }
 
 .taskForm {
   margin: 20px 0;
+
+  animation-name: fadeInAnimation;
+  animation-duration: 0.4s;
+  animation-delay: 1.0s;
+  animation-fill-mode: backwards;
 }
 
 .taskForm__error {
