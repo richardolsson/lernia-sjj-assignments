@@ -1,0 +1,26 @@
+.container {
+  background: linear-gradient(to right,
+      lightcoral 20%,
+      lightpink 20%,
+      lightpink 80%,
+      lightseagreen 80%);
+}
+
+.left {
+  float: left;
+  width: 20%;
+}
+
+.main {
+  float: left;
+  width: 60%;
+}
+
+.right {
+  float: right;
+  width: 20%;
+}
+
+.footer {
+  clear: both;
+}
