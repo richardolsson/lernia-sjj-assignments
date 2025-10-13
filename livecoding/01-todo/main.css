@@ -72,11 +72,28 @@ body {
   animation-fill-mode: backwards;
 }
 
+@keyframes taskForm__blinkError {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .taskForm__error {
   color: red;
   font-size: 70%;
   font-style: italic;
   margin: 5px;
+}
+
+.taskForm--withError .taskForm__error {
+  animation-name: taskForm__blinkError;
+  animation-duration: 0.2s;
+  animation-direction: alternate;
+  animation-iteration-count: 5;
 }
 
 .taskList {

@@ -6,11 +6,13 @@ form.addEventListener('submit', (event) => {
   const inputText = inputElement.value;
 
   if (inputText.length == 0) {
+    form.classList.add('taskForm--withError');
     errorElement.textContent = 'Input must not be empty';
     return;
   }
 
   errorElement.textContent = '';
+  form.classList.remove('taskForm--withError');
 
   const itemElement = document.createElement('li');
   itemElement.className = 'taskList__item';
