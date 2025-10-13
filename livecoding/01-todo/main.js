@@ -15,6 +15,9 @@ form.addEventListener('submit', (event) => {
   const itemElement = document.createElement('li');
   itemElement.className = 'taskList__item';
   itemElement.textContent = inputText;
+  itemElement.addEventListener('click', () => {
+    itemElement.classList.toggle('taskList__item--completed');
+  });
 
   const deleteButton = document.createElement('button');
   deleteButton.textContent = '🗑';
