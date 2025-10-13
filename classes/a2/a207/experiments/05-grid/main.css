@@ -1,0 +1,13 @@
+.container {
+  display: grid;
+  grid-template-columns: 100px auto 100px;
+  grid-template-rows: 100px auto 100px;
+}
+
+.header {
+  grid-column: 1 / 4;
+}
+
+.footer {
+  grid-column: 1 / 4;
+}
