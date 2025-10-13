@@ -1,0 +1,69 @@
+.container {
+  display: grid;
+  grid-template-columns: 20% auto 20%;
+  grid-template-rows: 100px auto 100px;
+  position: relative;
+}
+
+.header {
+  grid-column: 1 / 4;
+  position: sticky;
+  top: 0;
+}
+
+.footer {
+  grid-column: 1 / 4;
+}
+
+.main {
+  padding: 10px;
+}
+
+.main img {
+  float: left;
+  margin: 0 10px 5px 0;
+}
+
+.main p:nth-of-type(1) {
+  margin-top: 0;
+}
+
+.main img+p+p {
+  clear: both;
+}
+
+.main p a:hover {
+  position: relative;
+  bottom: -2px;
+}
+
+.main table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 150px;
+}
+
+.main table td,
+.main table th {
+  border: 1px solid black;
+  padding: 3px;
+}
+
+.right a {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.footer nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer nav ul li {
+  list-style-type: none;
+}
