@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 100px;
+}
+
+.content {
+  display: flex;
+}
+
+.left {
+  width: 20%;
+}
+
+.main {
+  width: 60%;
+}
+
+.right {
+  width: 20%;
+}
+
+.footer {
+  height: 100px;
+}
