@@ -119,6 +119,7 @@ body {
 
   animation-name: taskList__itemEnterAnimation;
   animation-duration: 0.4s;
+  transition: color 0.2s;
 }
 
 .taskList__item--completed {
@@ -132,4 +133,9 @@ body {
   cursor: pointer;
   font-size: 60%;
   opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.taskList__itemDeleteButton:hover {
+  opacity: 1;
 }
