@@ -84,9 +84,24 @@ body {
   margin: 0;
 }
 
+@keyframes taskList__itemEnterAnimation {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .taskList__item {
   list-style-type: none;
   margin: 10px 0;
+
+  animation-name: taskList__itemEnterAnimation;
+  animation-duration: 0.4s;
 }
 
 .taskList__item--completed {
