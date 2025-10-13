@@ -1,3 +1,11 @@
+function updateCounter() {
+  const completedItems = document.querySelectorAll('.taskList__item--completed');
+  const count = completedItems.length;
+
+  const counterElement = document.querySelector('.app__counter');
+  counterElement.textContent = `${count} completed`;
+}
+
 const form = document.querySelector('.taskForm');
 form.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -19,6 +27,7 @@ form.addEventListener('submit', (event) => {
   itemElement.textContent = inputText;
   itemElement.addEventListener('click', () => {
     itemElement.classList.toggle('taskList__item--completed');
+    updateCounter();
   });
 
   const deleteButton = document.createElement('button');
@@ -26,6 +35,7 @@ form.addEventListener('submit', (event) => {
   deleteButton.className = 'taskList__itemDeleteButton';
   deleteButton.addEventListener('click', () => {
     itemElement.remove();
+    updateCounter();
   });
   itemElement.append(deleteButton);
 
