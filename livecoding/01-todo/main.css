@@ -1,0 +1,65 @@
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: linear-gradient(to bottom, #ffcdcd 0%, #ff8888 100%);
+  background-repeat: no-repeat;
+  font-family: sans-serif;
+}
+
+.app {
+  background-color: white;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.app__title {
+  margin: 0 0 10px;
+  font-family: serif;
+}
+
+.app__counter {
+  display: block;
+  margin: 10px 0 20px;
+  font-size: 70%;
+}
+
+.taskForm {
+  margin: 20px 0;
+}
+
+.taskForm__error {
+  color: red;
+  font-size: 70%;
+  font-style: italic;
+  margin: 5px;
+}
+
+.taskList {
+  padding: 0;
+  margin: 0;
+}
+
+.taskList__item {
+  list-style-type: none;
+  margin: 10px 0;
+}
+
+.taskList__item--completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.taskList__itemDeleteButton {
+  border-width: 0;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 60%;
+  opacity: 0.7;
+}
