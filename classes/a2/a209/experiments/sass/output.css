@@ -1,0 +1,43 @@
+html {
+  font-size: 24px;
+}
+
+.container {
+  background-color: silver;
+}
+
+.header {
+  background-color: lightblue;
+  padding: 0.5rem;
+}
+
+.left {
+  background-color: lightcoral;
+  padding: 0.5rem;
+}
+
+.main {
+  background-color: lightpink;
+  padding: 0.5rem;
+}
+
+.main h1 {
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem;
+}
+
+.main img {
+  width: 100%;
+  max-height: 40vh;
+  object-fit: cover;
+}
+
+.right {
+  background-color: lightseagreen;
+  padding: 0.5rem;
+}
+
+.footer {
+  background-color: lightskyblue;
+  padding: 0.5rem;
+}
