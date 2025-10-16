@@ -1,4 +1,12 @@
-$medium-screen-breakpoint: 720px;
+$medium-screen: 720px;
+$wide-screen: 1200px;
+
+@mixin breakpoint($min-width) {
+  @media screen and (min-width: $min-width) {
+    @content;
+  }
+}
+
 
 html {
   font-size: 24px;
@@ -7,13 +15,13 @@ html {
 .container {
   background-color: white;
 
-  @media screen and (min-width: $medium-screen-breakpoint) {
+  @include breakpoint($medium-screen) {
     display: grid;
     grid-template-columns: 12rem auto;
     grid-template-rows: 8rem auto auto 8rem;
   }
 
-  @media screen and (min-width: 1200px) {
+  @include breakpoint($wide-screen) {
     grid-template-columns: 12rem auto 12rem;
     grid-template-rows: 8rem auto 8rem;
   }
@@ -30,11 +38,11 @@ html {
 
   @include paper;
 
-  @media screen and (min-width: $medium-screen-breakpoint) {
+  @include breakpoint($medium-screen) {
     grid-column: 1 / 3;
   }
 
-  @media screen and (min-width: 1200px) {
+  @include breakpoint(1200px) {
     grid-column: 1 / 4;
   }
 }
@@ -44,7 +52,7 @@ html {
   padding: 0.5rem;
   @include paper;
 
-  @media screen and (min-width: $medium-screen-breakpoint) {
+  @include breakpoint($medium-screen) {
     grid-row: 2 / 3;
   }
 }
@@ -54,11 +62,11 @@ html {
   padding: 0.5rem;
   @include paper;
 
-  @media screen and (min-width: $medium-screen-breakpoint) {
+  @include breakpoint($medium-screen) {
     grid-row: 2 / 4;
   }
 
-  @media screen and (min-width: 1200px) {
+  @include breakpoint($wide-screen) {
     grid-row: 2 / 3;
   }
 
@@ -73,7 +81,7 @@ html {
     object-fit: cover;
     max-width: 400px;
 
-    @media screen and (min-width: $medium-screen-breakpoint) {
+    @include breakpoint($medium-screen) {
       float: left;
       margin: 0 1rem 1rem 0;
     }
@@ -92,11 +100,11 @@ html {
   padding: 0.5rem;
   @include paper;
 
-  @media screen and (min-width: $medium-screen-breakpoint) {
+  @include breakpoint($medium-screen) {
     grid-column: 1 / 3;
   }
 
-  @media screen and (min-width: 1200px) {
+  @include breakpoint($wide-screen) {
     grid-column: 1 / 4;
   }
 }
