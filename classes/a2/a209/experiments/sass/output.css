@@ -1,24 +1,3 @@
-html {
-  font-size: 24px;
-}
-
-.container {
-  background-color: white;
-}
-@media screen and (min-width: 720px) {
-  .container {
-    display: grid;
-    grid-template-columns: 12rem auto;
-    grid-template-rows: 8rem auto auto 8rem;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .container {
-    grid-template-columns: 12rem auto 12rem;
-    grid-template-rows: 8rem auto 8rem;
-  }
-}
-
 .header {
   padding: 0.5rem;
   background-color: white;
@@ -33,19 +12,6 @@ html {
 @media screen and (min-width: 1200px) {
   .header {
     grid-column: 1/4;
-  }
-}
-
-.left {
-  background-color: lightcoral;
-  padding: 0.5rem;
-  background-color: white;
-  margin: 1rem 0;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
-}
-@media screen and (min-width: 720px) {
-  .left {
-    grid-row: 2/3;
   }
 }
 
@@ -83,8 +49,19 @@ html {
   }
 }
 
+.left {
+  padding: 0.5rem;
+  background-color: white;
+  margin: 1rem 0;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+}
+@media screen and (min-width: 720px) {
+  .left {
+    grid-row: 2/3;
+  }
+}
+
 .right {
-  background-color: lightseagreen;
   padding: 0.5rem;
   background-color: white;
   margin: 1rem 0;
@@ -92,7 +69,6 @@ html {
 }
 
 .footer {
-  background-color: lightskyblue;
   padding: 0.5rem;
   background-color: white;
   margin: 1rem 0;
@@ -106,5 +82,26 @@ html {
 @media screen and (min-width: 1200px) {
   .footer {
     grid-column: 1/4;
+  }
+}
+
+html {
+  font-size: 24px;
+}
+
+.container {
+  background-color: white;
+}
+@media screen and (min-width: 720px) {
+  .container {
+    display: grid;
+    grid-template-columns: 12rem auto;
+    grid-template-rows: 8rem auto auto 8rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    grid-template-columns: 12rem auto 12rem;
+    grid-template-rows: 8rem auto 8rem;
   }
 }

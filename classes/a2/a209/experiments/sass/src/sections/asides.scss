@@ -1,0 +1,15 @@
+@use '../lib' as *;
+
+.left {
+  padding: 0.5rem;
+  @include paper;
+
+  @include breakpoint($medium-screen) {
+    grid-row: 2 / 3;
+  }
+}
+
+.right {
+  padding: 0.5rem;
+  @include paper;
+}

@@ -1,0 +1,14 @@
+@use '../lib' as *;
+
+.footer {
+  padding: 0.5rem;
+  @include paper;
+
+  @include breakpoint($medium-screen) {
+    grid-column: 1 / 3;
+  }
+
+  @include breakpoint($wide-screen) {
+    grid-column: 1 / 4;
+  }
+}
