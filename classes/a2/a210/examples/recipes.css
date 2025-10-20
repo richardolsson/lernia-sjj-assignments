@@ -30,3 +30,14 @@ body {
 .alternating > *:nth-child(odd) {
   float: right;
 }
+
+
+.recipes {
+  display: flex;
+  max-width: 800px;
+  margin: 100px auto 100px;
+}
+
+.recipes article {
+  width: 50%;
+}
