@@ -1,7 +1,17 @@
+@use '../lib/mixins.scss' as *;
+
 .testimonials {
 
   &__list {
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include medium-screen {
+      flex-direction: row;
+    }
   }
 
   &__listItem {
@@ -9,6 +19,11 @@
     margin: 0;
 
     &:first-of-type {
+      display: block;
+
+    }
+
+    @include medium-screen {
       display: block;
     }
   }
@@ -19,6 +34,7 @@
   gap: 1rem;
   grid-template-columns: 5rem 2fr;
   grid-template-rows: auto auto;
+  max-width: 40rem;
 
   &__quote {
     font-size: 1.8rem;
