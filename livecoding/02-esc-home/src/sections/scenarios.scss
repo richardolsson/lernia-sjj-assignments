@@ -2,9 +2,32 @@
 @use '../lib/variables.scss' as *;
 
 .scenario {
-  align-items: flex-start;
   display: flex;
   flex-direction: column;
+
+  @include medium-screen {
+    flex-direction: row;
+
+    &__image {
+      width: 50%;
+      object-fit: fill;
+    }
+
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    @include medium-screen {
+      padding: 0 6rem;
+      justify-content: center;
+    }
+  }
 
   &__headline {
     font-size: 1.9rem;
