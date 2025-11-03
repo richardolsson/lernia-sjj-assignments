@@ -1,0 +1,23 @@
+@use '../lib/variables' as *;
+
+.header {
+  background-color: $c-dark;
+  padding: 2rem;
+
+  &__title {
+    background-image: url(images/logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    ;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    padding-left: 6em;
+    width: 6em;
+  }
+
+  &__nav {
+    display: none;
+  }
+}
