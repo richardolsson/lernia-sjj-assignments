@@ -1,0 +1,34 @@
+.testimonials {
+
+  &__list {
+    padding: 0;
+  }
+
+  &__listItem {
+    display: none;
+    margin: 0;
+
+    &:first-of-type {
+      display: block;
+    }
+  }
+}
+
+.testimonial {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 5rem 2fr;
+  grid-template-rows: auto auto;
+
+  &__quote {
+    font-size: 1.8rem;
+    font-style: italic;
+    margin: 0;
+  }
+
+  &__cite {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    font-size: 1.2rem;
+  }
+}
