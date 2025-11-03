@@ -1,0 +1,24 @@
+@use '../lib/variables.scss' as *;
+
+.ctas {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 1rem 0 3rem;
+
+  &__onsiteLink {
+    background-color: $c-lightblue;
+    border-radius: 0.4rem;
+    color: black;
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding: 1rem 3rem;
+    text-decoration: none;
+  }
+
+  &__onlineLink {
+    color: $c-darkblue;
+    font-weight: bold;
+  }
+}
