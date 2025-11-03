@@ -2,14 +2,20 @@
 @use '../lib/variables.scss' as *;
 
 .challenges {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   &__headline {
     font-size: 2rem;
     font-weight: normal;
-    text-align: center;
   }
 
   &__cardList {
-    padding: 0;
+    padding: 0 1rem;
+    display: flex;
+    max-width: 100%;
+    overflow-x: scroll;
 
     &Item {
       list-style-type: none;
@@ -24,6 +30,8 @@
   display: flex;
   flex-direction: column;
   margin: 1rem;
+  max-width: 26rem;
+  min-width: 24rem;
   overflow: hidden;
 
   &__title {
