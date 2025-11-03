@@ -5,12 +5,12 @@
   display: flex;
   flex-direction: column;
 
-  @include medium-screen {
+  @include large-screen {
     flex-direction: row;
 
     &__image {
       width: 50%;
-      object-fit: fill;
+      object-fit: cover;
     }
 
     &:nth-child(even) {
@@ -23,7 +23,7 @@
     align-items: flex-start;
     flex-direction: column;
 
-    @include medium-screen {
+    @include large-screen {
       padding: 0 6rem;
       justify-content: center;
     }
