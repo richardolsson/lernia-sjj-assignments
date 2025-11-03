@@ -1,0 +1,15 @@
+{
+  "name": "02-esc-home",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "sass:build": "sass src/main.scss main.css",
+    "sass:watch": "sass --watch src/main.scss main.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "sass": "^1.93.3"
+  }
+}
