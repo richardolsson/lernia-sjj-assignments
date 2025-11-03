@@ -1,4 +1,5 @@
 @use '../lib/variables' as *;
+@use '../lib/mixins' as *;
 
 .header {
   background-color: $c-dark;
@@ -8,16 +9,45 @@
     background-image: url(images/logo.png);
     background-size: contain;
     background-repeat: no-repeat;
-    ;
     color: white;
     font-size: 24px;
     font-weight: bold;
     margin: 0;
     padding-left: 6em;
     width: 6em;
+
+    @include medium-screen {
+      font-size: 42px;
+      padding-left: 5em;
+      padding-top: 4rem;
+      width: auto;
+    }
   }
 
   &__nav {
     display: none;
+
+    @include medium-screen {
+      display: block;
+
+      &List {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin: 3rem 0 0;
+        padding: 0;
+      }
+
+      &Item {
+        list-style-type: none;
+        padding: 0 2rem;
+      }
+
+      a {
+        color: white;
+        font-size: 1.5rem;
+        text-decoration: none;
+      }
+    }
   }
 }

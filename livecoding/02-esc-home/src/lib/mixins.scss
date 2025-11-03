@@ -1,0 +1,5 @@
+@mixin medium-screen {
+  @media screen and (min-width: 840px) {
+    @content;
+  }
+}
