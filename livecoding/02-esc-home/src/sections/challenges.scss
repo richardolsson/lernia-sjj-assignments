@@ -21,6 +21,31 @@
       list-style-type: none;
     }
   }
+
+  &__buttons {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem 0;
+
+    @include medium-screen {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__onsiteButton {
+    @include button($c-lightblue, black);
+  }
+
+  &__onlineButton {
+    color: $c-darkblue;
+    font-weight: bold;
+
+    @include medium-screen {
+      @include button($c-red, white);
+    }
+  }
 }
 
 .challenge {
