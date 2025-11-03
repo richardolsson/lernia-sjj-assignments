@@ -1,24 +1,29 @@
 @use '../lib/variables.scss' as *;
+@use '../lib/mixins.scss' as *;
 
 .ctas {
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  justify-content: center;
   margin: 1rem 0 3rem;
 
+  @include medium-screen {
+    flex-direction: row-reverse;
+    margin-top: -2.5rem;
+  }
+
   &__onsiteLink {
-    background-color: $c-lightblue;
-    border-radius: 0.4rem;
-    color: black;
-    font-size: 1.6rem;
-    font-weight: bold;
-    padding: 1rem 3rem;
-    text-decoration: none;
+    @include button($c-lightblue, black);
   }
 
   &__onlineLink {
     color: $c-darkblue;
     font-weight: bold;
+
+    @include medium-screen {
+      @include button($c-red, white);
+    }
   }
 }

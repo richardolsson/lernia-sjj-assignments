@@ -3,3 +3,13 @@
     @content;
   }
 }
+
+@mixin button($bg-color, $fg-color) {
+  background-color: $bg-color;
+  border-radius: 0.4rem;
+  color: $fg-color;
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 1.2rem 3rem;
+  text-decoration: none;
+}
