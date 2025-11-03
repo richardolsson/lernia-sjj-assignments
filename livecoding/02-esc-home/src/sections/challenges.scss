@@ -1,0 +1,76 @@
+@use '../lib/mixins.scss' as *;
+@use '../lib/variables.scss' as *;
+
+.challenges {
+  &__headline {
+    font-size: 2rem;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  &__cardList {
+    padding: 0;
+
+    &Item {
+      list-style-type: none;
+    }
+  }
+}
+
+.challenge {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  overflow: hidden;
+
+  &__title {
+    font-weight: normal;
+    font-size: 1.8rem;
+    margin: 1rem 1rem 0.5rem;
+    width: 100%;
+  }
+
+  &__subtitle {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    margin: 0 1rem;
+  }
+
+  &__rating {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0;
+
+    &Star {
+      list-style-type: none;
+      width: 1.0rem;
+      height: 1.0rem;
+      background-image: url(images/star-empty.png);
+      background-size: cover;
+
+      &--filled {
+        background-image: url(images/star-full.png);
+      }
+    }
+  }
+
+  &__size {
+    font-size: 1.0rem;
+  }
+
+  &__description {
+    font-size: 1.1rem;
+    margin: 1rem 1rem;
+  }
+
+  &__bookButton {
+    @include button($c-red, white);
+    align-self: flex-end;
+    font-size: 1.2rem;
+    margin: 0 1rem 1rem;
+  }
+}

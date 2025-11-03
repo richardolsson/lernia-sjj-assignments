@@ -7,9 +7,10 @@
 @mixin button($bg-color, $fg-color) {
   background-color: $bg-color;
   border-radius: 0.4rem;
+  border-width: 0;
   color: $fg-color;
   font-size: 1.6rem;
   font-weight: bold;
-  padding: 1.2rem 3rem;
+  padding: 0.8em 2.4em;
   text-decoration: none;
 }
