@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+    function addSmilies() {
+      const text = document.querySelector('h1').innerText;
+      document.querySelector('h1').innerText = `😀${text}😀`
+    }
+
+    function clearEmojis() {
+      document.querySelector('h1').innerText = 'Hello, world!';
+    }
+  </script>
+</head>
+
+<body>
+  <h1 onmouseover="clearEmojis()">Hello, world!</h1>
+  <!--
+  <button
+    onclick="document.querySelector('h1').innerText = `😀${document.querySelector('h1').innerText}😀`">Click
+    me</button>
+  -->
+  <button onclick="addSmilies()">Click me</button>
+</body>
+
+</html>

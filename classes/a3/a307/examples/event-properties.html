@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+</head>
+
+<body>
+  <h1>Hello, world!</h1>
+  <button>Click me</button>
+
+  <script>
+    function handleClick() {
+      document.querySelector('h1').textContent = 'Other text';
+      return 5;
+    }
+
+    const button = document.querySelector('button');
+    button.onclick = handleClick;
+
+    /*
+    button.onclick = function () {
+      console.log('anonymous click!');
+    };
+    button.onclick = () => {
+      console.log('fat arrow click');
+    };
+    */
+
+  </script>
+</body>
+
+</html>
