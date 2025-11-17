@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+    async function loadChallenges() {
+      const resp = await fetch('https://lernia-sjj-assignments.vercel.app/api/challenges');
+
+      /* Long version
+      const jsonText = await resp.text();
+      const data = JSON.parse(jsonText);
+      */
+
+      // Short version
+      const data = await resp.json();
+
+      data.challenges.forEach((challenge) => {
+        console.log(challenge.title);
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <button onclick="loadChallenges()">Load challenges</button>
+</body>
+
+</html>
