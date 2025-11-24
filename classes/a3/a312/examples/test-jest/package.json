@@ -1,0 +1,16 @@
+{
+  "name": "test-jest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cross-env": "^10.1.0",
+    "jest": "^30.2.0"
+  }
+}
