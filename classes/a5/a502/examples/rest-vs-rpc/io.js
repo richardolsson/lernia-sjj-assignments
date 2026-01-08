@@ -26,7 +26,41 @@ export async function handle(method, path, queryString, headers, body) {
   console.log('headers: ', headers);
   console.log('body:    ', body);
 
+  //*
+  return handleREST(method, path, queryString, headers, body);
+  /*/
   return handleRPC(method, path, queryString, headers, body);
+  //*/
+}
+
+async function handleREST(method, path, queryString, headers, body) {
+  if (method == 'GET' && path == '/people') {
+    const result = getPeople();
+
+    return {
+      status: 200,
+      body: { result },
+    }
+  } else if (path.startsWith('/people/')) {
+    const personId = path.slice(8);
+
+    if (method == 'GET') {
+      const result = getPersonById(personId);
+
+      return {
+        status: 200,
+        body: { result },
+      }
+    } else if (method == 'PATCH') {
+      const newName = body.name;
+      const result = setName(personId, newName);
+
+      return {
+        status: 200,
+        body: { result },
+      }
+    }
+  }
 }
 
 async function handleRPC(method, path, queryString, headers, body) {
