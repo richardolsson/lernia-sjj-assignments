@@ -1,0 +1,12 @@
+{
+  "name": "ex2-hello-http",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
