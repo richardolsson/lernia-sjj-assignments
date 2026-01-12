@@ -5,6 +5,13 @@ const app = express();
 
 app.use('/', express.static('./static'));
 
+app.use('/:name', async (req, res) => {
+  const content = await fs.readFile('./static/index.html');
+  const html = content.toString();
+  const replaced = html.replace('world', req.params.name);
+  res.send(replaced);
+});
+
 /*
 app.get('/{*path}', async (req, res) => {
   const urlPath = req.url;
