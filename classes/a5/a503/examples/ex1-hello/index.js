@@ -1,3 +1,4 @@
 import sayHello from "./lib/sayHello.js";
 
-sayHello('Richard');
+const name = process.argv[2];
+sayHello(name);
