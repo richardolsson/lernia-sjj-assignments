@@ -3,8 +3,17 @@ import http from 'http';
 function handleRequest(request, response) {
   console.log(request.method, request.url);
 
-  response.statusCode = 200;
-  response.write('Hello');
+
+  if (request.url == '/hello') {
+    response.statusCode = 200;
+    response.write('Hello, world!');
+  } else if (request.url == '/goodbye') {
+    response.statusCode = 200;
+    response.write('Goodbye, world!');
+  } else {
+    response.statusCode = 404;
+  }
+
   response.end();
 }
 
