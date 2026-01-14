@@ -20,12 +20,12 @@ app.get('/', async (req, res) => {
   res.send(htmlText);
 });
 
-app.get('/contact.html', async (req, res) => {
+app.get('/contact', async (req, res) => {
   const htmlText = await renderPage('contact');
   res.send(htmlText);
 });
 
-app.get('/about.html', async (req, res) => {
+app.get('/about', async (req, res) => {
   const htmlText = await renderPage('about');
   res.send(htmlText);
 });
