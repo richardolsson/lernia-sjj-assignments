@@ -1,9 +1,9 @@
 import express from 'express';
+import fs from 'fs/promises';
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello');
-});
+
+app.use('/', express.static('./static'));
 
 app.listen(5080);
