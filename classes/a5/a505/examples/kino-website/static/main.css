@@ -1,0 +1,16 @@
+* {
+  font-family: sans-serif;
+}
+
+.header {
+  padding: 1em;
+  background: #eee;
+}
+
+.header h1 {
+  font-size: 2em;
+}
+
+.movie img {
+  max-width: 14rem;
+}
