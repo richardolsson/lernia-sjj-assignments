@@ -1,9 +1,11 @@
 import { describe, expect, test } from '@jest/globals';
 import request from 'supertest';
-import { app } from '../src/app.js';
+import initApp from '../src/app.js';
+import api from '../src/movies.js';
 
 describe('Movie list page', () => {
   test('lists movies from API', async () => {
+    const app = initApp(api);
     const response = await request(app)
       .get('/')
       .expect('Content-Type', /html/)
