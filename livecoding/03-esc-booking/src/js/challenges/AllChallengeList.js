@@ -1,3 +1,4 @@
+import TextFilter from "../filters/TextFilter.js";
 import Challenge from "./Challenge.js";
 
 export default class AllChallengeList {
@@ -6,22 +7,40 @@ export default class AllChallengeList {
   }
 
   async render() {
-    const challengesData = await this.backend.getAllChallenges();
+    this.challengesData = await this.backend.getAllChallenges();
 
-    const listElem = document.createElement('ul');
-    listElem.classList.add('challenges__cardList');
+    const container = document.createElement('div');
 
-    challengesData.forEach((challengeData) => {
-      const challenge = new Challenge(challengeData);
-      const cardElem = challenge.render();
+    this.filter = new TextFilter('challenge');
+    this.filter.addEventListener('change', () => {
+      this.update();
+    });
+    const textFilterElem = this.filter.render();
+    container.append(textFilterElem);
 
-      const itemElem = document.createElement('li');
-      itemElem.classList.add('challenges__cardListItem');
-      itemElem.append(cardElem);
+    this.listElem = document.createElement('ul');
+    this.listElem.classList.add('challenges__cardList');
+    container.append(this.listElem);
 
-      listElem.append(itemElem);
+    this.update();
+
+    return container;
+  }
+
+  update() {
+    this.listElem.innerHTML = '';
+
+    this.challengesData.forEach((challengeData) => {
+      if (this.filter.matches(challengeData)) {
+        const challenge = new Challenge(challengeData);
+        const cardElem = challenge.render();
+
+        const itemElem = document.createElement('li');
+        itemElem.classList.add('challenges__cardListItem');
+        itemElem.append(cardElem);
+
+        this.listElem.append(itemElem);
+      }
     })
-
-    return listElem;
   }
 }
