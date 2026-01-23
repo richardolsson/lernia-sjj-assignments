@@ -43,5 +43,11 @@ export default class AllChallengeList {
         this.listElem.append(itemElem);
       }
     })
+
+    if (this.listElem.children.length == 0) {
+      const emptyState = document.createElement('p');
+      emptyState.textContent = 'No matching challenges found';
+      this.listElem.append(emptyState);
+    }
   }
 }
