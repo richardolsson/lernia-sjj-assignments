@@ -1,4 +1,6 @@
+import AndFilter from "../filters/AndFilter.js";
 import TextFilter from "../filters/TextFilter.js";
+import TypeFilter from "../filters/TypeFilter.js";
 import Challenge from "./Challenge.js";
 
 export default class AllChallengeList {
@@ -11,7 +13,10 @@ export default class AllChallengeList {
 
     const container = document.createElement('div');
 
-    this.filter = new TextFilter('challenge');
+    this.filter = new AndFilter([
+      new TypeFilter(null),
+      new TextFilter(''),
+    ]);
     this.filter.addEventListener('change', () => {
       this.update();
     });
