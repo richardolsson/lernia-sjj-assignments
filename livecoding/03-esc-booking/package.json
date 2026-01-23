@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "sass:build": "sass src/main.scss main.css",
-    "sass:watch": "sass --watch src/main.scss main.css"
+    "sass:build": "sass src/scss/main.scss main.css",
+    "sass:watch": "sass --watch src/scss/main.scss main.css"
   },
   "author": "",
   "license": "ISC",
