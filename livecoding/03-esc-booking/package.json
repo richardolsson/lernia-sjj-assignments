@@ -2,7 +2,10 @@
   "name": "02-esc-home",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch",
     "sass:build": "sass src/scss/main.scss main.css",
     "sass:watch": "sass --watch src/scss/main.scss main.css"
   },
@@ -11,5 +14,9 @@
   "description": "",
   "devDependencies": {
     "sass": "^1.93.3"
+  },
+  "dependencies": {
+    "cross-env": "^10.1.0",
+    "jest": "^30.2.0"
   }
 }
