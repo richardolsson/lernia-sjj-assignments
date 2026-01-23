@@ -1,0 +1,45 @@
+@use '../lib/mixins.scss' as *;
+@use '../lib/variables.scss' as *;
+
+.footer {
+  background-color: $c-dark;
+  color: white;
+  padding: 3rem 2rem;
+  font-size: 1.3rem;
+
+  @include medium-screen {
+    display: flex;
+    gap: 2rem;
+    padding: 3rem 7rem;
+    justify-content: space-between;
+  }
+}
+
+.footerSection {
+  margin: 0 0 3rem 0;
+  min-width: 10rem;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  &__text {
+    margin: 0;
+    max-width: 40rem;
+  }
+
+  &__headline {
+    font-size: inherit;
+    margin: 0.5rem 0;
+  }
+
+  &__menu {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__menuItem {
+    list-style-type: none;
+  }
+}

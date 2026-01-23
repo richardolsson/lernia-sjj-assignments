@@ -1,0 +1,109 @@
+@use '../lib/mixins.scss' as *;
+@use '../lib/variables.scss' as *;
+
+.challenges {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__headline {
+    font-size: 2rem;
+    font-weight: normal;
+  }
+
+  &__cardList {
+    padding: 0 1rem;
+    display: flex;
+    max-width: 100%;
+    overflow-x: scroll;
+
+    &Item {
+      list-style-type: none;
+    }
+  }
+
+  &__buttons {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem 0;
+
+    @include medium-screen {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__onsiteButton {
+    @include button($c-lightblue, black);
+  }
+
+  &__onlineButton {
+    color: $c-darkblue;
+    font-weight: bold;
+
+    @include medium-screen {
+      @include button($c-red, white);
+    }
+  }
+}
+
+.challenge {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  max-width: 26rem;
+  min-width: 24rem;
+  overflow: hidden;
+
+  &__title {
+    font-weight: normal;
+    font-size: 1.8rem;
+    margin: 1rem 1rem 0.5rem;
+    width: 100%;
+  }
+
+  &__subtitle {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    margin: 0 1rem;
+  }
+
+  &__rating {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0;
+
+    &Star {
+      list-style-type: none;
+      width: 1.0rem;
+      height: 1.0rem;
+      background-image: url(images/star-empty.png);
+      background-size: cover;
+
+      &--filled {
+        background-image: url(images/star-full.png);
+      }
+    }
+  }
+
+  &__size {
+    font-size: 1.0rem;
+  }
+
+  &__description {
+    font-size: 1.1rem;
+    margin: 1rem 1rem;
+  }
+
+  &__bookButton {
+    @include button($c-red, white);
+    align-self: flex-end;
+    font-size: 1.2rem;
+    margin: 0 1rem 1rem;
+  }
+}

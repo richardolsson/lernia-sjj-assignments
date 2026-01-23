@@ -1,0 +1,23 @@
+@use 'sections/header.scss';
+@use 'sections/hero.scss';
+@use 'sections/ctas.scss';
+@use 'sections/testimonials.scss';
+@use 'sections/challenges.scss';
+@use 'sections/story.scss';
+@use 'sections/scenarios.scss';
+@use 'sections/footer.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+html,
+body {
+  font-family: 'Roboto';
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}

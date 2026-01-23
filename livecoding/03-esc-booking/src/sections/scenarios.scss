@@ -1,0 +1,48 @@
+@use '../lib/mixins.scss' as *;
+@use '../lib/variables.scss' as *;
+
+.scenario {
+  display: flex;
+  flex-direction: column;
+
+  @include large-screen {
+    flex-direction: row;
+
+    &__image {
+      width: 50%;
+      object-fit: cover;
+    }
+
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    @include large-screen {
+      padding: 0 6rem;
+      justify-content: center;
+    }
+  }
+
+  &__headline {
+    font-size: 1.9rem;
+    margin: 1.5rem 1rem;
+  }
+
+  &__description {
+    font-size: 1.3rem;
+    margin: 1rem 1rem;
+  }
+
+  &__cta {
+    display: block;
+
+    @include button($c-red, white);
+    margin: 2rem 1rem 4rem;
+  }
+}

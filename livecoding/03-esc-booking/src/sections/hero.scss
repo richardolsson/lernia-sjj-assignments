@@ -1,0 +1,11 @@
+@use '../lib/mixins.scss' as *;
+
+.hero {
+  &__image {
+    @include medium-screen {
+      max-height: 50vh;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+}

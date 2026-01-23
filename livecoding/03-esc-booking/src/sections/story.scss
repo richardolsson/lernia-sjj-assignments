@@ -1,0 +1,24 @@
+@use '../lib/variables.scss' as *;
+@use '../lib/mixins.scss' as *;
+
+.story {
+  align-items: center;
+  background-color: $c-dark;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 8rem 3rem;
+
+  &__text {
+    font-size: 1.8rem;
+    margin: 0;
+    max-width: 40rem;
+    text-align: center;
+  }
+
+  &__cta {
+    @include button(transparent, $c-lightblue);
+    border: 2px solid $c-lightblue;
+  }
+}
