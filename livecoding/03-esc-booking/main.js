@@ -1,4 +1,4 @@
-import FakeBackend from "./src/js/backend/FakeBackend.js";
+import APIBackend from "./src/js/backend/APIBackend.js";
 import BookingModal from "./src/js/booking/BookingModal.js";
 import AllChallengeList from "./src/js/challenges/AllChallengeList.js";
 import Challenge from "./src/js/challenges/Challenge.js";
@@ -10,7 +10,7 @@ navButton.addEventListener('click', () => {
   nav.classList.toggle('header--navOpen');
 });
 
-const backend = new FakeBackend();
+const backend = new APIBackend();
 const challengesData = await backend.getAllChallenges();
 const challenges = challengesData.map((data) => {
   const challenge = new Challenge(data);
