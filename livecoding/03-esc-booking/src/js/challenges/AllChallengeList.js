@@ -1,16 +1,13 @@
 import AndFilter from "../filters/AndFilter.js";
 import TextFilter from "../filters/TextFilter.js";
 import TypeFilter from "../filters/TypeFilter.js";
-import Challenge from "./Challenge.js";
 
 export default class AllChallengeList {
-  constructor(backend) {
-    this.backend = backend;
+  constructor(challenges) {
+    this.challenges = challenges;
   }
 
-  async render() {
-    this.challengesData = await this.backend.getAllChallenges();
-
+  render() {
     const container = document.createElement('div');
 
     this.filter = new AndFilter([
@@ -35,9 +32,8 @@ export default class AllChallengeList {
   update() {
     this.listElem.innerHTML = '';
 
-    this.challengesData.forEach((challengeData) => {
-      if (this.filter.matches(challengeData)) {
-        const challenge = new Challenge(challengeData);
+    this.challenges.forEach((challenge) => {
+      if (this.filter.matches(challenge.data)) {
         const cardElem = challenge.render();
 
         const itemElem = document.createElement('li');
