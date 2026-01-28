@@ -1,6 +1,7 @@
-export default async function getRecentReviews() {
-  const response = await fetch('https://plankton-app-xhkom.ondigitalocean.app/api/reviews');
-  const payload = await response.json();
+export default async function getRecentReviews(cmsAdapater) {
+  const reviews = await cmsAdapater.loadAllReviews();
 
-  return payload.data;
+  // TODO: Logic goes here
+
+  return reviews;
 }

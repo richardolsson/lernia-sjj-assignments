@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "cross-env": "^10.1.0",
     "express": "^5.2.1"
   },
   "devDependencies": {
