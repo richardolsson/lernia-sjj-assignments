@@ -13,7 +13,7 @@
       <form method="post" action="/movies/{{movie.id}}/reviews">
         <textarea name="comment"></textarea>
         <input type="hidden" name="movie" value="{{ movie.id }}">
-        <input name="name" placeholder="Your Name" value="">
+        <input name="name" placeholder="Your Name" value="{{reviewerName}}">
         <input type="submit">
       </form>
     </div>
