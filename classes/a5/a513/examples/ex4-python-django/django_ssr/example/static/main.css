@@ -1,0 +1,50 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 1em;
+  background-color: #fc0;
+}
+
+nav {
+  margin: 1em;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  list-style-type: none;
+  color: black;
+}
+
+nav li a {
+  color: inherit;
+}
+
+nav li.active {
+  font-weight: bold;
+  color: red;
+}
+
+.main {
+  flex: 1;
+}
+
+footer {
+  background-color: #aaa;
+  padding: 2em;
+  text-align: center;
+}
