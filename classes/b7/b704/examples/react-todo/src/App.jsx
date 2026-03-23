@@ -1,32 +1,29 @@
 import React from 'react';
 
 function App() {
-  /*
   return (
-    React.createElement('div', {}, [
-      React.createElement('h1', { style: { color: 'red' }}, [
-        'Hello'
-      ]),
-      React.createElement('p', {}, [
-        'This is ',
-        React.createElement('strong', {}, [
-          'React'
-        ])
-      ])
-    ])
-  );
-  */
+    <main class="app">
+      <h1 class="app__title">My ToDo</h1>
+      <small class="app__counter">2 completed</small>
 
-  return (
-    <div>
-      <h1 style={{color: 'red'}}>
-        Hello
-      </h1>
-      <p>
-        This is <strong>React</strong>
-      </p>
-    </div>
-  )
+      <form class="taskForm">
+        <input class="taskForm__input" name="taskText" type="text" />
+        <button class="taskForm__submitButton" type="submit">OK</button>
+        <p class="taskForm__error"></p>
+      </form>
+      <ul class="taskList">
+        <li class="taskList__item taskList__item--completed">
+          Learn HTML<button class="taskList__itemDeleteButton">🗑</button>
+        </li>
+        <li class="taskList__item taskList__item--completed">
+          Learn CSS<button class="taskList__itemDeleteButton">🗑</button>
+        </li>
+        <li class="taskList__item">
+          Learn React<button class="taskList__itemDeleteButton">🗑</button>
+        </li>
+      </ul>
+    </main>
+  );
 }
 
 export default App
