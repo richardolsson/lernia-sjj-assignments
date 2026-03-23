@@ -1,6 +1,21 @@
-import React from 'react';
-
 function App() {
+  const items = [
+    {
+      label: 'Learn HTML',
+      completed: true,
+    },
+    {
+      label: 'Learn CSS',
+      completed: true,
+    },
+    {
+      label: 'Learn React',
+      completed: false,
+    }
+  ];
+
+  console.log('render!');
+
   return (
     <main class="app">
       <h1 class="app__title">My ToDo</h1>
@@ -12,15 +27,18 @@ function App() {
         <p class="taskForm__error"></p>
       </form>
       <ul class="taskList">
-        <li class="taskList__item taskList__item--completed">
-          Learn HTML<button class="taskList__itemDeleteButton">🗑</button>
-        </li>
-        <li class="taskList__item taskList__item--completed">
-          Learn CSS<button class="taskList__itemDeleteButton">🗑</button>
-        </li>
-        <li class="taskList__item">
-          Learn React<button class="taskList__itemDeleteButton">🗑</button>
-        </li>
+        {items.map(item => {
+          let classes = 'taskList__item';
+          if (item.completed) {
+            classes += ' taskList__item--completed';
+          }
+
+          return (
+            <li class={classes}>
+              {item.label}<button class="taskList__itemDeleteButton">🗑</button>
+            </li>
+          )
+        })}
       </ul>
     </main>
   );
