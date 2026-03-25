@@ -35,7 +35,17 @@ function App() {
 
         setItems([...items, newItem]);
       }} />
-      <TaskList items={items} />
+      <TaskList
+        items={items}
+        onToggleItem={(index, completed) => {
+          const oldItems = items;
+          const newItems = oldItems.map((oldItem, oldIndex) => ({
+            label: oldItem.label,
+            completed: oldIndex == index ? completed : oldItem.completed,
+          }))
+          setItems(newItems);
+        }}
+      />
     </main>
   );
 }

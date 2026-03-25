@@ -1,19 +1,11 @@
-export default function TaskItem({ item }) {
+export default function TaskItem({ item, onToggle }) {
   let classes = 'taskList__item';
   if (item.completed) {
     classes += ' taskList__item--completed';
   }
 
   return (
-    <li class={classes} onClick={() => {
-      console.log('click!');
-      const oldItems = items;
-      const newItems = oldItems.map((oldItem, oldIndex) => ({
-        label: oldItem.label,
-        completed: oldIndex == index ? !oldItem.completed : oldItem.completed,
-      }))
-      setItems(newItems);
-    }}>
+    <li class={classes} onClick={() => onToggle()}>
       {item.label}<button class="taskList__itemDeleteButton">🗑</button>
     </li>
   );

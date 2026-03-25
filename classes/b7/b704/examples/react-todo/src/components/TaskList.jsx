@@ -1,11 +1,16 @@
 import TaskItem from "./TaskItem.jsx";
 
-export default function TaskList({ items }) {
+export default function TaskList({ items, onToggleItem }) {
   return (
     <ul class="taskList">
       {items.map((item, index) => {
         return (
-          <TaskItem item={item} />
+          <TaskItem
+            item={item}
+            onToggle={() => {
+              onToggleItem(index, !item.completed);
+            }}
+          />
         )
       })}
     </ul>
