@@ -1,9 +1,15 @@
 import { useState } from 'react';
 
-export default function TaskForm() {
+export default function TaskForm({ onCreateItem }) {
   const [text, setText] = useState('');
   return (
-    <form class="taskForm">
+    <form class="taskForm"
+      onSubmit={(ev) => {
+        ev.preventDefault();
+        console.log('CLICK', text);
+        onCreateItem(text);
+      }}
+    >
       <input
         class="taskForm__input"
         name="taskText"
