@@ -1,7 +1,6 @@
 import TaskItem from "./TaskItem.jsx";
 
-export default function TaskList(props) {
-  const items = props.items;
+export default function TaskList({ items }) {
   return (
     <ul class="taskList">
       {items.map((item, index) => {

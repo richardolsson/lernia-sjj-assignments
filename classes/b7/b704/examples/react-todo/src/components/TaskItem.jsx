@@ -1,6 +1,4 @@
-export default function TaskItem(props) {
-  const item = props.item;
-
+export default function TaskItem({ item }) {
   let classes = 'taskList__item';
   if (item.completed) {
     classes += ' taskList__item--completed';
