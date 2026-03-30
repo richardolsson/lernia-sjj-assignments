@@ -22,11 +22,17 @@ function App() {
     <main class="app">
       <h1 class="app__title">My ToDo</h1>
       <TaskCounter items={items} />
-      <TaskForm onCreateItem={(text) => {
+      <TaskForm onCreateItem={async (text) => {
         const newItem = {
           label: text,
           completed: false,
         };
+
+        await fetch('/api/tasks', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newItem),
+        });
 
         setItems([...items, newItem]);
       }} />
