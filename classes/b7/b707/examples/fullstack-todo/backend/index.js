@@ -1,3 +1,4 @@
+import fs from 'fs/promises';
 import express from 'express';
 
 const app = express();
@@ -33,5 +34,12 @@ app.post('/api/tasks', (req, res) => {
 
   res.status(201).json(task);
 });
+
+app.get('/', async (req, res) => {
+  const htmlBuffer = await fs.readFile('../frontend/dist/index.html');
+  res.send(htmlBuffer.toString());
+});
+
+app.use('/assets', express.static('../frontend/dist/assets'));
 
 app.listen(5080);
