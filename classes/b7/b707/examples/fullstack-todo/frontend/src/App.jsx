@@ -1,24 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import TaskCounter from './components/TaskCounter.jsx';
 import TaskForm from './components/TaskForm.jsx';
 import TaskList from './components/TaskList.jsx';
 
 function App() {
-  const [items, setItems] = useState([
-    {
-      label: 'Learn HTML',
-      completed: true,
-    },
-    {
-      label: 'Learn CSS',
-      completed: true,
-    },
-    {
-      label: 'Learn React',
-      completed: false,
-    }
-  ]);
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    console.log('load tasks');
+    fetch('/api/tasks').then(async (response) => {
+      const payload = await response.json();
+      setItems(payload);
+    });
+  }, []);
 
   console.log('render!');
 
