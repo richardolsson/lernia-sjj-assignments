@@ -14,11 +14,17 @@ app.get('/api/tasks', async (req, res) => {
   res.json(tasks);
 });
 
-app.post('/api/tasks', (req, res) => {
-  const task = req.body;
-  TASKS.push(task);
+app.post('/api/tasks', async (req, res) => {
+  await mongoose.connect('mongodb://localhost:27017/todo');
 
-  res.status(201).json(task);
+  const newTask = new Task({
+    label: req.body.label,
+    completed: req.body.completed,
+  });
+
+  await newTask.save();
+
+  res.status(201).json(newTask);
 });
 
 app.get('/', async (req, res) => {
