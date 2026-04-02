@@ -1,31 +1,17 @@
 import fs from 'fs/promises';
 import express from 'express';
+import mongoose from 'mongoose';
+
+import Task from './src/models/Task.js';
 
 const app = express();
 
 app.use(express.json());
 
-const TASKS = [
-  {
-    label: 'Learn HTML',
-    completed: true,
-  },
-  {
-    label: 'Learn CSS',
-    completed: true,
-  },
-  {
-    label: 'Learn React',
-    completed: true,
-  },
-  {
-    label: 'Learn fullstack',
-    completed: false,
-  },
-];
-
-app.get('/api/tasks', (req, res) => {
-  res.json(TASKS);
+app.get('/api/tasks', async (req, res) => {
+  await mongoose.connect('mongodb://localhost:27017/todo');
+  const tasks = await Task.find();
+  res.json(tasks);
 });
 
 app.post('/api/tasks', (req, res) => {
