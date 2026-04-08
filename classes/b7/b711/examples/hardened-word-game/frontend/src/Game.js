@@ -1,21 +1,35 @@
 import { useState } from "react";
 
-function Game({ correctWord }) {
-  const [startTime] = useState(new Date());
+function Game({ gameId }) {
   const [gameState, setGameState] = useState("playing");
-  const [endTime, setEndtime] = useState(null);
   const [inputText, setInputText] = useState("");
   const [guesses, setGuesses] = useState([]);
+  const [result, setResult] = useState(null);
   const [name, setName] = useState("");
 
-  const handleKeyUp = (keyCode) => {
+  const handleKeyUp = async (keyCode) => {
     if (keyCode === "Enter") {
-      setGuesses([...guesses, inputText]);
       setInputText("");
-      if (inputText === correctWord) {
+
+      const res = await fetch(
+        `/api/games/${gameId}/guesses`,
+        {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ guess: inputText }),
+        }
+      );
+
+      const data = await res.json();
+
+      if (data.correct) {
+        setResult(data.result);
         setGameState("won");
-        setEndtime(new Date());
       }
+
+      setGuesses(data.guesses);
     }
   };
 
@@ -23,14 +37,10 @@ function Game({ correctWord }) {
     ev.preventDefault();
 
     const highscore = {
-      correctWord,
-      endTime,
-      guesses,
       name,
-      startTime,
     };
 
-    await fetch("/api/highscores", {
+    await fetch(`/api/games/${gameId}/highscore`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +52,8 @@ function Game({ correctWord }) {
   };
 
   if (gameState === "won") {
-    const duration = Math.round((endTime - startTime) / 1000);
+    const duration =
+      (new Date(result.endTime) - new Date(result.startTime)) / 1000;
     return (
       <div className="Game">
         <h1>You won!</h1>
