@@ -1,5 +1,16 @@
+type Occupation = {
+  title: string;
+  retired: boolean;
+}
+
+type Employee = {
+  name: string;
+  age: number;
+  occupation: null | Occupation;
+}
+
 function bug3() {
-  const clara = {
+  const clara : Employee = {
     name: 'Clara',
     age: 18,
     occupation: null,

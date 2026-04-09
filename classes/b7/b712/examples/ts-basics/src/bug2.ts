@@ -1,5 +1,5 @@
 function bug2() {
-  function add100(x) {
+  function add100(x : number) {
     return x + 100;
   }
 
