@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { FC } from "react";
 import TaskItem from "./TaskItem.js";
 import type { Task } from "../types.js";
 
@@ -7,9 +7,7 @@ type Props = {
   onToggleItem: (index: number, completed: boolean) => void;
 }
 
-type Component = (props: Props) => ReactNode;
-
-const TaskList : Component = ({ items, onToggleItem }) => {
+const TaskList : FC<Props> = ({ items, onToggleItem }) => {
   return (
     <ul className="taskList">
       {items.map((item, index) => {

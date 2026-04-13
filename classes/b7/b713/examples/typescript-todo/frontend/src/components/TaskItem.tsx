@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { FC } from "react";
 import type { Task } from "../types.js";
 
 type Props = {
@@ -6,11 +6,8 @@ type Props = {
   onToggle: () => void;
 }
 
-type Component = (props: Props) => ReactNode;
-
-
 //Alt: function TaskItem({ item, onToggle }: Props): ReactNode {
-const TaskItem : Component = ({ item, onToggle }) => {
+const TaskItem : FC<Props> = ({ item, onToggle }) => {
   let classes = 'taskList__item';
   if (item.completed) {
     classes += ' taskList__item--completed';
