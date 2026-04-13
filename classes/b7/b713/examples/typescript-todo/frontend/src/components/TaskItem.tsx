@@ -1,9 +1,5 @@
 import type { ReactNode } from "react";
-
-type Task = {
-  label: string;
-  completed: boolean;
-}
+import type { Task } from "../types.js";
 
 type Props = {
   item: Task;
