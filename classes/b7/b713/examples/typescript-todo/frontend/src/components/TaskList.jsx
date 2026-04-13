@@ -1,4 +1,4 @@
-import TaskItem from "./TaskItem.jsx";
+import TaskItem from "./TaskItem.tsx";
 
 export default function TaskList({ items, onToggleItem }) {
   return (
