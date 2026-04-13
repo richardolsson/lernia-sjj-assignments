@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FC } from "react";
 
-import TaskCounter from './components/TaskCounter.jsx';
-import TaskForm from './components/TaskForm.jsx';
+import TaskCounter from './components/TaskCounter.js';
+import TaskForm from './components/TaskForm.js';
 import TaskList from './components/TaskList.js';
+import type { Task } from "./types.js";
 
-function App() {
-  const [items, setItems] = useState([]);
+const App: FC = () => {
+  const [items, setItems] = useState<Task[]>([]);
 
   useEffect(() => {
     console.log('load tasks');
@@ -19,8 +20,8 @@ function App() {
 
 
   return (
-    <main class="app">
-      <h1 class="app__title">My ToDo</h1>
+    <main className="app">
+      <h1 className="app__title">My ToDo</h1>
       <TaskCounter items={items} />
       <TaskForm onCreateItem={async (text) => {
         const newItem = {
