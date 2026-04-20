@@ -1,0 +1,11 @@
+services:
+  webapp:
+    build: .
+    ports:
+      - 5080:5080
+    environment:
+      MONGODB_URL: mongodb://dbservice:27017/todo
+  dbservice:
+    image: mongo
+    volumes:
+      - ./data:/data/db
