@@ -5,6 +5,7 @@ services:
     build: .
     ports:
       - 5080:5080
+    env_file: .env
   dbservice:
     image: postgres
     env_file: .env
