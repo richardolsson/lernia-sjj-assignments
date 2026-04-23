@@ -5,8 +5,6 @@ services:
     build: .
     ports:
       - 5080:5080
-    environment:
-      MONGODB_URL: mongodb://dbservice:27017/todo
   dbservice:
     image: postgres
     env_file: .env
