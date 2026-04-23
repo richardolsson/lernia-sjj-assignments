@@ -27,6 +27,9 @@ app.get('/api/tasks', async (req, res) => {
 });
 
 app.post('/api/tasks', async (req, res) => {
+  const sql = `INSERT INTO tasks (label, completed) VALUES('${req.body.label}', ${req.body.completed})`;
+  console.log(sql);
+  await pool.query(sql);
   res.status(201).json({});
 });
 
