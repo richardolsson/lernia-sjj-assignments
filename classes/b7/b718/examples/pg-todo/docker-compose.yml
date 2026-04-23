@@ -1,5 +1,5 @@
 volumes:
-  mongodata:
+  pgdata:
 services:
   webapp:
     build: .
@@ -8,6 +8,7 @@ services:
     environment:
       MONGODB_URL: mongodb://dbservice:27017/todo
   dbservice:
-    image: mongo
+    image: postgres
+    env_file: .env
     volumes:
-      - mongodata:/data/db
+      - pgdata:/var/lib/postgresql
