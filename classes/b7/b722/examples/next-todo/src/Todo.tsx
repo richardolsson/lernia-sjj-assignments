@@ -8,6 +8,7 @@ import TaskCounter from './components/TaskCounter';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import type { Task } from "./types";
+import { createTask } from "./app/actions";
 
 type Props = {
   tasks: Task[];
@@ -23,16 +24,12 @@ const Todo: FC<Props> = ({tasks}) => {
       <h1 className="app__title">My ToDo</h1>
       <TaskCounter items={items} />
       <TaskForm onCreateItem={async (text) => {
-        const newItem = {
+        const taskData = {
           label: text,
           completed: false,
         };
 
-        await fetch('/api/tasks', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(newItem),
-        });
+        const newItem = await createTask(taskData);
 
         setItems([...items, newItem]);
       }} />
