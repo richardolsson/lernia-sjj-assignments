@@ -8,6 +8,6 @@ export default async function Home() {
   const tasks = await TaskModel.find();
 
   return (
-    <Todo tasks={tasks}/>
+    <Todo tasks={tasks.map(model => ({ label: model.label, completed: model.completed}))}/>
   )
 }

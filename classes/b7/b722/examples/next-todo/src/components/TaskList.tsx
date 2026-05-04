@@ -13,6 +13,7 @@ const TaskList : FC<Props> = ({ items, onToggleItem }) => {
       {items.map((item, index) => {
         return (
           <TaskItem
+            key={index}
             item={item}
             onToggle={() => {
               onToggleItem(index, !item.completed);
