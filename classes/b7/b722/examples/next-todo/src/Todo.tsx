@@ -9,19 +9,14 @@ import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import type { Task } from "./types";
 
-const Todo: FC = () => {
-  const [items, setItems] = useState<Task[]>([]);
+type Props = {
+  tasks: Task[];
+}
 
-  useEffect(() => {
-    console.log('load tasks');
-    fetch('/api/tasks').then(async (response) => {
-      const payload = await response.json();
-      setItems(payload);
-    });
-  }, []);
+const Todo: FC<Props> = ({tasks}) => {
+  const [items, setItems] = useState<Task[]>(tasks);
 
   console.log('render!');
-
 
   return (
     <main className="app">
