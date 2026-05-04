@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -14,6 +15,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
+        <footer>
+          <Link href="/">Start</Link> |
+          <Link href="/about">About</Link>
+        </footer>
       </body>
     </html>
   )
