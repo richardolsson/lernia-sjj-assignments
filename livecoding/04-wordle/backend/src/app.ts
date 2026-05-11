@@ -5,9 +5,13 @@ import { GameSession } from './models';
 import randomWord from './algo/randomWord';
 import words from './words';
 import feedback from './algo/feedback';
+import { engine } from 'express-handlebars';
 
 const app = express();
 app.use(express.json());
+app.engine('handlebars', engine());
+app.set('view engine', 'handlebars');
+app.set('views', './templates');
 
 app.get('', (req, res) => {
   res.send('Hello, world!');
@@ -16,6 +20,34 @@ app.get('', (req, res) => {
 app.get('/about', async (req, res) => {
   const buf = await fs.readFile('./pages/about.html');
   res.status(200).send(buf.toString());
+});
+
+app.get('/highscore', async (req, res) => {
+  await mongoose.connect('mongodb://localhost:27017/game');
+
+  const sessions = await GameSession.find({ name: { $ne: null } });
+  const scoredSessions = sessions
+    .map(session => {
+      const { startTime, endTime } = session;
+
+      let duration = 0;
+      if (startTime && endTime) {
+        duration = (endTime.getTime() - startTime.getTime()) / 1000;
+      }
+
+      return {
+        name: session.name,
+        word: session.word,
+        duration: duration,
+        score: (session.word.length * (session.allowRepeat ? 1.5 : 1)) / duration,
+      };
+    })
+    .sort((s1, s2) => s2.score - s1.score);
+
+  res.render('highscore', {
+    sessions: scoredSessions,
+  });
+
 });
 
 app.use('/static', express.static('./static'));

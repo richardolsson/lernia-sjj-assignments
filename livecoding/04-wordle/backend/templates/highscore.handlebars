@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th>Player name</th>
+      <th>Correct word</th>
+      <th>Game duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each sessions }}
+    <tr>
+      <td>
+        {{this.name}}
+      </td>
+      <td>
+        {{this.word}}
+      </td>
+      <td>
+        {{this.duration}}s
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
