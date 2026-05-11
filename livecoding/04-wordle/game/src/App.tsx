@@ -19,7 +19,9 @@ function App() {
         setGameId(id);
         setScreen('game');
       }} />}
-      {screen == 'game' && <GameScreen />}
+      {screen == 'game' && <GameScreen gameId={gameId} onWin={() => {
+        setScreen('won');
+      }} />}
       {screen == 'won' && <WonScreen />}
       {screen == 'done' && <DoneScreen />}
     </div>

@@ -1,0 +1,26 @@
+.WordResultTiles {
+  display: flex;
+}
+
+.WordResultTiles__letter {
+  list-style-type: none;
+  display: flex;
+  width: 4em;
+  height: 4em;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5em;
+  margin: 0.2em;
+}
+
+.WordResultTiles__letter--correct {
+  background-color: green;
+}
+
+.WordResultTiles__letter--incorrect {
+  background-color: red;
+}
+
+.WordResultTiles__letter--misplaced {
+  background-color: yellow;
+}
