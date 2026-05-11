@@ -1,6 +1,6 @@
 import express from 'express';
 import fs from 'fs/promises';
-import mongoose from 'mongoose';
+import mongoose, { type QueryFilter } from 'mongoose';
 import { GameSession } from './models';
 import randomWord from './algo/randomWord';
 import words from './words';
@@ -25,7 +25,21 @@ app.get('/about', async (req, res) => {
 app.get('/highscore', async (req, res) => {
   await mongoose.connect('mongodb://localhost:27017/game');
 
-  const sessions = await GameSession.find({ name: { $ne: null } });
+  const filter: QueryFilter<typeof GameSession> = {
+    name: { $ne: null },
+  }
+
+  const { allowRepeat, wordLength } = req.query;
+
+  if (allowRepeat && allowRepeat != 'any') {
+    filter.allowRepeat = allowRepeat == 'true' ? true : false;
+  }
+
+  if (wordLength) {
+    filter.wordLength = parseInt(wordLength.toString());
+  }
+
+  const sessions = await GameSession.find(filter);
   const scoredSessions = sessions
     .map(session => {
       const { startTime, endTime } = session;
@@ -45,6 +59,8 @@ app.get('/highscore', async (req, res) => {
     .sort((s1, s2) => s2.score - s1.score);
 
   res.render('highscore', {
+    allowRepeat,
+    wordLength,
     sessions: scoredSessions,
   });
 

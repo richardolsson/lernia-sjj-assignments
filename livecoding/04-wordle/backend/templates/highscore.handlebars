@@ -1,3 +1,31 @@
+<div>
+  <form>
+    <div>
+      <label>
+        Word length
+        <select name="wordLength">
+          <option value="any">Any word length</option>
+          <option value="4">4-letter words</option>
+          <option value="5">5-letter words</option>
+          <option value="6">6-letter words</option>
+        </select>
+      </label>
+    </div>
+    <div>
+      <label>
+        Repeating letters
+        <select name="allowRepeat">
+          <option value="any">Ignore setting</option>
+          <option value="true">Only games where repeating letters were allowed
+          </option>
+          <option value="false">Only games where repeating letters were not
+            allowed</option>
+        </select>
+      </label>
+    </div>
+    <button type="submit">Update filter</button>
+  </form>
+</div>
 <table>
   <thead>
     <tr>
