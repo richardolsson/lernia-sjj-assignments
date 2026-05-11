@@ -1,16 +1,23 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
 import './App.css'
+import WelcomeScreen from './components/screens/WelcomeScreen';
+import GameScreen from './components/screens/GameScreen';
+import WonScreen from './components/screens/WonScreen';
+import DoneScreen from './components/screens/DoneScreen';
+
+type ScreenState = 'welcome' | 'game' | 'won' | 'done';
 
 function App() {
-  useEffect(() => {
-    const load = async () => {
-      const payload = await fetch('/api/hello').then(resp => resp.json());
-      console.log(payload.message);
-    };
+  const [screen, setScreen] = useState<ScreenState>('welcome');
 
-    load();
-  }, []);
-  return <h1>Hello, world</h1>;
+  return (
+    <div>
+      {screen == 'welcome' && <WelcomeScreen/>}
+      {screen == 'game' && <GameScreen/>}
+      {screen == 'won' && <WonScreen/>}
+      {screen == 'done' && <DoneScreen/>}
+    </div>
+  );
 }
 
 export default App
