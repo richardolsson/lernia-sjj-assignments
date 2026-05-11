@@ -7,7 +7,7 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "esnext",
+    "module": "preserve",
     "target": "esnext",
     "types": [],
     // For nodejs:
@@ -40,6 +40,7 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
+    "ignoreDeprecations": "6.0",
     "allowSyntheticDefaultImports": true
   }
 }

@@ -4,7 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch index.ts"
+    "dev": "tsx watch index.ts",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +14,8 @@
   "dependencies": {
     "@types/express": "^5.0.6",
     "express": "^5.2.1",
+    "jest": "^30.4.2",
+    "ts-jest": "^29.4.9",
     "tsx": "^4.21.0",
     "typescript": "^6.0.3"
   }
