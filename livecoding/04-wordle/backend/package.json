@@ -4,6 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "tsx index.ts",
     "dev": "tsx watch index.ts",
     "test": "jest",
     "test:watch": "jest --watch"

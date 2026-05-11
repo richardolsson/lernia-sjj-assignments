@@ -13,6 +13,8 @@ app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './templates');
 
+const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost:27017/game';
+
 app.get('', (req, res) => {
   res.render('home');
 });
@@ -22,7 +24,7 @@ app.get('/about', async (req, res) => {
 });
 
 app.get('/highscore', async (req, res) => {
-  await mongoose.connect('mongodb://localhost:27017/game');
+  await mongoose.connect(MONGODB_URL);
 
   const filter: QueryFilter<typeof GameSession> = {
     name: { $ne: null },
@@ -68,7 +70,7 @@ app.get('/highscore', async (req, res) => {
 app.use('/static', express.static('./static'));
 
 app.post('/api/sessions', async (req, res) => {
-  await mongoose.connect('mongodb://localhost:27017/game');
+  await mongoose.connect(MONGODB_URL);
 
   const word = randomWord(words, req.body.wordLength, req.body.allowRepeat);
 
@@ -88,7 +90,7 @@ app.post('/api/sessions', async (req, res) => {
 });
 
 app.post('/api/sessions/:id/guesses', async (req, res) => {
-  await mongoose.connect('mongodb://localhost:27017/game');
+  await mongoose.connect(MONGODB_URL);
   const id = req.params.id;
   const guess = req.body.guess;
 
@@ -115,7 +117,7 @@ app.post('/api/sessions/:id/guesses', async (req, res) => {
 });
 
 app.post('/api/sessions/:id/highscore', async (req, res) => {
-  await mongoose.connect('mongodb://localhost:27017/game');
+  await mongoose.connect(MONGODB_URL);
   const id = req.params.id;
   const name = req.body.name;
 

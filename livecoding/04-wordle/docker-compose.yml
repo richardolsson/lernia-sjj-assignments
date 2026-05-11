@@ -1,0 +1,9 @@
+services:
+  app:
+    build: .
+    ports:
+      - 5080:5080
+    environment:
+      MONGODB_URL: mongodb://db:27017/game
+  db:
+    image: mongo
