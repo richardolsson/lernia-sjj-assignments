@@ -1,3 +1,13 @@
 h1 {
   color: red;
 }
+
+nav menu {
+  display: flex;
+  padding: 0;
+  justify-content: space-around;
+}
+
+nav li {
+  list-style-type: none;
+}
