@@ -14,7 +14,7 @@ app.set('view engine', 'handlebars');
 app.set('views', './templates');
 
 app.get('', (req, res) => {
-  res.send('Hello, world!');
+  res.render('home');
 });
 
 app.get('/about', async (req, res) => {
