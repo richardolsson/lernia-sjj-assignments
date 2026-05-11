@@ -6,4 +6,8 @@ app.get('', (req, res) => {
   res.send('Hello, world!');
 });
 
+app.get('/api/hello', (req, res) => {
+  res.status(200).json({ message: 'Hello, there' });
+});
+
 app.listen(5080);
