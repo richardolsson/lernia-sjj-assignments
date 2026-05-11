@@ -7,6 +7,7 @@ const GameSessionSchema = new mongoose.Schema({
   endTime: { type: Date, required: false },
   word: { type: String, required: true },
   guesses: { type: [String], required: true },
+  name: { type: String, required: false },
 });
 
 const GameSession = mongoose.model('GameSession', GameSessionSchema);
