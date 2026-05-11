@@ -4,7 +4,7 @@ import WelcomeScreen from './components/screens/WelcomeScreen';
 import GameScreen from './components/screens/GameScreen';
 import WonScreen from './components/screens/WonScreen';
 import DoneScreen from './components/screens/DoneScreen';
-import { startGame } from './api';
+import { startGame, submitHighscore } from './api';
 
 type ScreenState = 'welcome' | 'game' | 'won' | 'done';
 
@@ -22,7 +22,10 @@ function App() {
       {screen == 'game' && <GameScreen gameId={gameId} onWin={() => {
         setScreen('won');
       }} />}
-      {screen == 'won' && <WonScreen />}
+      {screen == 'won' && <WonScreen onSubmit={async (name) => {
+        await submitHighscore(gameId, name);
+        setScreen('done');
+      }} />}
       {screen == 'done' && <DoneScreen />}
     </div>
   );

@@ -22,3 +22,11 @@ export async function submitGuess(gameId: string, guess: string): Promise<Letter
   const payload = await response.json();
   return payload.result;
 }
+
+export async function submitHighscore(gameId: string, name: string): Promise<void> {
+  await fetch(`/api/sessions/${gameId}/highscore`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ name })
+  });
+}
