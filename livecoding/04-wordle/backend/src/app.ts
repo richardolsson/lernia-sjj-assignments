@@ -18,8 +18,7 @@ app.get('', (req, res) => {
 });
 
 app.get('/about', async (req, res) => {
-  const buf = await fs.readFile('./pages/about.html');
-  res.status(200).send(buf.toString());
+  res.render('about');
 });
 
 app.get('/highscore', async (req, res) => {
