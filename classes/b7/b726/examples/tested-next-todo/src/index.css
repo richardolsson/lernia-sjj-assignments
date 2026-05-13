@@ -1,0 +1,141 @@
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: linear-gradient(to bottom, #ffcdcd 0%, #ff8888 100%);
+  background-repeat: no-repeat;
+  font-family: sans-serif;
+}
+
+@keyframes app__enterAnimation {
+  0% {
+    transform: translateY(-300px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.app {
+  background-color: white;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  animation-name: app__enterAnimation;
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.app__title {
+  margin: 0 0 10px;
+  font-family: serif;
+
+  animation-name: fadeInAnimation;
+  animation-duration: 0.4s;
+  animation-delay: 0.8s;
+  animation-fill-mode: backwards;
+}
+
+.app__counter {
+  display: block;
+  margin: 10px 0 20px;
+  font-size: 70%;
+
+  animation-name: fadeInAnimation;
+  animation-duration: 0.4s;
+  animation-delay: 0.9s;
+  animation-fill-mode: backwards;
+}
+
+.taskForm {
+  margin: 20px 0;
+
+  animation-name: fadeInAnimation;
+  animation-duration: 0.4s;
+  animation-delay: 1.0s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes taskForm__blinkError {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.taskForm__error {
+  color: red;
+  font-size: 70%;
+  font-style: italic;
+  margin: 5px;
+}
+
+.taskForm--withError .taskForm__error {
+  animation-name: taskForm__blinkError;
+  animation-duration: 0.2s;
+  animation-direction: alternate;
+  animation-iteration-count: 5;
+}
+
+.taskList {
+  padding: 0;
+  margin: 0;
+}
+
+@keyframes taskList__itemEnterAnimation {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.taskList__item {
+  list-style-type: none;
+  margin: 10px 0;
+
+  animation-name: taskList__itemEnterAnimation;
+  animation-duration: 0.4s;
+  transition: color 0.2s;
+}
+
+.taskList__item--completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.taskList__itemDeleteButton {
+  border-width: 0;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 60%;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.taskList__itemDeleteButton:hover {
+  opacity: 1;
+}
