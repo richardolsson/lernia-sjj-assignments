@@ -1,3 +1,4 @@
+import Iron from '@hapi/iron';
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -5,7 +6,14 @@ export async function POST(request: NextRequest) {
 
   if (payload.username == 'admin' && payload.password == 'password') {
     const response = new NextResponse();
-    response.cookies.set('username', payload.username);
+    const sessionData = {
+      username: payload.username,
+      loginTime: new Date().toISOString(),
+    };
+
+    const sealed = await Iron.seal(sessionData, process.env.IRON_KEY || '', Iron.defaults);
+
+    response.cookies.set('session', sealed);
     return response;
   } else {
     return NextResponse.json({}, { status: 401 });
