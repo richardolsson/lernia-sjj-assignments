@@ -1,3 +1,4 @@
+import jsonwebtoken from 'jsonwebtoken';
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -5,7 +6,15 @@ export async function POST(request: NextRequest) {
 
   if (payload.username == 'admin' && payload.password == 'password') {
     const response = new NextResponse();
-    response.cookies.set('username', payload.username);
+    const sessionData = {
+      username: payload.username,
+      loginTime: new Date().toISOString(),
+    };
+
+    const jwt = jsonwebtoken.sign(sessionData, process.env.JWT_KEY || '');
+
+    response.cookies.set('session', jwt);
+
     return response;
   } else {
     return NextResponse.json({}, { status: 401 });
