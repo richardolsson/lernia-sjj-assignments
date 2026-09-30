@@ -1,15 +1,14 @@
 h1 {
-  border: 2px solid black;
-  padding: 30px 10px;
-  background-color: #fc0;
-  height: 100px;
-  box-sizing: border-box;
+  margin: 100px 0;
 }
 
 h2 {
-  border: 2px solid green;
-  padding: 10px 10px;
-  background-color: lightblue;
-  height: 100px;
+  margin: 50px 0;
+}
+
+section {
+  border-width: 2px;
+  border-style: dotted;
+  border-color: black;
   box-sizing: border-box;
 }
