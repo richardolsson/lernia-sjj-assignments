@@ -1,0 +1,15 @@
+h1 {
+  border: 2px solid black;
+  padding: 30px 10px;
+  background-color: #fc0;
+  height: 100px;
+  box-sizing: border-box;
+}
+
+h2 {
+  border: 2px solid green;
+  padding: 10px 10px;
+  background-color: lightblue;
+  height: 100px;
+  box-sizing: border-box;
+}
