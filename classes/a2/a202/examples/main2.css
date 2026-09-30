@@ -1,0 +1,7 @@
+strong {
+  display: inline-block;
+  background-color: #fd6;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 20px;
+}
