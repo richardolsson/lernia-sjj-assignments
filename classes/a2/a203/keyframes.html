@@ -3,9 +3,38 @@
 
 <head>
   <style>
-    #ball {}
+    #ball {
+      background-color: red;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
 
-    #ball.animated {}
+    #ball.animated {
+      animation-name: fade-between-colors;
+      animation-duration: 5s;
+      animation-fill-mode: both;
+      animation-delay: 1s;
+      animation-direction: alternate;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes fade-between-colors {
+      0% {
+        background-color: green;
+        margin-left: 0;
+      }
+
+      50% {
+        background-color: lightblue;
+        margin-left: 100px;
+      }
+
+      100% {
+        background-color: yellow;
+        margin-left: 0;
+      }
+    }
   </style>
 </head>
 
