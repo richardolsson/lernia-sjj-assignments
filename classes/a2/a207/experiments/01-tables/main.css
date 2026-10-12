@@ -1,0 +1,7 @@
+.header, .footer {
+  height: 100px;
+}
+
+.left, .right {
+  width: 100px;
+}
