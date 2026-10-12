@@ -1,27 +1,27 @@
 .container {
   display: flex;
-  flex-direction: column;
-}
-
-.article {
-  display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .header {
   height: 100px;
+  width: 100%;
 }
 
 .footer {
   height: 100px;
+  width: 100%;
 }
 
 .left {
-  width: 100px;
+  width: 20%;
 }
 
 .main {
+  width: 60%;
 }
 
 .right {
+  width: 20%;
 }
