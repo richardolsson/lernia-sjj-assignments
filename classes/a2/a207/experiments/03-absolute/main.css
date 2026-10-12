@@ -1,0 +1,36 @@
+.container {
+  position: relative;
+}
+
+.header {
+  height: 100px;
+}
+
+.left {
+  position: absolute;
+  left: 0;
+  top: 100px;
+  width: 200px;
+}
+
+.main {
+  position: absolute;
+  left: 200px;
+  top: 100px;
+  right: 200px;
+}
+
+.right {
+  position: absolute;
+  width: 200px;
+  top: 100px;
+  right: 0;
+}
+
+.footer {
+  height: 100px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 431px;
+}
