@@ -3,9 +3,58 @@
 
 <head>
   <style>
-    #ball {}
+    body {
+      border: 1px solid black;
+      height: 400px;
+      position: relative;
+    }
 
-    .animated {}
+    #ball {
+      background-color: red;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      position: absolute;
+      top: 50px;
+      left: 100px;
+    }
+
+    .animated {
+      animation-name: ball-fall;
+      animation-duration: 2s;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.36, 0, 0.66, -0.56);
+    }
+
+    @keyframes ball-fall {
+      0% {
+        top: 50px;
+      }
+
+      50% {
+        top: 300px;
+        transform: scale(100%, 100%);
+      }
+
+      55% {
+        transform: scale(110%, 80%);
+      }
+
+      65% {
+        top: 200px;
+        transform: scale(100%, 100%);
+      }
+
+      75% {
+        top: 290px;
+        transform: scale(110%, 90%);
+      }
+
+      100% {
+        transform: scale(100%, 100%);
+        top: 300px;
+      }
+    }
   </style>
 </head>
 
