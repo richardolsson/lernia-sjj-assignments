@@ -1,0 +1,9 @@
+.container {
+  display: grid;
+  grid-template-columns: 200px auto 200px;
+  grid-template-rows: 200px auto 200px;
+}
+
+.header, .footer {
+  grid-column: 1 / 4;
+}
