@@ -8,20 +8,39 @@ html {
 
 .header {
   background-color: lightblue;
+  padding: 0.5em;
 }
 
 .left {
   background-color: lightcoral;
+  padding: 0.5em;
 }
 
 .main {
   background-color: lightpink;
+  padding: 0.5em;
+}
+
+.main h1 {
+  margin: 0 0 0.5em;
+}
+
+.main img {
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+}
+
+.main p {
+  line-height: 1.4em;
 }
 
 .right {
   background-color: lightseagreen;
+  padding: 0.5em;
 }
 
 .footer {
   background-color: lightskyblue;
+  padding: 0.5em;
 }
