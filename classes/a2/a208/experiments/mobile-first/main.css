@@ -52,6 +52,13 @@ html {
     grid-template-columns: 200px auto;
   }
 
+  .main img {
+    width: 300px;
+    height: auto;
+    float: right;
+    margin-left: 1em;
+  }
+
   .header {
     grid-column: 1 / 3;
   }
