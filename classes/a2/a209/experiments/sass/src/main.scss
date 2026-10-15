@@ -1,12 +1,18 @@
 $medium-screen-breakpoint: 1040px;
 
+@mixin card {
+  background-color: white;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
 html {
   font-size: 24px;
 }
 
 .container {
-  background-color: silver;
-
   @media screen and (min-width: $medium-screen-breakpoint) {
     display: grid;
     grid-template-columns: 270px auto 270px;
@@ -14,8 +20,7 @@ html {
 }
 
 .header {
-  background-color: lightblue;
-  padding: 0.5rem;
+  @include card;
 
   @media screen and (min-width: $medium-screen-breakpoint) {
     grid-column: 1 / 4;
@@ -23,13 +28,11 @@ html {
 }
 
 .left {
-  background-color: lightcoral;
-  padding: 0.5rem;
+  @include card;
 }
 
 .main {
-  background-color: lightpink;
-  padding: 0.5rem;
+  @include card;
 
   &__headline {
     font-size: 1.5rem;
@@ -49,13 +52,11 @@ html {
 }
 
 .right {
-  background-color: lightseagreen;
-  padding: 0.5rem;
+  @include card;
 }
 
 .footer {
-  background-color: lightskyblue;
-  padding: 0.5rem;
+  @include card;
 
   @media screen and (min-width: $medium-screen-breakpoint) {
     grid-column: 1 / 4;

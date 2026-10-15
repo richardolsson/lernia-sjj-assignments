@@ -2,9 +2,6 @@ html {
   font-size: 24px;
 }
 
-.container {
-  background-color: silver;
-}
 @media screen and (min-width: 1040px) {
   .container {
     display: grid;
@@ -13,8 +10,11 @@ html {
 }
 
 .header {
-  background-color: lightblue;
+  background-color: white;
   padding: 0.5rem;
+  margin: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }
 @media screen and (min-width: 1040px) {
   .header {
@@ -23,13 +23,19 @@ html {
 }
 
 .left {
-  background-color: lightcoral;
+  background-color: white;
   padding: 0.5rem;
+  margin: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }
 
 .main {
-  background-color: lightpink;
+  background-color: white;
   padding: 0.5rem;
+  margin: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }
 .main__headline {
   font-size: 1.5rem;
@@ -48,13 +54,19 @@ html {
 }
 
 .right {
-  background-color: lightseagreen;
+  background-color: white;
   padding: 0.5rem;
+  margin: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }
 
 .footer {
-  background-color: lightskyblue;
+  background-color: white;
   padding: 0.5rem;
+  margin: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }
 @media screen and (min-width: 1040px) {
   .footer {
