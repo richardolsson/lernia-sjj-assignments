@@ -8,12 +8,18 @@ $medium-screen-breakpoint: 1040px;
   border-radius: 3px;
 }
 
+@mixin medium-screen {
+  @media screen and (min-width: $medium-screen-breakpoint) {
+    @content;
+  }
+}
+
 html {
   font-size: 24px;
 }
 
 .container {
-  @media screen and (min-width: $medium-screen-breakpoint) {
+  @include medium-screen {
     display: grid;
     grid-template-columns: 270px auto 270px;
   }
@@ -22,7 +28,7 @@ html {
 .header {
   @include card(#ddd);
 
-  @media screen and (min-width: $medium-screen-breakpoint) {
+  @include medium-screen {
     grid-column: 1 / 4;
   }
 }
@@ -44,7 +50,7 @@ html {
     max-height: 40vh;
     object-fit: cover;
 
-    @media screen and (min-width: $medium-screen-breakpoint) {
+    @include medium-screen {
       float: right;
       width: 300px;
     }
@@ -58,7 +64,7 @@ html {
 .footer {
   @include card;
 
-  @media screen and (min-width: $medium-screen-breakpoint) {
+  @include medium-screen {
     grid-column: 1 / 4;
   }
 }
