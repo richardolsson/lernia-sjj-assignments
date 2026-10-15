@@ -4,11 +4,20 @@ html {
 
 .container {
   background-color: silver;
+
+  @media screen and (min-width: 800px) {
+    display: grid;
+    grid-template-columns: 170px auto 170px;
+  }
 }
 
 .header {
   background-color: lightblue;
   padding: 0.5rem;
+
+  @media screen and (min-width: 800px) {
+    grid-column: 1 / 4;
+  }
 }
 
 .left {
@@ -29,6 +38,11 @@ html {
     width: 100%;
     max-height: 40vh;
     object-fit: cover;
+
+    @media screen and (min-width: 800px) {
+      float: right;
+      width: 300px;
+    }
   }
 }
 
@@ -40,4 +54,8 @@ html {
 .footer {
   background-color: lightskyblue;
   padding: 0.5rem;
+
+  @media screen and (min-width: 800px) {
+    grid-column: 1 / 4;
+  }
 }

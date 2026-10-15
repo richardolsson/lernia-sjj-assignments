@@ -5,10 +5,21 @@ html {
 .container {
   background-color: silver;
 }
+@media screen and (min-width: 800px) {
+  .container {
+    display: grid;
+    grid-template-columns: 170px auto 170px;
+  }
+}
 
 .header {
   background-color: lightblue;
   padding: 0.5rem;
+}
+@media screen and (min-width: 800px) {
+  .header {
+    grid-column: 1/4;
+  }
 }
 
 .left {
@@ -29,6 +40,12 @@ html {
   max-height: 40vh;
   object-fit: cover;
 }
+@media screen and (min-width: 800px) {
+  .main img {
+    float: right;
+    width: 300px;
+  }
+}
 
 .right {
   background-color: lightseagreen;
@@ -38,4 +55,9 @@ html {
 .footer {
   background-color: lightskyblue;
   padding: 0.5rem;
+}
+@media screen and (min-width: 800px) {
+  .footer {
+    grid-column: 1/4;
+  }
 }
