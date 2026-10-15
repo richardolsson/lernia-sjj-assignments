@@ -5,10 +5,10 @@ html {
 .container {
   background-color: silver;
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1040px) {
   .container {
     display: grid;
-    grid-template-columns: 170px auto 170px;
+    grid-template-columns: 270px auto 270px;
   }
 }
 
@@ -16,7 +16,7 @@ html {
   background-color: lightblue;
   padding: 0.5rem;
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1040px) {
   .header {
     grid-column: 1/4;
   }
@@ -40,7 +40,7 @@ html {
   max-height: 40vh;
   object-fit: cover;
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1040px) {
   .main__photo {
     float: right;
     width: 300px;
@@ -56,7 +56,7 @@ html {
   background-color: lightskyblue;
   padding: 0.5rem;
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1040px) {
   .footer {
     grid-column: 1/4;
   }

@@ -1,3 +1,5 @@
+$medium-screen-breakpoint: 1040px;
+
 html {
   font-size: 24px;
 }
@@ -5,9 +7,9 @@ html {
 .container {
   background-color: silver;
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: $medium-screen-breakpoint) {
     display: grid;
-    grid-template-columns: 170px auto 170px;
+    grid-template-columns: 270px auto 270px;
   }
 }
 
@@ -15,7 +17,7 @@ html {
   background-color: lightblue;
   padding: 0.5rem;
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: $medium-screen-breakpoint) {
     grid-column: 1 / 4;
   }
 }
@@ -39,7 +41,7 @@ html {
     max-height: 40vh;
     object-fit: cover;
 
-    @media screen and (min-width: 800px) {
+    @media screen and (min-width: $medium-screen-breakpoint) {
       float: right;
       width: 300px;
     }
@@ -55,7 +57,7 @@ html {
   background-color: lightskyblue;
   padding: 0.5rem;
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: $medium-screen-breakpoint) {
     grid-column: 1 / 4;
   }
 }
