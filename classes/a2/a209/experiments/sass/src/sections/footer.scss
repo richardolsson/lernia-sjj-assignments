@@ -1,0 +1,9 @@
+@use '../lib' as *;
+
+.footer {
+  @include card;
+
+  @include medium-screen {
+    grid-column: 1 / 4;
+  }
+}

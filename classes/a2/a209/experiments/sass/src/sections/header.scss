@@ -1,0 +1,9 @@
+@use '../lib' as *;
+
+.header {
+  @include card(#ddd);
+
+  @include medium-screen {
+    grid-column: 1 / 4;
+  }
+}
