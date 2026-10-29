@@ -10,7 +10,7 @@ $col-gray: #B6BDB5;
   }
 }
 
-@mixin button($bg-color, $text-color) {
+@mixin button($bg-color, $text-color, $border-color: transparent) {
   background-color: $bg-color;
   display: block;
   padding: 1em 4em;
@@ -20,5 +20,5 @@ $col-gray: #B6BDB5;
   color: $text-color;
   text-decoration: none;
   border-radius: 4px;
-  border-width: 0;
+  border: 1px solid $border-color;
 }
