@@ -1,0 +1,16 @@
+{
+  "name": "esc-homepage",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass src/main.scss main.css",
+    "watch": "sass --watch src/main.scss main.css"
+  },
+  "dependencies": {
+    "sass": "^1.107.0"
+  }
+}
