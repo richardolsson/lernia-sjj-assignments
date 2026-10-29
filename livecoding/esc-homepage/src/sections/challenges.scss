@@ -1,10 +1,37 @@
 @use '../lib.scss' as *;
 
+.challenges {
+  padding: 3rem 0;
+}
+
+.challenges__headline {
+  margin: 1rem 1rem 5rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.challenges__cards {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem 1rem;
+
+  @include medium-screen {
+    justify-content: center;
+  }
+}
+
 .challenge {
+  min-width: 20rem;
   max-width: 24rem;
   box-shadow: 0 0 1rem $col-gray;
   border-radius: 0.5rem;
   overflow: hidden;
+
+  @include medium-screen {
+    min-width: 16rem;
+  }
 
   &__image {
     max-width: 100%;
