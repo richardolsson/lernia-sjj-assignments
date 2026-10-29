@@ -1,3 +1,11 @@
+@use '../lib.scss' as *;
+
+.testimonials {
+  display: flex;
+  max-width: 80rem;
+  margin: 1rem auto 4rem;
+}
+
 .testimonial {
   display: grid;
   grid-template-columns: clamp(4rem, 10vw, 6rem) auto;
@@ -17,5 +25,15 @@
 
   &__cite {
     grid-column: 2 / 3;
+  }
+
+  &:nth-child(2) {
+    display: none;
+  }
+
+  @include medium-screen {
+    &:nth-child(2) {
+      display: grid;
+    }
   }
 }
