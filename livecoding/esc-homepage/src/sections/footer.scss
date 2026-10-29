@@ -1,0 +1,42 @@
+@use '../lib.scss' as *;
+
+.footer {
+  background-color: $col-darkblue;
+  padding: 2rem 1rem;
+  color: white;
+
+  @include medium-screen {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    &__summary {
+      grid-column: 2 / 6;
+    }
+
+    &__sitemap {
+      grid-column: 7 / 9;
+    }
+
+    &__socials {
+      grid-column: 10 / 12;
+    }
+  }
+
+  &__headline {
+    margin-top: 3rem;
+  }
+
+  &__menu {
+    padding: 0;
+  }
+
+  &__menuItem {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  &__menuLink {
+    color: white;
+    text-decoration: none;
+  }
+}
