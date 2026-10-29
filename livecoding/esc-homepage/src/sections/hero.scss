@@ -1,0 +1,7 @@
+.hero {
+  &__image {
+    width: 100%;
+    max-height: 60dvh;
+    object-fit: cover;
+  }
+}
