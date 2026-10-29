@@ -9,3 +9,15 @@ $col-gray: #B6BDB5;
     @content;
   }
 }
+
+@mixin button($bg-color, $text-color) {
+  background-color: $bg-color;
+  display: block;
+  padding: 1rem 4rem;
+  margin: 0.5rem;
+  text-align: center;
+  font-weight: bold;
+  color: $text-color;
+  text-decoration: none;
+  border-radius: 4px;
+}

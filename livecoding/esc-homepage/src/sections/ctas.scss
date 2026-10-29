@@ -1,0 +1,33 @@
+@use '../lib.scss' as *;
+
+.ctas {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  @include medium-screen {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  &__onlineButton {
+    color: $col-midblue;
+    font-weight: bold;
+    padding: 1rem;
+
+    @include medium-screen {
+      @include button($col-red, white);
+    }
+  }
+
+  &__onsiteButton {
+    @include button($col-lightblue, $col-darkblue);
+  }
+}
+
+.hero-cta .ctas {
+  @include medium-screen {
+    position: relative;
+    top: -2.5rem;
+  }
+}
