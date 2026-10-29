@@ -1,0 +1,46 @@
+@use '../lib.scss' as *;
+
+.pitch {
+  @include medium-screen {
+    display: flex;
+
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    object-fit: cover;
+
+    @include medium-screen {
+      width: 50%;
+    }
+  }
+
+  &__content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+
+    @include medium-screen {
+      margin: 0 3rem;
+    }
+  }
+
+  &__headline {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  &__link {
+    @include button($col-red, white);
+    margin: 2rem 0;
+
+    @include medium-screen {
+      margin-bottom: 0;
+    }
+  }
+}
