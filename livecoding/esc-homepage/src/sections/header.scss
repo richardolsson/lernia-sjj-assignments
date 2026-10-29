@@ -1,0 +1,21 @@
+@use '../lib.scss' as *;
+
+.header {
+  background-color: $col-darkblue;
+  color: white;
+  padding: 1rem;
+
+  &__logo {
+    background-image: url('images/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 0.2rem 0 0.2rem 8rem;
+    margin: 0;
+    max-width: 8rem;
+    font-size: 1.3rem;
+  }
+
+  &__nav {
+    display: none;
+  }
+}
