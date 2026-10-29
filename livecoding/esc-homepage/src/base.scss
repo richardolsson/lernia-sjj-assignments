@@ -5,6 +5,11 @@ html, body {
   padding: 0;
 }
 
+body {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 * {
   font-family: 'Roboto', sans-serif;
 }
