@@ -13,6 +13,7 @@
       console.log('C');
     }
 
+    /*
     function example2Promises() {
       console.log('A');
 
@@ -35,6 +36,17 @@
       fetchPromise.then(fetchCallback);
 
       console.log('F');
+    }
+    */
+
+    function example2Promises() {
+      console.log('A');
+
+      fetch('word.txt')
+        .then((response) => response.text())
+        .then((text) => console.log('B', text));
+
+      console.log('C');
     }
 
     function example3AsyncAwait() {
