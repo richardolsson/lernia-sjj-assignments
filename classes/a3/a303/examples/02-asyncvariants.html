@@ -4,6 +4,13 @@
 <head>
   <script>
     function example1Callback() {
+      console.log('A');
+
+      setTimeout(() => {
+        console.log('B');
+      }, 3000);
+
+      console.log('C');
     }
 
     function example2Promises() {
