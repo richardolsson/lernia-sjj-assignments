@@ -14,6 +14,27 @@
     }
 
     function example2Promises() {
+      console.log('A');
+
+      function fetchCallback(response) {
+        function textCallback(text) {
+          console.log('B', text);
+        }
+
+        console.log('C');
+
+        const textPromise = response.text();
+        textPromise.then(textCallback);
+
+        console.log('D');
+      }
+
+      console.log('E');
+
+      const fetchPromise = fetch('word.txt');
+      fetchPromise.then(fetchCallback);
+
+      console.log('F');
     }
 
     function example3AsyncAwait() {
