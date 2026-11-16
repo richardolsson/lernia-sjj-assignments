@@ -49,7 +49,12 @@
       console.log('C');
     }
 
-    function example3AsyncAwait() {
+    async function example3AsyncAwait() {
+      console.log('A');
+      const response = await fetch('word.txt');
+      console.log('B');
+      const text = await response.text();
+      console.log('C', text);
     }
 
   </script>
